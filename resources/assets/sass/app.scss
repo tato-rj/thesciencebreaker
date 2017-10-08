@@ -1,5 +1,11 @@
 // Variables
 @import "variables";
 
+// Mixins
+@import "mixins";
+
+// Custom styles
+@import "custom";
+
 // Header
-@import "header";
+@import "partials/header";
