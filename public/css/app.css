@@ -8,12 +8,36 @@ input:hover {
   outline: 0;
 }
 
+h4 {
+  font-weight: bold;
+}
+
+a {
+  color: #f36e41;
+}
+
+a:hover {
+  color: #da5528;
+}
+
+.text-orange {
+  color: #f36e41;
+}
+
+.mt-6 {
+  margin-top: 6rem !important;
+}
+
+.mt-7 {
+  margin-top: 7rem !important;
+}
+
 header {
   background: #191919;
 }
 
 header a {
-  color: white;
+  color: white !important;
 }
 
 header #title {
@@ -38,7 +62,7 @@ header #partner-container img {
 
 header #search-form input {
   color: white;
-  background: grey;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 header #search-form button {
@@ -99,5 +123,104 @@ header nav .dropdown-menu a:not(:last-of-type) {
 header nav .dropdown-menu a:hover {
   background: #da5528;
   color: white;
+}
+
+footer {
+  background: #191919;
+  color: white;
+}
+
+footer .social i {
+  padding: 0 12px;
+  font-size: 1.4em;
+}
+
+footer ul:not(.credits) p {
+  margin: 0;
+}
+
+footer ul:not(.credits) li {
+  color: grey;
+  list-style-type: none;
+  font-size: 0.9em;
+}
+
+footer ul.credits {
+  color: grey;
+  font-size: 0.7em;
+  border-top: 1px solid;
+}
+
+footer ul.credits li {
+  display: inline-block;
+}
+
+footer ul.credits i {
+  font-size: 0.4em;
+  margin: 0 12px;
+  vertical-align: middle;
+}
+
+footer button {
+  background: #06b2b8;
+  color: white;
+}
+
+#latest-breaks th {
+  vertical-align: initial;
+}
+
+#latest-breaks td {
+  padding-left: 12px;
+  padding-bottom: 12px;
+}
+
+#latest-breaks img {
+  width: 46px;
+}
+
+#latest-breaks p {
+  margin: 0;
+  line-height: 1;
+}
+
+#latest-breaks small {
+  font-size: 70%;
+}
+
+#subject-icons {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#subject-icons .icon-wrapper {
+  width: 140px;
+  margin: 16px;
+}
+
+#subject-icons .icon-wrapper img {
+  width: 100%;
+}
+
+#subject-icons .icon-wrapper div {
+  display: none;
+}
+
+#app-container div {
+  max-width: 240px;
+}
+
+#app-container > div:first-of-type img {
+  width: 80%;
+}
+
+#app-container #apple-store-icon {
+  width: 140px;
+}
+
+#discussion-container .fa {
+  font-size: 9em !important;
+  color: lightgrey;
+  opacity: 0.6;
 }
 
