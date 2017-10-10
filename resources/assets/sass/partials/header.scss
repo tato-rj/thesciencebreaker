@@ -2,7 +2,7 @@ header {
 	background: $color-bg;
 	
 	a {
-		color: white;
+		color: white!important;
 	}
 	
 	#title {
@@ -32,7 +32,7 @@ header {
 	#search-form {
 		input {
 			color: white;
-			background: grey;
+			background: rgba(255,255,255,0.15);
 		}
 
 		button {

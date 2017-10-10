@@ -1,0 +1,65 @@
+#latest-breaks {
+	th {
+	    vertical-align: initial;
+	}
+
+	td {
+		padding-left: 12px;
+		padding-bottom: 12px;
+	}
+	
+	img {
+		width: 46px;
+	}
+
+	p {
+		margin: 0;
+		line-height: 1;
+	}
+
+	small {
+		font-size: 70%;
+	}
+}
+
+#subject-icons {
+	max-width: 800px;
+	margin: 0 auto;
+
+	.icon-wrapper {
+	    width: 140px;
+	    margin: 16px;
+
+		img {
+			width: 100%;
+		}
+
+		div {
+			display: none;
+		}
+	}	
+}
+
+#app-container {
+	div {
+		max-width: 240px;
+	}
+
+	> div:first-of-type {
+		img {
+			width: 80%;
+		}
+	}
+
+	#apple-store-icon {
+		width: 140px;
+	}
+}
+
+#discussion-container {
+	.fa {
+		font-size: 9em!important;
+		color: lightgrey;
+		opacity: 0.6;
+	}
+}

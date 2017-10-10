@@ -1,0 +1,44 @@
+footer {
+	background: $color-bg;
+	color: white;
+
+	.social {
+		i {
+			padding: 0 12px;
+			font-size: 1.4em;
+		}
+	}
+	
+	ul:not(.credits) {
+		p {
+			margin: 0;
+		}
+
+		li {
+			color: grey;
+			list-style-type: none;
+			font-size: 0.9em;
+		}
+	}
+
+	ul.credits {
+		color: grey;
+		font-size: 0.7em;
+		border-top: 1px solid;
+
+		li {
+			display: inline-block;
+		}
+
+		i {
+			font-size: 0.4em;
+			margin: 0 12px;
+			vertical-align: middle;
+		}
+	}
+
+	button {
+		background: $color-theme-green;
+		color: white;
+	}
+}

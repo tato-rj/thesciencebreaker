@@ -5,3 +5,27 @@ button, input, textarea {
 input:hover {
 	outline: 0;
 }
+
+h4 {
+	font-weight: bold;
+}
+
+a {
+	color: $color-theme-orange-l;
+}
+
+a:hover {
+	color: $color-theme-orange-d;
+}
+
+.text-orange {
+	color: $color-theme-orange-l;
+}
+
+.mt-6 {
+	margin-top: 6rem!important;
+}
+
+.mt-7 {
+	margin-top: 7rem!important;
+}

@@ -63,6 +63,7 @@
 					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
+					{{ csrf_field() }}
 					<div class="input-group" id="search-form">
 						<input type="text" class="form-control border-0 input-sm" placeholder="Search for...">
 						<span class="input-group-btn">
