@@ -1,5 +1,3 @@
-
-
 <footer class="container-fluid mt-5 p-5">
 	<div class="container">
 		<div class="row">
