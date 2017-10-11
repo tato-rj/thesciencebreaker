@@ -19,61 +19,29 @@
 		<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
 			<div class="d-flex align-items-baseline justify-content-between">
 				<h4>Latest published Breaks</h4>
-				<span class="text-muted"><small>Today, October 08 2017</small></span>
+				<span class="text-muted"><small>Today, {{ Carbon\Carbon::now()->toFormattedDateString() }}</small></span>
 			</div>
 			<div class="box">
 				<table id="latest-breaks" class="mt-2">
-					<tr>
-						<th>
-							<img src="/images/breaks_icons/microbiology.svg">
-						</th>
-						<td>
-							<p>
-								<a href="">Red in Tooth and Claw: another weapon against antibiotic resistance</a>
-							</p>
-							<p><small><strong>Written by: Nicholas A. Isley</strong></small></p>
-							<p><small>Published: October 3, 2017 in Microbiology</small></p>
-						</td>
-					</tr>
-
-					<tr>
-						<th>
-							<img src="/images/breaks_icons/evolutionbehaviour.svg">
-						</th>
-						<td>
-							<p>
-								<a href="">Saving the injured: The value of rescued veterans in a predatory ant species</a>
-							</p>
-							<p><small><strong>Written by: Nicholas A. Isley</strong></small></p>
-							<p><small>Published: October 3, 2017 in Microbiology</small></p>
-						</td>
-					</tr>
-
-					<tr>
-						<th>
-							<img src="/images/breaks_icons/evolutionbehaviour.svg">
-						</th>
-						<td>
-							<p>
-								<a href="">How cats conquered the Ancient world: a 9,000-years DNA tale</a>
-							</p>
-							<p><small><strong>Written by: Nicholas A. Isley</strong></small></p>
-							<p><small>Published: October 3, 2017 in Microbiology</small></p>
-						</td>
-					</tr>
-
-					<tr>
-						<th>
-							<img src="/images/breaks_icons/evolutionbehaviour.svg">
-						</th>
-						<td>
-							<p>
-								<a href="">The daily life of Neandertals</a>
-							</p>
-							<p><small><strong>Written by: Nicholas A. Isley</strong></small></p>
-							<p><small>Published: October 3, 2017 in Microbiology</small></p>
-						</td>
-					</tr>
+					@foreach ($latest_articles as $break)
+						<tr>
+							<th>
+								<img src="/images/breaks_icons/{{ $break->category->filename() }}.svg">
+							</th>
+							<td>
+								<p>
+									<a href="">{{ $break->title }}</a>
+								</p>
+								<p><small><strong>Written by: 
+									@foreach ($break->authors as $author)
+									{{ $loop->first ? '' : ', ' }}
+									{{ $author->fullname() }}
+									@endforeach
+								</strong></small></p>
+								<p><small>Published {{ $break->created_at->diffForHumans() }} in Microbiology</small></p>
+							</td>
+						</tr>					
+					@endforeach
 				</table>
 			</div>
 		</div>
@@ -84,59 +52,17 @@
 		<div class="col-12">
 			<h4>Breaks by subject</h4>
 		</div>
-			<div class="d-flex flex-row justify-content-center align-items-center flex-wrap mt-4" id="subject-icons">
+		<div class="d-flex flex-row justify-content-center align-items-center flex-wrap mt-4" id="subject-icons">
+			@foreach ($categories as $category)
 				<div class="icon-wrapper">
-					<img src="/images/breaks_icons/earthspace.svg">
-					<div>
-						<h5>Earth & Space</h5>
-						<h5>5 Breaks</h5>
+					<img src="/images/breaks_icons/{{ $category->filename() }}.svg">
+					<div class="d-flex align-items-center justify-content-center flex-column text-center">
+						<h5><strong>{{ $category->name }}</strong></h5>
+						<h5><strong>{{ $category->articles_count }} Breaks</strong></h5>
 					</div>
 				</div>
-				<div class="icon-wrapper">
-					<img src="/images/breaks_icons/evolutionbehaviour.svg">
-					<div>
-						<h5>Evolution & Behaviour</h5>
-						<h5>5 Breaks</h5>
-					</div>
-				</div>
-				<div class="icon-wrapper">
-					<img src="/images/breaks_icons/healthphysiology.svg">
-					<div>
-						<h5>Health & Physiology</h5>
-						<h5>14 Breaks</h5>
-					</div>
-					
-				</div>
-				<div class="icon-wrapper">
-					<img src="/images/breaks_icons/mathsphysicschemistry.svg">
-					<div>
-						<h5>Maths, Physics & Chemistry</h5>
-						<h5>9 Breaks</h5>
-					</div>
-				</div>
-				<div class="icon-wrapper">
-					<img src="/images/breaks_icons/microbiology.svg">
-					<div>
-						<h5>Microbiolody</h5>
-						<h5>24 Breaks</h5>
-					</div>
-				</div>
-				<div class="icon-wrapper">
-					<img src="/images/breaks_icons/neurobiology.svg">
-					<div>
-						<h5>Neurobiology</h5>
-						<h5>18 Breaks</h5>
-					</div>
-				</div>
-				<div class="icon-wrapper">
-					<img src="/images/breaks_icons/plantbiology.svg">
-					<div>
-						<h5>Plant Biology</h5>
-						<h5>31 Breaks</h5>
-					</div>
-				</div>
-			</div>
-
+			@endforeach
+		</div>
 	</div>
 
 	{{-- APP --}}

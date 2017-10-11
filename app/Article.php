@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+
+    protected $with = ['authors', 'editor', 'category'];
+
     public function category()
     {
     	return $this->belongsTo('App\Category');

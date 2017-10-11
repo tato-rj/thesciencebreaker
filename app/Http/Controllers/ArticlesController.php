@@ -3,18 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Category;
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller
+class ArticlesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $categories = Category::orderBy('name')->get();
+        $latest_articles = Article::orderBy('id', 'desc')->take(5)->get();
+        return view('welcome', compact(['latest_articles', 'categories']));
     }
 
     /**

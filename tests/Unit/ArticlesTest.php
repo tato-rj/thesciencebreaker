@@ -16,6 +16,7 @@ class ArticlesTest extends TestCase
     {
     	$editor = $this->editor;
     	$article = $this->article;
+
     	$this->assertEquals($this->editor->first_name, $this->article->editor->first_name);
     }
 
@@ -23,15 +24,11 @@ class ArticlesTest extends TestCase
     public function articles_can_have_one_or_more_authors()
     {
     	$article = $this->article;
-    	$author1 = $this->author;
-    	$author2 = factory('App\Author')->create();
-    	$authorship1 = factory('App\ArticleAuthor')->create([
+    	$second_author = factory('App\Author')->create();
+    	
+        factory('App\ArticleAuthor')->create([
     		'article_id' => $article->id,
-    		'author_id' => $author1->id
-    	]);
-    	$authorship2 = factory('App\ArticleAuthor')->create([
-    		'article_id' => $article->id,
-    		'author_id' => $author2->id
+    		'author_id' => $second_author->id
     	]);
 
     	$this->assertEquals(2, count($article->authors));
@@ -40,15 +37,11 @@ class ArticlesTest extends TestCase
     /** @test */
     public function authors_can_create_one_or_more_articles()
     {
-    	$article1 = $this->article;
-    	$article2 = factory('App\Article')->create();
+    	$second_article = factory('App\Article')->create();
     	$author = $this->author;
-    	$authorship1 = factory('App\ArticleAuthor')->create([
-    		'article_id' => $article1->id,
-    		'author_id' => $author->id
-    	]);
-    	$authorship2 = factory('App\ArticleAuthor')->create([
-    		'article_id' => $article2->id,
+    	
+        factory('App\ArticleAuthor')->create([
+    		'article_id' => $second_article->id,
     		'author_id' => $author->id
     	]);
 

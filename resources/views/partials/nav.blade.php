@@ -20,13 +20,9 @@
 					BREAKS
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="#">HEALTH & PHYSIOLOGY</a>
-					<a class="dropdown-item" href="#">NEUROBIOLOGY</a>
-					<a class="dropdown-item" href="#">EARTH & SPACE</a>
-					<a class="dropdown-item" href="#">EVOLUTION & BEHAVIOUR</a>
-					<a class="dropdown-item" href="#">PLANT BIOLOGY</a>
-					<a class="dropdown-item" href="#">MICROBIOLOGY</a>
-					<a class="dropdown-item" href="#">MATHS, PHYSICS & CHEMISTRY</a>
+					@foreach ($categories as $category)
+						<a class="dropdown-item d-flex align-items-center" href="#">{{ strtoupper($category->name) }}<span class="badge badge-warning ml-2">{{ $category->articles_count }}</span></a>
+					@endforeach
 				</div>
 			</li>
 			<li class="nav-item dropdown">

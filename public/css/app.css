@@ -32,6 +32,29 @@ a:hover {
   margin-top: 7rem !important;
 }
 
+.icon-wrapper:hover img {
+  /* IE 9 */
+  -webkit-transform: scale(1.1, 1.1);
+  /* Safari */
+  transform: scale(1.1, 1.1);
+  /* Standard syntax */
+  opacity: 0.2;
+}
+
+.icon-wrapper:hover h5 {
+  opacity: 1 !important;
+}
+
+.icon-wrapper:hover h5:first-of-type {
+  -webkit-transform: translateY(-25%);
+          transform: translateY(-25%);
+}
+
+.icon-wrapper:hover h5:last-of-type {
+  -webkit-transform: translateY(25%);
+          transform: translateY(25%);
+}
+
 header {
   background: #191919;
 }
@@ -196,14 +219,37 @@ footer button {
 #subject-icons .icon-wrapper {
   width: 140px;
   margin: 16px;
+  position: relative;
 }
 
 #subject-icons .icon-wrapper img {
   width: 100%;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 #subject-icons .icon-wrapper div {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#subject-icons .icon-wrapper div h5 {
+  opacity: 0;
+  line-height: 1;
+  margin: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#subject-icons .icon-wrapper div h5:first-of-type {
+  font-size: 1.4em;
+}
+
+#subject-icons .icon-wrapper div h5:last-of-type {
+  color: #f36e41;
 }
 
 #app-container div {

@@ -29,13 +29,34 @@
 	.icon-wrapper {
 	    width: 140px;
 	    margin: 16px;
+	    position: relative;
 
 		img {
 			width: 100%;
+			transition: 0.2s;
 		}
 
 		div {
-			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			
+			h5 {
+				opacity: 0;
+				line-height: 1;
+				margin: 0;
+				transition: 0.3s;
+			}
+
+			h5:first-of-type {
+				font-size: 1.4em;
+			}
+
+			h5:last-of-type {
+				color: $color-theme-orange-l;
+			}
 		}
 	}	
 }
