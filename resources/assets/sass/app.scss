@@ -19,10 +19,14 @@
 // Pages
 @import "pages/welcome";
 
-.side-social {
+#side-social {
 	font-size: 1.5em;
 	text-align: center;
-	
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(50%);
+
 	a  {
 		color: inherit;
 	}

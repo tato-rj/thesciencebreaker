@@ -22,6 +22,17 @@ a:hover {
   color: #da5528;
 }
 
+.sticky-menu {
+  background: #191919;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  margin: 0 !important;
+  display: block !important;
+}
+
 .jumbotron {
   padding: 2rem;
   background: #f9f9f9;
@@ -281,43 +292,48 @@ footer ul.credits i {
   opacity: 0.6;
 }
 
-.side-social {
+#side-social {
   font-size: 1.5em;
   text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
 }
 
-.side-social a {
+#side-social a {
   color: inherit;
 }
 
-.side-social i {
+#side-social i {
   margin: 12px;
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
 
-.side-social .fa:hover {
+#side-social .fa:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
 }
 
-.side-social .fa-envelope-open:hover {
+#side-social .fa-envelope-open:hover {
   color: #f36e41;
 }
 
-.side-social .fa-facebook:hover {
+#side-social .fa-facebook:hover {
   color: #3B5998;
 }
 
-.side-social .fa-twitter:hover {
+#side-social .fa-twitter:hover {
   color: #1da1f2;
 }
 
-.side-social .fa-google:hover {
+#side-social .fa-google:hover {
   color: #d34836;
 }
 
-.side-social .fa-file-pdf-o:hover {
+#side-social .fa-file-pdf-o:hover {
   color: #06b2b8;
 }
 

@@ -1,5 +1,5 @@
 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-	<div class="d-flex flex-column justify-content-center side-social">
+	<div class="d-flex flex-column justify-content-center" id="side-social">
 		<a href="">
 			<i class="fa fa-envelope-open" aria-hidden="true"></i>
 		</a>
