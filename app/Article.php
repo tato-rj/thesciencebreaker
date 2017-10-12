@@ -23,4 +23,10 @@ class Article extends Model
     {
     	return $this->belongsToMany('App\Author');
     }
+
+    public function path()
+    {
+        return "/breaks/{$this->category->slug}/{$this->id}";
+    }
+
 }

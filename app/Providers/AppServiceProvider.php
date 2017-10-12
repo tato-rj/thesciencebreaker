@@ -17,7 +17,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        \View::share('categories', Category::orderBy('name')->get());
+        \View::composer('*', function($view) {
+            $view->with('categories', Category::orderBy('name')->get());
+        });
     }
 
     /**

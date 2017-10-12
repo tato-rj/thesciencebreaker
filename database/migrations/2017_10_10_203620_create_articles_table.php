@@ -22,6 +22,7 @@ class CreateArticlesTable extends Migration
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('editor_id');
             $table->string('doi');
+            $table->boolean('editor_pick');
             $table->timestamps();
         });
     }

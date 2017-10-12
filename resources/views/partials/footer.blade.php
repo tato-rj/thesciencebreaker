@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
 				<div class="d-flex align-items-center mb-4">
-					<h5 class="m-0 mr-4">FOLLOW US</h5>
+					<h5 class="m-0 mr-4"><strong>FOLLOW US</strong></h5>
 					<div class="d-flex align-items-center justify-content-center social">
 						<i class="fa fa-facebook" aria-hidden="true"></i>
 						<i class="fa fa-twitter" aria-hidden="true"></i>
@@ -45,14 +45,14 @@
 			<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
 				{{-- SUBSCRIBE --}}
 				<div>
-					<p class="text-center">Subscribe to be always up-to-date with the latest published Breaks!</p>
+					<h5><strong>SUBSCRIBE</strong></h5> <p class="text-muted">Stay up-to-date with the latest published Breaks!</p>
 					<form method="POST">
 						{{ csrf_field() }}
 						<div class="form-group">
 							<input type="email" class="form-control" id="subscribe" placeholder="Enter email">
 							<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 						</div>
-						<button type="submit" class="btn btn-block">Submit</button>
+						<button type="submit" class="btn btn-theme-green btn-block">Submit</button>
 					</form>
 				</div>
 			</div>

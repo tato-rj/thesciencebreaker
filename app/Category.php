@@ -13,11 +13,13 @@ class Category extends Model
 		return $this->hasMany('App\Article');
 	}
 
-    public function filename()
-    {
-    	$name = str_replace(' ', '', $this->name); // Replaces all spaces with hyphens.
-    	$name = str_replace(',', '', $name); // Removes all commas.
-		$name = preg_replace('/[^A-Za-z0-9\-]/', '', $name); // Removes special chars.
-		return strtolower($name);
-    }
+	public function iconPath()
+	{
+		return "/images/categories-icons/{$this->slug}.svg";
+	}
+
+	public function path()
+	{
+		return "/categories/{$this->slug}";
+	}
 }

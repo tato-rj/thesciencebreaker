@@ -11,7 +11,7 @@ class Author extends Model
     	return $this->belongsToMany('App\Article');
     }
 
-    public function fullname()
+    public function fullName()
     {
     	return $this->first_name.' '.$this->last_name;
     }

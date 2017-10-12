@@ -34,7 +34,8 @@ $factory->define(App\Article::class, function (Faker $faker) {
         'editor_id' => function() {
         	return factory('App\Manager', ['is_editor' => 1])->create();
         },
-        'doi' => $faker->url
+        'doi' => $faker->url,
+        'editor_pick' => $faker->boolean($chanceOfGettingTrue = 50)
     ];
 });
 

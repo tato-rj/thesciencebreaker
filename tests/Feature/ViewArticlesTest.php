@@ -13,9 +13,14 @@ class ViewArticlesTest extends TestCase
     /** @test */
     public function welcome_page_shows_latest_articles()
     {
-    	$article = $this->article;
-
-    	$this->get('/')->assertSee($article->title);
-
+    	$this->get('/')->assertSee($this->article->title);
     }
+
+    /** @test */
+    public function guests_can_read_a_break()
+    {
+    	$article = $this->article;
+    	$this->get("/breaks/{$article->category->name}/{$article->id}")->assertSee($this->article->title);
+    }
+
 }

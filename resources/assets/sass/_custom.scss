@@ -6,7 +6,7 @@ input:hover {
 	outline: 0;
 }
 
-h4 {
+h3, h4, h5 {
 	font-weight: bold;
 }
 
@@ -18,8 +18,17 @@ a:hover {
 	color: $color-theme-orange-d;
 }
 
+.jumbotron {
+    padding: 2rem;
+    background: #f9f9f9;
+}
+
 .text-orange {
 	color: $color-theme-orange-l;
+}
+
+.text-green {
+	color: $color-theme-green;
 }
 
 .mt-6 {
@@ -28,4 +37,9 @@ a:hover {
 
 .mt-7 {
 	margin-top: 7rem!important;
+}
+
+.btn-theme-green {
+	background: $color-theme-green;
+	color: white;
 }

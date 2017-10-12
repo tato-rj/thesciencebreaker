@@ -8,7 +8,9 @@ input:hover {
   outline: 0;
 }
 
-h4 {
+h3,
+h4,
+h5 {
   font-weight: bold;
 }
 
@@ -20,8 +22,17 @@ a:hover {
   color: #da5528;
 }
 
+.jumbotron {
+  padding: 2rem;
+  background: #f9f9f9;
+}
+
 .text-orange {
   color: #f36e41;
+}
+
+.text-green {
+  color: #06b2b8;
 }
 
 .mt-6 {
@@ -30,6 +41,11 @@ a:hover {
 
 .mt-7 {
   margin-top: 7rem !important;
+}
+
+.btn-theme-green {
+  background: #06b2b8;
+  color: white;
 }
 
 .icon-wrapper:hover img {
@@ -184,11 +200,6 @@ footer ul.credits i {
   vertical-align: middle;
 }
 
-footer button {
-  background: #06b2b8;
-  color: white;
-}
-
 #latest-breaks th {
   vertical-align: initial;
 }
@@ -268,5 +279,106 @@ footer button {
   font-size: 9em !important;
   color: lightgrey;
   opacity: 0.6;
+}
+
+.side-social {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.side-social a {
+  color: inherit;
+}
+
+.side-social i {
+  margin: 12px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.side-social .fa:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.side-social .fa-envelope-open:hover {
+  color: #f36e41;
+}
+
+.side-social .fa-facebook:hover {
+  color: #3B5998;
+}
+
+.side-social .fa-twitter:hover {
+  color: #1da1f2;
+}
+
+.side-social .fa-google:hover {
+  color: #d34836;
+}
+
+.side-social .fa-file-pdf-o:hover {
+  color: #06b2b8;
+}
+
+#break h5 {
+  color: #06b2b8;
+}
+
+#break h5 a {
+  color: inherit;
+}
+
+#break #author {
+  margin: 8px 0;
+  padding: 4px 0;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+#break #credits h5 {
+  color: inherit;
+}
+
+#break #credits p {
+  margin: 0;
+  margin-left: 12px;
+}
+
+#break #latest-breaks i {
+  font-size: 2em;
+  -webkit-transform: rotate(25deg);
+          transform: rotate(25deg);
+}
+
+#side-bar > div {
+  padding: 16px;
+  border: 1px solid lightgrey;
+  margin-bottom: 12px;
+}
+
+#side-bar > div input[type="email"] {
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid lightgrey;
+}
+
+#side-bar #picks img {
+  width: 40px;
+}
+
+#side-bar #picks > div {
+  overflow: hidden;
+  margin: 0;
+}
+
+#side-bar #picks > div em {
+  font-size: 0.9em;
+}
+
+#side-bar #picks > div:not(:last-of-type) {
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px dotted lightgrey;
 }
 
