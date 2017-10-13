@@ -18,114 +18,28 @@
 
 // Pages
 @import "pages/welcome";
+@import "pages/break";
 
-#side-social {
-	font-size: 1.5em;
-	text-align: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(50%);
-
-	a  {
-		color: inherit;
-	}
-
-	i {
-		margin: 12px;
-		transition: 0.2s;
-	}
-
-	.fa:hover {
-		transform: scale(1.2);
-	}
-
-	.fa-envelope-open:hover {
-		color: $color-theme-orange-l;
-	}
-
-	.fa-facebook:hover {
-		color: #3B5998;
-	}
-
-	.fa-twitter:hover {
-		color: #1da1f2;
-	}
-
-	.fa-google:hover {
-		color: #d34836;
-	}
-
-	.fa-file-pdf-o:hover {
-		color: $color-theme-green;
-	}
-}
-
-#break {
-	h5 {
-		color: $color-theme-green;
-
-		a {
-			color: inherit;
-		}
-	}
-
-	#author {
-		margin: 8px 0;
-		padding: 4px 0;
-		border-top: 1px solid;
-		border-bottom: 1px solid;
-	}
-
-	#credits {
-		h5 {
-			color: inherit;
+#category {
+	#title {
+		> div:last-of-type {
+			flex-grow: 1;
 		}
 	
-	    p {
-	    	margin: 0;
-	    	margin-left: 12px;
-	    }
-	}
-
-	#latest-breaks {
-			    i {
-	    	    font-size: 2em;
-    transform: rotate(25deg);
-	    }
-	}
-}
-
-#side-bar {
-	> div {
-		padding: 16px;
-		border: 1px solid lightgrey;
-		margin-bottom: 12px;
-
-		input[type="email"] {
-			border-radius: 0;
-			border: 0;
-			border-bottom: 1px solid lightgrey;
-		}
-	}
-
-	#picks {
 		img {
-			width: 40px;
+			width: 100px;
 		}
+	}
+	
+	.authors {
+		li {
+			margin-top: 8px;
+		}
+	}
 
-		> div {
-			overflow: hidden;
-			margin: 0;
-
-			em {
-				font-size: 0.9em;
-			}
-		}
-		> div:not(:last-of-type) {
-			padding-bottom: 8px;
-			margin-bottom: 8px;
-			border-bottom: 1px dotted lightgrey;
-		}
+	.reading-time {
+		padding: 2px 8px;
+		border-radius: 4px;
+		background: #f7f7f7;
 	}
 }

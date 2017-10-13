@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Category;
+use App\Article;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -20,6 +21,15 @@ class AppServiceProvider extends ServiceProvider
         \View::composer('*', function($view) {
             $view->with('categories', Category::orderBy('name')->get());
         });
+        
+        \View::composer('partials.side-bar', function($view) {
+            $view->with('editor_picks', Article::where('editor_pick', 1)->get());
+        });
+
+        \View::composer('pages.welcome', function($view) {
+            $view->with('latest_articles', Article::orderBy('id', 'desc')->take(5)->get());
+        });
+
     }
 
     /**

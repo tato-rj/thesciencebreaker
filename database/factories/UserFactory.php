@@ -25,8 +25,10 @@ $factory->define(App\User::class, function (Faker $faker) {
 });
 
 $factory->define(App\Article::class, function (Faker $faker) {
+    $title = $faker->sentence;
     return [
-        'title' => $faker->sentence,
+        'title' => $title,
+        'slug' => str_slug($title),
         'content' => $faker->paragraph,
         'reading_time' =>$faker->randomDigitNotNull,
         'original_article' => $faker->sentence,
@@ -75,7 +77,10 @@ $factory->define(App\Manager::class, function (Faker $faker) {
 });
 
 $factory->define(App\Category::class, function (Faker $faker) {
+    $name = $faker->word;
+
     return [
-    	'name' => $faker->word
+    	'name' => $name,
+        'slug' => str_slug($name)
     ];
 });

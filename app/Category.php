@@ -2,11 +2,17 @@
 
 namespace App;
 
+use App\Article;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
 	protected $withCount = ['articles'];
+
+	public function getRouteKeyName()
+	{
+		return 'slug';
+	}
 
 	public function articles()
 	{
@@ -20,6 +26,11 @@ class Category extends Model
 
 	public function path()
 	{
-		return "/categories/{$this->slug}";
+		return "/breaks/{$this->slug}";
+	}
+
+	public function getArticles()
+	{
+		return Article::where('category_id', $this->id)->orderBy('id', 'desc')->get();
 	}
 }

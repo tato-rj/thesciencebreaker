@@ -10,7 +10,7 @@
 		<div id="break" class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 			{{-- Category --}}
 			<h5>
-				<a href="">{{ $article->category->name }}</a>
+				<a href="{{ $article->category->path() }}">{{ $article->category->name }}</a>
 			</h5>
 			{{-- Title --}}
 			<h3><strong>{{ $article->title }}</strong></h3>
@@ -33,16 +33,9 @@
 					@endforeach
 				</p></small>
 			</div>
-			{{-- Reading time and date --}}
-			<div class="d-flex justify-content-between align-items-center">
-				<div>
-					<i class="fa fa-clock-o" aria-hidden="true"></i>
-					<small>Reading time: {{ $article->reading_time }} min</small>
-				</div>
-				<div>
-					<small>{{ Carbon\Carbon::now()->toFormattedDateString() }}</small>
-				</div>
-			</div>
+			
+			@include('partials.reading-time-bar')
+			
 			{{-- Body --}}
 			<div class="mt-4">
 				{!! html_entity_decode($article->content) !!}
@@ -110,38 +103,6 @@
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
-
-
-
-$(document).ready(function() {
-	var nav = $('nav').clone().removeClass('mt-3').appendTo('header').addClass('hidden-xl-down pl-4 pr-4');
-	var footer = $('footer');
-	var sideBar = $('#side-bar');
-	var sideSocial = $('#side-social');
-	var navHeight = $('nav').outerHeight();
-	var headerHeight = $('header').outerHeight();
-	var screenHeight = $(window).height();
-	var docHeight = $(document).height();
-	var socialOffset = $('#side-social').offset().top - headerHeight - sideSocial.height();
-
-	//KEEP MENU BAR ON STUCK TO THE TOP WHEN USER SCOLLS DOWN THE PAGE
-	$(window).scroll(function () {
-
-	    var scroll = $(document).scrollTop();
-	    var distanceToBottom = docHeight - scroll - screenHeight;
-
-	    if (scroll < headerHeight - navHeight) {
-			nav.removeClass('sticky-menu');
-			sideSocial.css('top', '0');
-			
-	    } else if (scroll > headerHeight - navHeight) {
-			nav.addClass('sticky-menu');
-			sideSocial.css('top', scroll + socialOffset);
-	    }
-
-	});
-});
-
 
 </script>
 @endsection

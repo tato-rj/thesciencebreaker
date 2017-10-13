@@ -398,3 +398,23 @@ footer ul.credits i {
   border-bottom: 1px dotted lightgrey;
 }
 
+#category #title > div:last-of-type {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+#category #title img {
+  width: 100px;
+}
+
+#category .authors li {
+  margin-top: 8px;
+}
+
+#category .reading-time {
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #f7f7f7;
+}
+
