@@ -29,7 +29,7 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        $articles = $category->getArticles();
+        $articles = $category->articles()->orderBY('id', 'desc')->paginate(4);
         return view('pages.category', compact(['articles', 'category']));
     }
 

@@ -26,12 +26,10 @@
 					<small><li><strong>{{ $author->fullName() }}</strong> | {{ $author->position }} at {{ $author->research_institute }}</li></small>
 					@endforeach
 				</ul>
-
-			@include('partials.reading-time-bar')
-			
+				@include('partials.reading-time-bar')
 			</div>
-
 			@endforeach
+			{{ $articles->links() }}
 		</div>
 		{{-- Side Bar --}}
 		@include('partials.side-bar')

@@ -1,0 +1,14 @@
+.pagination {
+	margin-top: 40px;
+
+	.page-link {
+		color: $color-theme-orange-l;
+	}
+
+	.active {
+		.page-link {
+			background: $color-theme-green;
+			border-color: $color-theme-green;
+		}
+	}
+}

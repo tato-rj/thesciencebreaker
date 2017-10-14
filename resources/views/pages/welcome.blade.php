@@ -53,6 +53,7 @@
 		</div>
 		<div class="d-flex flex-row justify-content-center align-items-center flex-wrap" id="subject-icons">
 			@foreach ($categories as $category)
+				<a href="{{ $category->path() }}">
 				<div class="icon-wrapper">
 					<img src="{{ $category->iconPath() }}">
 					<div class="d-flex align-items-center justify-content-center flex-column text-center">
@@ -60,6 +61,7 @@
 						<h5><strong>{{ $category->articles_count }} Breaks</strong></h5>
 					</div>
 				</div>
+				</a>
 			@endforeach
 		</div>
 	</div>

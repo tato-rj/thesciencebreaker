@@ -16,30 +16,10 @@
 // Footer
 @import "partials/footer";
 
+// Pagination
+@import "pagination";
+
 // Pages
 @import "pages/welcome";
 @import "pages/break";
-
-#category {
-	#title {
-		> div:last-of-type {
-			flex-grow: 1;
-		}
-	
-		img {
-			width: 100px;
-		}
-	}
-	
-	.authors {
-		li {
-			margin-top: 8px;
-		}
-	}
-
-	.reading-time {
-		padding: 2px 8px;
-		border-radius: 4px;
-		background: #f7f7f7;
-	}
-}
+@import "pages/category";
