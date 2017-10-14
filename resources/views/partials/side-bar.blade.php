@@ -16,7 +16,7 @@
 				<div class="d-flex align-items-center">
 					<img src="{{ $pick->category->iconPath() }}" class="mr-3">
 					<div>
-						<small class="d-block">
+						<small class="d-block mb-1">
 							<span><a href="{{ $pick->path() }}">{{ $pick->title }}</a></span>
 						</small>
 						<small class="d-block">

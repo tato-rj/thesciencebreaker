@@ -211,6 +211,19 @@ footer ul.credits i {
   vertical-align: middle;
 }
 
+.pagination {
+  margin-top: 40px;
+}
+
+.pagination .page-link {
+  color: #f36e41;
+}
+
+.pagination .active .page-link {
+  background: #06b2b8;
+  border-color: #06b2b8;
+}
+
 #latest-breaks th {
   vertical-align: initial;
 }
@@ -268,6 +281,7 @@ footer ul.credits i {
 
 #subject-icons .icon-wrapper div h5:first-of-type {
   font-size: 1.4em;
+  color: #292b2c;
 }
 
 #subject-icons .icon-wrapper div h5:last-of-type {
@@ -381,6 +395,14 @@ footer ul.credits i {
 
 #side-bar #picks img {
   width: 40px;
+}
+
+#side-bar #picks small:first-of-type {
+  line-height: 1.2;
+}
+
+#side-bar #picks small:last-of-type {
+  line-height: 1;
 }
 
 #side-bar #picks > div {

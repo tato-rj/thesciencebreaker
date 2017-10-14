@@ -28,9 +28,4 @@ class Category extends Model
 	{
 		return "/breaks/{$this->slug}";
 	}
-
-	public function getArticles()
-	{
-		return Article::where('category_id', $this->id)->orderBy('id', 'desc')->get();
-	}
 }

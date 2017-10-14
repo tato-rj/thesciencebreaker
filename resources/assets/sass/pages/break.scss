@@ -93,6 +93,14 @@
 			width: 40px;
 		}
 
+		small:first-of-type {
+			line-height: 1.2;
+		}
+
+		small:last-of-type {
+			line-height: 1;
+		}
+
 		> div {
 			overflow: hidden;
 			margin: 0;
