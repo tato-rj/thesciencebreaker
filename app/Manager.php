@@ -10,4 +10,9 @@ class Manager extends Model
     {
     	return $this->first_name.' '.$this->last_name;
     }
+
+    public static function position($position)
+    {
+        return self::where('position', $position)->get();
+    }
 }

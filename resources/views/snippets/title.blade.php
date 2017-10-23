@@ -1,0 +1,1 @@
+<h4 class="title"><strong>{{$slot}}</strong></h4>

@@ -7,11 +7,15 @@
 	<div class="row mt-5">
 		<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
 			<div class="box">
-				<h4><strong>Why TheScienceBreaker?</strong></h4>
+				@component('snippets.title')
+				Why TheScienceBreaker?
+				@endcomponent
 				<p>TheScienceBreaker promotes the dialogue and the dissemination of a scientific culture so that society-relevant opinions can be discussed and decisions may be taken accordingly. Discover our mission.</p>
 			</div>
 			<div class="box">
-				<h4><strong>What is a Break?</strong></h4>
+				@component('snippets.title')
+				What is a Break?
+				@endcomponent
 				<p>We publish short lay summaries, called Breaks, where scientific papers are explained by scientists, called Breakers, directly involved in the field of research.</p>
 			</div>
 		</div>
@@ -49,7 +53,9 @@
 	{{-- BY SUBJECT --}}
 	<div class="row mt-5">
 		<div class="col-12">
-			<h4><strong>Breaks by subject</strong></h4>
+				@component('snippets.title')
+				Breaks by subject
+				@endcomponent
 		</div>
 		<div class="d-flex flex-row justify-content-center align-items-center flex-wrap" id="subject-icons">
 			@foreach ($categories as $category)
@@ -83,7 +89,9 @@
 	{{-- DISCUSSION --}}
 	<div class="row hidden-sm-down mt-5" id="discussion-container">
 		<div class="col-7">
-			<h4><strong>Join the discussion!</strong></h4>
+			@component('snippets.title')
+			Join the discussion!
+			@endcomponent
 			<p>TheScienceBreaker is an open-access environment where everyone, scientists and laypeople, can meet and discuss about the latest scientific discoveries. For each and every Break, you may join the discussion-space below each published Break and help us build a better future with more dialogues and less walls!</p>
 		</div>
 		<div class="col-4 offset-1">

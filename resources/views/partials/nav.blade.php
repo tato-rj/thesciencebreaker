@@ -9,10 +9,10 @@
 					PRESENTATION
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="#">ABOUT</a>
-					<a class="dropdown-item" href="#">MISSION</a>
-					<a class="dropdown-item" href="#">THE TEAM</a>
-					<a class="dropdown-item" href="#">PARTNERS</a>
+					<a class="dropdown-item" href="/about">ABOUT</a>
+					<a class="dropdown-item" href="/mission">MISSION</a>
+					<a class="dropdown-item" href="/the-team">THE TEAM</a>
+					<a class="dropdown-item" href="/partners">PARTNERS</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">

@@ -1,0 +1,75 @@
+h4.title {
+	border-bottom: 4px solid lightgrey;
+	padding-bottom: 6px;
+}
+
+div.highlight {
+    padding: 24px 62px;
+    font-size: 1.1em;
+    font-style: italic;
+    color: $color-theme-orange-l;
+    text-align: center;
+}
+
+.sticky-menu {
+    background: rgb(25,25,25);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    margin: 0!important;
+    display: block!important;
+}
+
+#breaker-btn {
+    img {
+        width: 22px;
+        margin-right: 8px;
+    }
+
+    strong {
+        vertical-align: middle;
+    }
+}
+
+#tab-bar {
+    a {
+        color: lightgrey;
+    }
+
+    a.active {
+        color: black!important;
+    }
+}
+
+.avatars {
+    text-align: center;
+
+    > div {
+        margin-top: 24px;
+    }
+
+    h5 {
+        color: $color-theme-orange-l;
+    }
+
+    figure {
+        margin: 14px;
+        max-width: 150px;
+        vertical-align: text-top;
+        
+        img {
+            width: 90px;
+        }
+
+        figcaption {
+            font-size: 0.9em;
+
+            strong {
+                display: block;
+                font-size: 1.1em;
+            }
+        }
+    }
+}

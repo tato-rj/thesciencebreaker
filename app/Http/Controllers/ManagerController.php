@@ -14,7 +14,10 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        //
+        $founders = Manager::position('Founder of TheScienceBreaker');
+        $editors = Manager::position('Scientific Editor');
+        $comm_officers = Manager::position('Communication Officer');
+        return view('pages.team', compact('founders', 'editors', 'comm_officers'));
     }
 
     /**

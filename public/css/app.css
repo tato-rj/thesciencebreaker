@@ -22,20 +22,13 @@ a:hover {
   color: #da5528;
 }
 
-.sticky-menu {
-  background: #191919;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  margin: 0 !important;
-  display: block !important;
-}
-
 .jumbotron {
   padding: 2rem;
-  background: #f9f9f9;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.bg-default {
+  background: #191919;
 }
 
 .text-orange {
@@ -438,5 +431,77 @@ footer ul.credits i {
   padding: 2px 8px;
   border-radius: 4px;
   background: #f7f7f7;
+}
+
+h4.title {
+  border-bottom: 4px solid lightgrey;
+  padding-bottom: 6px;
+}
+
+div.highlight {
+  padding: 24px 62px;
+  font-size: 1.1em;
+  font-style: italic;
+  color: #f36e41;
+  text-align: center;
+}
+
+.sticky-menu {
+  background: #191919;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  margin: 0 !important;
+  display: block !important;
+}
+
+#breaker-btn img {
+  width: 22px;
+  margin-right: 8px;
+}
+
+#breaker-btn strong {
+  vertical-align: middle;
+}
+
+#tab-bar a {
+  color: lightgrey;
+}
+
+#tab-bar a.active {
+  color: black !important;
+}
+
+.avatars {
+  text-align: center;
+}
+
+.avatars > div {
+  margin-top: 24px;
+}
+
+.avatars h5 {
+  color: #f36e41;
+}
+
+.avatars figure {
+  margin: 14px;
+  max-width: 150px;
+  vertical-align: text-top;
+}
+
+.avatars figure img {
+  width: 90px;
+}
+
+.avatars figure figcaption {
+  font-size: 0.9em;
+}
+
+.avatars figure figcaption strong {
+  display: block;
+  font-size: 1.1em;
 }
 

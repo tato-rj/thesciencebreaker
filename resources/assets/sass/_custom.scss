@@ -18,20 +18,13 @@ a:hover {
 	color: $color-theme-orange-d;
 }
 
-.sticky-menu {
-    background: rgb(25,25,25);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    margin: 0!important;
-    display: block!important;
-}
-
 .jumbotron {
     padding: 2rem;
-    background: #f9f9f9;
+    background: rgba(0,0,0,0.06);
+}
+
+.bg-default {
+	background: $body-bg;
 }
 
 .text-orange {
