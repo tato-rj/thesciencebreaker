@@ -73,7 +73,7 @@
 	</div>
 
 	{{-- APP --}}
-	<div class="row mt-5">
+{{-- 	<div class="row mt-5">
 		<div class="d-flex col-12 justify-content-center align-items-center" id="app-container">
 			<div>
 				<img src="/images/ios-app/iphone.svg">
@@ -84,7 +84,7 @@
 				<img src="/images/ios-app/apple-store.svg" class="mt-2" id="apple-store-icon">
 			</div>	
 		</div>
-	</div>
+	</div> --}}
 
 	{{-- DISCUSSION --}}
 	<div class="row hidden-sm-down mt-5" id="discussion-container">

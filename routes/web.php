@@ -11,6 +11,10 @@ Route::get('/breaks/{category}', 'CategoryController@show');
 Route::get('/about', function() {
 	return view('pages.about');
 });
+// About
+Route::get('/partners', function() {
+	return view('pages.partners');
+});
 // Mission
 Route::get('/mission', function() {
 	return view('pages.mission');

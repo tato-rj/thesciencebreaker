@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Manager;
+use App\Author;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ManagerController extends Controller
 {
@@ -14,10 +16,14 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        $founders = Manager::position('Founder of TheScienceBreaker');
-        $editors = Manager::position('Scientific Editor');
-        $comm_officers = Manager::position('Communication Officer');
-        return view('pages.team', compact('founders', 'editors', 'comm_officers'));
+        $founders = Manager::select('position', 'Founder of TheScienceBreaker');
+        $editors = Manager::select('position', 'Scientific Editor');
+        $comm_officers = Manager::select('position', 'Communication Officer');
+        $advisors = Manager::select('division', 'advisory_board');
+        $breakers = Author::orderBy('first_name')->paginate(10);
+        $paginated = Input::get('page');
+
+        return view('pages.team', compact('founders', 'editors', 'comm_officers', 'advisors', 'breakers', 'paginated'));
     }
 
     /**

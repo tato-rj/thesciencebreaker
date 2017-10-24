@@ -433,6 +433,50 @@ footer ul.credits i {
   background: #f7f7f7;
 }
 
+#core .avatar {
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+}
+
+#core .avatar .about {
+  position: absolute;
+  cursor: default;
+  left: 0;
+  margin-top: 3px;
+  background: white;
+  z-index: 10;
+  border: 1px solid #06b2b8;
+  padding: 30px 30px 20px 30px;
+  font-size: 0.9em;
+  display: none;
+  -webkit-box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.58);
+  box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.58);
+}
+
+#core .avatar .about p:first-of-type {
+  font-size: 1.2em;
+  border-bottom: 1px solid;
+}
+
+#core .avatar .about .fa {
+  font-size: 1.4rem;
+  margin: 0 .75rem;
+}
+
+.border-color-green {
+  border-color: #06b2b8;
+}
+
+#advisors > div:not(:last-of-type),
+#breakers > div:not(:last-of-type) {
+  border-bottom: 1px dotted grey;
+}
+
+#partners img {
+  width: 160px;
+  margin: 20px;
+}
+
 h4.title {
   border-bottom: 4px solid lightgrey;
   padding-bottom: 6px;
@@ -503,5 +547,21 @@ div.highlight {
 .avatars figure figcaption strong {
   display: block;
   font-size: 1.1em;
+}
+
+.bw {
+  -webkit-filter: grayscale(100%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  opacity: 0.6;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.bw:hover {
+  -webkit-filter: grayscale(0);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(0);
+  opacity: 1;
 }
 

@@ -12,19 +12,19 @@
       <!-- Nav tabs -->
       <ul class="nav nav-tabs mt-4" id="tab-bar" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Core Team</a>
+          <a class="nav-link {{ ($paginated) ? : 'active' }}" data-toggle="tab" href="#core" role="tab">Core Team</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Advisory Board</a>
+          <a class="nav-link" data-toggle="tab" href="#advisors" role="tab">Advisory Board</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Breakers Community</a>
+          <a class="nav-link {{ ($paginated) ? 'active' : ''}}" data-toggle="tab" href="#breakers" role="tab">Breakers Community</a>
         </li>
       </ul>
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <div class="tab-pane active" id="home" role="tabpanel">
+        <div class="tab-pane {{ ($paginated) ? : 'active' }}" id="core" role="tabpanel">
           <div class="avatars">
             <div>
               <h5>Editor in Chief</h5>
@@ -46,8 +46,17 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane" id="profile" role="tabpanel">SECOND</div>
-        <div class="tab-pane" id="messages" role="tabpanel">THIRD</div>
+        <div class="tab-pane" id="advisors" role="tabpanel">
+          @foreach ($advisors as $member)
+            @include('snippets.breakers')
+          @endforeach
+        </div>
+        <div class="tab-pane {{ ($paginated) ? 'active' : ''}}" id="breakers" role="tabpanel">
+          @foreach ($breakers as $member)
+            @include('snippets.breakers')
+          @endforeach
+          {{ $breakers->links() }}
+        </div>
       </div>
     </div>
     {{-- Side Bar --}}
@@ -63,7 +72,21 @@
 $('#tab-bar a').click(function (e) {
   e.preventDefault()
   $(this).tab('show')
-})
+});
+
+$('.avatar').on('click', function(event) {
+  event.stopPropagation();
+  resetAvatars();
+  $(this).toggleClass('border-color-green').children('.about').toggle();
+});
+
+$(window).click(function() {
+  resetAvatars();
+});
+
+function resetAvatars ($elements) {
+  $('.avatars .avatar').removeClass('border-color-green').children('.about').hide();
+}
 
 </script>
 @endsection

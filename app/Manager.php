@@ -11,8 +11,8 @@ class Manager extends Model
     	return $this->first_name.' '.$this->last_name;
     }
 
-    public static function position($position)
+    public static function select($section, $position)
     {
-        return self::where('position', $position)->get();
+        return self::where($section, $position)->get();
     }
 }
