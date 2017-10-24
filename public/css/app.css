@@ -14,6 +14,10 @@ h5 {
   font-weight: bold;
 }
 
+h4 {
+  margin-bottom: 1rem;
+}
+
 a {
   color: #f36e41;
 }
@@ -477,6 +481,27 @@ footer ul.credits i {
   margin: 20px;
 }
 
+#available_articles .card {
+  border: 0;
+}
+
+#available_articles .card > a {
+  color: inherit;
+}
+
+#available_articles .card img {
+  width: 2.5rem;
+}
+
+#available_articles .card ul {
+  font-size: 0.9em;
+}
+
+#available_articles .card ul li:not(:last-of-type) {
+  border-bottom: 1px dotted grey;
+  padding-bottom: 1rem;
+}
+
 h4.title {
   border-bottom: 4px solid lightgrey;
   padding-bottom: 6px;
@@ -504,6 +529,7 @@ div.highlight {
 #breaker-btn img {
   width: 22px;
   margin-right: 8px;
+  margin-bottom: 4px;
 }
 
 #breaker-btn strong {
