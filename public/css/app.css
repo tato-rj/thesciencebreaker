@@ -502,6 +502,13 @@ footer ul.credits i {
   padding-bottom: 1rem;
 }
 
+.navbar {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 h4.title {
   border-bottom: 4px solid lightgrey;
   padding-bottom: 6px;

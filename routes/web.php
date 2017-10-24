@@ -48,3 +48,14 @@ Route::get('/faq', function() {
 
 // Available Articles
 Route::get('/available-articles', 'AvailableArticlesController@index');
+
+/*
+* 
+*	Admin
+* 
+*/
+
+// Dashboard
+Route::get('/admin/dashboard', function() {
+	return view('admin/pages/dashboard');
+});
