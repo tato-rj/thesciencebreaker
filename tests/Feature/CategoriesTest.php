@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class ViewCategoryTest extends TestCase
+class CategoriesTest extends TestCase
 {
 	use DatabaseMigrations;
 

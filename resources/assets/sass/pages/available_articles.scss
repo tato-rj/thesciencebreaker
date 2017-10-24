@@ -1,0 +1,22 @@
+#available_articles {
+	.card {
+		border: 0;
+
+		> a {
+			color: inherit;
+		}
+
+		img {
+			width: 2.5rem;
+		}
+
+		ul {
+			font-size: 0.9em;
+
+			li:not(:last-of-type) {
+				border-bottom: 1px dotted grey;
+				padding-bottom: 1rem;
+			}
+		}
+	}
+}

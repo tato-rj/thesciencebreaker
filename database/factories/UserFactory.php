@@ -84,3 +84,12 @@ $factory->define(App\Category::class, function (Faker $faker) {
         'slug' => str_slug($name)
     ];
 });
+
+$factory->define(App\AvailableArticle::class, function (Faker $faker) {
+    return [
+        'article' => $faker->sentence,
+        'category_id' => function() {
+            return factory('App\Category')->create()->id;
+        }
+    ];
+});

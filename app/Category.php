@@ -19,6 +19,11 @@ class Category extends Model
 		return $this->hasMany('App\Article');
 	}
 
+	public function available_articles()
+	{
+		return $this->hasMany('App\AvailableArticle');
+	}
+
 	public function iconPath()
 	{
 		return "/images/categories-icons/{$this->slug}.svg";

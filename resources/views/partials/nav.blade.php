@@ -30,9 +30,9 @@
 					FOR BREAKERS
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="#">INFORMATION</a>
-					<a class="dropdown-item" href="#">FAQ</a>
-					<a class="dropdown-item" href="#">AVAILABLE ARTICLES</a>
+					<a class="dropdown-item" href="/information">INFORMATION</a>
+					<a class="dropdown-item" href="/faq">FAQ</a>
+					<a class="dropdown-item" href="/available-articles">AVAILABLE ARTICLES</a>
 				</div>
 			</li>
 			<li class="nav-item">
