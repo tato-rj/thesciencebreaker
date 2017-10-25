@@ -1,5 +1,5 @@
 <?php
-// Auth::routes();
+Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 
 // Welcome page
@@ -57,3 +57,5 @@ Route::get('/available-articles', 'AvailableArticlesController@index');
 
 Route::get('/admin/dashboard', 'AdminController@index');
 Route::get('/admin/graphs', 'AdminController@graphs');
+Route::get('/admin/breaks/add', 'ArticlesController@create');
+Route::post('/admin/breaks', 'ArticlesController@store');

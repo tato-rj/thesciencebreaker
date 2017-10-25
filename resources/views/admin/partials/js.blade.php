@@ -9,6 +9,4 @@
     <script src="{{ asset('js/admin/dataTables.bootstrap4.js') }}"></script>
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/admin/sb-admin.min.js') }}"></script>
-    <!-- Custom scripts for this page-->
-    <script src="{{ asset('js/admin/sb-admin-datatables.min.js') }}"></script>
-    <script src="{{ asset('js/admin/sb-admin-charts.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>

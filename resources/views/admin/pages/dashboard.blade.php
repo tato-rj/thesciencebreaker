@@ -2,7 +2,7 @@
 
 @section('content')
   
-    <div class="container-fluid">
+    <div class="container-fluid mb-4">
       
       @component('admin/snippets/page_title')
           Welcome Arthur!

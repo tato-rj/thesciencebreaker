@@ -15,4 +15,9 @@ class Manager extends Model
     {
         return self::where($section, $position)->get();
     }
+
+    public static function editors()
+    {
+    	return Manager::where('is_editor', 1)->get();
+    }
 }

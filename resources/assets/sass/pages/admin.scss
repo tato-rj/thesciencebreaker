@@ -1,5 +1,6 @@
 .navbar {
 	flex-direction: row;
+	z-index: 10;
 }
 
 #cards {
@@ -43,4 +44,14 @@
     filter: grayscale(100%);
     opacity: 0.6;
     transition: 0.4s;
+}
+
+#search {
+	button, input {
+		border: 0;
+	}
+
+	button:hover {
+		background: $color-theme-green;
+	}
 }

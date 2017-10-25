@@ -11,8 +11,13 @@
 
   <div class="content-wrapper">
     @yield('content')
+	{{-- Feedback Messages --}}
+	@if($flash = session('break_feedback'))
+	    @include('admin/snippets/alerts/success')
+	@endif
     @include('admin/partials/footer')
     @include('admin/partials/js')
+    @yield('scripts')
   </div>
 </body>
 

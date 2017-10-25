@@ -2,7 +2,7 @@
 
 @section('content')
   
-    <div class="container-fluid">
+    <div class="container-fluid mb-4">
       
       @component('admin/snippets/page_title')
           Graphs
@@ -11,8 +11,11 @@
         @endslot
       @endcomponent
 
-      <div class="row mb-5">
-        <div class="col-lg-8 col-md-8 mx-auto">
+      <div class="row mb-4 align-items-center">
+        <div class="col-lg-4 col-md-4 offset-lg-1 p-4">
+          <h6 class="text-muted">This <strong>Bar Graph</strong> will show the number of Breaks added each month. It takes into account the past 6 months.</h6>
+        </div>
+        <div class="col-lg-6 col-md-8 col-sm-12">
           <div class="card">
             <div class="card-header">
               <i class="fa fa-bar-chart"></i> Breaks by Month
@@ -26,7 +29,9 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-8 mx-auto">
+       </div>
+       <div class="row mb-5 align-items-center flex-flip">
+        <div class="col-lg-4 col-md-6 col-sm-12 offset-lg-1">
           <div class="card mb-3">
             <div class="card-header">
               <i class="fa fa-pie-chart"></i> Breaks by Category
@@ -40,6 +45,15 @@
             </div>
           </div>
         </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 p-4">
+          <h6 class="text-muted">This <strong>Pie Graph</strong> shows the number of Breaks in each category, where its easy to visualize proportionally how the Breaks are distributed among the sections.</h6>
+        </div>
       </div>
     </div>
+@endsection
+
+@section('scripts')
+    <!-- Custom scripts for this page-->
+    <script src="{{ asset('js/admin/sb-admin-datatables.min.js') }}"></script>
+    <script src="{{ asset('js/admin/sb-admin-charts.js') }}"></script>
 @endsection

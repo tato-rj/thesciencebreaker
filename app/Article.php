@@ -8,6 +8,7 @@ class Article extends Model
 {
 
     protected $with = ['authors', 'editor', 'category'];
+    protected $guarded = [];
 
     public function getRouteKeyName()
     {
