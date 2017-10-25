@@ -12,10 +12,10 @@
       @endcomponent
 
       <div class="row mb-4 align-items-center">
-        <div class="col-lg-4 col-md-4 offset-lg-1 p-4">
+        <div class="col-lg-5 col-md-4 p-4">
           <h6 class="text-muted">This <strong>Bar Graph</strong> will show the number of Breaks added each month. It takes into account the past 6 months.</h6>
         </div>
-        <div class="col-lg-6 col-md-8 col-sm-12">
+        <div class="col-lg-7 col-md-8 col-sm-12">
           <div class="card">
             <div class="card-header">
               <i class="fa fa-bar-chart"></i> Breaks by Month
@@ -31,7 +31,7 @@
         </div>
        </div>
        <div class="row mb-5 align-items-center flex-flip">
-        <div class="col-lg-4 col-md-6 col-sm-12 offset-lg-1">
+        <div class="col-lg-5 col-md-6 col-sm-12">
           <div class="card mb-3">
             <div class="card-header">
               <i class="fa fa-pie-chart"></i> Breaks by Category
@@ -45,7 +45,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 p-4">
+        <div class="col-lg-7 col-md-6 col-sm-12 p-4">
           <h6 class="text-muted">This <strong>Pie Graph</strong> shows the number of Breaks in each category, where its easy to visualize proportionally how the Breaks are distributed among the sections.</h6>
         </div>
       </div>

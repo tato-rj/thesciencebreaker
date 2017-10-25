@@ -27,6 +27,12 @@ class ArticlesController extends Controller
         return view('admin/pages/add_break', compact(['categories', 'editors']));
     }
 
+    public function delete()
+    {
+        $breaks = Article::orderBy('title')->get();
+        return view('admin/pages/delete_break', compact(['breaks']));   
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -46,7 +52,7 @@ class ArticlesController extends Controller
             'original_article' => $request->original_article,
             'category_id' => $request->category_id,
             'editor_id' => $request->editor_id,
-            'doi' => 'generate doi',
+            'doi' => Article::createDoi(),
             'editor_pick' => $request->editor_pick
         ]);
 
@@ -71,6 +77,8 @@ class ArticlesController extends Controller
 
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return redirect()->back()->with('break_feedback', 'The Break has been deleted');
     }
 }

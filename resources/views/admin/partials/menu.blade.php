@@ -27,7 +27,7 @@
         <a href="/admin/breaks/edit">Edit a Break</a>
       </li>
       <li>
-        <a href="/admin/breaks/remove">Remove a Break</a>
+        <a href="/admin/breaks/delete">Delete a Break</a>
       </li>
     </ul>
   </li>

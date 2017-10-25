@@ -35,6 +35,10 @@ button:active {
   outline: none !important;
 }
 
+.op-5 {
+  opacity: 0.5;
+}
+
 .alert-container {
   position: absolute;
   top: 20px;
@@ -42,6 +46,10 @@ button:active {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   z-index: 1000;
+}
+
+.hidden {
+  display: none;
 }
 
 .jumbotron {

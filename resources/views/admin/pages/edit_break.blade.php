@@ -14,7 +14,7 @@
       <div class="row mt-4">
         <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
           <h2 class="text-muted op-5">
-            <i class="fa fa-file-text mr-1" aria-hidden="true"></i> <strong>New Break</strong>
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Edit Break</strong>
           </h2>
           <form method="POST" action="/admin/breaks">
             {{csrf_field()}}

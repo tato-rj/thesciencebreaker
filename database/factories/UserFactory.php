@@ -33,11 +33,9 @@ $factory->define(App\Article::class, function (Faker $faker) {
         'content' => $faker->paragraph,
         'reading_time' =>$faker->randomDigitNotNull,
         'original_article' => $faker->sentence,
-        'category_id' => '1',
-        'editor_id' => function() {
-        	return factory('App\Manager', ['is_editor' => 1])->create();
-        },
-        'doi' => $faker->url,
+        'category_id' => 1,
+        'editor_id' => 1,
+        'doi' => 'https://doi.org/10.25250/thescbr.brk001',
         'editor_pick' => $faker->boolean($chanceOfGettingTrue = 50)
     ];
 });

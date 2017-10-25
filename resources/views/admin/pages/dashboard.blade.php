@@ -5,7 +5,7 @@
     <div class="container-fluid mb-4">
       
       @component('admin/snippets/page_title')
-          Welcome Arthur!
+          Welcome {{ auth()->user()->first_name }}!
         @slot('comment')
           Navigate on the menu to manage the database
         @endslot

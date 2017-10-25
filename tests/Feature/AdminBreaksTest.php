@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\Article;
 
 class AdminBreaksTest extends TestCase
 {
@@ -27,6 +28,31 @@ class AdminBreaksTest extends TestCase
 
         $this->assertDatabaseHas('articles', [
             'title' => 'New Break'
+        ]);
+    }
+
+    /** @test */
+    public function a_doi_is_automatically_generated_when_a_new_break_is_created()
+    {
+        $doi = Article::createDoi();
+        
+        $new_break = create('App\Article', [
+            'doi' => $doi
+        ]);
+
+        $this->assertEquals($doi, $new_break->doi);
+    }
+
+    /** @test */
+    public function an_authenticated_user_can_remove_a_break()
+    {
+        $this->signIn();
+        $break = $this->article;
+
+        $this->delete('/admin/breaks/'.$break->id)->assertSessionHas('break_feedback');
+
+        $this->assertDatabaseMissing('articles', [
+            'id' => $break->id
         ]);
     }
 

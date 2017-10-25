@@ -58,4 +58,7 @@ Route::get('/available-articles', 'AvailableArticlesController@index');
 Route::get('/admin/dashboard', 'AdminController@index');
 Route::get('/admin/graphs', 'AdminController@graphs');
 Route::get('/admin/breaks/add', 'ArticlesController@create');
+Route::get('/admin/breaks/delete', 'ArticlesController@delete');
+
 Route::post('/admin/breaks', 'ArticlesController@store');
+Route::delete('/admin/breaks/{article}', 'ArticlesController@destroy');
