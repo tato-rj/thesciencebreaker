@@ -533,6 +533,15 @@ footer ul.credits i {
   color: grey;
 }
 
+#logo {
+  -webkit-filter: grayscale(100%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  opacity: 0.6;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
 h4.title {
   border-bottom: 4px solid lightgrey;
   padding-bottom: 6px;
