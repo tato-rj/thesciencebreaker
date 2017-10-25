@@ -55,7 +55,5 @@ Route::get('/available-articles', 'AvailableArticlesController@index');
 * 
 */
 
-// Dashboard
-Route::get('/admin/dashboard', function() {
-	return view('admin/pages/dashboard');
-});
+Route::get('/admin/dashboard', 'AdminController@index');
+Route::get('/admin/graphs', 'AdminController@graphs');

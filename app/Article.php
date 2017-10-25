@@ -45,4 +45,13 @@ class Article extends Model
         return implode(" ", array_splice($pieces, 0, 120));
     }
 
+    public static function records($length)
+    {
+        return self::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+            ->whereRaw('created_at >= DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL '.$length.')), INTERVAL 1 DAY) and created_at <= NOW()')
+            ->groupBy('year', 'month')
+            ->orderByRaw('min(created_at) asc')
+            ->get();
+    }
+
 }
