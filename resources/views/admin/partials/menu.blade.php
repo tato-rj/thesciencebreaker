@@ -68,24 +68,12 @@
     </ul>
   </li>
 
-  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Available Articles">
-    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#articles" data-parent="#exampleAccordion">
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Editor's Picks">
+    <a class="nav-link" href="/admin/available-articles">
       <i class="fa fa-coffee mr-1" aria-hidden="true"></i>
       <span class="nav-link-text">Available Articles</span>
     </a>
-    <ul class="sidenav-second-level collapse" id="articles">
-      <li>
-        <a href="/admin/articles/add">Add new article</a>
-      </li>
-      <li>
-        <a href="/admin/articles/add">Edit an article</a>
-      </li>
-      <li>
-        <a href="/admin/articles/add">Remove an article</a>
-      </li>
-    </ul>
   </li>
-
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Editor's Picks">
     <a class="nav-link" href="/admin/editor-picks">
       <i class="fa fa-star mr-1" aria-hidden="true"></i>

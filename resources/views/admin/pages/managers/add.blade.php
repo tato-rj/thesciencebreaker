@@ -51,9 +51,13 @@
                 @endslot
               @endcomponent
             </div>
-            {{-- Division --}}
-            <div class="form-group">
-              <input required type="text" value="{{ old('division') }}" name="division" class="form-control" id="division" aria-describedby="division" placeholder="Division">
+            <div class="form-group form-inline">
+              {{-- Division --}}
+              <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="division" name="division">
+                <option  selected disabled>Division</option>
+                <option value="core_team" {{ (old('division') == 'core_team') ? 'selected' : '' }}>Core Team</option>
+                <option value="advisory_board" {{ (old('division') == 'advisory_board') ? 'selected' : '' }}>Advisory Board</option>
+              </select>
               {{-- Error --}}
               @component('admin/snippets/error')
                 division
@@ -61,9 +65,7 @@
                 {{ $errors->first('division') }}
                 @endslot
               @endcomponent
-            </div>
-            {{-- Position --}}
-            <div class="form-group">
+              {{-- Position --}}
               <input required type="text" value="{{ old('position') }}" name="position" class="form-control" id="position" aria-describedby="position" placeholder="Position">
               {{-- Error --}}
               @component('admin/snippets/error')

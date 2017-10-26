@@ -4,11 +4,31 @@ namespace App\Http\Controllers;
 
 use App\AvailableArticle;
 use App\Category;
+use App\Http\Controllers\Validators\ValidateAvailableArticle;
 use Illuminate\Http\Request;
 
 class AvailableArticlesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index']]);
+    }
 
+    // CREATE
+    public function create()
+    {
+        $articles = AvailableArticle::orderBy('created_at', 'desc')->paginate(8);
+        return view('admin/pages/available_articles', compact('articles'));
+    }
+
+    public function store(Request $request)
+    {
+        ValidateAvailableArticle::createCheck($request);
+        AvailableArticle::create($request->except('page'));
+        return redirect()->back()->with('db_feedback', 'The Article is now available');
+    }
+
+    // READ
     public function index()
     {
         $categories = Category::with('available_articles')->get();
@@ -16,69 +36,18 @@ class AvailableArticlesController extends Controller
         return view('pages/available_articles', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\AvailableArticle  $availableArticle
-     * @return \Illuminate\Http\Response
-     */
-    public function show(AvailableArticle $availableArticle)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\AvailableArticle  $availableArticle
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(AvailableArticle $availableArticle)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\AvailableArticle  $availableArticle
-     * @return \Illuminate\Http\Response
-     */
+    // UPDATE
     public function update(Request $request, AvailableArticle $availableArticle)
     {
-        //
+        ValidateAvailableArticle::editCheck($request);
+        $availableArticle->update($request->except('page'));
+        return redirect()->back()->with('db_feedback', 'The available article has been updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\AvailableArticle  $availableArticle
-     * @return \Illuminate\Http\Response
-     */
+    // DELETE
     public function destroy(AvailableArticle $availableArticle)
     {
-        //
+        $availableArticle->delete();
+        return redirect()->back()->with('db_feedback', 'The article has been removed from the database');
     }
 }

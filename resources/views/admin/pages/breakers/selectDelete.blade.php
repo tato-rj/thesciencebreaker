@@ -13,7 +13,7 @@
 
       <div class="row mt-4">
         <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
-          <h2 class="text-muted op-5">
+          <h2 class="text-muted op-5 mb-3">
             <i class="fa fa-trash mr-1" aria-hidden="true"></i> <strong>Delete Breaker</strong>
           </h2>
 

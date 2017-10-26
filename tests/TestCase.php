@@ -30,6 +30,7 @@ abstract class TestCase extends BaseTestCase
             'article_id' => $this->article->id,
             'author_id' => $this->author->id
         ]);
+        $this->available_article = factory('App\AvailableArticle')->create();
     }
 
     protected function signIn($user = null)

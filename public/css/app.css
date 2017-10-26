@@ -35,8 +35,18 @@ button:active {
   outline: none !important;
 }
 
+.lh-1 {
+  line-height: 1.2;
+}
+
 .op-5 {
   opacity: 0.5;
+}
+
+.flex-grow {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 .alert-container {

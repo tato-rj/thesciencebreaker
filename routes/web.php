@@ -87,3 +87,10 @@ Route::get('/admin/managers/delete', 'ManagersController@selectDelete');
 Route::post('admin/managers', 'ManagersController@store');
 Route::patch('/admin/managers/{manager}', 'ManagersController@update');
 Route::delete('/admin/managers/{manager}', 'ManagersController@destroy');
+
+// Available Articles routes
+Route::get('/admin/available-articles', 'AvailableArticlesController@create');
+
+Route::post('admin/available-articles', 'AvailableArticlesController@store');
+Route::patch('/admin/available-articles/{availableArticle}', 'AvailableArticlesController@update');
+Route::delete('/admin/available-articles/{availableArticle}', 'AvailableArticlesController@destroy');
