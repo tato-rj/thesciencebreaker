@@ -104,4 +104,9 @@ class Article extends Model
         return $doi_base.$doi_number;
     }
 
+    public static function picks()
+    {
+        return self::where('editor_pick', 1)->orderBy('title')->get();
+    }
+
 }

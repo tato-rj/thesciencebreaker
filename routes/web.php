@@ -56,7 +56,6 @@ Route::get('/available-articles', 'AvailableArticlesController@index');
 */
 
 Route::get('/admin/dashboard', 'AdminController@index');
-Route::get('/admin/graphs', 'AdminController@graphs');
 
 // Breaks routes
 Route::get('/admin/breaks/add', 'ArticlesController@create');
@@ -94,3 +93,7 @@ Route::get('/admin/available-articles', 'AvailableArticlesController@create');
 Route::post('admin/available-articles', 'AvailableArticlesController@store');
 Route::patch('/admin/available-articles/{availableArticle}', 'AvailableArticlesController@update');
 Route::delete('/admin/available-articles/{availableArticle}', 'AvailableArticlesController@destroy');
+
+// Editor Picks routes
+Route::get('/admin/editor-picks', 'EditorPicksController@edit');
+Route::patch('/admin/editor-picks/{pick}', 'EditorPicksController@update');

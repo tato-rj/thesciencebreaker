@@ -41,10 +41,18 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+          <p class="text-muted"><i class="fa fa-exclamation-circle mr-2" aria-hidden="true"></i>You currently have a total of <strong>{{ $available_count }}</strong> available articles</p>
+                                    {{-- Error --}}
+              @component('admin/snippets/error')
+                article
+                @slot('feedback')
+                {{ $errors->first('article') }}
+                @endslot
+              @endcomponent
           @foreach ($articles as $article)
-          <div class="d-flex align-items-center mb-2 pb-2">
+          <div class="d-flex align-items-center mt-4 mb-2 pb-2">
             <div class="flex-grow mr-2">
-              <p class="mb-1 lh-1"><small>{!! html_entity_decode($article->article) !!}</small></p>
+              <p class="mb-1 lh-1"><small><i class="fa fa-newspaper-o mr-2" aria-hidden="true"></i>{!! html_entity_decode($article->article) !!}</small></p>
               <p class="m-0"><span class="badge badge-info btn-theme-green">in {{ $article->category->name }}</span></p>
             </div>
             <div>
@@ -93,7 +101,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form method="POST" accept="">
+                <form method="POST" action="">
                   {{ method_field('PATCH') }}
                   {{csrf_field()}}
                   <div class="form-group">

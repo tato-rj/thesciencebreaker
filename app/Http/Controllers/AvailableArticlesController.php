@@ -18,7 +18,8 @@ class AvailableArticlesController extends Controller
     public function create()
     {
         $articles = AvailableArticle::orderBy('created_at', 'desc')->paginate(8);
-        return view('admin/pages/available_articles', compact('articles'));
+        $available_count = AvailableArticle::count();
+        return view('admin/pages/available_articles', compact(['articles', 'available_count']));
     }
 
     public function store(Request $request)
@@ -39,6 +40,7 @@ class AvailableArticlesController extends Controller
     // UPDATE
     public function update(Request $request, AvailableArticle $availableArticle)
     {
+
         ValidateAvailableArticle::editCheck($request);
         $availableArticle->update($request->except('page'));
         return redirect()->back()->with('db_feedback', 'The available article has been updated');
