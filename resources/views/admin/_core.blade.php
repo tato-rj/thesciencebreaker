@@ -12,7 +12,7 @@
   <div class="content-wrapper">
     @yield('content')
 	{{-- Feedback Messages --}}
-	@if($flash = session('break_feedback'))
+	@if($flash = session('db_feedback'))
 	    @include('admin/snippets/alerts/success')
 	@endif
     @include('admin/partials/footer')

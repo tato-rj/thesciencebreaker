@@ -24,12 +24,18 @@ class AdminBreaksTest extends TestCase
             'category_id' => '1',
             'editor_id' => '1',
             'editor_pick' => '0'
-        ])->assertSessionHas('break_feedback');
+        ])->assertSessionHas('db_feedback');
 
         $this->assertDatabaseHas('articles', [
             'title' => 'New Break'
         ]);
     }
+
+    // /** @test */
+    // public function an_email_is_sent_to_the_breaker_when_a_new_break_is_added()
+    // {
+    //     // SEND EMAIL
+    // }
 
     /** @test */
     public function a_doi_is_automatically_generated_when_a_new_break_is_created()
@@ -49,7 +55,7 @@ class AdminBreaksTest extends TestCase
         $this->signIn();
         $break = $this->article;
 
-        $this->delete('/admin/breaks/'.$break->id)->assertSessionHas('break_feedback');
+        $this->delete('/admin/breaks/'.$break->id)->assertSessionHas('db_feedback');
 
         $this->assertDatabaseMissing('articles', [
             'id' => $break->id
@@ -69,7 +75,7 @@ class AdminBreaksTest extends TestCase
         $this->signIn();
         $break = $this->article;
 
-        $this->patch('/admin/breaks/'.$break->id, ['title' => 'A new title'])->assertSessionHas('break_feedback');
+        $this->patch('/admin/breaks/'.$break->id, ['title' => 'A new title'])->assertSessionHas('db_feedback');
 
         $this->assertDatabaseHas('articles', [
             'title' => 'A new title'

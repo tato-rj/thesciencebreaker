@@ -24,9 +24,8 @@ class ArticlesController extends Controller
     // CREATE
     public function create()
     {
-        $categories = Category::all();
         $editors = Manager::editors();
-        return view('admin/pages/breaks/add', compact(['categories', 'editors']));
+        return view('admin/pages/breaks/add', compact(['editors']));
     }
 
     public function store(Request $request)
@@ -44,7 +43,7 @@ class ArticlesController extends Controller
             'editor_pick' => $request->editor_pick
         ]);
 
-        return redirect()->back()->with('break_feedback', 'The Break has been successfully added!');
+        return redirect()->back()->with('db_feedback', 'The Break has been successfully added!');
     }
 
     // READ
@@ -55,36 +54,35 @@ class ArticlesController extends Controller
     }
 
     // UPDATE
-    public function choose()
+    public function selectEdit()
     {
         $breaks = Article::orderBy('title')->get();
-        return view('admin/pages/breaks/choose', compact(['breaks']));
+        return view('admin/pages/breaks/selectEdit', compact(['breaks']));
     }
 
     public function edit(Article $article)
     {
-        $categories = Category::all();
         $editors = Manager::editors();
-        return view('admin/pages/breaks/edit', compact(['categories', 'editors', 'article']));
+        return view('admin/pages/breaks/edit', compact(['editors', 'article']));
     }
 
     public function update(Request $request, Article $article)
     {
         $request->offsetUnset('pdf');
         $article->update($request->all());
-        return redirect()->back()->with('break_feedback', 'The Break has been updated');
+        return redirect()->back()->with('db_feedback', 'The Break has been updated');
     }
 
     // DELETE
-    public function delete()
+    public function selectDelete()
     {
         $breaks = Article::orderBy('title')->get();
-        return view('admin/pages/breaks/delete', compact(['breaks']));   
+        return view('admin/pages/breaks/selectDelete', compact(['breaks']));   
     }
 
     public function destroy(Article $article)
     {
         $article->delete();
-        return redirect()->back()->with('break_feedback', 'The Break has been deleted');
+        return redirect()->back()->with('db_feedback', 'The Break has been deleted');
     }
 }

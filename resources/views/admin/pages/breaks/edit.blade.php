@@ -7,7 +7,7 @@
       @component('admin/snippets/page_title')
           Breaks
         @slot('comment')
-          Use the form below to <u>add</u> a new break
+          Use the form below to <u>edit</u> the Break
         @endslot
       @endcomponent
 

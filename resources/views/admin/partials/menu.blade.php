@@ -45,7 +45,7 @@
         <a href="/admin/breakers/edit">Edit a Breaker</a>
       </li>
       <li>
-        <a href="/admin/breakers/remove">Remove a Breaker</a>
+        <a href="/admin/breakers/delete">Remove a Breaker</a>
       </li>
     </ul>
   </li>
