@@ -56,4 +56,25 @@ class AdminBreaksTest extends TestCase
         ]);
     }
 
+    /** @test */
+    public function an_authenticated_user_can_view_a_page_to_edit_a_break()
+    {
+        $this->signIn();
+        $this->get('/admin/breaks/'.$this->article->id.'/edit')->assertSee($this->article->title);
+    }
+
+    /** @test */
+    public function an_authenticated_user_can_edit_a_break()
+    {
+        $this->signIn();
+        $break = $this->article;
+
+        $this->patch('/admin/breaks/'.$break->id, ['title' => 'A new title'])->assertSessionHas('break_feedback');
+
+        $this->assertDatabaseHas('articles', [
+            'title' => 'A new title'
+        ])->assertDatabaseMissing('articles', [
+            'title' => $break->title
+        ]);
+    }
 }

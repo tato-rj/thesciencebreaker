@@ -16,11 +16,12 @@
           <h2 class="text-muted op-5">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Edit Break</strong>
           </h2>
-          <form method="POST" action="/admin/breaks">
+          <form method="POST" action="/admin/breaks/{{ $article->id }}">
             {{csrf_field()}}
+            {{method_field('PATCH')}}
             {{-- Title --}}
             <div class="form-group">
-              <input required type="text" value="{{ old('title') }}" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Title">
+              <input required type="text" value="{{ $article->title }}" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Title">
               {{-- Error --}}
               @component('admin/snippets/error')
                 title
@@ -31,7 +32,7 @@
             </div>
             {{-- Content --}}
             <div class="form-group">
-              <textarea required class="form-control" name="content" id="content" rows="8" placeholder="Break">{{ old('content') }}</textarea>
+              <textarea required class="form-control" name="content" id="content" rows="8" placeholder="Break">{{ $article->content }}</textarea>
               {{-- Error --}}
               @component('admin/snippets/error')
                 content
@@ -42,7 +43,7 @@
             </div>
             {{-- Original Article --}}
             <div class="form-group">
-              <input required type="text" {{ old('original_article') }} name="original_article" class="form-control" id="original_article" aria-describedby="original_article" placeholder="Original article">
+              <input required type="text" value="{{ $article->original_article }}" name="original_article" class="form-control" id="original_article" aria-describedby="original_article" placeholder="Original article">
               {{-- Error --}}
               @component('admin/snippets/error')
                 original_article
@@ -55,20 +56,20 @@
               {{-- Reading Time --}}
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                 <div class="input-group-addon"><i class="fa fa-hourglass-half" aria-hidden="true"></i></div>
-                <input required type="text" value="{{ old('reading_time') }}" name="reading_time" size="10" class="form-control" id="reading_time" placeholder="Reading time">
+                <input required type="text" value="{{ $article->reading_time }}" name="reading_time" size="10" class="form-control" id="reading_time" placeholder="Reading time">
               </div>
               {{-- Category --}}
               <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="category_id" name="category_id">
                 <option  selected disabled>Category</option>
                 @foreach ($categories as $category)
-                  <option value="{{ $category->id }}" {{ (old('category_id') == $category->id) ? 'selected' : '' }}>{{ $category->name }}</option>
+                  <option value="{{ $category->id }}" {{ ($article->category_id == $category->id) ? 'selected' : '' }}>{{ $category->name }}</option>
                 @endforeach
               </select>
               {{-- Editor --}}
               <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="editor_id" name="editor_id">
                 <option  selected disabled>Editor</option>
                 @foreach ($editors as $editor)
-                  <option value="{{ $editor->id }}" {{ (old('editor_id') == $editor->id) ? 'selected' : '' }}>{{ $editor->fullName() }}</option>
+                  <option value="{{ $editor->id }}" {{ ($article->editor_id == $editor->id) ? 'selected' : '' }}>{{ $editor->fullName() }}</option>
                 @endforeach
               </select>
               <div class="d-block">
@@ -108,7 +109,7 @@
             {{-- Editor's Pick --}}
             <div class="form-check">
               <label class="form-check-label mb-2">
-                <input type="checkbox" value="1" {{ (old('editor_pick') == '1') ? 'checked' : '' }} name="editor_pick" class="form-check-input" id="editor_pick">
+                <input type="checkbox" value="1" {{ ($article->editor_pick == '1') ? 'checked' : '' }} name="editor_pick" class="form-check-input" id="editor_pick">
                 Editor's Pick
               </label>
               {{-- Error --}}

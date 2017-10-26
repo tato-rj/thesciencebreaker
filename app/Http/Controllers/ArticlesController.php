@@ -24,13 +24,13 @@ class ArticlesController extends Controller
     {
         $categories = Category::all();
         $editors = Manager::editors();
-        return view('admin/pages/add_break', compact(['categories', 'editors']));
+        return view('admin/pages/breaks/add', compact(['categories', 'editors']));
     }
 
     public function delete()
     {
         $breaks = Article::orderBy('title')->get();
-        return view('admin/pages/delete_break', compact(['breaks']));   
+        return view('admin/pages/breaks/delete', compact(['breaks']));   
     }
 
     public function store(Request $request)
@@ -65,20 +65,29 @@ class ArticlesController extends Controller
         return view('pages.article', compact(['article', 'more_from']));
     }
 
+    public function choose()
+    {
+        $breaks = Article::orderBy('title')->get();
+        return view('admin/pages/breaks/choose', compact(['breaks']));
+    }
+
     public function edit(Article $article)
     {
-        //
+        $categories = Category::all();
+        $editors = Manager::editors();
+        return view('admin/pages/breaks/edit', compact(['categories', 'editors', 'article']));
     }
 
     public function update(Request $request, Article $article)
     {
-        //
+        $request->offsetUnset('pdf');
+        $article->update($request->all());
+        return redirect()->back()->with('break_feedback', 'The Break has been updated');
     }
 
     public function destroy(Article $article)
     {
         $article->delete();
-
         return redirect()->back()->with('break_feedback', 'The Break has been deleted');
     }
 }

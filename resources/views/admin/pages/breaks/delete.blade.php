@@ -20,7 +20,7 @@
           <div class="form-group">
             <label for="exampleSelect2">Select the Break to be deleted</label>
             <select class="form-control" id="break_id" name="break_id">
-              <option selected disabled></option>
+              <option selected disabled>I want to delete...</option>
               @foreach ($breaks as $break)
               <option data-id="{{ $break->id }}">{{ $break->title }}</option>
               @endforeach

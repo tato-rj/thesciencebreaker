@@ -87,6 +87,10 @@ button:active {
   color: white;
 }
 
+.no-hover {
+  color: white !important;
+}
+
 .icon-wrapper:hover img {
   /* IE 9 */
   -webkit-transform: scale(1.1, 1.1);
