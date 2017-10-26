@@ -4,5 +4,6 @@ namespace App\Http\Controllers\Validators;
 
 interface Validator
 {
-	public static function check($request);
+	public static function createCheck($request);
+	public static function editCheck($request);
 }

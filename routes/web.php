@@ -24,7 +24,7 @@ Route::get('/mission', function() {
 	return view('pages.mission');
 });
 // Team
-Route::get('/the-team', 'ManagerController@index');
+Route::get('/the-team', 'ManagersController@index');
 // Partners
 Route::get('/partners', function() {
 	return view('pages.partners');
@@ -58,7 +58,7 @@ Route::get('/available-articles', 'AvailableArticlesController@index');
 Route::get('/admin/dashboard', 'AdminController@index');
 Route::get('/admin/graphs', 'AdminController@graphs');
 
-// Break routes
+// Breaks routes
 Route::get('/admin/breaks/add', 'ArticlesController@create');
 Route::get('/admin/breaks/edit', 'ArticlesController@selectEdit');
 Route::get('/admin/breaks/{article}/edit', 'ArticlesController@edit');
@@ -68,7 +68,7 @@ Route::post('/admin/breaks', 'ArticlesController@store');
 Route::patch('/admin/breaks/{article}', 'ArticlesController@update');
 Route::delete('/admin/breaks/{article}', 'ArticlesController@destroy');
 
-// Breaker routes
+// Breakers routes
 Route::get('/admin/breakers/add', 'AuthorsController@create');
 Route::get('/admin/breakers/edit', 'AuthorsController@selectEdit');
 Route::get('/admin/breakers/{author}/edit', 'AuthorsController@edit');
@@ -77,3 +77,13 @@ Route::get('/admin/breakers/delete', 'AuthorsController@selectDelete');
 Route::post('admin/breakers', 'AuthorsController@store');
 Route::patch('/admin/breakers/{author}', 'AuthorsController@update');
 Route::delete('/admin/breakers/{author}', 'AuthorsController@destroy');
+
+// Managers routes
+Route::get('/admin/managers/add', 'ManagersController@create');
+Route::get('/admin/managers/edit', 'ManagersController@selectEdit');
+Route::get('/admin/managers/{manager}/edit', 'ManagersController@edit');
+Route::get('/admin/managers/delete', 'ManagersController@selectDelete');
+
+Route::post('admin/managers', 'ManagersController@store');
+Route::patch('/admin/managers/{manager}', 'ManagersController@update');
+Route::delete('/admin/managers/{manager}', 'ManagersController@destroy');

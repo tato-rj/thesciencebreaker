@@ -22,7 +22,7 @@ class AuthorsController extends Controller
 
     public function store(Request $request)
     {
-        ValidateBreaker::check($request);
+        ValidateBreaker::createCheck($request);
         Author::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -56,6 +56,7 @@ class AuthorsController extends Controller
 
     public function update(Request $request, Author $author)
     {
+        ValidateBreaker::editCheck($request);
         $author->update($request->all());
         return redirect()->back()->with('db_feedback', $author->first_name.'\'s profile has been updated');
     }

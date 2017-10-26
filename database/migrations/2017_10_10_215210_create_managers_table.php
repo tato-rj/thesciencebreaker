@@ -18,8 +18,9 @@ class CreateManagersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
+            $table->string('division');
             $table->string('position');
-            $table->text('biography');
+            $table->text('biography')->nullable();
             $table->string('research_institute');
             $table->boolean('is_editor');
             $table->timestamps();

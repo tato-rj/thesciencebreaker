@@ -68,6 +68,7 @@ $factory->define(App\Manager::class, function (Faker $faker) {
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'email' =>$faker->unique()->safeEmail,
+        'division' => $faker->word,
         'position' => $faker->word,
         'biography' => $faker->paragraph,
         'research_institute' => $faker->sentence,

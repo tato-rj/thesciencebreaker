@@ -31,6 +31,12 @@ class AdminBreakersTest extends TestCase
         ]);
     }
 
+    // /** @test */
+    // public function a_welcome_email_is_sent_to_the_new_breaker()
+    // {
+    //     // SEND EMAIL
+    // }
+
     /** @test */
     public function an_authenticated_user_can_remove_a_breaker()
     {
@@ -52,12 +58,20 @@ class AdminBreakersTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_can_edit_a_break()
+    public function an_authenticated_user_can_edit_a_breaker()
     {
         $this->signIn();
         $author = $this->author;
 
-        $this->patch('/admin/breakers/'.$author->id, ['first_name' => 'Melissa'])->assertSessionHas('db_feedback');
+        $this->patch('/admin/breakers/'.$author->id, [
+            'first_name' => 'Melissa',
+            'last_name' => $author->last_name,
+            'email' =>$author->email,
+            'position' => $author->position,
+            'research_institute' => $author->research_institute,
+            'field_research' => $author->field_research,
+            'general_comments' => $author->general_comments
+        ])->assertSessionHas('db_feedback');
 
         $this->assertDatabaseHas('authors', [
             'first_name' => 'Melissa'

@@ -74,8 +74,18 @@ class AdminBreaksTest extends TestCase
     {
         $this->signIn();
         $break = $this->article;
-
-        $this->patch('/admin/breaks/'.$break->id, ['title' => 'A new title'])->assertSessionHas('db_feedback');
+        
+        $this->patch('/admin/breaks/'.$break->id, [
+            'title' => 'A new title',
+            'slug' => str_slug('A new title'),
+            'content' => $break->content,
+            'reading_time' =>$break->reading_time,
+            'original_article' => $break->original_article,
+            'category_id' => $break->category_id,
+            'editor_id' => $break->editor_id,
+            'doi' => $break->doi,
+            'editor_pick' => $break->editor_pick
+        ])->assertSessionHas('db_feedback');
 
         $this->assertDatabaseHas('articles', [
             'title' => 'A new title'

@@ -30,7 +30,7 @@ class ArticlesController extends Controller
 
     public function store(Request $request)
     {
-        ValidateBreak::check($request);
+        ValidateBreak::createCheck($request);
         Article::create([
             'title' => $request->title,
             'slug' => str_slug($request->title, '-'),
@@ -69,6 +69,7 @@ class ArticlesController extends Controller
     public function update(Request $request, Article $article)
     {
         $request->offsetUnset('pdf');
+        ValidateBreak::editCheck($request);
         $article->update($request->all());
         return redirect()->back()->with('db_feedback', 'The Break has been updated');
     }

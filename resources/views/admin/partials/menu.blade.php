@@ -57,13 +57,13 @@
     </a>
     <ul class="sidenav-second-level collapse" id="team">
       <li>
-        <a href="/admin/members/add">Add new member</a>
+        <a href="/admin/managers/add">Add new member</a>
       </li>
       <li>
-        <a href="/admin/members/add">Edit a member</a>
+        <a href="/admin/managers/edit">Edit a member</a>
       </li>
       <li>
-        <a href="/admin/members/add">Remove a member</a>
+        <a href="/admin/managers/delete">Remove a member</a>
       </li>
     </ul>
   </li>
