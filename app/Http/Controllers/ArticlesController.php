@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Category;
 use App\Manager;
+use App\Http\Controllers\Validators\ValidateBreak;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
@@ -20,6 +21,7 @@ class ArticlesController extends Controller
         return view('pages.welcome');
     }
 
+    // CREATE
     public function create()
     {
         $categories = Category::all();
@@ -27,23 +29,9 @@ class ArticlesController extends Controller
         return view('admin/pages/breaks/add', compact(['categories', 'editors']));
     }
 
-    public function delete()
-    {
-        $breaks = Article::orderBy('title')->get();
-        return view('admin/pages/breaks/delete', compact(['breaks']));   
-    }
-
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|unique:articles|max:255',
-            'content' => 'required',
-            'reading_time' => 'required',
-            'original_article' => 'required',
-            'category_id' => 'required',
-            'editor_id' => 'required'
-        ]);
-
+        ValidateBreak::check($request);
         Article::create([
             'title' => $request->title,
             'slug' => str_slug($request->title, '-'),
@@ -59,12 +47,14 @@ class ArticlesController extends Controller
         return redirect()->back()->with('break_feedback', 'The Break has been successfully added!');
     }
 
+    // READ
     public function show($category, Article $article)
     {
         $more_from = $article->similar();
         return view('pages.article', compact(['article', 'more_from']));
     }
 
+    // UPDATE
     public function choose()
     {
         $breaks = Article::orderBy('title')->get();
@@ -83,6 +73,13 @@ class ArticlesController extends Controller
         $request->offsetUnset('pdf');
         $article->update($request->all());
         return redirect()->back()->with('break_feedback', 'The Break has been updated');
+    }
+
+    // DELETE
+    public function delete()
+    {
+        $breaks = Article::orderBy('title')->get();
+        return view('admin/pages/breaks/delete', compact(['breaks']));   
     }
 
     public function destroy(Article $article)
