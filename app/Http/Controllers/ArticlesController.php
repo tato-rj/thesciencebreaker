@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Author;
 use App\Category;
 use App\Manager;
 use App\Http\Controllers\Validators\ValidateBreak;
@@ -25,24 +26,14 @@ class ArticlesController extends Controller
     public function create()
     {
         $editors = Manager::editors();
-        return view('admin/pages/breaks/add', compact(['editors']));
+        $authors = Author::all();
+        return view('admin/pages/breaks/add', compact(['editors', 'authors']));
     }
 
     public function store(Request $request)
     {
         ValidateBreak::createCheck($request);
-        Article::create([
-            'title' => $request->title,
-            'slug' => str_slug($request->title, '-'),
-            'content' => $request->content,
-            'reading_time' => $request->reading_time,
-            'original_article' => $request->original_article,
-            'category_id' => $request->category_id,
-            'editor_id' => $request->editor_id,
-            'doi' => Article::createDoi(),
-            'editor_pick' => $request->editor_pick
-        ]);
-
+        Article::createFrom($request);
         return redirect()->back()->with('db_feedback', 'The Break has been successfully added!');
     }
 
@@ -62,15 +53,15 @@ class ArticlesController extends Controller
 
     public function edit(Article $article)
     {
+        $authors = Author::orderBy('first_name')->get();
         $editors = Manager::editors();
-        return view('admin/pages/breaks/edit', compact(['editors', 'article']));
+        return view('admin/pages/breaks/edit', compact(['editors', 'article', 'authors']));
     }
 
     public function update(Request $request, Article $article)
     {
-        $request->offsetUnset('pdf');
         ValidateBreak::editCheck($request);
-        $article->update($request->all());
+        $article->updateFrom($request);
         return redirect()->back()->with('db_feedback', 'The Break has been updated');
     }
 
@@ -83,6 +74,7 @@ class ArticlesController extends Controller
 
     public function destroy(Article $article)
     {
+        $article->authors()->detach();
         $article->delete();
         return redirect()->back()->with('db_feedback', 'The Break has been deleted');
     }

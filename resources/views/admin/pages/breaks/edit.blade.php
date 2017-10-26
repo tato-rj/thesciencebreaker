@@ -13,7 +13,7 @@
 
       <div class="row mt-4">
         <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
-          <h2 class="text-muted op-5">
+          <h2 class="text-muted op-5 mb-3">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Edit Break</strong>
           </h2>
           <form method="POST" action="/admin/breaks/{{ $article->id }}">
@@ -21,6 +21,7 @@
             {{method_field('PATCH')}}
             {{-- Title --}}
             <div class="form-group">
+              <label><strong>Title</strong></label>
               <input required type="text" value="{{ $article->title }}" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Title">
               {{-- Error --}}
               @component('admin/snippets/error')
@@ -32,7 +33,8 @@
             </div>
             {{-- Content --}}
             <div class="form-group">
-              <textarea required class="form-control" name="content" id="content" rows="8" placeholder="Break">{{ $article->content }}</textarea>
+              <label><strong>Content</strong></label>
+              <textarea required class="form-control" name="content" id="content" rows="22" placeholder="Break">{{ $article->content }}</textarea>
               {{-- Error --}}
               @component('admin/snippets/error')
                 content
@@ -41,8 +43,22 @@
                 @endslot
               @endcomponent
             </div>
+            <div class="form-group">
+              <label><strong>Breakers</strong> <small>(you can select have as many as you need)</small></label>
+              <select required multiple class="form-control" size="12" id="authors" name="authors[]">
+                @foreach ($authors as $author)
+                  <option value="{{ $author->id }}" 
+                    @foreach ($article->authorsIds() as $id)
+                    {{ ($id == $author->id) ? 'selected' : ''}} 
+                    @endforeach
+                    >{{ $author->fullName() }}
+                  </option>
+                @endforeach
+              </select>
+            </div>
             {{-- Original Article --}}
             <div class="form-group">
+              <label><strong>Original Article</strong></label>
               <input required type="text" value="{{ $article->original_article }}" name="original_article" class="form-control" id="original_article" aria-describedby="original_article" placeholder="Original article">
               {{-- Error --}}
               @component('admin/snippets/error')
@@ -52,6 +68,7 @@
                 @endslot
               @endcomponent
             </div>
+            <hr>
             <div class="form-inline form-group">
               {{-- Reading Time --}}
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -94,6 +111,7 @@
                 @endcomponent
               </div>
             </div>
+            <hr>
             {{-- PDF --}}
             <div class="form-group">
               <input type="file" name="pdf" class="form-control-file" id="pdf" aria-describedby="filePDF">

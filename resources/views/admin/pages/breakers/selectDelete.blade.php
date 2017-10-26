@@ -27,9 +27,9 @@
             </select>
           </div>
           <div class="hidden" id="confirm">
-            <p>You selected the Breaker <em><strong></strong></em>.</p>
+            <p>You selected the Breaker <em><strong></strong></em></p>
             <div>
-            </p>Please click below to confirm.</p>
+            </p>Please click below to confirm</p>
             <button type="button" class="btn btn-danger" data-id='' data-toggle="modal" data-target="#delete_breaker">
               Delete Breaker
             </button>

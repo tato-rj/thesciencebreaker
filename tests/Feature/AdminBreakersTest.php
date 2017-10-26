@@ -51,6 +51,20 @@ class AdminBreakersTest extends TestCase
     }
 
     /** @test */
+    public function removing_a_breaker_also_removes_its_relationships()
+    {
+        $this->signIn();
+        $author = $this->author;
+        $break_id = $author->articles[0]->id;
+
+        $this->delete('/admin/breakers/'.$author->id)->assertSessionHas('db_feedback');
+
+        $this->assertDatabaseMissing('article_author', [
+            'article_id' => $break_id
+        ]);
+    }   
+
+    /** @test */
     public function an_authenticated_user_can_view_a_page_to_edit_a_breaker()
     {
         $this->signIn();

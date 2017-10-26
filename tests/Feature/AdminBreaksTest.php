@@ -19,6 +19,7 @@ class AdminBreaksTest extends TestCase
         $this->post('/admin/breaks', [
             'title' => 'New Break',
             'content' => '<p>My content</p>',
+            'authors' => [99,21,23],
             'reading_time' => '3.5',
             'original_article' => 'article',
             'category_id' => '1',
@@ -28,6 +29,10 @@ class AdminBreaksTest extends TestCase
 
         $this->assertDatabaseHas('articles', [
             'title' => 'New Break'
+        ])->assertDatabaseHas('article_author', [
+            'author_id' => 99,
+            'author_id' => 21,
+            'author_id' => 23,
         ]);
     }
 
@@ -63,6 +68,20 @@ class AdminBreaksTest extends TestCase
     }
 
     /** @test */
+    public function removing_a_break_also_removes_its_relationships()
+    {
+        $this->signIn();
+        $break = $this->article;
+        $breaker_id = $break->authors[0]->id;
+
+        $this->delete('/admin/breaks/'.$break->id)->assertSessionHas('db_feedback');
+
+        $this->assertDatabaseMissing('article_author', [
+            'author_id' => $breaker_id
+        ]);
+    }   
+
+    /** @test */
     public function an_authenticated_user_can_view_a_page_to_edit_a_break()
     {
         $this->signIn();
@@ -79,6 +98,7 @@ class AdminBreaksTest extends TestCase
             'title' => 'A new title',
             'slug' => str_slug('A new title'),
             'content' => $break->content,
+            'authors' => [23,34,43],
             'reading_time' =>$break->reading_time,
             'original_article' => $break->original_article,
             'category_id' => $break->category_id,
@@ -91,6 +111,10 @@ class AdminBreaksTest extends TestCase
             'title' => 'A new title'
         ])->assertDatabaseMissing('articles', [
             'title' => $break->title
+        ])->assertDatabaseHas('article_author', [
+            'author_id' => 23,
+            'author_id' => 34,
+            'author_id' => 43
         ]);
     }
 }

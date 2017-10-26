@@ -70,6 +70,7 @@ class AuthorsController extends Controller
 
     public function destroy(Author $author)
     {
+        $author->articles()->detach();
         $author->delete();
         return redirect()->back()->with('db_feedback', 'The Breaker has been removed from the database');
     }

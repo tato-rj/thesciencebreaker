@@ -40,6 +40,14 @@
                 @endslot
               @endcomponent
             </div>
+            <div class="form-group">
+              <label><strong>Breakers</strong> <small>(you can select have as many as you need)</small></label>
+              <select required multiple class="form-control" size="12" id="authors" name="authors[]">
+                @foreach ($authors as $author)
+                  <option value="{{ $author->id }}">{{ $author->fullName() }}</option>
+                @endforeach
+              </select>
+            </div>
             {{-- Original Article --}}
             <div class="form-group">
               <input required type="text" {{ old('original_article') }} name="original_article" class="form-control" id="original_article" aria-describedby="original_article" placeholder="Original article">
@@ -51,6 +59,7 @@
                 @endslot
               @endcomponent
             </div>
+            <hr>
             <div class="form-inline form-group">
               {{-- Reading Time --}}
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">

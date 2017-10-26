@@ -27,12 +27,50 @@ class Article extends Model
 
     public function authors()
     {
-    	return $this->belongsToMany('App\Author');
+    	return $this->belongsToMany('App\Author')->withTimestamps();
+    }
+
+    public function authorsIds()
+    {
+        return $this->authors->pluck('id')->toArray();
     }
 
     public function path()
     {
         return "/breaks/{$this->category->slug}/{$this->id}";
+    }
+
+    public static function createFrom($request)
+    {
+        $article = self::create([
+            'title' => $request->title,
+            'slug' => str_slug($request->title, '-'),
+            'content' => $request->content,
+            'reading_time' => $request->reading_time,
+            'original_article' => $request->original_article,
+            'category_id' => $request->category_id,
+            'editor_id' => $request->editor_id,
+            'doi' => self::createDoi(),
+            'editor_pick' => $request->editor_pick
+        ]);
+
+        foreach ($request->authors as $author) {
+            $article->authors()->attach($author);
+        }
+    }
+
+    public function updateFrom($request)
+    {
+        $this->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'reading_time' => $request->reading_time,
+            'original_article' => $request->original_article,
+            'category_id' => $request->category_id,
+            'editor_id' => $request->editor_id,
+            'editor_pick' => $request->editor_pick
+        ]);
+        $this->authors()->sync($request->authors);
     }
 
     public function similar()

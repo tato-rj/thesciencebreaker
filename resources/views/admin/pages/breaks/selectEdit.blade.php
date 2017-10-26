@@ -27,7 +27,7 @@
             </select>
           </div>
           <div class="hidden" id="confirm">
-            <p>You selected the Break <em><strong></strong></em>.</p>
+            <p>You selected the Break <em><strong></strong></em></p>
             <div>
             <a href="" class="btn no-hover btn-theme-orange">
               Edit Break

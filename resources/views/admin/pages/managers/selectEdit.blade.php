@@ -27,7 +27,7 @@
             </select>
           </div>
           <div class="hidden" id="confirm">
-            <p>You selected <em><strong></strong></em>.</p>
+            <p>You selected <em><strong></strong></em></p>
             <div>
             <a href="" class="btn no-hover btn-theme-orange">
               Edit manager
