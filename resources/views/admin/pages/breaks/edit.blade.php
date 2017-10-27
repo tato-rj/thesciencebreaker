@@ -114,13 +114,16 @@
             <hr>
             {{-- PDF --}}
             <div class="form-group">
-              <input type="file" name="pdf" class="form-control-file" id="pdf" aria-describedby="filePDF">
+              <label class="custom-file">
+                <input type="file" id="file" class="custom-file-input">
+                <span class="custom-file-control"></span>
+              </label>
               <small class="form-text text-muted">Use this option to upload a PDF file for this break</small>
               {{-- Error --}}
               @component('admin/snippets/error')
-                pdf
+                file
                 @slot('feedback')
-                {{ $errors->first('pdf') }}
+                {{ $errors->first('file') }}
                 @endslot
               @endcomponent
             </div>

@@ -762,6 +762,20 @@ footer ul.credits i {
   background: #06b2b8;
 }
 
+.subscription {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.subscription .fa {
+  cursor: pointer;
+}
+
+.subscription:hover {
+  background: #06b2b8;
+  border-color: #06b2b8;
+}
+
 h4.title {
   border-bottom: 4px solid lightgrey;
   padding-bottom: 6px;

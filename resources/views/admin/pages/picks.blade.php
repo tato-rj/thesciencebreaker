@@ -36,7 +36,7 @@
                     @endforeach
                   </select>
                 </div>
-                <button type="submit" data-id="{{ $pick->id }}" class="btn btn-warning ml-3 z-10">Change</button>
+                <button disabled title="Make a change to enable this button" type="submit" data-id="{{ $pick->id }}" class="btn btn-warning ml-3 z-10">Change</button>
             </form>
             @endforeach
           </div>    
@@ -52,7 +52,9 @@ $('form button').on('click', function(event) {
     event.preventDefault();
     alert('No changes have been made!');
   }
-  
+});
+$('form select').on('change', function() {
+  $(this).parent().parent().find('button').attr('disabled', false).attr('title', '');
 });
 </script>
 @endsection

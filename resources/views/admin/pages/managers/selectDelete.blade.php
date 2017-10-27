@@ -27,37 +27,13 @@
             </select>
           </div>
           <div class="hidden" id="confirm">
-            <p>You selected the manager <em><strong></strong></em></p>
-            <div>
-            </p>Please click below to confirm</p>
-            <button type="button" class="btn btn-danger" data-id='' data-toggle="modal" data-target="#delete_manager">
+            <button type="button" class="btn btn-danger" data-name="" data-id="" data-toggle="modal" data-target="#delete_modal">
               Delete manager
             </button>
           </div>
-        </div>
 
-          <!-- Modal -->
-          <div class="modal fade" id="delete_manager" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body d-flex flex-column align-items-center ">
-                  <h5 class="text-muted mb-4">This action cannot be undone!</h5>
-                  <form method="POST" action="">
-                    {{ method_field('DELETE') }}
-                    {{ csrf_field() }}
-                    <button type="submit" class="btn  btn-danger">Yes, I am sure</button>
-                  </form>
-                  <button type="button" class="btn btn-link " data-dismiss="modal">Never mind</button>
-                </div>
-              </div>
-            </div>
-          </div>
+        @include('admin/snippets/confirm_delete')
+
         </div>
       </div>
     </div>
@@ -68,13 +44,14 @@
 $('select').on('change', function() {
   $name = this.value;
   $id = $(this).children(':selected').attr('data-id');
-  $('#confirm strong').text($name);
-  $('#confirm button').attr('data-id', $id);
+  $('#confirm button').attr('data-id', $id).attr('data-name' ,$name);
   $('#confirm').fadeIn();
 });
 $('#confirm button').on('click', function() {
   $id = $(this).attr('data-id');
-  $('#delete_manager form').attr('action', '/admin/managers/'+$id);
+  $name = $(this).attr('data-name');
+  $('#delete_modal h6 strong').text($name);
+  $('#delete_modal form').attr('action', '/admin/managers/'+$id);
 });
 </script>
 @endsection

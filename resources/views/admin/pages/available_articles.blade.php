@@ -21,7 +21,7 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
-          <form class="jumbotron" method="POST" accept="/admin/available-articles">
+          <form class="jumbotron" method="POST" action="/admin/available-articles">
             {{csrf_field()}}
             <div class="form-group">
               <textarea class="form-control" id="article" name="article" rows="3" placeholder="New article here"></textarea>
@@ -41,8 +41,8 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
-          <p class="text-muted"><i class="fa fa-exclamation-circle mr-2" aria-hidden="true"></i>You currently have a total of <strong>{{ $available_count }}</strong> available articles</p>
-                                    {{-- Error --}}
+          <p class="text-muted"><i class="fa fa-exclamation-circle mr-2" aria-hidden="true"></i>You currently have <strong>{{ $available_count }}</strong> available articles</p>
+              {{-- Error --}}
               @component('admin/snippets/error')
                 article
                 @slot('feedback')
@@ -57,7 +57,7 @@
             </div>
             <div>
               <button type="button" class="edit btn btn-sm btn-block btn-warning" data-id="{{ $article->id }}" data-article="{{ $article->article }}" data-category_id="{{ $article->category->id }}" data-toggle="modal" data-target="#edit_available">Edit</button>
-              <button type="button" class="delete btn btn-sm btn-block btn-danger" data-id="{{ $article->id }}" data-toggle="modal" data-target="#delete_available">Delete</button>
+              <button type="button" class="delete btn btn-sm btn-block btn-danger" data-title="This available article" data-id="{{ $article->id }}" data-toggle="modal" data-target="#delete_modal">Delete</button>
             </div>
           </div>
           @if (!$loop->last)
@@ -67,28 +67,8 @@
           {{ $articles->links() }}
         </div>
       </div>
-        <!-- Delete Modal -->
-        <div class="modal fade" id="delete_available" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-trash mr-2" aria-hidden="true"></i>Are you sure?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body d-flex flex-column align-items-center ">
-                <h5 class="text-muted mb-4">This action cannot be undone!</h5>
-                <form method="POST" action="">
-                  {{ method_field('DELETE') }}
-                  {{ csrf_field() }}
-                  <button type="submit" class="btn  btn-danger">Yes, I am sure</button>
-                </form>
-                <button type="button" class="btn btn-link " data-dismiss="modal">Never mind</button>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      @include('admin/snippets/confirm_delete')
 
         <!-- Edit Modal -->
         <div class="modal fade" id="edit_available" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -144,10 +124,10 @@ $('button.edit').on('click', function() {
 });
 
 $('button.delete').on('click', function() {
-  $modal = $('#delete_available');
   $id = $(this).attr('data-id');
-
-  $modal.find('form').attr('action', '/admin/available-articles/'+$id);
+  $title = $(this).attr('data-title');
+  $('#delete_modal h6 strong').text($title);
+  $('#delete_modal').find('form').attr('action', '/admin/available-articles/'+$id);
 });
 </script>
 @endsection

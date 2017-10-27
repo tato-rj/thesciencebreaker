@@ -31,6 +31,7 @@ abstract class TestCase extends BaseTestCase
             'author_id' => $this->author->id
         ]);
         $this->available_article = factory('App\AvailableArticle')->create();
+        $this->subscription = factory('App\Subscription')->create();
     }
 
     protected function signIn($user = null)

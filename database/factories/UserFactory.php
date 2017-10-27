@@ -93,3 +93,9 @@ $factory->define(App\AvailableArticle::class, function (Faker $faker) {
         }
     ];
 });
+
+$factory->define(App\Subscription::class, function (Faker $faker) {
+    return [
+        'email' => $faker->unique()->safeEmail
+    ];
+});

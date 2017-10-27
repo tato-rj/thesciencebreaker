@@ -97,3 +97,9 @@ Route::delete('/admin/available-articles/{availableArticle}', 'AvailableArticles
 // Editor Picks routes
 Route::get('/admin/editor-picks', 'EditorPicksController@edit');
 Route::patch('/admin/editor-picks/{pick}', 'EditorPicksController@update');
+
+// Subscription routes
+Route::get('/admin/subscriptions', 'SubscriptionsController@index');
+
+Route::post('admin/subscriptions', 'SubscriptionsController@store');
+Route::delete('/admin/subscriptions/{email}', 'SubscriptionsController@destroy');

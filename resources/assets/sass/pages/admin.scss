@@ -55,3 +55,15 @@
 		background: $color-theme-green;
 	}
 }
+
+.subscription {
+	transition: 0.2s;
+	.fa {
+		cursor: pointer;
+	}
+}
+
+.subscription:hover {
+	background: $color-theme-green;
+	border-color: $color-theme-green;
+}
