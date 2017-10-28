@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Author;
+use Mail;
+use App\Mail\Welcome;
+use App\Mail\MailFactory;
 use App\Http\Controllers\Validators\ValidateBreaker;
 use Illuminate\Http\Request;
 
@@ -23,7 +26,8 @@ class AuthorsController extends Controller
     public function store(Request $request)
     {
         ValidateBreaker::createCheck($request);
-        Author::create([
+
+        $breaker = Author::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
@@ -32,7 +36,9 @@ class AuthorsController extends Controller
             'field_research' => $request->field_research,
             'general_comments' => $request->general_comments
         ]);
-
+        
+        MailFactory::sendWelcomeEmail($breaker);
+        
         return redirect()->back()->with('db_feedback', 'The Breaker '.$request->first_name.' '.$request->last_name.' has been successfully added!');
     }
 

@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'TheScienceBreaker'),
+    'owner' => env('APP_OWNER', 'Massimo Caine'),
 
     /*
     |--------------------------------------------------------------------------

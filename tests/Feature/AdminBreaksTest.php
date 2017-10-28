@@ -16,31 +16,33 @@ class AdminBreaksTest extends TestCase
     {
         $this->signIn();
 
+        $breaker_one = factory('App\Author')->create();
+        $breaker_two = factory('App\Author')->create();
+        $editor = factory('App\Manager')->create([
+            'is_editor' => 1
+        ]);
+
         $this->post('/admin/breaks', [
             'title' => 'New Break',
             'content' => '<p>My content</p>',
-            'authors' => [99,21,23],
+            'authors' => [
+                $breaker_one->id,
+                $breaker_two->id
+            ],
             'reading_time' => '3.5',
             'original_article' => 'article',
             'category_id' => '1',
-            'editor_id' => '1',
+            'editor_id' => $editor->id,
             'editor_pick' => '0'
         ])->assertSessionHas('db_feedback');
 
         $this->assertDatabaseHas('articles', [
             'title' => 'New Break'
         ])->assertDatabaseHas('article_author', [
-            'author_id' => 99,
-            'author_id' => 21,
-            'author_id' => 23,
+            'author_id' => $breaker_one->id,
+            'author_id' => $breaker_two->id
         ]);
     }
-
-    // /** @test */
-    // public function an_email_is_sent_to_the_breaker_when_a_new_break_is_added()
-    // {
-    //     // SEND EMAIL
-    // }
 
     /** @test */
     public function a_doi_is_automatically_generated_when_a_new_break_is_created()

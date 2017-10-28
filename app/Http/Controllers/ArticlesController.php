@@ -6,6 +6,9 @@ use App\Article;
 use App\Author;
 use App\Category;
 use App\Manager;
+use Mail;
+use App\Mail\NewBreak;
+use App\Mail\MailFactory;
 use App\Http\Controllers\Validators\ValidateBreak;
 use Illuminate\Http\Request;
 
@@ -26,14 +29,15 @@ class ArticlesController extends Controller
     public function create()
     {
         $editors = Manager::editors();
-        $authors = Author::all();
+        $authors = Author::orderBy('first_name')->get();
         return view('admin/pages/breaks/add', compact(['editors', 'authors']));
     }
 
     public function store(Request $request)
     {
         ValidateBreak::createCheck($request);
-        Article::createFrom($request);
+        $break = Article::createFrom($request);
+        MailFactory::sendNotificationsTo($request->authors, $request->editor_id, $break);
         return redirect()->back()->with('db_feedback', 'The Break has been successfully added!');
     }
 
@@ -78,4 +82,5 @@ class ArticlesController extends Controller
         $article->delete();
         return redirect()->back()->with('db_feedback', 'The Break has been deleted');
     }
+
 }

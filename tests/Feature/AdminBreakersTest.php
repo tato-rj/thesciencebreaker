@@ -5,7 +5,6 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use App\Article;
 
 class AdminBreakersTest extends TestCase
 {
@@ -30,12 +29,6 @@ class AdminBreakersTest extends TestCase
             'first_name' => 'John'
         ]);
     }
-
-    // /** @test */
-    // public function a_welcome_email_is_sent_to_the_new_breaker()
-    // {
-    //     // SEND EMAIL
-    // }
 
     /** @test */
     public function an_authenticated_user_can_remove_a_breaker()

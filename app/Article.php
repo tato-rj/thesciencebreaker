@@ -57,6 +57,8 @@ class Article extends Model
         foreach ($request->authors as $author) {
             $article->authors()->attach($author);
         }
+
+        return $article;
     }
 
     public function updateFrom($request)
@@ -107,6 +109,11 @@ class Article extends Model
     public static function picks()
     {
         return self::where('editor_pick', 1)->orderBy('title')->get();
+    }
+
+    public static function last()
+    {
+        return self::orderBy('id', 'desc')->first();
     }
 
 }
