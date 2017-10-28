@@ -16,31 +16,23 @@ class AdminBreaksTest extends TestCase
     {
         $this->signIn();
 
-        $breaker_one = factory('App\Author')->create();
-        $breaker_two = factory('App\Author')->create();
-        $editor = factory('App\Manager')->create([
-            'is_editor' => 1
-        ]);
-
         $this->post('/admin/breaks', [
             'title' => 'New Break',
             'content' => '<p>My content</p>',
             'authors' => [
-                $breaker_one->id,
-                $breaker_two->id
+                $this->author->id
             ],
             'reading_time' => '3.5',
             'original_article' => 'article',
             'category_id' => '1',
-            'editor_id' => $editor->id,
+            'editor_id' => $this->editor->id,
             'editor_pick' => '0'
         ])->assertSessionHas('db_feedback');
 
         $this->assertDatabaseHas('articles', [
             'title' => 'New Break'
         ])->assertDatabaseHas('article_author', [
-            'author_id' => $breaker_one->id,
-            'author_id' => $breaker_two->id
+            'author_id' => $this->author->id
         ]);
     }
 

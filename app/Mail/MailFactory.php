@@ -3,7 +3,8 @@
 namespace App\Mail;
 
 use Mail;
-use App\Mail\NewBreak;
+use App\Mail\BreakerNewBreak;
+use App\Mail\EditorNewBreak;
 use App\Mail\Welcome;
 use App\Manager;
 use App\Author;
@@ -22,10 +23,10 @@ class MailFactory
 
         foreach ($authors as $author) {
             $breaker = Author::find($author);
-            Mail::to($breaker->email)->send(new NewBreak($breaker, $break));
+            Mail::to($breaker->email)->send(new BreakerNewBreak($breaker, $break));
         }
 
-        Mail::to($editor->email)->send(new NewBreak($editor, $break));
+        Mail::to($editor->email)->send(new EditorNewBreak($editor, $break));
     }
 
 }

@@ -67,3 +67,12 @@
 	background: $color-theme-green;
 	border-color: $color-theme-green;
 }
+
+.card {
+	border: 0;
+
+	.card-header {
+		border: 0;
+		border-radius: .25rem;
+	}
+}

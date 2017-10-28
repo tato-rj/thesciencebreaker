@@ -68,7 +68,6 @@ class EmailsTest extends TestCase
     {
         $this->signIn();
 
-        $breaker = factory('App\Author')->create();
         $editor = factory('App\Manager')->create([
             'is_editor' => 1
         ]);
@@ -77,7 +76,7 @@ class EmailsTest extends TestCase
             'title' => 'New Break',
             'content' => '<p>My content</p>',
             'authors' => [
-                $breaker->id
+                $this->author->id
             ],
             'reading_time' => '3.5',
             'original_article' => 'article',
