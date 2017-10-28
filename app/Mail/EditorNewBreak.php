@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NewBreak extends Mailable
+class EditorNewBreak extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -20,9 +20,9 @@ class NewBreak extends Mailable
         $this->user = $user;
         $this->break = $break;
     }
-
+    
     public function build()
     {
-        return $this->markdown('emails/new_break');
+        return $this->markdown('emails/editor_new_break');
     }
 }

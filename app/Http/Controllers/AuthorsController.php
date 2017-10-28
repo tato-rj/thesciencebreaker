@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Author;
-use Mail;
-use App\Mail\Welcome;
 use App\Mail\MailFactory;
 use App\Http\Controllers\Validators\ValidateBreaker;
 use Illuminate\Http\Request;

@@ -6,8 +6,6 @@ use App\Article;
 use App\Author;
 use App\Category;
 use App\Manager;
-use Mail;
-use App\Mail\NewBreak;
 use App\Mail\MailFactory;
 use App\Http\Controllers\Validators\ValidateBreak;
 use Illuminate\Http\Request;
