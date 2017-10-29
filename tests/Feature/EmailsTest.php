@@ -30,7 +30,7 @@ class EmailsTest extends TestCase
             'general_comments' => 'John is a new breaker'
         ]);
 
-        $this->seeEmailWasSent()->seeEmailTo('john@email.com')->seeEmailContains("Hello John");
+        $this->seeEmailWasSent()->seeEmailTo('john@email.com')->seeEmailSubjectIs('Welcome to TheScienceBreaker!')->seeEmailContains("Hello John");
     }
 
     /** @test */
@@ -59,8 +59,8 @@ class EmailsTest extends TestCase
         ]);  
 
         $this->seeEmailWasSent();
-        $this->seeEmailTo($breaker_one->email)->seeEmailContains("Congratulations $breaker_one->first_name");
-        $this->seeEmailTo($breaker_two->email)->seeEmailContains("Congratulations $breaker_two->first_name");
+        $this->seeEmailTo($breaker_one->email)->seeEmailSubjectIs('Break published', 1)->seeEmailContains("Congratulations $breaker_one->first_name");
+        $this->seeEmailTo($breaker_two->email)->seeEmailSubjectIs('Break published', 2)->seeEmailContains("Congratulations $breaker_two->first_name");
     }
 
     /** @test */

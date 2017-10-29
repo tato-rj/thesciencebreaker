@@ -5,6 +5,9 @@ Your Break <a href="#">{{$break->title}}</a> has been published.
 
 @component('mail::button', ['url' => $break->path()])
 Check it out
+	@slot('color')
+	breaker
+	@endslot
 @endcomponent
 
 If you have any questions, send us a note at <a href="">contact@thesciencebreaker.com</a>. We'd love to help!

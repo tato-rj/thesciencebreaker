@@ -67,6 +67,14 @@ trait AppAssertions
         $this->assertTrue($contains, "No email containing the text has been found.");
     }
 
+    protected function seeEmailSubjectIs($subject, $index = null)
+    {
+        $email = ($index) ? $this->emails[$index] : end($this->emails);
+        
+        $this->assertEquals($subject, $email->getSubject() , "Subject not found.");
+        return $this;
+    }
+
     protected function getEmail(Swift_Message $message = null)
     {
         $this->seeEmailWasSent();

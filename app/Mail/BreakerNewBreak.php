@@ -23,6 +23,6 @@ class BreakerNewBreak extends Mailable
 
     public function build()
     {
-        return $this->markdown('emails/breaker_new_break');
+        return $this->markdown('emails/breaker_new_break')->subject('Break published');
     }
 }
