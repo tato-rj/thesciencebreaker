@@ -1,6 +1,6 @@
 @component('mail::message')
 
-Hello, {{ $user->first_name }},
+Hello {{ $user->first_name }},
 
 Your recent edited break <a href="#">{{ $break->title }}</a> has been published!
 

@@ -53,7 +53,7 @@ h1 {
 }
 
 h2 {
-    color: grey;
+    color: #191919;
     font-size: 16px;
     font-weight: bold;
     margin-top: 0;
@@ -319,6 +319,18 @@ img {
     text-align: center;
 }
 
+/*List*/
+
+.list {
+    padding-left: 0;
+    font-size: 0.9em;
+}
+
+.list img {
+    width: 28px;
+    opacity: 0.1;
+}
+
 /*Bootstrap*/
 .d-flex {
     display: flex;
@@ -358,6 +370,8 @@ img {
     text-align: center!important;
 }
 
+/*Margins*/
+
 .mt-3 {
     margin-top: 3em;
 }
@@ -366,13 +380,47 @@ img {
     margin-bottom: 3em;
 }
 
-.pt-1 {
-    padding-top: 1em!important;
+.mr-3 {
+    margin-right: 3em;
 }
 
-.pb-1 {
-    padding-bottom: 1em!important;
+.ml-3 {
+    margin-left: 3em;
 }
+
+.mt-2 {
+    margin-top: 2em;
+}
+
+.mb-2 {
+    margin-bottom: 2em;
+}
+
+.mr-2 {
+    margin-right: 2em;
+}
+
+.ml-2 {
+    margin-left: 2em;
+}
+
+.mt-1 {
+    margin-top: 1em;
+}
+
+.mb-1 {
+    margin-bottom: 1em;
+}
+
+.mr-1 {
+    margin-right: 1em;
+}
+
+.ml-1 {
+    margin-left: 1em;
+}
+
+/*Paddings*/
 
 .pt-3 {
     padding-top: 3em!important;
@@ -380,4 +428,20 @@ img {
 
 .pb-3 {
     padding-bottom: 3em!important;
+}
+
+.pt-2 {
+    padding-bottom: 2em!important;
+}
+
+.pb-2 {
+    padding-bottom: 2em!important;
+}
+
+.pt-1 {
+    padding-bottom: 1em!important;
+}
+
+.pb-1 {
+    padding-bottom: 1em!important;
 }

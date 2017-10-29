@@ -26,7 +26,7 @@
         		</td>
         	</tr>
             <tr>
-                <td class="content-cell pb-3" align="center">
+                <td class="content-cell pb-1" align="center">
                     {{ Illuminate\Mail\Markdown::parse($slot) }}
                 </td>
             </tr>

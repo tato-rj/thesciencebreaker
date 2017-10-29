@@ -29,6 +29,6 @@ class Welcome extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails/welcome');
+        return $this->markdown('emails/welcome')->subject('Welcome to TheScienceBreaker!');
     }
 }
