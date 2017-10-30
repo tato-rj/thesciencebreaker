@@ -331,6 +331,18 @@ img {
     opacity: 0.1;
 }
 
+/*Contact*/
+
+.contact-field {
+    padding: .75em;
+    background: rgba(0,0,0,0.03);
+    border-top: 1px solid #f36e41;
+}
+
+.contact-field strong {
+    font-size: 0.8em;
+}
+
 /*Bootstrap*/
 .d-flex {
     display: flex;
@@ -368,6 +380,10 @@ img {
 
 .text-center {
     text-align: center!important;
+}
+
+.d-block {
+    display: block;
 }
 
 /*Margins*/

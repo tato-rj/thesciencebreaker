@@ -65,6 +65,8 @@ trait AppAssertions
         }
 
         $this->assertTrue($contains, "No email containing the text has been found.");
+        
+        return $this;
     }
 
     protected function seeEmailSubjectIs($subject, $index = null)

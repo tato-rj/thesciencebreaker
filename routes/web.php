@@ -51,6 +51,17 @@ Route::get('/available-articles', 'AvailableArticlesController@index');
 
 /*
 * 
+*	Contact page
+* 
+*/
+
+// Break Inquiry
+Route::post('/contact/break-inquiry', 'ContactsController@inquiry');
+Route::post('/contact/question', 'ContactsController@question');
+Route::post('/contact/submit', 'ContactsController@submit');
+
+/*
+* 
 *	Admin
 * 
 */
