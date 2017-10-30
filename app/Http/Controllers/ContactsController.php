@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mail\MailFactory;
+use App\Subscription;
 use App\Http\Controllers\Validators\ValidateBreakInquiry;
 use App\Http\Controllers\Validators\ValidateQuestion;
 use App\Http\Controllers\Validators\ValidateBreakSubmission;
@@ -14,6 +15,7 @@ class ContactsController extends Controller
     {
     	ValidateBreakInquiry::createCheck($request);
     	MailFactory::breakInquiry($request);
+        Subscription::createOrIgnore($request->email);
     	return redirect()->back()->with('contact', 'Your inquiry has been sent');
     }
 
@@ -21,6 +23,7 @@ class ContactsController extends Controller
     {
     	ValidateQuestion::createCheck($request);
     	MailFactory::question($request);
+        Subscription::createOrIgnore($request->email);
     	return redirect()->back()->with('contact', 'Your message has been sent, thank you for your contact!');
     }
 
@@ -28,6 +31,7 @@ class ContactsController extends Controller
     {
         ValidateBreakSubmission::createCheck($request);
         MailFactory::submit($request);
+        Subscription::createOrIgnore($request->institution_email);
         return redirect()->back()->with('contact', 'Your Break has been submitted');
     }
 }

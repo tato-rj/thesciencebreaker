@@ -17,6 +17,54 @@ class EmailsTest extends TestCase
     use MailManagement;
     use AppAssertions;
 
+    // CONTACT PAGE INTERACTIONS
+
+    /** @test */
+    public function a_guest_can_ask_a_question_through_the_contact_page()
+    {
+        $faker = \Faker\Factory::create();
+        $request = [
+                'full_name' => $faker->name,
+                'email' => $faker->safeEmail,
+                'message' => $faker->paragraph
+            ];
+
+        $this->post('/contact/question', $request)->assertSessionHas('contact');
+        $this->seeEmailWasSent()->seeEmailSubjectIs('New Contact')->seeEmailContains($request['full_name']);
+    }
+
+    /** @test */
+    public function a_guest_is_subscribed_when_submitting_a_question()
+    {
+        $faker = \Faker\Factory::create();
+        $request = [
+                'full_name' => $faker->name,
+                'email' => $faker->safeEmail,
+                'message' => $faker->paragraph
+            ];
+
+        $this->post('/contact/question', $request);
+        $this->assertDatabaseHas('subscriptions', [
+            'email' => $request['email']
+        ]);
+    }
+
+    /** @test */
+    public function new_subscriptions_are_ignored_if_duplicated()
+    {
+        $faker = \Faker\Factory::create();
+        $request = [
+                'full_name' => $faker->name,
+                'email' => $this->subscription->email,
+                'message' => $faker->paragraph
+            ];
+
+        $this->post('/contact/question', $request);
+        $this->assertDatabaseHas('subscriptions', [
+            'email' => $request['email']
+        ]);
+    }
+
     /** @test */
     public function a_guest_can_send_a_break_inquiry_through_the_contact_page()
     {
@@ -36,17 +84,23 @@ class EmailsTest extends TestCase
     }
 
     /** @test */
-    public function a_guest_can_ask_a_question_through_the_contact_page()
+    public function a_guest_is_subscribed_when_submitting_an_inquiry()
     {
         $faker = \Faker\Factory::create();
         $request = [
                 'full_name' => $faker->name,
                 'email' => $faker->safeEmail,
+                'news_from' => $faker->word,
+                'article_title' => $faker->sentence,
+                'author_name' => $faker->name,
+                'article_url' => $faker->url,
                 'message' => $faker->paragraph
             ];
 
-        $this->post('/contact/question', $request)->assertSessionHas('contact');
-        $this->seeEmailWasSent()->seeEmailSubjectIs('New Contact')->seeEmailContains($request['full_name']);
+        $this->post('/contact/break-inquiry', $request);
+        $this->assertDatabaseHas('subscriptions', [
+            'email' => $request['email']
+        ]);
     }
 
     /** @test */
@@ -54,6 +108,7 @@ class EmailsTest extends TestCase
     {
         Storage::fake('public');
         $faker = \Faker\Factory::create();
+
         $request = [
                 'full_name' => $faker->name,
                 'institution_email' => $faker->safeEmail,
@@ -66,11 +121,38 @@ class EmailsTest extends TestCase
             ];
 
         $this->post('/contact/submit', $request)->assertSessionHas('contact');
-        $this->seeEmailWasSent()
+
+        Storage::disk('public')->assertExists('breaks/'.$request['institution_email'].'.doc');
+
+        $this->seeEmailWasSent()->seeEmailsSent(2);
+        $this->seeEmailTo(config('app.email'))
             ->seeEmailSubjectIs('New Break Submission')
             ->seeEmailContains($request['full_name']);
-        Storage::disk('public')->assertExists('breaks/'.$request['institution_email'].'.doc');
     }
+
+    /** @test */
+    public function a_guest_is_subscribed_when_submitting_a_break()
+    {
+        $faker = \Faker\Factory::create();
+
+        $request = [
+                'full_name' => $faker->name,
+                'institution_email' => $faker->safeEmail,
+                'field_research' => $faker->word,
+                'institute' => $faker->word,
+                'original_article' => $faker->url,
+                'position' => $faker->word,
+                'break' => $file = UploadedFile::fake()->create('document.doc', 20),
+                'message' => $faker->paragraph
+            ];
+
+        $this->post('/contact/submit', $request);
+        $this->assertDatabaseHas('subscriptions', [
+            'email' => $request['institution_email']
+        ]);
+    }
+
+    // GUESTS FEEDBACK
 
     /** @test */
     public function a_new_breaker_receives_an_email_upon_registration()
@@ -89,6 +171,77 @@ class EmailsTest extends TestCase
 
         $this->seeEmailWasSent()->seeEmailTo('john@email.com')->seeEmailSubjectIs('Welcome to TheScienceBreaker!')->seeEmailContains("Hello John");
     }
+
+    /** @test */
+    public function a_guest_gets_feedback_upon_submitting_a_question()
+    {
+        $faker = \Faker\Factory::create();
+
+        $request = [
+                'full_name' => $faker->name,
+                'email' => $faker->safeEmail,
+                'message' => $faker->paragraph
+            ];
+
+        $this->post('/contact/question', $request)->assertSessionHas('contact');
+        
+        $this->seeEmailWasSent()->seeEmailsSent(2);
+
+        $this->seeEmailTo($request['email'])
+            ->seeEmailSubjectIs('Your message to TheScienceBreaker')
+            ->seeEmailContains('Thank you for your contact');
+    }
+
+    /** @test */
+    public function a_guest_gets_feedback_upon_submitting_an_inquiry()
+    {
+        $faker = \Faker\Factory::create();
+
+        $request = [
+                'full_name' => $faker->name,
+                'email' => $faker->safeEmail,
+                'news_from' => $faker->word,
+                'article_title' => $faker->sentence,
+                'author_name' => $faker->name,
+                'article_url' => $faker->url,
+                'message' => $faker->paragraph
+            ];
+
+        $this->post('/contact/break-inquiry', $request)->assertSessionHas('contact');
+        
+        $this->seeEmailWasSent()->seeEmailsSent(2);
+
+        $this->seeEmailTo($request['email'])
+            ->seeEmailSubjectIs('Your Break inquiry')
+            ->seeEmailContains('We have received your Break inquiry');
+    }
+    
+    /** @test */
+    public function a_guest_gets_feedback_upon_submitting_a_new_break()
+    {
+        $faker = \Faker\Factory::create();
+
+        $request = [
+                'full_name' => $faker->name,
+                'institution_email' => $faker->safeEmail,
+                'field_research' => $faker->word,
+                'institute' => $faker->word,
+                'original_article' => $faker->url,
+                'position' => $faker->word,
+                'break' => $file = UploadedFile::fake()->create('document.doc', 20),
+                'message' => $faker->paragraph
+            ];
+
+        $this->post('/contact/submit', $request)->assertSessionHas('contact');
+        
+        $this->seeEmailWasSent()->seeEmailsSent(2);
+
+        $this->seeEmailTo($request['institution_email'])
+            ->seeEmailSubjectIs('Your Break has been submitted!')
+            ->seeEmailContains('Thank you for submitting your Break');
+    }
+
+    // BREAKERS AND MEMBERS FEEDBACK
 
     /** @test */
     public function breakers_receive_an_email_when_their_new_break_is_published()
@@ -116,8 +269,8 @@ class EmailsTest extends TestCase
         ]);  
 
         $this->seeEmailWasSent();
-        $this->seeEmailTo($breaker_one->email)->seeEmailSubjectIs('Break published', 1)->seeEmailContains("Congratulations $breaker_one->first_name");
-        $this->seeEmailTo($breaker_two->email)->seeEmailSubjectIs('Break published', 2)->seeEmailContains("Congratulations $breaker_two->first_name");
+        $this->seeEmailTo($breaker_one->email)->seeEmailSubjectIs('Break published')->seeEmailContains("Congratulations $breaker_one->first_name");
+        $this->seeEmailTo($breaker_two->email)->seeEmailSubjectIs('Break published')->seeEmailContains("Congratulations $breaker_two->first_name");
     }
 
     /** @test */

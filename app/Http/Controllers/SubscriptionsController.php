@@ -15,7 +15,7 @@ class SubscriptionsController extends Controller
     // CREATE
     public function store(Request $request)
     {
-        $request->validate(['email' => 'required|email']);
+        $request->validate(['email' => 'required|email|unique:subscriptions']);
         Subscription::create(['email' => $request->email]);
         return redirect()->back()->with('db_feedback', 'The email has been subscribed');
     }

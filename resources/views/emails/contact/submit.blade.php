@@ -1,5 +1,5 @@
 @component('mail::message')
-# New Break Submission
+<p>Ciao Max, you have a new <strong>Break submission</strong>. See all the details below.</p>
 
 <p class="contact-field"><strong class="d-block">Name</strong>{{ $request['full_name'] }}</p>
 <p class="contact-field"><strong class="d-block">Institution Email</strong> {{ $request['institution_email'] }}</p>

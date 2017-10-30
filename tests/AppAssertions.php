@@ -69,11 +69,17 @@ trait AppAssertions
         return $this;
     }
 
-    protected function seeEmailSubjectIs($subject, $index = null)
+    protected function seeEmailSubjectIs($subject)
     {
-        $email = ($index) ? $this->emails[$index] : end($this->emails);
-        
-        $this->assertEquals($subject, $email->getSubject() , "Subject not found.");
+        $hasSubject = false;
+
+        foreach ($this->emails as $email) {
+            if ($subject == $email->getSubject()) {
+                $hasSubject = true;
+            }    
+        }
+        $this->assertTrue($hasSubject, "An email with the subject \"$subject\" does not exist.");
+
         return $this;
     }
 

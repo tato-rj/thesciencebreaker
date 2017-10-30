@@ -28,6 +28,7 @@
               <input required type="email" class="form-control" id="email" name="email" placeholder="New subscription">
             </div>
             <button type="submit" class="btn btn-theme-orange">Add e-mail</button>
+          </div>
             {{-- Error --}}
             @component('admin/snippets/error')
               email
@@ -35,7 +36,6 @@
               {{ $errors->first('email') }}
               @endslot
             @endcomponent
-          </div>
         </form>          
       </div>
 

@@ -1,5 +1,5 @@
 @component('mail::message')
-# New Break Inquiry
+<p>Ciao Max, you have a new <strong>Break inquiry</strong>. See all the details below.</p>
 
 <p class="contact-field"><strong class="d-block">Name</strong>{{ $request['full_name'] }}</p>
 <p class="contact-field"><strong class="d-block">Email</strong> {{ $request['email'] }}</p>
