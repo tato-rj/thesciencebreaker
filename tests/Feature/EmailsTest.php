@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Tests\AppAssertions;
 use Tests\TestingEmailsListener;
 use Tests\MailManagement;
+use Carbon\Carbon;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -29,7 +30,7 @@ class EmailsTest extends TestCase
                 'message' => $faker->paragraph
             ];
 
-        $this->post('/contact/question', $request)->assertSessionHas('contact');
+        $this->post('/contact/ask-a-question', $request)->assertSessionHas('contact');
         $this->seeEmailWasSent()->seeEmailSubjectIs('New Contact')->seeEmailContains($request['full_name']);
     }
 
@@ -40,10 +41,11 @@ class EmailsTest extends TestCase
         $request = [
                 'full_name' => $faker->name,
                 'email' => $faker->safeEmail,
-                'message' => $faker->paragraph
+                'message' => $faker->paragraph,
+                'subscribe_me' => 'on'
             ];
 
-        $this->post('/contact/question', $request);
+        $this->post('/contact/ask-a-question', $request);
         $this->assertDatabaseHas('subscriptions', [
             'email' => $request['email']
         ]);
@@ -56,10 +58,11 @@ class EmailsTest extends TestCase
         $request = [
                 'full_name' => $faker->name,
                 'email' => $this->subscription->email,
-                'message' => $faker->paragraph
+                'message' => $faker->paragraph,
+                'subscribe_me' => 'on'
             ];
 
-        $this->post('/contact/question', $request);
+        $this->post('/contact/ask-a-question', $request);
         $this->assertDatabaseHas('subscriptions', [
             'email' => $request['email']
         ]);
@@ -94,7 +97,8 @@ class EmailsTest extends TestCase
                 'article_title' => $faker->sentence,
                 'author_name' => $faker->name,
                 'article_url' => $faker->url,
-                'message' => $faker->paragraph
+                'message' => $faker->paragraph,
+                'subscribe_me' => 'on'
             ];
 
         $this->post('/contact/break-inquiry', $request);
@@ -113,16 +117,16 @@ class EmailsTest extends TestCase
                 'full_name' => $faker->name,
                 'institution_email' => $faker->safeEmail,
                 'field_research' => $faker->word,
-                'institute' => $faker->word,
+                'research_institute' => $faker->word,
                 'original_article' => $faker->url,
                 'position' => $faker->word,
-                'break' => $file = UploadedFile::fake()->create('document.doc', 20),
+                'file' => $file = UploadedFile::fake()->create('document.doc', 20),
                 'message' => $faker->paragraph
             ];
 
-        $this->post('/contact/submit', $request)->assertSessionHas('contact');
+        $this->post('/contact/submit-a-break', $request)->assertSessionHas('contact');
 
-        Storage::disk('public')->assertExists('breaks/'.$request['institution_email'].'.doc');
+        Storage::disk('public')->assertExists('breaks/'.$request['institution_email'].'_'.Carbon::now()->toDateString().'.doc');
 
         $this->seeEmailWasSent()->seeEmailsSent(2);
         $this->seeEmailTo(config('app.email'))
@@ -139,14 +143,15 @@ class EmailsTest extends TestCase
                 'full_name' => $faker->name,
                 'institution_email' => $faker->safeEmail,
                 'field_research' => $faker->word,
-                'institute' => $faker->word,
+                'research_institute' => $faker->word,
                 'original_article' => $faker->url,
                 'position' => $faker->word,
-                'break' => $file = UploadedFile::fake()->create('document.doc', 20),
-                'message' => $faker->paragraph
+                'file' => $file = UploadedFile::fake()->create('document.doc', 20),
+                'message' => $faker->paragraph,
+                'subscribe_me' => 'on'
             ];
 
-        $this->post('/contact/submit', $request);
+        $this->post('/contact/submit-a-break', $request);
         $this->assertDatabaseHas('subscriptions', [
             'email' => $request['institution_email']
         ]);
@@ -183,7 +188,7 @@ class EmailsTest extends TestCase
                 'message' => $faker->paragraph
             ];
 
-        $this->post('/contact/question', $request)->assertSessionHas('contact');
+        $this->post('/contact/ask-a-question', $request)->assertSessionHas('contact');
         
         $this->seeEmailWasSent()->seeEmailsSent(2);
 
@@ -225,14 +230,14 @@ class EmailsTest extends TestCase
                 'full_name' => $faker->name,
                 'institution_email' => $faker->safeEmail,
                 'field_research' => $faker->word,
-                'institute' => $faker->word,
+                'research_institute' => $faker->word,
                 'original_article' => $faker->url,
                 'position' => $faker->word,
-                'break' => $file = UploadedFile::fake()->create('document.doc', 20),
+                'file' => $file = UploadedFile::fake()->create('document.doc', 20),
                 'message' => $faker->paragraph
             ];
 
-        $this->post('/contact/submit', $request)->assertSessionHas('contact');
+        $this->post('/contact/submit-a-break', $request)->assertSessionHas('contact');
         
         $this->seeEmailWasSent()->seeEmailsSent(2);
 

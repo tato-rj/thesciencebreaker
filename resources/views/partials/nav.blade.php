@@ -35,8 +35,15 @@
 					<a class="dropdown-item" href="/available-articles">AVAILABLE ARTICLES</a>
 				</div>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">CONTACT</a>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+					CONTACT
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="/contact/ask-a-question">ASK A QUESTION</a>
+					<a class="dropdown-item" href="/contact/break-inquiry">BREAK INQUIRY</a>
+					<a class="dropdown-item" href="/contact/submit-your-break">SUBMIT YOUR BREAK</a>
+				</div>
 			</li>
 		</ul>
 		<form class="form-inline my-2 my-lg-0">

@@ -1,0 +1,1 @@
+<p class="contact-field"><strong class="d-block">{{$slot}}</strong>{{$input}}</p>

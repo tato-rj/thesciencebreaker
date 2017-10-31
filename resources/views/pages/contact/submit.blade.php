@@ -1,0 +1,123 @@
+@extends('_core')
+
+@section('content')
+
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+			@component('snippets.title')
+			Submit your Break
+			@endcomponent
+			<div class="row">
+				<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 mx-auto mt-3">
+					<form method="POST" action="/contact/submit-a-break" enctype="multipart/form-data">
+						{{csrf_field()}}
+						<div class="form-group">
+							<input required type="full_name" value="{{ old('full_name') }}" class="form-control" name="full_name" placeholder="Full name">
+							{{-- Error --}}
+							@component('admin/snippets/error')
+							full_name
+							@slot('feedback')
+							{{ $errors->first('full_name') }}
+							@endslot
+							@endcomponent						
+						</div>
+						<div class="form-group">
+							<input required type="email" class="form-control" value="{{ old('institution_email') }}" name="institution_email" placeholder="Institution E-mail">
+							<small class="text-muted"><em>Please use the official email provided by your research institute</em></small>
+							{{-- Error --}}
+							@component('admin/snippets/error')
+							institution_email
+							@slot('feedback')
+							{{ $errors->first('institution_email') }}
+							@endslot
+							@endcomponent		
+						</div>
+						<div class="form-group">
+							<input required type="text" class="form-control" value="{{ old('field_research') }}" name="field_research" placeholder="Field of research">
+							{{-- Error --}}
+							@component('admin/snippets/error')
+							field_research
+							@slot('feedback')
+							{{ $errors->first('field_research') }}
+							@endslot
+							@endcomponent		
+						</div>
+						<div class="form-group">
+							<input required type="text" class="form-control" name="research_institute" value="{{ old('research_institute') }}" placeholder="Research institute, Department, Unit...">
+							{{-- Error --}}
+							@component('admin/snippets/error')
+							research_institute
+							@slot('feedback')
+							{{ $errors->first('research_institute') }}
+							@endslot
+							@endcomponent		
+						</div>
+						<div class="form-group">
+							<input required type="text" class="form-control" name="original_article" value="{{ old('original_article') }}" placeholder="Original article title & reference">
+							{{-- Error --}}
+							@component('admin/snippets/error')
+							original_article
+							@slot('feedback')
+							{{ $errors->first('original_article') }}
+							@endslot
+							@endcomponent		
+						</div>
+						<div class="form-group">
+							<select class="form-control" name="position">
+								<option selected disabled>I am a...</option>
+								<option value="PhD student" {{ (old('position') == 'PhD student') ? 'selected' : '' }}>PhD student</option>
+								<option value="Postdoctoral Research fellow" {{ (old('position') == 'Postdoctoral Research fellow') ? 'selected' : '' }}>Postdoctoral Research fellow</option>
+								<option value="Research assistant" {{ (old('position') == 'Research assistant') ? 'selected' : '' }}>Research assistant</option>
+								<option value="Lecturer" {{ (old('position') == "Lecturer") ? 'selected' : '' }}>Lecturer</option>
+								<option value="Professor" {{ (old('position') == "Professor") ? 'selected' : '' }}>Professor</option>
+							</select>
+						</div>
+						
+						<div class="form-group d-flex flex-column align-items-center" id="upload_container">
+							<p class="p-2"><strong>Break manuscript upload</strong></p>
+							<p>Please make sure that you read and respected the <a href="#">guidelines for authors</a>! If not, your Break will not be eligible for publication.</p>
+							<p><small>Upload only <strong>.doc, .docx, .odt, .txt or .pdf</strong> files. Files exceeding 3 MB will not be uploaded.</small></p>
+							<label class="custom-file">
+								<input type="file" name="file" class="custom-file-input">
+								<span class="custom-file-control"></span>
+							</label>
+							{{-- Error --}}
+							@component('admin/snippets/error')
+							file
+							@slot('feedback')
+							{{ $errors->first('file') }}
+							@endslot
+							@endcomponent
+						</div>
+
+						<div class="form-group">
+							<textarea class="form-control" name="message" value="{{ old('message') }}" rows="5" placeholder="Add your message here and please include full information for additional Breakers, if any. Thank you!"></textarea>
+							{{-- Error --}}
+							@component('admin/snippets/error')
+							message
+							@slot('feedback')
+							{{ $errors->first('message') }}
+							@endslot
+							@endcomponent		
+						</div>
+						<label class="custom-control d-block custom-checkbox mb-4">
+							<input type="checkbox" checked="true" name="subscribe_me" class="custom-control-input">
+							<span class="custom-control-indicator"></span>
+							<span class="custom-control-description">Join the newsletter</span>
+						</label>
+						<button type="submit" class="btn btn-theme-green">Send</button>
+					</form>				
+				</div>
+			</div>
+
+		</div>
+		{{-- Side Bar --}}
+		@include('partials.side-bar')
+	</div>
+</div>
+{{-- Feedback Messages --}}
+@if($flash = session('contact'))
+@include('admin/snippets/alerts/success')
+@endif
+@endsection

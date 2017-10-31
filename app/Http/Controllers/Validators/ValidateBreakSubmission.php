@@ -9,10 +9,10 @@ class ValidateBreakSubmission implements Validator
             'full_name' => 'required|min:2',
             'institution_email' => 'required|email',
             'field_research' => 'required|min:2',
-            'institute' => 'required|min:2',
-            'original_article' => 'required|url',
-            'position' => 'required|min:2',
-            'break' => 'required|mimes:doc,docx,odt,txt,pdf'
+            'research_institute' => 'required|min:2',
+            'original_article' => 'required',
+            'position' => 'required',
+            'file' => 'required|mimes:doc,docx,odt,txt,pdf|max:3000'
         ]);
     }
 

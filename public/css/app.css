@@ -26,6 +26,10 @@ a:hover {
   color: #da5528;
 }
 
+.custom-control-input:checked ~ .custom-control-indicator {
+  background-color: #f36e41;
+}
+
 .btn:focus,
 .btn:active,
 a:focus,
@@ -381,7 +385,8 @@ header nav .dropdown-menu a:not(:last-of-type) {
   border-bottom: 1px dashed white;
 }
 
-header nav .dropdown-menu a:hover {
+header nav .dropdown-menu a:hover,
+header nav .dropdown-menu a:focus {
   background: #da5528;
   color: white;
 }
@@ -716,12 +721,54 @@ footer ul.credits i {
   padding-bottom: 1rem;
 }
 
+#inquiry_news .nav-link {
+  padding: .25em .5em;
+}
+
+#inquiry_news .nav-link.active {
+  background: #f36e41;
+}
+
+#options input,
+#options textarea {
+  display: none;
+}
+
+#upload_container {
+  border: 2px solid #f36e41;
+  padding-bottom: 1rem;
+}
+
+#upload_container p {
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#upload_container p:nth-of-type(1) {
+  color: white;
+  background: #f36e41;
+  width: 100%;
+}
+
+#upload_container label {
+  width: 80%;
+}
+
 .navbar {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
   z-index: 10;
+}
+
+#cards .card {
+  font-size: 1.2em;
+}
+
+#cards .card-body {
+  padding: 1.5rem;
 }
 
 #cards .card-body-icon {
@@ -789,8 +836,12 @@ footer ul.credits i {
   border-radius: .25rem;
 }
 
+ol {
+  margin-bottom: 0;
+}
+
 h4.title {
-  border-bottom: 4px solid lightgrey;
+  border-bottom: 2px solid lightgrey;
   padding-bottom: 6px;
 }
 

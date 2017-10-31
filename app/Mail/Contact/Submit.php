@@ -13,14 +13,12 @@ class Submit extends Mailable
     use Queueable, SerializesModels;
 
     public $request;
-    public $breaker;
     public $file;
 
     public function __construct($request, $file)
     {
         $this->request = $request;
         $this->file = $file;
-        $this->breaker = Author::where('email', $request->email)->get();
     }
 
     public function build()

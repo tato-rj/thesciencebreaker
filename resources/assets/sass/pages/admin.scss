@@ -4,6 +4,14 @@
 }
 
 #cards {
+	.card {
+		font-size: 1.2em;
+	}
+	
+	.card-body {
+		padding: 1.5rem;
+	}
+
 	.card-body-icon {
 		right: -10px!important;
 	}

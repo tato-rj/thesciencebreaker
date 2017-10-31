@@ -11,27 +11,32 @@ use App\Http\Controllers\Validators\ValidateBreakSubmission;
 
 class ContactsController extends Controller
 {
+    public function question(Request $request)
+    {
+        ValidateQuestion::createCheck($request);
+        MailFactory::question($request);
+        if ($request->subscribe_me) Subscription::createOrIgnore($request->email);
+
+        return redirect()->back()->with('contact', 'Your message has been sent, thank you for your contact!');
+    }
+
     public function inquiry(Request $request)
     {
     	ValidateBreakInquiry::createCheck($request);
     	MailFactory::breakInquiry($request);
-        Subscription::createOrIgnore($request->email);
-    	return redirect()->back()->with('contact', 'Your inquiry has been sent');
-    }
+        if ($request->subscribe_me) Subscription::createOrIgnore($request->email);
 
-    public function question(Request $request)
-    {
-    	ValidateQuestion::createCheck($request);
-    	MailFactory::question($request);
-        Subscription::createOrIgnore($request->email);
-    	return redirect()->back()->with('contact', 'Your message has been sent, thank you for your contact!');
+    	return redirect()->back()->with('contact', 'Your inquiry has been sent');
     }
 
     public function submit(Request $request)
     {
+
         ValidateBreakSubmission::createCheck($request);
+
         MailFactory::submit($request);
-        Subscription::createOrIgnore($request->institution_email);
+        if ($request->subscribe_me) Subscription::createOrIgnore($request->institution_email);
+
         return redirect()->back()->with('contact', 'Your Break has been submitted');
     }
 }

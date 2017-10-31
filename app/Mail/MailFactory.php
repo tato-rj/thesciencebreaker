@@ -14,6 +14,8 @@ use App\Mail\Contact\ContactFeedback;
 use App\Manager;
 use App\Author;
 use App\Article;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class MailFactory
 {
@@ -42,8 +44,9 @@ class MailFactory
             'subject' => 'Your message to TheScienceBreaker',
             'body' => 'Thank you for your contact! We have received your message and will get back to you shortly.'
         ];
+    
+        Mail::to(config('app.email'))->send(new Question($request->except(['_token', 'subscribe_me'])));
         Mail::to($request->email)->send(new ContactFeedback($request, $message));
-        Mail::to(config('app.email'))->send(new Question($request));
     }
 
     public static function breakInquiry(Request $request)
@@ -53,8 +56,8 @@ class MailFactory
             'body' => 'We have received your Break inquiry. We will get back to you shortly!'
         ];
 
+        Mail::to(config('app.email'))->send(new BreakInquiry($request->except(['_token', 'subscribe_me'])));
         Mail::to($request->email)->send(new ContactFeedback($request, $message));
-        Mail::to(config('app.email'))->send(new BreakInquiry($request));
     }
 
     public static function submit(Request $request)
@@ -64,8 +67,17 @@ class MailFactory
             'body' => 'Thank you for submitting your Break! We will review your article and you will be notified once the Break is published.'
         ];
 
-        $file = $request->file('break')->storeAs('breaks', "$request->institution_email.doc", 'public');
+        $file = self::saveFile($request);
+        Mail::to(config('app.email'))->send(new Submit($request->except(['_token', 'subscribe_me', 'file']), $file));
         Mail::to($request->institution_email)->send(new ContactFeedback($request, $message));
-        Mail::to(config('app.email'))->send(new Submit($request, $file));
+    }
+
+    protected static function saveFile(Request $request)
+    {
+        $file = $request->file('file');
+        $ext = $file->extension();
+        $name = $request->institution_email.'_'.Carbon::now()->toDateString();
+        $file->storeAs("breaks/", "$name.$ext", 'public');
+        return Storage::url("$name.$ext");
     }
 }

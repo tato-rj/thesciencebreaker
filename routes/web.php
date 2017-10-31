@@ -17,17 +17,17 @@ Route::get('/breaks/{category}', 'CategoryController@show');
 
 // About
 Route::get('/about', function() {
-	return view('pages.about');
+	return view('pages.presentation.about');
 });
 // Mission
 Route::get('/mission', function() {
-	return view('pages.mission');
+	return view('pages.presentation.mission');
 });
 // Team
 Route::get('/the-team', 'ManagersController@index');
 // Partners
 Route::get('/partners', function() {
-	return view('pages.partners');
+	return view('pages.presentation.partners');
 });
 
 /*
@@ -38,12 +38,12 @@ Route::get('/partners', function() {
 
 // Information
 Route::get('/information', function() {
-	return view('pages.information');
+	return view('pages.for_breakers.information');
 });
 
 // FAQ
 Route::get('/faq', function() {
-	return view('pages.faq');
+	return view('pages.for_breakers.faq');
 });
 
 // Available Articles
@@ -55,10 +55,18 @@ Route::get('/available-articles', 'AvailableArticlesController@index');
 * 
 */
 
-// Break Inquiry
+Route::get('/contact/ask-a-question', function() {
+	return view('pages.contact.question');
+});
+Route::get('/contact/break-inquiry', function() {
+	return view('pages.contact.inquiry');
+});
+Route::get('/contact/submit-your-break', function() {
+	return view('pages.contact.submit');
+});
+Route::post('/contact/ask-a-question', 'ContactsController@question');
 Route::post('/contact/break-inquiry', 'ContactsController@inquiry');
-Route::post('/contact/question', 'ContactsController@question');
-Route::post('/contact/submit', 'ContactsController@submit');
+Route::post('/contact/submit-a-break', 'ContactsController@submit');
 
 /*
 * 

@@ -19,7 +19,7 @@ class AvailableArticlesController extends Controller
     {
         $articles = AvailableArticle::orderBy('created_at', 'desc')->paginate(8);
         $available_count = AvailableArticle::count();
-        return view('admin/pages/available_articles', compact(['articles', 'available_count']));
+        return view('admin.pages.available_articles', compact(['articles', 'available_count']));
     }
 
     public function store(Request $request)
@@ -34,7 +34,7 @@ class AvailableArticlesController extends Controller
     {
         $categories = Category::with('available_articles')->get();
         // return $categories;
-        return view('pages/available_articles', compact('categories'));
+        return view('pages.for_breakers.available_articles', compact('categories'));
     }
 
     // UPDATE

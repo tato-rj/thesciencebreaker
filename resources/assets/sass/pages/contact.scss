@@ -1,0 +1,35 @@
+#inquiry_news {
+	.nav-link {
+	    padding: .25em .5em;
+	}
+	
+	.nav-link.active {
+		background: $color-theme-orange-l;
+	}
+}
+
+#options {
+	input, textarea {
+		display: none;
+	}
+}
+
+#upload_container {
+	border: 2px solid $color-theme-orange-l;
+	padding-bottom: 1rem;
+
+	p {
+		text-align: center;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+	p:nth-of-type(1) {
+		color: white;
+		background: $color-theme-orange-l;
+		width: 100%;
+	}
+
+	label {
+		width: 80%;
+	}
+}

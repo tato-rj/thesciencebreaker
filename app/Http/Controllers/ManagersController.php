@@ -26,7 +26,7 @@ class ManagersController extends Controller
         $breakers = Author::orderBy('first_name')->paginate(10);
         $paginated = Input::get('page');
 
-        return view('pages.team', compact('founders', 'editors', 'comm_officers', 'advisors', 'breakers', 'paginated'));
+        return view('pages.presentation.team', compact('founders', 'editors', 'comm_officers', 'advisors', 'breakers', 'paginated'));
     }
 
     // CREATE

@@ -77,11 +77,10 @@ header {
 				border-bottom: 1px dashed white;
 			}
 			
-		 	a:hover {
+		 	a:hover, a:focus {
 				background: $color-theme-orange-d;
 				color: white;
 		 	}
 		}
 	}
-
 }
