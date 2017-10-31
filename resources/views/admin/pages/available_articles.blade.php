@@ -7,7 +7,7 @@
       @component('admin/snippets/page_title')
           Available Articles
         @slot('comment')
-          In this page you can <u>create</u>,<u>edit</u> and <u>delete</u> available articles
+          In this page you can <u>create</u>, <u>edit</u> and <u>delete</u> available articles
         @endslot
       @endcomponent
 

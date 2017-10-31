@@ -67,6 +67,7 @@ Route::post('/contact/submit', 'ContactsController@submit');
 */
 
 Route::get('/admin/dashboard', 'AdminController@index');
+Route::get('/admin/graphs', 'AdminController@graphs');
 
 // Breaks routes
 Route::get('/admin/breaks/add', 'ArticlesController@create');

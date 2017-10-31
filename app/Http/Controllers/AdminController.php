@@ -24,10 +24,19 @@ class AdminController extends Controller
     	$available_count = AvailableArticle::count();
     	$subscription_count = Subscription::count();
 
+    	return view('admin/pages/dashboard', compact(['breaks_count', 'authors_count', 'available_count', 'subscription_count']));
+    }
+
+    public function graphs()
+    {
+        $breaks_count = Article::count();
+        $authors_count = Author::count();
+        $available_count = AvailableArticle::count();
+        $subscription_count = Subscription::count();
+
         $colors = Category::colors();
         $records = Article::records('6 MONTH');
 
-    	return view('admin/pages/dashboard', compact(['breaks_count', 'authors_count', 'available_count', 'subscription_count', 'colors', 'records']));
+        return view('admin/pages/graphs', compact(['breaks_count', 'authors_count', 'available_count', 'subscription_count', 'colors', 'records']));
     }
-
 }

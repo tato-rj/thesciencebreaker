@@ -8,29 +8,44 @@
 		right: -10px!important;
 	}
 
-	> div:nth-of-type(1) {
-		> div:first-of-type {
-			background: #f36e41;
-		}
+	#card-breaks {
+		background: #f36e41;
+	}
+	
+	#card-breakers {
+		background: #50c4d0;
 	}
 
-	> div:nth-of-type(2) {
-		> div:first-of-type {
-			background: #50c4d0;
-		}
+	#card-available {
+		background: #ffd55c;
 	}
+
+	#card-subscriptions {
+		background: #06b2b8;
+	}
+	// > div:nth-of-type(1) {
+	// 	> div:first-of-type {
+	// 		background: #f36e41;
+	// 	}
+	// }
+
+	// > div:nth-of-type(2) {
+	// 	> div:first-of-type {
+	// 		background: #50c4d0;
+	// 	}
+	// }
 	
-	> div:nth-of-type(3) {
-		> div:first-of-type {
-			background: #ffd55c;
-		}
-	}
+	// > div:nth-of-type(3) {
+	// 	> div:first-of-type {
+	// 		background: #ffd55c;
+	// 	}
+	// }
 	
-	> div:nth-of-type(4) {
-		> div:first-of-type {
-			background: #06b2b8;
-		}
-	}
+	// > div:nth-of-type(4) {
+	// 	> div:first-of-type {
+	// 		background: #06b2b8;
+	// 	}
+	// }
 }
 
 .sticky-footer {
