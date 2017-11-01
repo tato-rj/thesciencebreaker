@@ -36,7 +36,8 @@ $factory->define(App\Article::class, function (Faker $faker) {
         'category_id' => 1,
         'editor_id' => 1,
         'doi' => 'https://doi.org/10.25250/thescbr.brk001',
-        'editor_pick' => $faker->boolean($chanceOfGettingTrue = 50)
+        'editor_pick' => $faker->boolean($chanceOfGettingTrue = 50),
+        'views' => 0
     ];
 });
 

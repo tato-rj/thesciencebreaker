@@ -88,7 +88,7 @@
 		}
 	}
 
-	#picks {
+	> div:not(:first-of-type) {
 		img {
 			width: 40px;
 		}

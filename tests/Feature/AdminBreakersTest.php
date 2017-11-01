@@ -11,7 +11,7 @@ class AdminBreakersTest extends TestCase
 	use DatabaseMigrations;
 
     /** @test */
-    public function an_authenticated_user_can_add_a_new_breaker()
+    public function a_manager_can_add_a_new_breaker()
     {
         $this->signIn();
 
@@ -31,7 +31,7 @@ class AdminBreakersTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_can_remove_a_breaker()
+    public function a_manager_can_remove_a_breaker()
     {
         $this->signIn();
         $author = $this->author;
@@ -58,14 +58,7 @@ class AdminBreakersTest extends TestCase
     }   
 
     /** @test */
-    public function an_authenticated_user_can_view_a_page_to_edit_a_breaker()
-    {
-        $this->signIn();
-        $this->get('/admin/breakers/'.$this->author->id.'/edit')->assertSee($this->author->first_name);
-    }
-
-    /** @test */
-    public function an_authenticated_user_can_edit_a_breaker()
+    public function a_manager_can_edit_a_breaker()
     {
         $this->signIn();
         $author = $this->author;

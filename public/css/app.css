@@ -630,28 +630,28 @@ footer a:hover {
   border-bottom: 1px solid lightgrey;
 }
 
-#side-bar #picks img {
+#side-bar > div:not(:first-of-type) img {
   width: 40px;
 }
 
-#side-bar #picks small:first-of-type {
+#side-bar > div:not(:first-of-type) small:first-of-type {
   line-height: 1.2;
 }
 
-#side-bar #picks small:last-of-type {
+#side-bar > div:not(:first-of-type) small:last-of-type {
   line-height: 1;
 }
 
-#side-bar #picks > div {
+#side-bar > div:not(:first-of-type) > div {
   overflow: hidden;
   margin: 0;
 }
 
-#side-bar #picks > div em {
+#side-bar > div:not(:first-of-type) > div em {
   font-size: 0.9em;
 }
 
-#side-bar #picks > div:not(:last-of-type) {
+#side-bar > div:not(:first-of-type) > div:not(:last-of-type) {
   padding-bottom: 8px;
   margin-bottom: 8px;
   border-bottom: 1px dotted lightgrey;

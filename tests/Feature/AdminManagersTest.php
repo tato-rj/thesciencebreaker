@@ -12,7 +12,7 @@ class AdminManagersTest extends TestCase
 	use DatabaseMigrations;
 
     /** @test */
-    public function an_authenticated_user_can_add_a_new_team_member()
+    public function a_manager_can_add_a_new_team_member()
     {
         $this->signIn();
 
@@ -33,7 +33,7 @@ class AdminManagersTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_can_remove_a_manager()
+    public function a_manager_can_remove_a_team_member()
     {
         $this->signIn();
         $manager = $this->manager;
@@ -46,14 +46,14 @@ class AdminManagersTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_can_view_a_page_to_edit_a_manager()
+    public function a_manager_can_view_a_page_to_edit_a_team_member()
     {
         $this->signIn();
         $this->get('/admin/managers/'.$this->manager->id.'/edit')->assertSee($this->manager->first_name);
     }
 
     /** @test */
-    public function an_authenticated_user_can_edit_a_manager()
+    public function a_manager_can_edit_a_team_member()
     {
         $this->signIn();
         $manager = $this->manager;

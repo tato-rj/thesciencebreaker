@@ -43,6 +43,7 @@ class ArticlesController extends Controller
     public function show($category, Article $article)
     {
         $more_from = $article->similar();
+        $article->increment('views');
         return view('pages.article', compact(['article', 'more_from']));
     }
 
