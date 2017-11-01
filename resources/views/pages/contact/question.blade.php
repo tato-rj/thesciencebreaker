@@ -51,7 +51,7 @@
 					</form>				
 				</div>
 			</div>
-
+		@include('snippets.headquarters')
 		</div>
 		{{-- Side Bar --}}
 		@include('partials.side-bar')

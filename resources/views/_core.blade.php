@@ -19,6 +19,11 @@
         @yield('content')
     </main>
 
+    {{-- Feedback Messages --}}
+    @if($flash = session('subscription'))
+        @include('admin/snippets/alerts/success')
+    @endif
+    
     @include('partials.footer')
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>

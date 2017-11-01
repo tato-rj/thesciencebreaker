@@ -46,14 +46,21 @@
 				{{-- SUBSCRIBE --}}
 				<div>
 					<h5><strong>SUBSCRIBE</strong></h5> <p class="text-muted">Stay up-to-date with the latest published Breaks!</p>
-					<form method="POST">
+					<form method="POST" action="/admin/subscriptions">
 						{{ csrf_field() }}
 						<div class="form-group">
-							<input type="email" class="form-control" id="subscribe" placeholder="Enter email">
+							<input required type="email" class="form-control" name="subscription" placeholder="Enter email">
 							<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 						</div>
 						<button type="submit" class="btn btn-theme-green btn-block">Submit</button>
 					</form>
+				{{-- Error --}}
+	            @component('admin/snippets/error')
+	              subscription
+	              @slot('feedback')
+	              {{ $errors->first('subscription') }}
+	              @endslot
+	            @endcomponent
 				</div>
 			</div>
 		</div>

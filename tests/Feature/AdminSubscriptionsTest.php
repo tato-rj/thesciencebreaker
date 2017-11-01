@@ -24,7 +24,7 @@ class AdminSubscriptionsTest extends TestCase
         $this->signIn();
 
         $this->post('/admin/subscriptions', [
-            'email' => 'new@subscription.com'
+            'subscription' => 'new@subscription.com'
         ])->assertSessionHas('db_feedback');
 
         $this->assertDatabaseHas('subscriptions', [

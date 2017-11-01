@@ -163,18 +163,23 @@ class EmailsTest extends TestCase
     public function a_new_breaker_receives_an_email_upon_registration()
     {
         $this->signIn();
+        
+        $faker = \Faker\Factory::create();
+
+        $first_name = $faker->firstName;
+        $email = $faker->safeEmail;
 
         $this->post('/admin/breakers', [
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-            'email' => 'john@email.com',
-            'position' => 'Professor',
-            'research_institute' => 'Yale',
-            'field_research' => 'Neurobiology',
-            'general_comments' => 'John is a new breaker'
+            'first_name' => $first_name,
+            'last_name' => $faker->lastName,
+            'email' => $email,
+            'position' => $faker->word,
+            'research_institute' => $faker->word,
+            'field_research' => $faker->word,
+            'general_comments' => $faker->paragraph
         ]);
 
-        $this->seeEmailWasSent()->seeEmailTo('john@email.com')->seeEmailSubjectIs('Welcome to TheScienceBreaker!')->seeEmailContains("Hello John");
+        $this->seeEmailWasSent()->seeEmailTo($email)->seeEmailSubjectIs('Welcome to TheScienceBreaker!')->seeEmailContains("Hello $first_name");
     }
 
     /** @test */
@@ -249,9 +254,11 @@ class EmailsTest extends TestCase
     // BREAKERS AND MEMBERS FEEDBACK
 
     /** @test */
-    public function breakers_receive_an_email_when_their_new_break_is_published()
+    public function breakers_and_the_editor_receive_an_email_when_their_new_break_is_published()
     {
         $this->signIn();
+        
+        $faker = \Faker\Factory::create();
 
         $breaker_one = factory('App\Author')->create();
         $breaker_two = factory('App\Author')->create();
@@ -260,14 +267,14 @@ class EmailsTest extends TestCase
         ]);
 
         $this->post('/admin/breaks', [
-            'title' => 'New Break',
-            'content' => '<p>My content</p>',
+            'title' => $faker->sentence,
+            'content' => '<p>'.$faker->paragraph.'</p>',
             'authors' => [
                 $breaker_one->id,
                 $breaker_two->id
             ],
             'reading_time' => '3.5',
-            'original_article' => 'article',
+            'original_article' => $faker->url,
             'category_id' => '1',
             'editor_id' => $editor->id,
             'editor_pick' => '0'
@@ -276,31 +283,6 @@ class EmailsTest extends TestCase
         $this->seeEmailWasSent();
         $this->seeEmailTo($breaker_one->email)->seeEmailSubjectIs('Break published')->seeEmailContains("Congratulations $breaker_one->first_name");
         $this->seeEmailTo($breaker_two->email)->seeEmailSubjectIs('Break published')->seeEmailContains("Congratulations $breaker_two->first_name");
+        $this->seeEmailTo($editor->email)->seeEmailContains("$editor->first_name");
     }
-
-    /** @test */
-    public function editors_receive_an_email_when_a_their_new_break_is_published()
-    {
-        $this->signIn();
-
-        $editor = factory('App\Manager')->create([
-            'is_editor' => 1
-        ]);
-
-        $this->post('/admin/breaks', [
-            'title' => 'New Break',
-            'content' => '<p>My content</p>',
-            'authors' => [
-                $this->author->id
-            ],
-            'reading_time' => '3.5',
-            'original_article' => 'article',
-            'category_id' => '1',
-            'editor_id' => $editor->id,
-            'editor_pick' => '0'
-        ]);  
-
-        $this->seeEmailWasSent()->seeEmailTo($editor->email)->seeEmailContains("$editor->first_name");
-    }
-
 }

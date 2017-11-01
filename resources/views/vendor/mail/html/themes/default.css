@@ -339,8 +339,15 @@ img {
 
 .contact-field {
     padding: .75em;
-    background: rgba(243,110,65,0.05);
-    border-top: 1px solid #f36e41;
+    margin-bottom: 0;
+}
+
+.contact-field:nth-of-type(even) {
+    background: rgba(0,0,0,0.025);
+}
+
+.contact-field:nth-of-type(odd) {
+    background: rgba(0,0,0,0.05);
 }
 
 .contact-field strong {

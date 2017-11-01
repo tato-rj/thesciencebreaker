@@ -39,6 +39,10 @@ button:active {
   outline: none !important;
 }
 
+.list-none {
+  list-style-type: none;
+}
+
 .lh-1 {
   line-height: 1.2;
 }
@@ -753,6 +757,10 @@ footer ul.credits i {
 
 #upload_container label {
   width: 80%;
+}
+
+#headquarters iframe {
+  width: 100%;
 }
 
 .navbar {

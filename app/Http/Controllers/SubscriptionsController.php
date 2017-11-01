@@ -9,15 +9,15 @@ class SubscriptionsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['store']]);
     }
 
     // CREATE
     public function store(Request $request)
     {
-        $request->validate(['email' => 'required|email|unique:subscriptions']);
-        Subscription::create(['email' => $request->email]);
-        return redirect()->back()->with('db_feedback', 'The email has been subscribed');
+        $request->validate(['subscription' => 'required|email|unique:subscriptions,email']);
+        Subscription::create(['email' => $request->subscription]);
+        return redirect()->back()->with('db_feedback', 'The email has been subscribed')->with('subscription', 'Thank you for subscribing!');
     }
 
     // READ

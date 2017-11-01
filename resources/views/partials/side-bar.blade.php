@@ -2,13 +2,20 @@
 	<div id="side-bar">
 		<div>
 			<strong><p class="mb-1">Subscribe now!</p></strong>
-			<form method="POST">
+			<form method="POST" action="/admin/subscriptions">
 				{{csrf_field()}}
 				<div class="form-group">
-					<input type="email" class="form-control" name="subscribe" id="subscribe" aria-describedby="emailHelp" placeholder="Enter email">
+					<input required type="email" class="form-control" name="subscription" id="email" aria-describedby="emailHelp" placeholder="Enter email">
 				</div>
 				<button type="submit" class="btn btn-sm btn-block btn-theme-green">Submit</button>
 			</form>
+			{{-- Error --}}
+            @component('admin/snippets/error')
+              subscription
+              @slot('feedback')
+              {{ $errors->first('subscription') }}
+              @endslot
+            @endcomponent
 		</div>
 		<div id="picks">
 			<strong><p class="mb-3">Editor's picks</p></strong>

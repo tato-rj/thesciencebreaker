@@ -25,15 +25,15 @@
           <div class="form-inline">
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
               <div class="input-group-addon">@</div>
-              <input required type="email" class="form-control" id="email" name="email" placeholder="New subscription">
+              <input required type="email" class="form-control" name="subscription" placeholder="New subscription">
             </div>
             <button type="submit" class="btn btn-theme-orange">Add e-mail</button>
           </div>
             {{-- Error --}}
             @component('admin/snippets/error')
-              email
+              subscription
               @slot('feedback')
-              {{ $errors->first('email') }}
+              {{ $errors->first('subscription') }}
               @endslot
             @endcomponent
         </form>          
