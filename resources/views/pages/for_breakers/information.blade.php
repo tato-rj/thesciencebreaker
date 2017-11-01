@@ -35,9 +35,9 @@
 					<li><strong>Cap things off</strong> at the end so a non-expert comes away with a strong, simple <strong>take-home message</strong>.</li>
 				</ul>
 			</div>
-			<p>Read more on the <a href="#">F.A.Q. for Breakers</a>.</p>
+			<p>Read more on the <a href="/faq">F.A.Q. for Breakers</a>.</p>
 			<div class="text-center mt-5">
-				<a href="#" class="btn bg-default text-white" id="breaker-btn"><img src="/images/logo-small.svg"><strong>SUBMIT YOUR BREAK</strong></a>
+				<a href="/contact/submit-your-break" class="btn bg-default text-white" id="breaker-btn"><img src="/images/logo-small.svg"><strong>SUBMIT YOUR BREAK</strong></a>
 			</div>
 		</div>
 		{{-- Side Bar --}}

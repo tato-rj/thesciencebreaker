@@ -26,6 +26,11 @@ a:hover {
   color: #da5528;
 }
 
+a:focus {
+  text-decoration: none;
+  color: inherit;
+}
+
 .custom-control-input:checked ~ .custom-control-indicator {
   background-color: #f36e41;
 }
@@ -429,6 +434,18 @@ footer ul.credits i {
   font-size: 0.4em;
   margin: 0 12px;
   vertical-align: middle;
+}
+
+footer a {
+  color: inherit;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+footer a:hover {
+  color: inherit;
+  opacity: 0.6;
+  text-decoration: none;
 }
 
 .pagination {

@@ -21,7 +21,7 @@
 			<div class="jumbotron">
 				<ol>
 					<li>There is an interesting article (published by you or by one of your peers) that you wish to report to the broad public.</li>
-					<li>The list of Break requests that we receive from the Broad public is listed in the <a href="">Available Articles</a> page</li>
+					<li>The list of Break requests that we receive from the Broad public is listed in the <a href="/available-articles">Available Articles</a> page</li>
 				</ol>
 			</div>
 			<p><strong>Q: How complete is the paper review meant to be?</strong></p>

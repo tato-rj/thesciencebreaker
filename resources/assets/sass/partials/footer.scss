@@ -36,4 +36,15 @@ footer {
 			vertical-align: middle;
 		}
 	}
+
+	a {
+		color: inherit;
+		transition: 0.2s;
+	}
+
+	a:hover {
+		color: inherit;
+		opacity: 0.6;
+		text-decoration: none;
+	}
 }

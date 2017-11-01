@@ -14,7 +14,7 @@
 			</div>
 			<p>We believe that science is made by the people for the people with no discrimination of gender, faith, ethnic origin, age, political view, sexual behaviors or whatsoever. Not respecting this principle will generate pitfalls of isolation where misused information becomes an illusion of science and science, in turn, is left as an impotent observer.</p>
 			<div class="text-center mt-5">
-				<a href="#" class="btn bg-default text-white" id="breaker-btn"><img src="/images/logo-small.svg"><strong>LEARN HOW TO BECOME A BREAKER</strong></a>
+				<a href="/information" class="btn bg-default text-white" id="breaker-btn"><img src="/images/logo-small.svg"><strong>LEARN HOW TO BECOME A BREAKER</strong></a>
 			</div>
 		</div>
 		{{-- Side Bar --}}

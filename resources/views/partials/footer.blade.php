@@ -5,40 +5,69 @@
 				<div class="d-flex align-items-center mb-4">
 					<h5 class="m-0 mr-4"><strong>FOLLOW US</strong></h5>
 					<div class="d-flex align-items-center justify-content-center social">
-						<i class="fa fa-facebook" aria-hidden="true"></i>
-						<i class="fa fa-twitter" aria-hidden="true"></i>
-						<i class="fa fa-google-plus" aria-hidden="true"></i>
+						<a href="https://www.facebook.com/sciencebreaker/?fref=ts" target="_blank">
+							<i class="fa fa-facebook" aria-hidden="true"></i>
+						</a>
+						<a href="https://twitter.com/sciencebreaker" target="_blank">
+							<i class="fa fa-twitter" aria-hidden="true"></i>
+						</a>
+						<a href="#" target="_blank">
+							<i class="fa fa-google-plus" aria-hidden="true"></i>
+						</a>
 					</div>	
 				</div>
 				<div class="d-flex align-items-top">
 					<ul class="p-0">
 						<p>PRESENTATION</p>
-						<li>about</li>
-						<li>mission</li>
-						<li>the team</li>
-						<li>partners</li>
+						<li>
+							<a href="/about">about</a>
+						</li>
+						<li>
+							<a href="/mission">mission</a>
+						</li>
+						<li>
+							<a href="/the-team">the team</a>
+						</li>
+						<li>
+							<a href="/partners">partners</a>
+						</li>					
 					</ul>
 					<ul>
 						<p>BREAKS</p>
-						<li>health & physiology</li>
-						<li>neurobiology</li>
-						<li>earth & space</li>
-						<li>evolution & behaviour</li>
-						<li>plant biology</li>
-						<li>microbiology</li>
-						<li>maths, physics & chemistry</li>
+						@foreach ($categories as $category)
+						<li>
+							<a href="{{ $category->path() }}">
+								{{ strtolower($category->name) }}
+							</a>
+						</li>
+						@endforeach
 					</ul>
 					<ul>
 						<p>FOR BREAKERS</p>
-						<li>general information</li>
-						<li>F.A.Q</li>
-						<li>available articles</li>
+						<li>					
+							<a href="/information">general information</a>
+						</li>
+						<li>
+							<a href="/faq">F.A.Q</a>
+						</li>
+						<li>	
+							<a href="/available-articles">available articles</a>
+						</li>						
 					</ul>
 					<ul>
 						<p>CONTACT US</p>
-						<li>submit a break</li>
-						<li>ask a question</li>
-						<li>privacy policy</li>
+						<li>
+							<a href="/contact/ask-a-question">ask a question</a>
+						</li>
+						<li>
+							<a href="/contact/break-inquiry">break inquiry</a>
+						</li>
+						<li>
+							<a href="/contact/submit-your-break">submit a break</a>
+						</li>
+						<li>
+							<a href="https://www.iubenda.com/privacy-policy/7974803" target="_blank">privacy policy</a>
+						</li>						
 					</ul>
 				</div>
 			</div>
@@ -64,12 +93,11 @@
 				</div>
 			</div>
 		</div>
-	
 		<div class="mt-4 text-center">
 			<ul class="credits pt-4">
 				<li>30, Quai Ernest-Ansermet 1211 Genève 4<i class="fa fa-circle" aria-hidden="true"></i></li>
 				<li>© TheScienceBreaker 2015 - 2017. All rights reserved<i class="fa fa-circle" aria-hidden="true"></i></li>
-				<li>powered by LeftLane<i class="fa fa-circle" aria-hidden="true"></i></li>
+				<li>powered by <a href="https://www.leftlaneapps.com" target="_blank">LeftLane</a><i class="fa fa-circle" aria-hidden="true"></i></li>
 				<li><a href="/admin/dashboard">Admin Login</a></li>
 			</ul>
 		</div>
