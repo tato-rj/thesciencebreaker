@@ -16,6 +16,7 @@ use App\Author;
 use App\Article;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Queue\Queue;
 
 class MailFactory
 {

@@ -80,6 +80,11 @@ class Article extends Model
         return Article::where('category_id', $this->category_id)->orderBy('id', 'desc')->take(5)->get();
     }
 
+    public static function popular()
+    {
+        return self::orderBy('views', 'desc')->take(5)->get();
+    }
+
     public function preview()
     {
         $pieces = explode(" ", strip_tags($this->content, '<br>'));

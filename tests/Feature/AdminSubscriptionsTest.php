@@ -12,14 +12,14 @@ class AdminSubscriptionsTest extends TestCase
 	use DatabaseMigrations;
 
     /** @test */
-    public function an_authenticated_user_can_see_all_subscriptions_on_the_admin_page()
+    public function a_manager_can_see_all_subscriptions_on_the_admin_page()
     {
         $this->signIn();
         $this->get('/admin/subscriptions')->assertSee($this->subscription->email);
     }
 
     /** @test */
-    public function an_authenticated_user_can_add_a_new_subscription()
+    public function a_manager_can_add_a_new_subscription()
     {
         $this->signIn();
 
@@ -33,7 +33,7 @@ class AdminSubscriptionsTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_can_remove_a_subscription()
+    public function a_manager_can_remove_a_subscription()
     {
         $this->signIn();
         $email = $this->subscription;

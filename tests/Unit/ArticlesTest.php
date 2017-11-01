@@ -12,6 +12,14 @@ class ArticlesTest extends TestCase
 	use DatabaseMigrations;
 
     /** @test */
+    public function an_article_belongs_to_a_category()
+    {
+        $category = $this->category;
+        $article = $this->article;
+        $this->assertEquals($category->name, $article->category->name);
+    }
+
+    /** @test */
     public function an_article_has_an_editor()
     {
     	$editor = $this->editor;
@@ -35,24 +43,32 @@ class ArticlesTest extends TestCase
     }
 
     /** @test */
-    public function authors_can_create_one_or_more_articles()
+    public function welcome_page_shows_latest_articles()
     {
-    	$second_article = factory('App\Article')->create();
-    	$author = $this->author;
-    	
-        factory('App\ArticleAuthor')->create([
-    		'article_id' => $second_article->id,
-    		'author_id' => $author->id
-    	]);
-
-    	$this->assertEquals(2, count($author->articles));
+        $this->get('/')->assertSee($this->article->title);
     }
 
     /** @test */
-    public function an_article_belongs_to_a_category()
+    public function guests_can_read_an_article()
     {
-    	$category = $this->category;
-    	$article = $this->article;
-    	$this->assertEquals($category->name, $article->category->name);
+        $this->get($this->article->path())->assertSee($this->article->title);
+    }
+
+    /** @test */
+    public function a_guest_see_the_most_popular_articles_on_the_side_bar()
+    {
+        $popular_article = factory('App\Article')->create([
+            'views' => 10
+        ]);
+
+        $this->get($this->article->path())->assertSee($popular_article->title);
+    }
+
+    /** @test */
+    public function an_article_keeps_count_of_viewers()
+    {
+        $this->assertEquals(0, $this->article->views);
+        $this->article->increment('views');
+        $this->assertEquals(1, $this->article->views);
     }
 }

@@ -33,36 +33,46 @@
     <script>
         
 $(document).ready(function() {
-    var nav = $('nav').clone().removeClass('mt-3').appendTo('header').addClass('hidden-xl-down pl-4 pr-4');
-    var footer = $('footer');
+    $('nav').addClass('original').clone().removeClass('mt-3 original').appendTo('header').addClass('pl-4 pr-4 clone');
+    // var footer = $('footer');
     var sideBar = $('#side-bar');
     var navHeight = $('nav').outerHeight();
     var headerHeight = $('header').outerHeight();
-    var screenHeight = $(window).height();
-    var docHeight = $(document).height();
-    var social_bar_exists = $('#side-social').length;
-    if (social_bar_exists) {
-        var sideSocial = $('#side-social');
-        var socialOffset = $('#side-social').offset().top - headerHeight - sideSocial.height();
-    }
+    var dist = $('main').offset().top;
+    // var screenHeight = $(window).height();
+    // var docHeight = $(document).height();
+    // var social_bar_exists = $('#side-social').length;
+    // if (social_bar_exists) {
+    //     var sideSocial = $('#side-social').addClass('originalSocial').clone().addClass('cloneSocial').removeClass('originalSocial').css({
+    //         'position' : 'fixed',
+    //         'top' : '50px',
+    //         'left' : 0,
+    //         'display' : 'none'
+    //     });
+    //     var socialOffset = $('#side-social').offset().top - headerHeight - sideSocial.height();
+    // }
 
     //KEEP MENU BAR ON STUCK TO THE TOP WHEN USER SCOLLS DOWN THE PAGE
     $(window).scroll(function () {
 
         var scroll = $(document).scrollTop();
-        var distanceToBottom = docHeight - scroll - screenHeight;
+        // var distanceToBottom = docHeight - scroll - screenHeight;
 
-        if (scroll < headerHeight - navHeight) {
-            nav.removeClass('sticky-menu');
-            if (social_bar_exists) {
-                sideSocial.css('top', '0');
-            }
+        if (scroll < dist) {
+            $('.original').css('visibility', 'visible');
+            $('.clone').fadeOut(100);
+            // if (social_bar_exists) {
+            //     sideSocial.fadeOut(100);
+            //     $('.originalSocial').fadeIn(200);
+            // }
             
-        } else if (scroll > headerHeight - navHeight) {
-            nav.addClass('sticky-menu');
-            if (social_bar_exists) {
-                sideSocial.css('top', scroll + socialOffset);
-            }
+        } else if (scroll > dist) {
+            $('.original').css('visibility', 'hidden');
+            $('.clone').fadeIn(200);
+            // if (social_bar_exists) {
+            //     sideSocial.fadeIn(200);
+            //     $('.originalSocial').fadeOut(100);
+            // }
         }
 
     });

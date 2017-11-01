@@ -78,17 +78,20 @@
 #side-bar {
 	> div {
 		padding: 16px;
-		border: 1px solid lightgrey;
-		margin-bottom: 12px;
-
-		input[type="email"] {
-			border-radius: 0;
-			border: 0;
-			border-bottom: 1px solid lightgrey;
+		// border: 1px solid lightgrey;
+		// input[type="email"] {
+		// 	border-radius: 0;
+		// 	border: 0;
+		// 	border-bottom: 1px solid lightgrey;
+		// }
+		> strong {
+			p {
+				border-bottom: 1px solid;
+			}
 		}
 	}
 
-	#picks {
+	> div {
 		img {
 			width: 40px;
 		}
@@ -108,11 +111,6 @@
 			em {
 				font-size: 0.9em;
 			}
-		}
-		> div:not(:last-of-type) {
-			padding-bottom: 8px;
-			margin-bottom: 8px;
-			border-bottom: 1px dotted lightgrey;
 		}
 	}
 }

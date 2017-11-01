@@ -1,6 +1,6 @@
 <header class="pt-4">
 	<div class="container">
-		<div id="title-container">
+		<div id="title-container" class="mb-3">
 			<div class="row">
 				<div class="col-10">
 					<div class="d-flex align-items-center">

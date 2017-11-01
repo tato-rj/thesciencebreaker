@@ -1,4 +1,4 @@
-<nav class="navbar navbar-toggleable-md p-0 mt-3">
+<nav class="navbar navbar-toggleable-md p-0">
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active">

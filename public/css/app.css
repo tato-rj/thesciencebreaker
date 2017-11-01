@@ -4,6 +4,10 @@ textarea {
   font-family: inherit;
 }
 
+button {
+  cursor: pointer;
+}
+
 input:hover {
   outline: 0;
 }
@@ -28,7 +32,7 @@ a:hover {
 
 a:focus {
   text-decoration: none;
-  color: inherit;
+  color: #da5528;
 }
 
 .custom-control-input:checked ~ .custom-control-indicator {
@@ -620,41 +624,31 @@ footer a:hover {
 
 #side-bar > div {
   padding: 16px;
-  border: 1px solid lightgrey;
-  margin-bottom: 12px;
 }
 
-#side-bar > div input[type="email"] {
-  border-radius: 0;
-  border: 0;
-  border-bottom: 1px solid lightgrey;
+#side-bar > div > strong p {
+  border-bottom: 1px solid;
 }
 
-#side-bar #picks img {
+#side-bar > div img {
   width: 40px;
 }
 
-#side-bar #picks small:first-of-type {
+#side-bar > div small:first-of-type {
   line-height: 1.2;
 }
 
-#side-bar #picks small:last-of-type {
+#side-bar > div small:last-of-type {
   line-height: 1;
 }
 
-#side-bar #picks > div {
+#side-bar > div > div {
   overflow: hidden;
   margin: 0;
 }
 
-#side-bar #picks > div em {
+#side-bar > div > div em {
   font-size: 0.9em;
-}
-
-#side-bar #picks > div:not(:last-of-type) {
-  padding-bottom: 8px;
-  margin-bottom: 8px;
-  border-bottom: 1px dotted lightgrey;
 }
 
 #category #title > div:last-of-type {
@@ -878,7 +872,7 @@ div.highlight {
   text-align: center;
 }
 
-.sticky-menu {
+.clone {
   background: #191919;
   position: fixed;
   top: 0;
@@ -886,7 +880,7 @@ div.highlight {
   width: 100%;
   z-index: 100;
   margin: 0 !important;
-  display: block !important;
+  display: none;
 }
 
 #breaker-btn img {

@@ -2,6 +2,10 @@ button, input, textarea {
 	font-family: inherit;
 }
 
+button {
+	cursor: pointer;
+}
+
 input:hover {
 	outline: 0;
 }
@@ -24,7 +28,7 @@ a:hover {
 
 a:focus {
 	text-decoration: none;
-	color: inherit;
+	color: $color-theme-orange-d;
 }
 
 .custom-control-input:checked~.custom-control-indicator {

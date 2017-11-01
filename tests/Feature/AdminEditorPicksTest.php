@@ -12,16 +12,7 @@ class AdminEditorPicksTest extends TestCase
 	use DatabaseMigrations;
 
     /** @test */
-    public function an_authenticated_user_can_view_all_picks()
-    {
-        $this->signIn();
-        $pick = factory('App\Article')->create(['editor_pick' => 1]);
-
-        $this->get('/admin/editor-picks')->assertSee($pick->title);
-    }
-
-    /** @test */
-    public function a_pick_can_be_updated()
+    public function a_manager_can_update_the_editors_picks()
     {
         $this->signIn();
         $old_pick = factory('App\Article')->create(['editor_pick' => 1]);

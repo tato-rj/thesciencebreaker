@@ -10,13 +10,13 @@
 				@component('snippets.title')
 				Why TheScienceBreaker?
 				@endcomponent
-				<p>TheScienceBreaker promotes the dialogue and the dissemination of a scientific culture so that society-relevant opinions can be discussed and decisions may be taken accordingly. Discover our mission.</p>
+				<p>TheScienceBreaker promotes the dialogue and the dissemination of a scientific culture so that society-relevant opinions can be discussed and decisions may be taken accordingly. Discover our <a href="/mission">mission</a>.</p>
 			</div>
 			<div class="box">
 				@component('snippets.title')
 				What is a Break?
 				@endcomponent
-				<p>We publish short lay summaries, called Breaks, where scientific papers are explained by scientists, called Breakers, directly involved in the field of research.</p>
+				<p>We publish short lay summaries, called Breaks, where scientific papers are explained by scientists, called Breakers, directly involved in the field of research. <a href="/about">Learn more</a></p>
 			</div>
 		</div>
 		<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">

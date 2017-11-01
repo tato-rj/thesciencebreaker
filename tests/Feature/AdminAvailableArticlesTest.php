@@ -12,7 +12,7 @@ class AdminAvailableArticlesTest extends TestCase
 	use DatabaseMigrations;
 
     /** @test */
-    public function an_authenticated_user_can_add_available_articles()
+    public function a_manager_can_add_available_articles()
     {
         $this->signIn();
 
@@ -27,7 +27,7 @@ class AdminAvailableArticlesTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_can_remove_an_available_article()
+    public function a_manager_can_remove_an_available_article()
     {
         $this->signIn();
         $article = $this->available_article;
@@ -38,16 +38,9 @@ class AdminAvailableArticlesTest extends TestCase
             'id' => $article->id
         ]);
     }
-    
-    /** @test */
-    public function an_authenticated_user_can_view_a_page_with_all_available_articles()
-    {
-        $this->signIn();
-        $this->get('/admin/available-articles')->assertSee($this->available_article->article);
-    }
 
     /** @test */
-    public function an_authenticated_user_can_edit_an_available_article()
+    public function a_manager_can_edit_an_available_article()
     {
         $this->signIn();
         $article = $this->available_article;

@@ -12,7 +12,7 @@ class AdminBreaksTest extends TestCase
 	use DatabaseMigrations;
 
     /** @test */
-    public function an_authenticated_user_can_create_a_new_break()
+    public function a_manager_can_create_a_new_break()
     {
         $this->signIn();
 
@@ -49,7 +49,7 @@ class AdminBreaksTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_can_remove_a_break()
+    public function a_manager_can_remove_a_break()
     {
         $this->signIn();
         $break = $this->article;
@@ -76,14 +76,7 @@ class AdminBreaksTest extends TestCase
     }   
 
     /** @test */
-    public function an_authenticated_user_can_view_a_page_to_edit_a_break()
-    {
-        $this->signIn();
-        $this->get('/admin/breaks/'.$this->article->id.'/edit')->assertSee($this->article->title);
-    }
-
-    /** @test */
-    public function an_authenticated_user_can_edit_a_break()
+    public function a_manager_can_edit_a_break()
     {
         $this->signIn();
         $break = $this->article;

@@ -15,7 +15,7 @@ div.highlight {
     text-align: center;
 }
 
-.sticky-menu {
+.clone {
     background: rgb(25,25,25);
     position: fixed;
     top: 0;
@@ -23,7 +23,7 @@ div.highlight {
     width: 100%;
     z-index: 100;
     margin: 0!important;
-    display: block!important;
+    display: none;
 }
 
 #breaker-btn {
