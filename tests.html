@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Test Documentation</title>
+        <style>
+            body {
+                text-rendering: optimizeLegibility;
+                font-variant-ligatures: common-ligatures;
+                font-kerning: normal;
+                margin-left: 2em;
+            }
+
+            body > ul > li {
+                font-family: Source Serif Pro, PT Sans, Trebuchet MS, Helvetica, Arial;
+                font-size: 1em;
+            }
+
+            h2 {
+                font-family: Tahoma, Helvetica, Arial;
+                font-size: 2em;
+            }
+
+            ul {
+                list-style: none;
+                margin-bottom: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 id="Tests\Unit\AdminAvailableArticlesTest">s\Unit\AdminAvailableArticles</h2>
+        <ul>
+            <li style="color: #555753;">✓ A manager can add available articles</li>
+            <li style="color: #555753;">✓ A manager can remove an available article</li>
+            <li style="color: #555753;">✓ A manager can edit an available article</li>
+        </ul>
+        <h2 id="Tests\Unit\AdminBreakersTest">s\Unit\AdminBreakers</h2>
+        <ul>
+            <li style="color: #555753;">✓ A manager can add a new breaker</li>
+            <li style="color: #555753;">✓ A manager can remove a breaker</li>
+            <li style="color: #555753;">✓ Removing a breaker also removes its relationships</li>
+            <li style="color: #555753;">✓ A manager can edit a breaker</li>
+        </ul>
+        <h2 id="Tests\Unit\AdminBreaksTest">s\Unit\AdminBreaks</h2>
+        <ul>
+            <li style="color: #555753;">✓ A manager can create a new break</li>
+            <li style="color: #555753;">✓ A doi is automatically generated when a new break is created</li>
+            <li style="color: #555753;">✓ A manager can remove a break</li>
+            <li style="color: #555753;">✓ Removing a break also removes its relationships</li>
+            <li style="color: #555753;">✓ A manager can edit a break</li>
+        </ul>
+        <h2 id="Tests\Unit\AdminEditorPicksTest">s\Unit\AdminEditorPicks</h2>
+        <ul>
+            <li style="color: #555753;">✓ A manager can update the editors picks</li>
+        </ul>
+        <h2 id="Tests\Unit\AdminManagersTest">s\Unit\AdminManagers</h2>
+        <ul>
+            <li style="color: #555753;">✓ A manager can add a new team member</li>
+            <li style="color: #555753;">✓ A manager can remove a team member</li>
+            <li style="color: #555753;">✓ A manager can view a page to edit a team member</li>
+            <li style="color: #555753;">✓ A manager can edit a team member</li>
+        </ul>
+        <h2 id="Tests\Unit\AdminSubscriptionsTest">s\Unit\AdminSubscriptions</h2>
+        <ul>
+            <li style="color: #555753;">✓ A manager can see all subscriptions on the admin page</li>
+            <li style="color: #555753;">✓ A manager can add a new subscription</li>
+            <li style="color: #555753;">✓ A manager can remove a subscription</li>
+        </ul>
+        <h2 id="Tests\Unit\ContactPageTest">s\Unit\ContactPage</h2>
+        <ul>
+            <li style="color: #555753;">✓ A guest can ask a question through the contact page</li>
+            <li style="color: #555753;">✓ A guest can send a break inquiry through the contact page</li>
+            <li style="color: #555753;">✓ A guest can submit a new break</li>
+        </ul>
+        <h2 id="Tests\Unit\ArticlesTest">s\Unit\Articles</h2>
+        <ul>
+            <li style="color: #555753;">✓ An article belongs to a category</li>
+            <li style="color: #555753;">✓ An article has an editor</li>
+            <li style="color: #555753;">✓ Articles can have one or more authors</li>
+            <li style="color: #555753;">✓ Welcome page shows latest articles</li>
+            <li style="color: #555753;">✓ Guests can read an article</li>
+            <li style="color: #555753;">✓ A guest see the most popular articles on the side bar</li>
+            <li style="color: #555753;">✓ An article keeps count of viewers</li>
+        </ul>
+        <h2 id="Tests\Unit\AuthorsTest">s\Unit\Authors</h2>
+        <ul>
+            <li style="color: #555753;">✓ Authors can have more than one article</li>
+        </ul>
+        <h2 id="Tests\Unit\AvailableArticlesTest">s\Unit\AvailableArticles</h2>
+        <ul>
+            <li style="color: #555753;">✓ Guests can see available articles</li>
+        </ul>
+        <h2 id="Tests\Unit\CategoriesTest">s\Unit\Categories</h2>
+        <ul>
+            <li style="color: #555753;">✓ A category can have many articles</li>
+            <li style="color: #555753;">✓ Guests can browse through all breaks from a category</li>
+        </ul>
+        <h2 id="Tests\Unit\FeedbacksTest">s\Unit\Feedbacks</h2>
+        <ul>
+            <li style="color: #555753;">✓ A new breaker receives an email upon registration</li>
+            <li style="color: #555753;">✓ A guest receives an email when asking a question</li>
+            <li style="color: #555753;">✓ A guest receives an email when inquiring for a new break</li>
+            <li style="color: #555753;">✓ A guest receives an email when submitting a new break</li>
+            <li style="color: #555753;">✓ Breakers and the editor receive an email when their new break is published</li>
+        </ul>
+        <h2 id="Tests\Unit\SubscriptionsTest">s\Unit\Subscriptions</h2>
+        <ul>
+            <li style="color: #555753;">✓ A guest can be subscribed when submitting a question</li>
+            <li style="color: #555753;">✓ A guest can be subscribed when inquiring about a break</li>
+            <li style="color: #555753;">✓ A guest can be subscribed when submitting a break</li>
+            <li style="color: #555753;">✓ New subscriptions are ignored if duplicated</li>
+        </ul>
+    </body>
+</html>
