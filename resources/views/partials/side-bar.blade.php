@@ -1,6 +1,9 @@
 <div class="col-lg-3 col-md-3 col-sm-3 hidden-xs">
 	<div id="side-bar">
 {{-- 		<div>
+=======
+		<div>
+>>>>>>> e38ecdd6e378e9b978286ed98cfb584734ffc31b
 			<strong><p class="mb-1"><i class="fa fa-envelope-open mr-2" aria-hidden="true"></i>Subscribe now!</p></strong>
 			<form method="POST" action="/admin/subscriptions">
 				{{csrf_field()}}
@@ -16,6 +19,7 @@
               {{ $errors->first('subscription') }}
               @endslot
             @endcomponent
+<<<<<<< HEAD
 		</div> --}}
 		<div>
 			<strong><p class="mb-3">Editor's picks</p></strong>
