@@ -90,9 +90,9 @@ class Article extends Model
         return Article::where('category_id', $this->category_id)->orderBy('id', 'desc')->take(5)->get();
     }
 
-    public static function popular()
+    public static function popular($number)
     {
-        return self::orderBy('views', 'desc')->take(5)->get();
+        return self::orderBy('views', 'desc')->take($number)->get();
     }
 
     public function preview()

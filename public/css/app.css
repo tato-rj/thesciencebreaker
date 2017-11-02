@@ -84,7 +84,7 @@ button:active {
 }
 
 .jumbotron {
-  padding: 2rem;
+  padding: 1.5rem;
   background: rgba(0, 0, 0, 0.06);
 }
 
@@ -870,12 +870,25 @@ footer a:hover {
   color: white;
 }
 
+#login {
+  width: 100%;
+  height: 100vh;
+  background: #191919;
+  color: white;
+}
+
+#login #brand {
+  margin: 0 auto;
+  display: inherit;
+  width: 64px;
+}
+
 ol {
   margin-bottom: 0;
 }
 
 h4.title {
-  border-bottom: 2px solid lightgrey;
+  border-bottom: 1px solid;
   padding-bottom: 6px;
 }
 

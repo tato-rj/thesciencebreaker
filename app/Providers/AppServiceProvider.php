@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         
         \View::composer('partials.side-bar', function($view) {
             $view->with('editor_picks', Article::where('editor_pick', 1)->get());
-            $view->with('popular', Article::popular());
+            $view->with('popular', Article::popular(5));
         });
 
         \View::composer('pages.welcome', function($view) {
