@@ -85,16 +85,6 @@ class Article extends Model
         $this->authors()->sync($request->authors);
     }
 
-    public function similar()
-    {
-        return Article::where('category_id', $this->category_id)->orderBy('id', 'desc')->take(5)->get();
-    }
-
-    public static function popular($number)
-    {
-        return self::orderBy('views', 'desc')->take($number)->get();
-    }
-
     public function preview()
     {
         $pieces = explode(" ", strip_tags($this->content, '<br>'));
@@ -138,5 +128,36 @@ class Article extends Model
                 'slug' => str_slug($article->title)
             ]);
         }
+    }
+
+    public function scopeSimilar($query)
+    {
+        return $query->where('category_id', $this->category_id)->orderBy('id', 'desc')->take(5);
+    }
+
+    public function scopePopular($query, $number)
+    {
+        return $query->orderBy('views', 'desc')->take($number);
+    }
+
+    public function scopeEditorPicks($query)
+    {
+        return $query->where('editor_pick', 1);
+    }
+
+    public function scopeSearch($query, $word)
+    {
+        return $query
+            ->where('title', 'LIKE', "%$word%")
+            ->orWhere('content', 'LIKE', "%$word%")
+            ->orWhereHas('authors', function($query) use ($word) {
+                $query->where('first_name', 'LIKE', "%$word%")->orWhere('last_name', 'LIKE', "%$word%");
+            })->orWhereHas('editor', function($query) use ($word) {
+                $query->where('first_name', 'LIKE', "%$word%")->orWhere('last_name', 'LIKE', "%$word%");
+            })->orWhereHas('category', function($query) use ($word) {
+                $query->where('name', 'LIKE', "%$word%");
+            })->orWhereHas('tags', function($query) use ($word) {
+                $query->where('name', 'LIKE', "%$word%");
+            })->orderBy('created_at', 'DESC');
     }
 }

@@ -9,6 +9,8 @@ Route::get('/breaks/{category}/{article}', 'ArticlesController@show');
 Route::get('/breaks/{category}', 'CategoryController@show');
 // Tags
 Route::get('/tags/{tag}', 'TagsController@show');
+// Search
+Route::get('/search', 'SearchController@index');
 
 /*
 * 
@@ -68,6 +70,8 @@ Route::get('/contact/submit-your-break', function() {
 Route::post('/contact/ask-a-question', 'ContactsController@question');
 Route::post('/contact/break-inquiry', 'ContactsController@inquiry');
 Route::post('/contact/submit-a-break', 'ContactsController@submit');
+
+
 
 /*
 * 

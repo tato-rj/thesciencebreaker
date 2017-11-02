@@ -23,8 +23,8 @@ class AppServiceProvider extends ServiceProvider
         });
         
         \View::composer('partials.side-bar', function($view) {
-            $view->with('editor_picks', Article::where('editor_pick', 1)->get());
-            $view->with('popular', Article::popular(5));
+            $view->with('editor_picks', Article::editorPicks()->get());
+            $view->with('popular', Article::popular(5)->get());
         });
 
         \View::composer('pages.welcome', function($view) {

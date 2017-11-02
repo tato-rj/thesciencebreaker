@@ -41,14 +41,6 @@
             <li style="color: #555753;">✓ Removing a breaker also removes its relationships</li>
             <li style="color: #555753;">✓ A manager can edit a breaker</li>
         </ul>
-        <h2 id="Tests\Unit\AdminBreaksTest">s\Unit\AdminBreaks</h2>
-        <ul>
-            <li style="color: #555753;">✓ A manager can create a new break</li>
-            <li style="color: #555753;">✓ A doi is automatically generated when a new break is created</li>
-            <li style="color: #555753;">✓ A manager can remove a break</li>
-            <li style="color: #555753;">✓ Removing a break also removes its relationships</li>
-            <li style="color: #555753;">✓ A manager can edit a break</li>
-        </ul>
         <h2 id="Tests\Unit\AdminEditorPicksTest">s\Unit\AdminEditorPicks</h2>
         <ul>
             <li style="color: #555753;">✓ A manager can update the editors picks</li>
@@ -68,28 +60,30 @@
         </ul>
         <h2 id="Tests\Unit\ContactPageTest">s\Unit\ContactPage</h2>
         <ul>
-<<<<<<< HEAD
-            <li style="color: #ef2929;">❌ A guest can ask a question through the contact page</li>
-            <li style="color: #ef2929;">❌ A guest can send a break inquiry through the contact page</li>
-            <li style="color: #ef2929;">❌ A guest can submit a new break</li>
-=======
             <li style="color: #555753;">✓ A guest can ask a question through the contact page</li>
             <li style="color: #555753;">✓ A guest can send a break inquiry through the contact page</li>
             <li style="color: #555753;">✓ A guest can submit a new break</li>
->>>>>>> e38ecdd6e378e9b978286ed98cfb584734ffc31b
+        </ul>
+        <h2 id="Tests\Unit\SearchTest">s\Unit\Search</h2>
+        <ul>
+            <li style="color: #555753;">✓ A guest can find an article searching for a title</li>
+            <li style="color: #555753;">✓ A guest can find an article searching for a keyword</li>
+            <li style="color: #555753;">✓ A guest can find an article searching for the authors name</li>
+            <li style="color: #555753;">✓ A guest can find an article searching for the editors name</li>
+            <li style="color: #555753;">✓ A guest can find an article searching for a category</li>
+            <li style="color: #555753;">✓ A guest can find an article searching for a tag</li>
         </ul>
         <h2 id="Tests\Unit\ArticlesTest">s\Unit\Articles</h2>
         <ul>
             <li style="color: #555753;">✓ An article belongs to a category</li>
+            <li style="color: #555753;">✓ An article can have may tags</li>
             <li style="color: #555753;">✓ An article has an editor</li>
             <li style="color: #555753;">✓ Articles can have one or more authors</li>
             <li style="color: #555753;">✓ Welcome page shows latest articles</li>
             <li style="color: #555753;">✓ Guests can read an article</li>
-<<<<<<< HEAD
+            <li style="color: #555753;">✓ Guests can view tags on the article page</li>
             <li style="color: #555753;">✓ A guest see the most popular articles on the side bar</li>
             <li style="color: #555753;">✓ An article keeps count of viewers</li>
-=======
->>>>>>> e38ecdd6e378e9b978286ed98cfb584734ffc31b
         </ul>
         <h2 id="Tests\Unit\AuthorsTest">s\Unit\Authors</h2>
         <ul>
@@ -106,30 +100,26 @@
         </ul>
         <h2 id="Tests\Unit\FeedbacksTest">s\Unit\Feedbacks</h2>
         <ul>
-<<<<<<< HEAD
-            <li style="color: #ef2929;">❌ A new breaker receives an email upon registration</li>
-            <li style="color: #ef2929;">❌ A guest receives an email when asking a question</li>
-            <li style="color: #ef2929;">❌ A guest receives an email when inquiring for a new break</li>
-            <li style="color: #ef2929;">❌ A guest receives an email when submitting a new break</li>
-            <li style="color: #ef2929;">❌ Breakers and the editor receive an email when their new break is published</li>
-=======
             <li style="color: #555753;">✓ A new breaker receives an email upon registration</li>
             <li style="color: #555753;">✓ A guest receives an email when asking a question</li>
             <li style="color: #555753;">✓ A guest receives an email when inquiring for a new break</li>
             <li style="color: #555753;">✓ A guest receives an email when submitting a new break</li>
             <li style="color: #555753;">✓ Breakers and the editor receive an email when their new break is published</li>
->>>>>>> e38ecdd6e378e9b978286ed98cfb584734ffc31b
         </ul>
         <h2 id="Tests\Unit\SubscriptionsTest">s\Unit\Subscriptions</h2>
         <ul>
             <li style="color: #555753;">✓ A guest can be subscribed when submitting a question</li>
             <li style="color: #555753;">✓ A guest can be subscribed when inquiring about a break</li>
-<<<<<<< HEAD
-            <li style="color: #ef2929;">❌ A guest can be subscribed when submitting a break</li>
-=======
             <li style="color: #555753;">✓ A guest can be subscribed when submitting a break</li>
->>>>>>> e38ecdd6e378e9b978286ed98cfb584734ffc31b
             <li style="color: #555753;">✓ New subscriptions are ignored if duplicated</li>
+        </ul>
+        <h2 id="Tests\Unit\TagsTest">s\Unit\Tags</h2>
+        <ul>
+            <li style="color: #555753;">✓ A tag can have many articles</li>
+            <li style="color: #555753;">✓ A manager can create new tags</li>
+            <li style="color: #555753;">✓ A manager can remove tags</li>
+            <li style="color: #555753;">✓ A removed tag also removes its relationships with articles</li>
+            <li style="color: #555753;">✓ A guest can view all breaks from a tag</li>
         </ul>
     </body>
 </html>
