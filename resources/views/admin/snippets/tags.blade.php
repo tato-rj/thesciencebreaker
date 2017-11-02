@@ -28,10 +28,10 @@
       <div class="modal-footer d-flex justify-content-between">
         <div>
           <div id="success" class="hidden">
-            <small class="text-success"><i class="fa fa-check mr-1" aria-hidden="true"></i></small>
+            <small class="text-success"><i class="fa fa-check mr-1" aria-hidden="true"></i><span></span></small>
           </div>
           <div id="fail" class="hidden">
-            <small class="text-danger"><i class="fa fa-times mr-1" aria-hidden="true"></i></small>
+            <small class="text-danger"><i class="fa fa-times mr-1" aria-hidden="true"></i><span></span></small>
           </div>
         </div>
         <button type="button" id="setTags" data-break-id={{ $article->id }} class="btn btn-theme-green">Save changes</button>

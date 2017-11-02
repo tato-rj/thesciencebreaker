@@ -174,11 +174,11 @@ $('#setTags').on('click', function() {
 
   $.post('/admin/breaks/'+$break_id+'/tags', {'tags[]': tags})
   .done(function(msg){
-    $('.modal #success small').text('The tags were updated!');
+    $('.modal #success small span').text('The tags were updated!');
     $('.modal #success').fadeIn().delay(1000).fadeOut('fast');
   })
   .fail(function(xhr, status, error) {
-    $('.modal #fail small').text('Something went wrong...');
+    $('.modal #fail small span').text('Something went wrong...');
     $('.modal #fail').fadeIn().delay(1000).fadeOut('fast');
   });
 });
@@ -188,13 +188,13 @@ $('#addTag').on('click', function() {
 
   $.post('/admin/tags', {'tag': $tag})
   .done(function(id){
-    $('.modal #success small').text('The tags was created!');
+    $('.modal #success small span').text('The tags was created!');
     $('.modal #success').fadeIn().delay(1000).fadeOut('fast');
     $new_tag = $('.tags span').first().clone().removeClass('selected').attr('data-id', id).children('a').text($tag).parent();
     $new_tag.appendTo('.tags');
   })
   .fail(function(xhr, status, error) {
-    $('.modal #fail small').text('Something went wrong...');
+    $('.modal #fail small span').text('Something went wrong...');
     $('.modal #fail').fadeIn().delay(1000).fadeOut('fast');
   });
 });
@@ -205,12 +205,12 @@ $(document).on('click', '.removeTag', function() {
 
   $.post('/admin/tags/'+$tag_name, {_method: 'DELETE'})
   .done(function(id){
-    $('.modal #success small').text('The tags was removed!');
+    $('.modal #success small span').text('The tags was removed!');
     $('.modal #success').fadeIn().delay(1000).fadeOut('fast');
     $tag.fadeOut();
   })
   .fail(function(xhr, status, error) {
-    $('.modal #fail small').text('Something went wrong...');
+    $('.modal #fail small span').text('Something went wrong...');
     $('.modal #fail').fadeIn().delay(1000).fadeOut('fast');
   });
 });
