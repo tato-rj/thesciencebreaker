@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
 
-    protected $with = ['authors', 'editor', 'category'];
+    protected $with = ['authors', 'editor', 'category', 'tags'];
     protected $guarded = [];
 
     public function getRouteKeyName()
@@ -28,6 +28,16 @@ class Article extends Model
     public function authors()
     {
     	return $this->belongsToMany('App\Author')->withTimestamps();
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
+
+    public function tagsIds()
+    {
+        return $this->tags->pluck('id')->toArray();
     }
 
     public function authorsIds()

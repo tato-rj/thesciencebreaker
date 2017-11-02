@@ -20,6 +20,19 @@ class ArticlesTest extends TestCase
     }
 
     /** @test */
+    public function an_article_can_have_may_tags()
+    {
+        $tag = $this->tag;
+        $second_tag = factory('App\Tag')->create();
+        $article = $this->article;
+
+        $article->tags()->attach($tag);
+        $article->tags()->attach($second_tag);
+
+        $this->assertEquals(2, count($article->tags));
+    }
+
+    /** @test */
     public function an_article_has_an_editor()
     {
     	$editor = $this->editor;
@@ -52,6 +65,15 @@ class ArticlesTest extends TestCase
     public function guests_can_read_an_article()
     {
         $this->get($this->article->path())->assertSee($this->article->title);
+    }
+
+    /** @test */
+    public function guests_can_view_tags_on_the_article_page()
+    {
+        $article = $this->article;
+        $article->tags()->attach($this->tag);
+
+        $this->get($article->path())->assertSee($article->tags->first()->name);
     }
 
     /** @test */

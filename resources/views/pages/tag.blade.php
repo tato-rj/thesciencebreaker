@@ -7,13 +7,13 @@
 		{{-- Break Content --}}
 		<div id="category" class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
 			{{-- Title --}}
-			<div id="title" class="d-flex align-items-center">
-				<div>
-					<img src="{{ $category->iconPath() }}">
-				</div>
+			<div id="title" class="d-flex align-items-center jumbotron">
+				<h3>
+					<i class="fa fa-tag" aria-hidden="true"></i>
+				</h3>
 				<div class="ml-3">
-					<h3 class="mb-0 text-green"><strong>{{ $category->name }}</strong></h3>
-					<p class="m-0 text-muted">Number of breaks: {{ $category->articles_count }}</p>
+					<h4 class="m-0"><strong>{{ $tag->name }}</strong></h4>
+					<p class="m-0 text-muted">Number of breaks: {{ $tag->articles_count }}</p>
 				</div>
 			</div>
 			{{-- Breaks --}}

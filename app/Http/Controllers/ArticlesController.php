@@ -6,6 +6,7 @@ use App\Article;
 use App\Author;
 use App\Category;
 use App\Manager;
+use App\Tag;
 use App\Mail\MailFactory;
 use App\Http\Controllers\Validators\ValidateBreak;
 use Illuminate\Http\Request;
@@ -27,8 +28,9 @@ class ArticlesController extends Controller
     public function create()
     {
         $editors = Manager::editors();
+        $tags = Tag::orderBy('name')->get();
         $authors = Author::orderBy('first_name')->get();
-        return view('admin/pages/breaks/add', compact(['editors', 'authors']));
+        return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags']));
     }
 
     public function store(Request $request)
@@ -57,8 +59,9 @@ class ArticlesController extends Controller
     public function edit(Article $article)
     {
         $authors = Author::orderBy('first_name')->get();
+        $tags = Tag::orderBy('name')->get();
         $editors = Manager::editors();
-        return view('admin/pages/breaks/edit', compact(['editors', 'article', 'authors']));
+        return view('admin/pages/breaks/edit', compact(['editors', 'article', 'authors', 'tags']));
     }
 
     public function update(Request $request, Article $article)
@@ -66,6 +69,11 @@ class ArticlesController extends Controller
         ValidateBreak::editCheck($request);
         $article->updateFrom($request);
         return redirect()->back()->with('db_feedback', 'The Break has been updated');
+    }
+
+    public function setTags(Request $request, Article $article)
+    {
+        $article->tags()->sync($request->tags);
     }
 
     // DELETE

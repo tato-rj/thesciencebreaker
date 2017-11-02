@@ -20,17 +20,23 @@
             {{csrf_field()}}
             {{method_field('PATCH')}}
             {{-- Title --}}
-            <div class="form-group">
-              <label><strong>Title</strong></label>
-              <input required type="text" value="{{ $article->title }}" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Title">
-              {{-- Error --}}
-              @component('admin/snippets/error')
-                title
-                @slot('feedback')
-                {{ $errors->first('title') }}
-                @endslot
-              @endcomponent
-            </div>
+            
+              <div class="form-group">
+                <label><strong>Title</strong></label>
+                <div class="d-flex align-items-center">
+                  <input required type="text" value="{{ $article->title }}" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Title">
+                  <button type="button" class="btn btn-theme-green ml-2" data-toggle="modal" data-target="#tags">Tags</button>               
+                </div>
+
+                {{-- Error --}}
+                @component('admin/snippets/error')
+                  title
+                  @slot('feedback')
+                  {{ $errors->first('title') }}
+                  @endslot
+                @endcomponent
+              </div>
+            
             {{-- Content --}}
             <div class="form-group">
               <label><strong>Content</strong></label>
@@ -47,11 +53,7 @@
               <label><strong>Breakers</strong> <small>(you can select have as many as you need)</small></label>
               <select required multiple class="form-control" size="12" id="authors" name="authors[]">
                 @foreach ($authors as $author)
-                  <option value="{{ $author->id }}" 
-                    @foreach ($article->authorsIds() as $id)
-                    {{ ($id == $author->id) ? 'selected' : ''}} 
-                    @endforeach
-                    >{{ $author->fullName() }}
+                  <option value="{{ $author->id }}" {{ in_array($author->id, $article->authorsIds()) ? 'selected' : '' }}>{{ $author->fullName() }}
                   </option>
                 @endforeach
               </select>
@@ -146,4 +148,72 @@
         </div>
       </div>
     </div>
+    @include('admin/snippets/tags')
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+  
+$.ajaxSetup({
+  headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+$(document).on('click', '.tags span a', function() {
+  $(this).parent().toggleClass('selected');
+});
+
+$('#setTags').on('click', function() {
+  var tags = [];
+  $break_id = $(this).attr('data-break-id');
+
+  $('.tags .selected').each(function() {
+    tags.push($(this).attr('data-id'));
+  });
+
+  $.post('/admin/breaks/'+$break_id+'/tags', {'tags[]': tags})
+  .done(function(msg){
+    $('.modal #success small').text('The tags were updated!');
+    $('.modal #success').fadeIn().delay(1000).fadeOut('fast');
+  })
+  .fail(function(xhr, status, error) {
+    $('.modal #fail small').text('Something went wrong...');
+    $('.modal #fail').fadeIn().delay(1000).fadeOut('fast');
+  });
+});
+
+$('#addTag').on('click', function() {
+  $tag = $('input[name="tag"]').val();
+
+  $.post('/admin/tags', {'tag': $tag})
+  .done(function(id){
+    $('.modal #success small').text('The tags was created!');
+    $('.modal #success').fadeIn().delay(1000).fadeOut('fast');
+    $new_tag = $('.tags span').first().clone().removeClass('selected').attr('data-id', id).children('a').text($tag).parent();
+    $new_tag.appendTo('.tags');
+  })
+  .fail(function(xhr, status, error) {
+    $('.modal #fail small').text('Something went wrong...');
+    $('.modal #fail').fadeIn().delay(1000).fadeOut('fast');
+  });
+});
+
+$(document).on('click', '.removeTag', function() {
+  $tag = $(this).parent();
+  $tag_name = $tag.find('a').text();
+
+  $.post('/admin/tags/'+$tag_name, {_method: 'DELETE'})
+  .done(function(id){
+    $('.modal #success small').text('The tags was removed!');
+    $('.modal #success').fadeIn().delay(1000).fadeOut('fast');
+    $tag.fadeOut();
+  })
+  .fail(function(xhr, status, error) {
+    $('.modal #fail small').text('Something went wrong...');
+    $('.modal #fail').fadeIn().delay(1000).fadeOut('fast');
+  });
+});
+
+</script>
 @endsection

@@ -99,3 +99,21 @@
 		border-radius: .25rem;
 	}
 }
+
+.modal {
+	.tags {
+		.badge {
+			cursor: pointer;
+			transition: 0.2s;
+		}
+
+		.badge:hover {
+			opacity: 0.8;
+		}
+
+		.selected {
+			background: $color-theme-orange-l;
+			color: white;
+		}
+	}
+}

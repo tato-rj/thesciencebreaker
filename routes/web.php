@@ -8,6 +8,8 @@ Route::get('/', 'ArticlesController@index');
 Route::get('/breaks/{category}/{article}', 'ArticlesController@show');
 // Categories
 Route::get('/breaks/{category}', 'CategoryController@show');
+// Tags
+Route::get('/tags/{tag}', 'TagsController@show');
 
 /*
 * 
@@ -123,3 +125,8 @@ Route::get('/admin/subscriptions', 'SubscriptionsController@index');
 
 Route::post('admin/subscriptions', 'SubscriptionsController@store');
 Route::delete('/admin/subscriptions/{email}', 'SubscriptionsController@destroy');
+
+// Tags
+Route::post('/admin/breaks/{article}/tags', 'ArticlesController@setTags');
+Route::post('/admin/tags', 'TagsController@store');
+Route::delete('/admin/tags/{tag}', 'TagsController@destroy');

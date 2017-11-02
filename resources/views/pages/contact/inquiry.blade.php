@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
 			@component('snippets.title')
-			Break Inquiry
+			<i class="fa fa-newspaper-o mr-2" aria-hidden="true"></i>Break Inquiry
 			@endcomponent
 			<div class="row">
 				<div class="col-10 mx-auto">

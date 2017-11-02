@@ -11,14 +11,15 @@
 			<p>Here below, a list of articles that were object of a Break-request. Don’t hesitate to <a href="/contact/submit-your-break">get in touch</a> if you wish to draft a Break-manuscript!</p>
 			<div id="available_articles" class="mt-5" role="tablist" aria-multiselectable="true">
     		@foreach ($categories as $category)
-    		<div class="card">
+    		<div class="card mb-1">
     			<a class="collapsed" data-toggle="collapse" data-parent="#available_articles" href="#collapse{{$loop->iteration}}" aria-expanded="false" aria-controls="collapse{{$loop->iteration}}">
     				<div class="card-header d-flex align-items-center justify-content-between" role="tab" id="heading{{$loop->iteration}}">
     					<div class="d-flex align-items-center">
                 <img src="{{ $category->iconPath() }}" class="mr-2"><strong>{{$category->name}}</strong>
               </div>
               <div>
-                <small class="text-muted">{{ count($category->available_articles) }} articles</small>
+                <span class="badge btn-theme-green">{{ count($category->available_articles) }} articles</span>
+                
               </div>
     				</div>
     			</a>

@@ -15,25 +15,53 @@ class AdminBreaksTest extends TestCase
     public function a_manager_can_create_a_new_break()
     {
         $this->signIn();
+        
+        $faker = \Faker\Factory::create();
+        $title = $faker->sentence;
 
         $this->post('/admin/breaks', [
-            'title' => 'New Break',
-            'content' => '<p>My content</p>',
+            'title' => $title,
+            'content' => "<p>$faker->paragraph</p>",
             'authors' => [
                 $this->author->id
             ],
             'reading_time' => '3.5',
-            'original_article' => 'article',
+            'original_article' => $faker->url,
             'category_id' => '1',
             'editor_id' => $this->editor->id,
             'editor_pick' => '0'
         ])->assertSessionHas('db_feedback');
 
         $this->assertDatabaseHas('articles', [
-            'title' => 'New Break'
+            'title' => $title
         ])->assertDatabaseHas('article_author', [
             'author_id' => $this->author->id
         ]);
+    }
+
+    /** @test */
+    public function a_manager_can_add_browse_through_tags_on_a_break_edit_page()
+    {
+        $this->signIn();
+        $article = $this->article;
+
+        $this->get("/admin/breaks/$article->id/edit")->assertSee($this->tag->name);
+    }
+
+    /** @test */
+    public function a_manager_can_update_the_tags_on_a_break()
+    {
+        $this->signIn();
+        $article = $this->article;
+        $tag1 = $this->tag;
+        $tag2 = factory('App\Tag')->create();
+        $tag3 = factory('App\Tag')->create();
+
+        $this->post("/admin/breaks/$article->id/tags", [
+            'tags' => [$tag1->id, $tag2->id, $tag3->id]
+        ]);
+
+        $this->assertEquals(3, count($article->tags));
     }
 
     /** @test */

@@ -15,6 +15,18 @@ div.highlight {
     text-align: center;
 }
 
+.tags {
+    a:hover {
+        text-decoration: none;
+    }
+    
+    .badge {
+        background: rgba(0,0,0,0.1);
+        padding: .4em .8em;
+        color: grey;
+    }
+}
+
 .clone {
     background: rgb(25,25,25);
     position: fixed;

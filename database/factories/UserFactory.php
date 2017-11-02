@@ -100,3 +100,9 @@ $factory->define(App\Subscription::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail
     ];
 });
+
+$factory->define(App\Tag::class, function (Faker $faker) {
+    return [
+        'name' => $faker->unique()->word
+    ];
+});

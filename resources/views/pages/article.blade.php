@@ -8,6 +8,14 @@
 		@include('partials.social-bar')
 		{{-- Break Content --}}
 		<div id="break" class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+			<div class="tags mb-3">
+				@foreach ($article->tags as $tag)
+				<a href="{{ $tag->path() }}">
+					<span class="badge badge-pill">{{ $tag->name }}</span>
+				</a>
+				@endforeach
+			</div>
+			
 			{{-- Category --}}
 			<h5>
 				<a href="{{ $article->category->path() }}">{{ $article->category->name }}</a>

@@ -855,6 +855,21 @@ footer a:hover {
   border-radius: .25rem;
 }
 
+.modal .tags .badge {
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.modal .tags .badge:hover {
+  opacity: 0.8;
+}
+
+.modal .tags .selected {
+  background: #f36e41;
+  color: white;
+}
+
 ol {
   margin-bottom: 0;
 }
@@ -870,6 +885,16 @@ div.highlight {
   font-style: italic;
   color: #f36e41;
   text-align: center;
+}
+
+.tags a:hover {
+  text-decoration: none;
+}
+
+.tags .badge {
+  background: rgba(0, 0, 0, 0.1);
+  padding: .4em .8em;
+  color: grey;
 }
 
 .clone {
