@@ -16,7 +16,7 @@
           <h2 class="text-muted op-5 mb-3">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Edit Break</strong>
           </h2>
-          <form method="POST" action="/admin/breaks/{{ $article->id }}">
+          <form method="POST" action="/admin/breaks/{{ $article->slug }}">
             {{csrf_field()}}
             {{method_field('PATCH')}}
             {{-- Title --}}
@@ -166,13 +166,13 @@ $(document).on('click', '.tags span a', function() {
 
 $('#setTags').on('click', function() {
   var tags = [];
-  $break_id = $(this).attr('data-break-id');
+  $break_slug = $(this).attr('data-break-slug');
 
   $('.tags .selected').each(function() {
     tags.push($(this).attr('data-id'));
   });
 
-  $.post('/admin/breaks/'+$break_id+'/tags', {'tags[]': tags})
+  $.post('/admin/breaks/'+$break_slug+'/tags', {'tags[]': tags})
   .done(function(msg){
     $('.modal #success small span').text('The tags were updated!');
     $('.modal #success').fadeIn().delay(1000).fadeOut('fast');

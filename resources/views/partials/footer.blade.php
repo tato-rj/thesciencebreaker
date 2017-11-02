@@ -83,13 +83,13 @@
 						</div>
 						<button type="submit" class="btn btn-theme-green btn-block">Submit</button>
 					</form>
-				{{-- Error --}}
-	            @component('admin/snippets/error')
-	              subscription
-	              @slot('feedback')
-	              {{ $errors->first('subscription') }}
-	              @endslot
-	            @endcomponent
+					{{-- Error --}}
+					@component('admin/snippets/error')
+					subscription
+					@slot('feedback')
+					{{ $errors->first('subscription') }}
+					@endslot
+					@endcomponent
 				</div>
 			</div>
 		</div>
@@ -103,3 +103,7 @@
 		</div>
 	</div>
 </footer>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+	<i class="fa fa-angle-up"></i>
+</a>

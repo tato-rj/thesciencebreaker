@@ -19,15 +19,15 @@
 
           <div class="form-group">
             <label for="exampleSelect2">Select the Break to be deleted</label>
-            <select class="form-control" id="break_id" name="break_id">
+            <select class="form-control" id="break_slug" name="break_slug">
               <option selected disabled>I want to delete...</option>
               @foreach ($breaks as $break)
-              <option data-id="{{ $break->id }}">{{ $break->title }}</option>
+              <option data-id="{{ $break->slug }}">{{ $break->title }}</option>
               @endforeach
             </select>
           </div>
           <div class="hidden" id="confirm">
-            <button type="button" class="btn btn-danger" data-title="" data-id="" data-toggle="modal" data-target="#delete_modal">
+            <button type="button" class="btn btn-danger" data-title="" data-slug="" data-toggle="modal" data-target="#delete_modal">
               Delete Break
             </button>
           </div>
@@ -41,15 +41,15 @@
 <script type="text/javascript">
 $('select').on('change', function() {
   $title = this.value;
-  $id = $(this).children(':selected').attr('data-id');
-  $('#confirm button').attr('data-id', $id).attr('data-title', $title);
+  $slug = $(this).children(':selected').attr('data-slug');
+  $('#confirm button').attr('data-slug', $slug).attr('data-title', $title);
   $('#confirm').fadeIn();
 });
 $('#confirm button').on('click', function() {
-  $id = $(this).attr('data-id');
+  $slug = $(this).attr('data-slug');
   $title = $(this).attr('data-title');
   $('#delete_modal h6 strong').text($title);
-  $('#delete_modal form').attr('action', '/admin/breaks/'+$id);
+  $('#delete_modal form').attr('action', '/admin/breaks/'+$slug);
 });
 </script>
 @endsection

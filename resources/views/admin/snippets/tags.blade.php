@@ -34,7 +34,7 @@
             <small class="text-danger"><i class="fa fa-times mr-1" aria-hidden="true"></i><span></span></small>
           </div>
         </div>
-        <button type="button" id="setTags" data-break-id={{ $article->id }} class="btn btn-theme-green">Save changes</button>
+        <button type="button" id="setTags" data-break-slug={{ $article->slug }} class="btn btn-theme-green">Save changes</button>
       </div>
     </div>
   </div>

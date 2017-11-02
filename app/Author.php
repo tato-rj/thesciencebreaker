@@ -17,4 +17,13 @@ class Author extends Model
     {
     	return $this->first_name.' '.$this->last_name;
     }
+
+    public static function generateSlugs()
+    {
+        foreach (self::all() as $author) {
+            $author->update([
+                'slug' => str_slug($author->first_name.' '.$author->last_name)
+            ]);
+        }
+    }
 }

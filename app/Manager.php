@@ -22,4 +22,13 @@ class Manager extends Model
     {
     	return Manager::where('is_editor', 1)->get();
     }
+
+    public static function generateSlugs()
+    {
+        foreach (self::all() as $author) {
+            $author->update([
+                'slug' => str_slug($author->first_name.' '.$author->last_name)
+            ]);
+        }
+    }
 }

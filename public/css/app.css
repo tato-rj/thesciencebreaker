@@ -900,6 +900,32 @@ div.highlight {
   text-align: center;
 }
 
+.scroll-to-top {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  display: none;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  color: white;
+  background: rgba(52, 58, 64, 0.5);
+  line-height: 45px;
+}
+
+.scroll-to-top i {
+  font-weight: 800;
+}
+
+.scroll-to-top:focus,
+.scroll-to-top:hover {
+  color: white;
+}
+
+.scroll-to-top:hover {
+  background: #343a40;
+}
+
 .tags a:hover {
   text-decoration: none;
 }

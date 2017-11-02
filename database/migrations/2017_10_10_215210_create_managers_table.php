@@ -17,12 +17,14 @@ class CreateManagersTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('slug')->slug()->unique();
             $table->string('email')->unique();
             $table->string('division');
             $table->string('position');
             $table->text('biography')->nullable();
             $table->string('research_institute');
             $table->boolean('is_editor');
+            $table->index(['first_name', 'last_name']);
             $table->timestamps();
         });
     }

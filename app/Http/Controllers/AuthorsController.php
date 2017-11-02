@@ -28,6 +28,7 @@ class AuthorsController extends Controller
         $breaker = Author::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
+            'slug' => str_slug($request->first_name.' '.$request->last_name),
             'email' => $request->email,
             'position' => $request->position,
             'research_institute' => $request->research_institute,
@@ -62,6 +63,7 @@ class AuthorsController extends Controller
     {
         ValidateBreaker::editCheck($request);
         $author->update($request->all());
+        $author->update(['slug' => str_slug($request->first_name.' '.$request->last_name)]);
         return redirect()->back()->with('db_feedback', $author->first_name.'\'s profile has been updated');
     }
 

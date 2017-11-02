@@ -21,6 +21,7 @@ class ArticlesController extends Controller
 
     public function index()
     {
+        Manager::generateSlugs();
         return view('pages.welcome');
     }
 

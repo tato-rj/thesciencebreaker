@@ -8,8 +8,6 @@
   
   <title>TheScienceBreaker - Admin</title>
 
-
-  
   <script src="https://use.fontawesome.com/266720d991.js"></script>
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/tables.admin.css') }}" rel="stylesheet" type="text/css">

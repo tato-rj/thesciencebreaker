@@ -22,7 +22,7 @@
             <select class="form-control" id="break_id" name="break_id">
               <option selected disabled>I want to edit...</option>
               @foreach ($breaks as $break)
-              <option data-id="{{ $break->id }}">{{ $break->title }}</option>
+              <option data-slug="{{ $break->slug }}">{{ $break->title }}</option>
               @endforeach
             </select>
           </div>
@@ -43,9 +43,9 @@
 <script type="text/javascript">
 $('select').on('change', function() {
   $title = this.value;
-  $id = $(this).children(':selected').attr('data-id');
+  $slug = $(this).children(':selected').attr('data-slug');
   $('#confirm strong').text($title);
-  $('#confirm a').attr('href', '/admin/breaks/'+$id+'/edit');
+  $('#confirm a').attr('href', '/admin/breaks/'+$slug+'/edit');
   $('#confirm').fadeIn();
 });
 </script>

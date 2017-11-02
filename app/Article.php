@@ -12,7 +12,7 @@ class Article extends Model
 
     public function getRouteKeyName()
     {
-        return 'id';
+        return 'slug';
     }
 
     public function category()
@@ -47,7 +47,7 @@ class Article extends Model
 
     public function path()
     {
-        return "/breaks/{$this->category->slug}/{$this->id}";
+        return "/breaks/{$this->category->slug}/{$this->slug}";
     }
 
     public static function createFrom($request)
@@ -131,4 +131,12 @@ class Article extends Model
         return self::orderBy('id', 'desc')->first();
     }
 
+    public static function generateSlugs()
+    {
+        foreach (self::all() as $article) {
+            $article->update([
+                'slug' => str_slug($article->title)
+            ]);
+        }
+    }
 }

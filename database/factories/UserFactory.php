@@ -15,10 +15,13 @@ use Faker\Generator as Faker;
 
 $factory->define(App\User::class, function (Faker $faker) {
     static $password;
+    $first_name = $faker->firstName;
+    $last_name = $faker->lastName;
 
     return [
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
+        'first_name' => $first_name,
+        'last_name' => $last_name,
+        'slug' => str_slug($first_name.' '.$last_name),
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
@@ -27,6 +30,7 @@ $factory->define(App\User::class, function (Faker $faker) {
 
 $factory->define(App\Article::class, function (Faker $faker) {
     $title = $faker->sentence;
+
     return [
         'title' => $title,
         'slug' => str_slug($title),
@@ -42,9 +46,13 @@ $factory->define(App\Article::class, function (Faker $faker) {
 });
 
 $factory->define(App\Author::class, function (Faker $faker) {
+    $first_name = $faker->firstName;
+    $last_name = $faker->lastName;
+
     return [
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
+        'first_name' => $first_name,
+        'last_name' => $last_name,
+        'slug' => str_slug($first_name.' '.$last_name),
         'email' =>$faker->unique()->safeEmail,
         'position' => $faker->word,
         'research_institute' => $faker->sentence,
@@ -65,9 +73,13 @@ $factory->define(App\ArticleAuthor::class, function (Faker $faker) {
 });
 
 $factory->define(App\Manager::class, function (Faker $faker) {
+    $first_name = $faker->firstName;
+    $last_name = $faker->lastName;
+
     return [
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
+        'first_name' => $first_name,
+        'last_name' => $last_name,
+        'slug' => str_slug($first_name.' '.$last_name),
         'email' =>$faker->unique()->safeEmail,
         'division' => $faker->word,
         'position' => $faker->word,

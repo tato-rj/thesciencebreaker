@@ -41,6 +41,7 @@ class ManagersController extends Controller
         Manager::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
+            'slug' => str_slug($request->first_name.' '.$request->last_name),
             'email' => $request->email,
             'division' => $request->division,
             'position' => $request->position,
@@ -74,6 +75,7 @@ class ManagersController extends Controller
     {
         ValidateManager::editCheck($request);
         $manager->update($request->all());
+        $manager->update(['slug' => str_slug($request->first_name.' '.$request->last_name)]);
         return redirect()->back()->with('db_feedback', $manager->first_name.'\'s profile has been updated');
     }
 
