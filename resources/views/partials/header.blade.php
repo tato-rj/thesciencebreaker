@@ -12,7 +12,9 @@
 					</div>					
 				</div>
 				<div class="col-2" id="partner-container">
-					<img src="/images/university-partner.svg">
+					<a href="http://www.unige.ch/" target="_blank">
+						<img src="/images/university-partner.svg">
+					</a>
 				</div>				
 			</div>
 		</div>

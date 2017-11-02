@@ -25,8 +25,12 @@
 			{{-- Open access, cc and doi link --}}
 			<div class="d-flex justify-content-between mt-4">
 				<div class="d-flex align-items-baseline">
-					<img src="/images/util-icons/open-access.svg">
-					<img src="/images/util-icons/cc.svg" class="ml-2">
+					<a href="https://en.wikipedia.org/wiki/Open_access" target="_blank">
+						<img src="/images/util-icons/open-access.svg">
+					</a>
+					<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+						<img src="/images/util-icons/cc.svg" class="ml-2">
+					</a>
 				</div>
 				<div>
 					<a href="{{ $article->doi }}"><small>{{ $article->doi }}</small></a>

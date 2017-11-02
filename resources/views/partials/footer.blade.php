@@ -91,6 +91,14 @@
 					@endslot
 					@endcomponent
 				</div>
+{{-- 				<div class="d-flex align-items-center mt-4">
+					<h5 class="m-0 mr-4"><strong>OUR APP</strong></h5>
+					<div class="d-flex align-items-center justify-content-center social">
+						<a href="https://www.facebook.com/sciencebreaker/?fref=ts" target="_blank">
+							<img id="apple-store" src="{{ asset('images/ios-app/apple-store.svg') }}">
+						</a>
+					</div>	
+				</div> --}}
 			</div>
 		</div>
 		<div class="mt-4 text-center">

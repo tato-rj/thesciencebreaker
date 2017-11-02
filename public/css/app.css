@@ -85,7 +85,7 @@ button:active {
 
 .jumbotron {
   padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .bg-default {
@@ -452,6 +452,10 @@ footer a:hover {
   text-decoration: none;
 }
 
+footer #apple-store {
+  width: 130px;
+}
+
 .pagination {
   margin-top: 40px;
 }
@@ -529,15 +533,11 @@ footer a:hover {
   color: #f36e41;
 }
 
-#app-container div {
-  max-width: 240px;
-}
-
 #app-container > div:first-of-type img {
-  width: 80%;
+  width: 100%;
 }
 
-#app-container #apple-store-icon {
+#app-container #apple-store {
   width: 140px;
 }
 
@@ -545,6 +545,10 @@ footer a:hover {
   font-size: 9em !important;
   color: lightgrey;
   opacity: 0.6;
+}
+
+.box {
+  margin-bottom: 2rem;
 }
 
 #side-social {

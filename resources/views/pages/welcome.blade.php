@@ -5,7 +5,7 @@
 <div class="container">
 	{{-- INTRO --}}
 	<div class="row mt-5">
-		<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+		<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 mb-4">
 			<div class="box">
 				@component('snippets.title')
 				Why TheScienceBreaker?
@@ -18,40 +18,85 @@
 				@endcomponent
 				<p>We publish short lay summaries, called Breaks, where scientific papers are explained by scientists, called Breakers, directly involved in the field of research. <a href="/about">Learn more</a></p>
 			</div>
+			<div id="app-container" class="box row align-items-center justify-space-around jumbotron m-1 text-center">
+			
+				<h5 class="mb-2 mx-auto"><strong>TheScienceBreaker <span class="text-orange">APP</span></strong></h5>
+		
+				<div class="col-lg-6 col-md-12 mt-2 hidden-sm-down">
+					<img src="{{ asset('images/ios-app/app.svg') }}">
+				</div>
+				<div class="p-2 col-lg-6 col-md-12">
+					<p>Our iOS app is coming up soon, <strong>stay tuned</strong>!</p>
+					<a href="https://www.facebook.com/sciencebreaker/?fref=ts" target="_blank">
+						<img id="apple-store" src="{{ asset('images/ios-app/apple-store.svg') }}">
+					</a>
+				</div>
+			</div>		
 		</div>
+
 		<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
-			<div class="d-flex align-items-baseline justify-content-between">
-				<h4>Latest published Breaks</h4>
-				<span class="text-muted"><small>Today, {{ Carbon\Carbon::now()->toFormattedDateString() }}</small></span>
+			<div class="box">
+				<div class="d-flex align-items-baseline justify-content-between">
+					<h4>Latest published Breaks</h4>
+					<span class="text-muted"><small>Today, {{ Carbon\Carbon::now()->toFormattedDateString() }}</small></span>
+				</div>
+				<div class="box">
+					<table id="latest-breaks">
+						@foreach ($latest_articles as $break)
+							<tr>
+								<th>
+									<img src="{{ $break->category->iconPath() }}">
+								</th>
+								<td>
+									<p>
+										<a href="{{ $break->path() }}">{{ $break->title }}</a>
+									</p>
+									<p><small><strong>Written by: 
+										@foreach ($break->authors as $author)
+										{{ $loop->first ? '' : ', ' }}
+										{{ $author->fullName() }}
+										@endforeach
+									</strong></small></p>
+									<p><small>Published {{ $break->created_at->diffForHumans() }} in <a href="{{ $break->category->path() }}">{{ $break->category->name }}</a></small></p>
+								</td>
+							</tr>					
+						@endforeach
+					</table>
+				</div>				
 			</div>
 			<div class="box">
-				<table id="latest-breaks" class="mt-2">
-					@foreach ($latest_articles as $break)
-						<tr>
-							<th>
-								<img src="{{ $break->category->iconPath() }}">
-							</th>
-							<td>
-								<p>
-									<a href="{{ $break->path() }}">{{ $break->title }}</a>
-								</p>
-								<p><small><strong>Written by: 
-									@foreach ($break->authors as $author)
-									{{ $loop->first ? '' : ', ' }}
-									{{ $author->fullName() }}
-									@endforeach
-								</strong></small></p>
-								<p><small>Published {{ $break->created_at->diffForHumans() }} in <a href="{{ $break->category->path() }}">{{ $break->category->name }}</a></small></p>
-							</td>
-						</tr>					
-					@endforeach
-				</table>
+				<div class="d-flex align-items-baseline justify-content-between">
+					<h4>Most popular</h4>
+				</div>
+				<div>
+					<table id="latest-breaks">
+						@foreach ($popular as $break)
+							<tr>
+								<th>
+									<img src="{{ $break->category->iconPath() }}">
+								</th>
+								<td>
+									<p>
+										<a href="{{ $break->path() }}">{{ $break->title }}</a>
+									</p>
+									<p><small><strong>Written by: 
+										@foreach ($break->authors as $author)
+										{{ $loop->first ? '' : ', ' }}
+										{{ $author->fullName() }}
+										@endforeach
+									</strong></small></p>
+									<p><small>Published {{ $break->created_at->diffForHumans() }} in <a href="{{ $break->category->path() }}">{{ $break->category->name }}</a></small></p>
+								</td>
+							</tr>					
+						@endforeach
+					</table>
+				</div>				
 			</div>
 		</div>
 	</div>
 
 	{{-- BY SUBJECT --}}
-	<div class="row mt-5">
+	<div class="row mt-3">
 		<div class="col-12">
 				@component('snippets.title')
 				Breaks by subject

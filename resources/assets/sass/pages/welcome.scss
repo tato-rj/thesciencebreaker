@@ -63,17 +63,14 @@
 }
 
 #app-container {
-	div {
-		max-width: 240px;
-	}
 
 	> div:first-of-type {
 		img {
-			width: 80%;
+			width: 100%;
 		}
 	}
 
-	#apple-store-icon {
+	#apple-store {
 		width: 140px;
 	}
 }
@@ -84,4 +81,8 @@
 		color: lightgrey;
 		opacity: 0.6;
 	}
+}
+
+.box {
+	margin-bottom: 2rem;
 }

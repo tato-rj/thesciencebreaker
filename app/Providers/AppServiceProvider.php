@@ -20,11 +20,11 @@ class AppServiceProvider extends ServiceProvider
 
         \View::composer('*', function($view) {
             $view->with('categories', Category::orderBy('name')->get());
+            $view->with('popular', Article::popular(5)->get());
         });
         
         \View::composer('partials.side-bar', function($view) {
-            $view->with('editor_picks', Article::editorPicks()->get());
-            $view->with('popular', Article::popular(5)->get());
+            $view->with('editor_picks', Article::editorPicks()->get());  
         });
 
         \View::composer('pages.welcome', function($view) {
