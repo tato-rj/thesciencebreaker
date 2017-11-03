@@ -5,13 +5,13 @@
 				<div class="d-flex align-items-center mb-4">
 					<h5 class="m-0 mr-4"><strong>FOLLOW US</strong></h5>
 					<div class="d-flex align-items-center justify-content-center social">
-						<a href="https://www.facebook.com/sciencebreaker/?fref=ts" target="_blank">
+						<a href="{{ config('app.facebook') }}" target="_blank">
 							<i class="fa fa-facebook" aria-hidden="true"></i>
 						</a>
-						<a href="https://twitter.com/sciencebreaker" target="_blank">
+						<a href="{{ config('app.twitter') }}" target="_blank">
 							<i class="fa fa-twitter" aria-hidden="true"></i>
 						</a>
-						<a href="#" target="_blank">
+						<a href="{{ config('app.googleplus') }}" target="_blank">
 							<i class="fa fa-google-plus" aria-hidden="true"></i>
 						</a>
 					</div>	

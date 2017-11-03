@@ -75,7 +75,7 @@
             </div>
             {{-- Field Research --}}
             <div class="form-group">
-              <input required type="text" value="{{ old('field_research') }}" name="field_research" class="form-control" id="field_research" aria-describedby="field_research" placeholder="Field Research">
+              <input type="text" value="{{ old('field_research') }}" name="field_research" class="form-control" id="field_research" aria-describedby="field_research" placeholder="Field Research">
               {{-- Error --}}
               @component('admin/snippets/error')
                 field_research

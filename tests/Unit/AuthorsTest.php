@@ -8,7 +8,6 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class AuthorsTest extends TestCase
 {
-
 	use DatabaseMigrations;
 
     /** @test */
@@ -23,5 +22,13 @@ class AuthorsTest extends TestCase
     	]);
 
     	$this->assertEquals(2, count($author->articles));
+    }
+
+    /** @test */
+    public function authors_have_their_own_page()
+    {
+        $author = $this->author;
+
+        $this->get($author->path())->assertSee($author->first_name);
     }
 }

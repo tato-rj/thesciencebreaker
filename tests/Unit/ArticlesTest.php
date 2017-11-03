@@ -60,7 +60,7 @@ class ArticlesTest extends TestCase
     {
         $this->get('/')->assertSee($this->article->title);
     }
-
+    
     /** @test */
     public function guests_can_read_an_article()
     {

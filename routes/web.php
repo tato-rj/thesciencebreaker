@@ -5,6 +5,8 @@ Auth::routes();
 Route::get('/', 'ArticlesController@index')->name('home');;
 // Breaks
 Route::get('/breaks/{category}/{article}', 'ArticlesController@show');
+// Breakers
+Route::get('/breakers/{author}', 'AuthorsController@show');
 // Categories
 Route::get('/breaks/{category}', 'CategoryController@show');
 // Tags

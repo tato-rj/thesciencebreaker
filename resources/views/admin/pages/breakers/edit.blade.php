@@ -16,7 +16,7 @@
           <h2 class="text-muted op-5 mb-3">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Edit Breaker</strong>
           </h2>
-          <form method="POST" action="/admin/breakers/{{ $author->id }}">
+          <form method="POST" action="/admin/breakers/{{ $author->slug }}">
             {{csrf_field()}}
             {{method_field('PATCH')}}
             {{-- First Name --}}
@@ -82,7 +82,7 @@
             {{-- Field Research --}}
             <div class="form-group">
               <label><strong>Field Research</strong></label>
-              <input required type="text" value="{{ $author->field_research }}" name="field_research" class="form-control" id="field_research" aria-describedby="field_research" placeholder="Field Research">
+              <input type="text" value="{{ $author->field_research }}" name="field_research" class="form-control" id="field_research" aria-describedby="field_research" placeholder="Field Research">
               {{-- Error --}}
               @component('admin/snippets/error')
                 field_research

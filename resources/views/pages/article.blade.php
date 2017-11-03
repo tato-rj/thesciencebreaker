@@ -38,10 +38,13 @@
 			</div>
 			{{-- Author --}}
 			<div>
+				<div id="author_info">
+					<p></p>
+				</div>
 				<small><p id="author">by 
 					@foreach ($article->authors as $author)
 						{{ $loop->first ? '' : ', ' }}
-						<a href="">{{ $author->fullName() }}</a> | {{ $author->position }}
+						<a href="{{ $author->path() }}">{{ $author->fullName() }}</a> | {{ $author->position }}
 					@endforeach
 				</p></small>
 			</div>

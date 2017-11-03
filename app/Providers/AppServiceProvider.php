@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         \View::composer('pages.welcome', function($view) {
-            $view->with('latest_articles', Article::orderBy('id', 'desc')->take(5)->get());
+            $view->with('latest_articles', Article::recent(5)->get());
         });
 
     }

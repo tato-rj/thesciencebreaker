@@ -16,7 +16,7 @@
           <h2 class="text-muted op-5 mb-3">
             <i class="fa fa-file-text mr-1" aria-hidden="true"></i> <strong>New Break</strong>
           </h2>
-          <form method="POST" action="/admin/breaks">
+          <form method="POST" action="/admin/breaks" enctype="multipart/form-data">
             {{csrf_field()}}
             {{-- Title --}}
             <div class="form-group">
@@ -106,7 +106,7 @@
 
             <div class="form-group">
               <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
+                <input type="file" id="file" name="file" class="custom-file-input">
                 <span class="custom-file-control"></span>
               </label>
               <small class="form-text text-muted">Upload a PDF file for this break</small>

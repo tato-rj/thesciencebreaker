@@ -50,6 +50,10 @@ div.highlight {
     }
 }
 
+a.breaker {
+    color: inherit;
+}
+
 .clone {
     background: rgb(25,25,25);
     position: fixed;
@@ -125,4 +129,12 @@ div.highlight {
     -webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
     filter: grayscale(0);
     opacity: 1;     
+}
+
+#category, #author {
+    .reading-time {
+        padding: 2px 8px;
+        border-radius: 4px;
+        background: #f7f7f7;
+    }
 }

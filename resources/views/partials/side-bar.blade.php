@@ -41,7 +41,7 @@
 					</div>
 				</div>
 			@endforeach
-			<a class="btn btn-link btn-sm btn-block p-0 text-muted" href="">show more ></a>
+{{-- 			<a class="btn btn-link btn-sm btn-block p-0 text-muted" href="">show more ></a> --}}
 		</div>
 	</div>
 </div>

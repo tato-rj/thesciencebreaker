@@ -12,7 +12,8 @@ class ValidateBreak implements Validator
             'reading_time' => 'required',
             'original_article' => 'required',
             'category_id' => 'required',
-            'editor_id' => 'required'
+            'editor_id' => 'required',
+            'file' => 'sometimes|mimes:pdf'
         ]);
 	}
     public static function editCheck($request)

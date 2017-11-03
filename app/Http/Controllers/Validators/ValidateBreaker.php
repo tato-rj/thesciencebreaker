@@ -11,8 +11,7 @@ class ValidateBreaker implements Validator
             'last_name' => 'required|min:2',
             'email' => 'required|email|unique:authors',
             'position' => 'required',
-            'research_institute' => 'required',
-            'field_research' => 'required'
+            'research_institute' => 'required'
         ]);
 	}
 
@@ -23,8 +22,7 @@ class ValidateBreaker implements Validator
             'last_name' => 'required|min:2',
             'email' => 'required|email',
             'position' => 'required',
-            'research_institute' => 'required',
-            'field_research' => 'required'
+            'research_institute' => 'required'
         ]);
     }
 }

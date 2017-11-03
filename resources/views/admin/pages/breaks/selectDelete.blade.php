@@ -22,7 +22,7 @@
             <select class="form-control" id="break_slug" name="break_slug">
               <option selected disabled>I want to delete...</option>
               @foreach ($breaks as $break)
-              <option data-id="{{ $break->slug }}">{{ $break->title }}</option>
+              <option data-slug="{{ $break->slug }}">{{ $break->title }}</option>
               @endforeach
             </select>
           </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -36,7 +36,7 @@ class AdminBreakersTest extends TestCase
         $this->signIn();
         $author = $this->author;
 
-        $this->delete('/admin/breakers/'.$author->id)->assertSessionHas('db_feedback');
+        $this->delete('/admin/breakers/'.$author->slug)->assertSessionHas('db_feedback');
 
         $this->assertDatabaseMissing('authors', [
             'id' => $author->id
@@ -50,7 +50,7 @@ class AdminBreakersTest extends TestCase
         $author = $this->author;
         $break_id = $author->articles[0]->id;
 
-        $this->delete('/admin/breakers/'.$author->id)->assertSessionHas('db_feedback');
+        $this->delete('/admin/breakers/'.$author->slug)->assertSessionHas('db_feedback');
 
         $this->assertDatabaseMissing('article_author', [
             'article_id' => $break_id
@@ -63,7 +63,7 @@ class AdminBreakersTest extends TestCase
         $this->signIn();
         $author = $this->author;
 
-        $this->patch('/admin/breakers/'.$author->id, [
+        $this->patch('/admin/breakers/'.$author->slug, [
             'first_name' => 'Melissa',
             'last_name' => $author->last_name,
             'email' =>$author->email,

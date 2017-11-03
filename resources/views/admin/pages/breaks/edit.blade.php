@@ -16,7 +16,7 @@
           <h2 class="text-muted op-5 mb-3">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Edit Break</strong>
           </h2>
-          <form method="POST" action="/admin/breaks/{{ $article->slug }}">
+          <form method="POST" action="/admin/breaks/{{ $article->slug }}" enctype="multipart/form-data">
             {{csrf_field()}}
             {{method_field('PATCH')}}
             {{-- Title --}}
@@ -117,7 +117,7 @@
             {{-- PDF --}}
             <div class="form-group">
               <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
+                <input type="file" id="file" name="file" class="custom-file-input">
                 <span class="custom-file-control"></span>
               </label>
               <small class="form-text text-muted">Use this option to upload a PDF file for this break</small>

@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Author extends Model
 {
     protected $guarded = [];
+    protected $withCount = ['articles'];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
     
     public function articles()
     {
@@ -16,6 +22,11 @@ class Author extends Model
     public function fullName()
     {
     	return $this->first_name.' '.$this->last_name;
+    }
+
+    public function path()
+    {
+        return "/breakers/$this->slug";
     }
 
     public static function generateSlugs()

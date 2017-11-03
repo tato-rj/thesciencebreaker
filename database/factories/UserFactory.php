@@ -35,7 +35,7 @@ $factory->define(App\Article::class, function (Faker $faker) {
         'title' => $title,
         'slug' => str_slug($title),
         'content' => $faker->paragraph,
-        'reading_time' =>$faker->randomDigitNotNull,
+        'reading_time' => $faker->randomDigitNotNull,
         'original_article' => $faker->sentence,
         'category_id' => 1,
         'editor_id' => 1,

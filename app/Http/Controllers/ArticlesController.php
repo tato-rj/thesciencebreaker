@@ -9,6 +9,7 @@ use App\Manager;
 use App\Tag;
 use App\Mail\MailFactory;
 use App\Http\Controllers\Validators\ValidateBreak;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
@@ -38,6 +39,7 @@ class ArticlesController extends Controller
     {
         ValidateBreak::createCheck($request);
         $break = Article::createFrom($request);
+        $file = self::saveFile($request);
         MailFactory::sendNotificationsTo($request->authors, $request->editor_id, $break);
         return redirect()->back()->with('db_feedback', 'The Break has been successfully added!');
     }
@@ -69,6 +71,7 @@ class ArticlesController extends Controller
     {
         ValidateBreak::editCheck($request);
         $article->updateFrom($request);
+        $file = self::saveFile($request);
         return redirect()->back()->with('db_feedback', 'The Break has been updated');
     }
 
@@ -87,8 +90,21 @@ class ArticlesController extends Controller
     public function destroy(Article $article)
     {
         $article->authors()->detach();
+        Storage::disk('public')->delete('/breaks/pdf/'.$article->slug.'.pdf');
         $article->delete();
+
         return redirect()->back()->with('db_feedback', 'The Break has been deleted');
+    }
+
+    protected static function saveFile(Request $request)
+    {
+        if ($request->file('file') !== null) {
+            $file = $request->file('file');
+            $ext = $file->extension();
+            $name = str_slug($request->title);
+            $file->storeAs("breaks/pdf/", "$name.$ext", 'public');
+            return Storage::url("$name.$ext");
+        }
     }
 
 }

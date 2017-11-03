@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Author;
+use App\Article;
 use App\Mail\MailFactory;
 use App\Http\Controllers\Validators\ValidateBreaker;
 use Illuminate\Http\Request;
@@ -44,7 +45,7 @@ class AuthorsController extends Controller
     // READ
     public function show(Author $author)
     {
-        //
+        return view('pages/author', compact('author'));
     }
 
     // UPDATE
@@ -64,7 +65,7 @@ class AuthorsController extends Controller
         ValidateBreaker::editCheck($request);
         $author->update($request->all());
         $author->update(['slug' => str_slug($request->first_name.' '.$request->last_name)]);
-        return redirect()->back()->with('db_feedback', $author->first_name.'\'s profile has been updated');
+        return redirect('/admin/breakers/edit')->with('db_feedback', $author->first_name.'\'s profile has been updated');
     }
 
     // DELETE

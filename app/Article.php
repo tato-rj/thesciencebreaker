@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Article extends Model
 {
@@ -50,6 +51,11 @@ class Article extends Model
         return "/breaks/{$this->category->slug}/{$this->slug}";
     }
 
+    public function pdf()
+    {
+        return Storage::url("breaks/pdf/$this->slug.pdf");
+    }
+
     public static function createFrom($request)
     {
         $article = self::create([
@@ -75,6 +81,7 @@ class Article extends Model
     {
         $this->update([
             'title' => $request->title,
+            'slug' => str_slug($request->title, '-'),
             'content' => $request->content,
             'reading_time' => $request->reading_time,
             'original_article' => $request->original_article,
@@ -130,6 +137,11 @@ class Article extends Model
         }
     }
 
+    public function scopeRecent($query, $number)
+    {
+        return $query->orderBy('id', 'desc')->take($number);
+    }
+
     public function scopeSimilar($query)
     {
         return $query->where('category_id', $this->category_id)->orderBy('id', 'desc')->take(5);
@@ -160,4 +172,5 @@ class Article extends Model
                 $query->where('name', 'LIKE', "%$word%");
             })->orderBy('created_at', 'DESC');
     }
+
 }

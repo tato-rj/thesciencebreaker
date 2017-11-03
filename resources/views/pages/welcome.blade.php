@@ -2,6 +2,9 @@
 
 @section('content')
 
+<div id="overlay">
+	<img src="{{ asset('images/logo-small.svg') }}">
+</div>
 <div class="container">
 	{{-- INTRO --}}
 	<div class="row mt-5">
@@ -26,7 +29,7 @@
 					<img src="{{ asset('images/ios-app/app.svg') }}">
 				</div>
 				<div class="p-2 col-lg-6 col-md-12">
-					<p>Our iOS app is coming up soon, <strong>stay tuned</strong>!</p>
+					<p>Our iOS app is coming out soon, <strong>stay tuned</strong>!</p>
 					<a href="https://www.facebook.com/sciencebreaker/?fref=ts" target="_blank">
 						<img id="apple-store" src="{{ asset('images/ios-app/apple-store.svg') }}">
 					</a>
@@ -54,7 +57,7 @@
 									<p><small><strong>Written by: 
 										@foreach ($break->authors as $author)
 										{{ $loop->first ? '' : ', ' }}
-										{{ $author->fullName() }}
+										<a href="{{ $author->path() }}" class="breaker">{{ $author->fullName() }}</a>
 										@endforeach
 									</strong></small></p>
 									<p><small>Published {{ $break->created_at->diffForHumans() }} in <a href="{{ $break->category->path() }}">{{ $break->category->name }}</a></small></p>
@@ -82,7 +85,7 @@
 									<p><small><strong>Written by: 
 										@foreach ($break->authors as $author)
 										{{ $loop->first ? '' : ', ' }}
-										{{ $author->fullName() }}
+										<a href="{{ $author->path() }}" class="breaker">{{ $author->fullName() }}</a>
 										@endforeach
 									</strong></small></p>
 									<p><small>Published {{ $break->created_at->diffForHumans() }} in <a href="{{ $break->category->path() }}">{{ $break->category->name }}</a></small></p>
@@ -117,20 +120,6 @@
 		</div>
 	</div>
 
-	{{-- APP --}}
-{{-- 	<div class="row mt-5">
-		<div class="d-flex col-12 justify-content-center align-items-center" id="app-container">
-			<div>
-				<img src="/images/ios-app/iphone.svg">
-			</div>
-			<div class="text-center">
-				<h4>Check out our new</h4>
-				<h3 class="text-orange"><strong>Mobile App!</strong></h3>
-				<img src="/images/ios-app/apple-store.svg" class="mt-2" id="apple-store-icon">
-			</div>	
-		</div>
-	</div> --}}
-
 	{{-- DISCUSSION --}}
 	<div class="row hidden-sm-down mt-5" id="discussion-container">
 		<div class="col-7">
@@ -144,4 +133,16 @@
 		</div>
 	</div>
 
+@endsection
+
+@section('script')
+<script type="text/javascript">
+$(window).on('load', function(){
+  setTimeout(function(){
+    $('#overlay img').fadeOut(function(){
+    	$('#overlay').fadeOut();
+    });
+  }, 500);
+});
+</script>
 @endsection
