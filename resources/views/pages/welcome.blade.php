@@ -134,15 +134,3 @@
 	</div>
 
 @endsection
-
-@section('script')
-<script type="text/javascript">
-$(window).on('load', function(){
-  setTimeout(function(){
-    $('#overlay img').fadeOut(function(){
-    	$('#overlay').fadeOut();
-    });
-  }, 500);
-});
-</script>
-@endsection

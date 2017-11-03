@@ -63,8 +63,9 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
@@ -72,7 +73,70 @@ module.exports = __webpack_require__(2);
 
 
 /***/ }),
-/* 1 */
+
+/***/ 1:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__(39);
+__webpack_require__(40);
+__webpack_require__(41);
+__webpack_require__(42);
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 39:
+/***/ (function(module, exports) {
+
+(function ($) {
+    "use strict";
+
+    // Set up sticky menu
+
+    $('nav').addClass('original').clone().removeClass('mt-3 original').appendTo('header').addClass('pl-4 pr-4 clone');
+    var sideBar = $('#side-bar');
+    var navHeight = $('nav').outerHeight();
+    var headerHeight = $('header').outerHeight();
+    var dist = $('main').offset().top;
+
+    $(window).scroll(function () {
+        var scroll = $(this).scrollTop();
+
+        if (scroll < dist) {
+            //Sticky menu
+            $('.original').css('visibility', 'visible');
+            $('.clone').fadeOut(100);
+            // Scroll top button
+            $('.scroll-to-top').fadeOut();
+        } else if (scroll > dist) {
+            //Sticky menu
+            $('.original').css('visibility', 'hidden');
+            $('.clone').fadeIn(200);
+            // Scroll top button
+            $('.scroll-to-top').fadeIn();
+        }
+    });
+
+    $(document).on('click', 'a.scroll-to-top', function (event) {
+        var $anchor = $(this);
+        // Scroll with ease
+        $('html, body').stop().animate({
+            scrollTop: $($anchor.attr('href')).offset().top
+        }, 1000, 'easeInOutExpo');
+        event.preventDefault();
+    });
+})(jQuery);
+
+/***/ }),
+
+/***/ 40:
 /***/ (function(module, exports) {
 
 if ($('.alert').length) {
@@ -80,10 +144,33 @@ if ($('.alert').length) {
 }
 
 /***/ }),
-/* 2 */
+
+/***/ 41:
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+$(window).on('load', function () {
+  setTimeout(function () {
+    $('#overlay img').fadeOut(function () {
+      $('#overlay').fadeOut();
+    });
+  }, 500);
+});
+
+/***/ }),
+
+/***/ 42:
+/***/ (function(module, exports) {
+
+(function ($) {
+	"use strict";
+
+	$('input[name="news_from"]').on('change', function () {
+		var $section = $(this).attr('id');
+		$('#options').find('input, textarea').hide();
+		$('.' + $section).fadeIn();
+	});
+})(jQuery);
 
 /***/ })
-/******/ ]);
+
+/******/ });

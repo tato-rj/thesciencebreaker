@@ -16,7 +16,7 @@
           <h2 class="text-muted op-5 mb-3">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Edit member</strong>
           </h2>
-          <form method="POST" action="/admin/managers/{{ $manager->id }}">
+          <form method="POST" action="/admin/managers/{{ $manager->slug }}">
             {{csrf_field()}}
             {{method_field('PATCH')}}
             {{-- First Name --}}

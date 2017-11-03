@@ -29,6 +29,11 @@ class Author extends Model
         return "/breakers/$this->slug";
     }
 
+    public function isAuthorOf($article)
+    {
+        return (stripos(' '.$article, $this->last_name));
+    }
+
     public static function generateSlugs()
     {
         foreach (self::all() as $author) {

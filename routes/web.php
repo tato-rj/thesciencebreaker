@@ -7,6 +7,8 @@ Route::get('/', 'ArticlesController@index')->name('home');;
 Route::get('/breaks/{category}/{article}', 'ArticlesController@show');
 // Breakers
 Route::get('/breakers/{author}', 'AuthorsController@show');
+// Managers
+Route::get('/core-team/{member}', 'ManagersController@show');
 // Categories
 Route::get('/breaks/{category}', 'CategoryController@show');
 // Tags

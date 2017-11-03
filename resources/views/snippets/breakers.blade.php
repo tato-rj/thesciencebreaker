@@ -1,6 +1,6 @@
 <div class="mt-3">
   <p class="no-indent mb-2">
-  	<strong>{{ $member->fullName() }}</strong> 
+  	<a class="breaker" href="{{ $member->path() }}"><strong>{{ $member->fullName() }}</strong></a>
   	<small class="text-muted ml-1"><em> joined {{ $member->created_at->diffForHumans() }}</em></small>
   </p>
   <p>{{ $member->position }} at {{ $member->research_institute }}</p>

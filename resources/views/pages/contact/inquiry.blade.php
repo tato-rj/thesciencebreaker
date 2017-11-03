@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container mt-5">
+<div class="container mt-4">
 	<div class="row">
 		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
 			@component('snippets.title')
@@ -189,14 +189,4 @@
 @if($flash = session('contact'))
 @include('admin/snippets/alerts/success')
 @endif
-@endsection
-
-@section('script')
-<script type="text/javascript">
-$('input[type="radio"]').on('change', function() {
-	$section = $(this).attr('id');
-	$('#options').find('input, textarea').hide();
-	$('.'+$section).fadeIn();
-});
-</script>
 @endsection

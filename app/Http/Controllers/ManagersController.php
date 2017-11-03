@@ -54,9 +54,9 @@ class ManagersController extends Controller
     }
 
     // READ
-    public function show(Manager $manager)
+    public function show(Manager $member)
     {
-        //
+        return view('pages/manager', compact('member'));
     }
 
     // UPDATE

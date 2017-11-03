@@ -19,10 +19,10 @@
 
           <div class="form-group">
             <label for="exampleSelect2">Select the Manager to be edited</label>
-            <select class="form-control" id="manager_id" name="manager_id">
+            <select class="form-control" id="manager_slug" name="manager_slug">
               <option selected disabled>I want to edit...</option>
               @foreach ($managers as $manager)
-              <option data-id="{{ $manager->id }}">{{ $manager->first_name }} {{ $manager->last_name }}</option>
+              <option data-slug="{{ $manager->slug }}">{{ $manager->first_name }} {{ $manager->last_name }}</option>
               @endforeach
             </select>
           </div>
@@ -43,9 +43,9 @@
 <script type="text/javascript">
 $('select').on('change', function() {
   $title = this.value;
-  $id = $(this).children(':selected').attr('data-id');
+  $slug = $(this).children(':selected').attr('data-slug');
   $('#confirm strong').text($title);
-  $('#confirm a').attr('href', '/admin/managers/'+$id+'/edit');
+  $('#confirm a').attr('href', '/admin/managers/'+$slug+'/edit');
   $('#confirm').fadeIn();
 });
 </script>

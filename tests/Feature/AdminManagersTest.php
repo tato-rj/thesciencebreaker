@@ -38,7 +38,7 @@ class AdminManagersTest extends TestCase
         $this->signIn();
         $manager = $this->manager;
 
-        $this->delete('/admin/managers/'.$manager->id)->assertSessionHas('db_feedback');
+        $this->delete('/admin/managers/'.$manager->slug)->assertSessionHas('db_feedback');
 
         $this->assertDatabaseMissing('managers', [
             'id' => $manager->id
@@ -49,7 +49,7 @@ class AdminManagersTest extends TestCase
     public function a_manager_can_view_a_page_to_edit_a_team_member()
     {
         $this->signIn();
-        $this->get('/admin/managers/'.$this->manager->id.'/edit')->assertSee($this->manager->first_name);
+        $this->get('/admin/managers/'.$this->manager->slug.'/edit')->assertSee($this->manager->first_name);
     }
 
     /** @test */
@@ -58,7 +58,7 @@ class AdminManagersTest extends TestCase
         $this->signIn();
         $manager = $this->manager;
 
-        $this->patch('/admin/managers/'.$manager->id, [
+        $this->patch('/admin/managers/'.$manager->slug, [
             'first_name' => 'Lisa',
             'last_name' => $manager->last_name,
             'email' =>$manager->email,

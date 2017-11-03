@@ -2,12 +2,12 @@
 
 @section('content')
 
-<div class="container mt-5">
+<div class="container mt-4">
 	<div class="row">
 		{{-- Break Content --}}
 		<div id="category" class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
 			{{-- Title --}}
-			<div id="title" class="d-flex align-items-center">
+			<div id="title" class="d-flex align-items-center mt-3">
 				<div>
 					<img src="{{ $category->iconPath() }}">
 				</div>

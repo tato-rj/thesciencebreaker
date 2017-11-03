@@ -1,8 +1,12 @@
 #core {
+	a:hover {
+		text-decoration: none;
+	}
+	
 	.avatar {
 		border-bottom: 3px solid transparent;
 		cursor: pointer;
-
+		
 		.about {
 			position: absolute;
 			cursor: default;

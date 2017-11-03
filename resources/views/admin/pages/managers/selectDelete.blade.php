@@ -19,15 +19,15 @@
 
           <div class="form-group">
             <label for="exampleSelect2">Select the Manager to be deleted</label>
-            <select class="form-control" id="break_id" name="break_id">
+            <select class="form-control" id="manager_slug" name="manager_slug">
               <option selected disabled>I want to delete...</option>
               @foreach ($managers as $manager)
-              <option data-id="{{ $manager->id }}">{{ $manager->first_name }} {{ $manager->last_name }}</option>
+              <option data-slug="{{ $manager->slug }}">{{ $manager->first_name }} {{ $manager->last_name }}</option>
               @endforeach
             </select>
           </div>
           <div class="hidden" id="confirm">
-            <button type="button" class="btn btn-danger" data-name="" data-id="" data-toggle="modal" data-target="#delete_modal">
+            <button type="button" class="btn btn-danger" data-name="" data-slug="" data-toggle="modal" data-target="#delete_modal">
               Delete manager
             </button>
           </div>
@@ -43,15 +43,15 @@
 <script type="text/javascript">
 $('select').on('change', function() {
   $name = this.value;
-  $id = $(this).children(':selected').attr('data-id');
-  $('#confirm button').attr('data-id', $id).attr('data-name' ,$name);
+  $slug = $(this).children(':selected').attr('data-slug');
+  $('#confirm button').attr('data-slug', $slug).attr('data-name' ,$name);
   $('#confirm').fadeIn();
 });
 $('#confirm button').on('click', function() {
-  $id = $(this).attr('data-id');
+  $slug = $(this).attr('data-slug');
   $name = $(this).attr('data-name');
   $('#delete_modal h6 strong').text($name);
-  $('#delete_modal form').attr('action', '/admin/managers/'+$id);
+  $('#delete_modal form').attr('action', '/admin/managers/'+$slug);
 });
 </script>
 @endsection

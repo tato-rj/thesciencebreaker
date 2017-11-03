@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container mt-5">
+<div class="container mt-4">
   <div class="row">
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
       @component('snippets.title')
@@ -67,26 +67,5 @@
 @endsection
 
 @section('script')
-<script>
 
-$('#tab-bar a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-});
-
-$('.avatar').on('click', function(event) {
-  event.stopPropagation();
-  resetAvatars();
-  $(this).toggleClass('border-color-green').children('.about').toggle();
-});
-
-$(window).click(function() {
-  resetAvatars();
-});
-
-function resetAvatars ($elements) {
-  $('.avatars .avatar').removeClass('border-color-green').children('.about').hide();
-}
-
-</script>
 @endsection

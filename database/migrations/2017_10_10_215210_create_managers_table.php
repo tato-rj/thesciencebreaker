@@ -17,7 +17,7 @@ class CreateManagersTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('slug')->slug()->unique();
+            $table->string('slug')->slug();
             $table->string('email')->unique();
             $table->string('division');
             $table->string('position');

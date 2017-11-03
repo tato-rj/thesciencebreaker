@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container mt-5">
+<div class="container mt-4">
 	<div class="row">
 		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12" id="partners">
 			@component('snippets.title')
