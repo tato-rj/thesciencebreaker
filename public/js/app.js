@@ -63,36 +63,25 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(2);
+module.exports = __webpack_require__(6);
 
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ 1:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__(39);
-__webpack_require__(40);
-__webpack_require__(41);
-__webpack_require__(42);
+__webpack_require__(2);
+__webpack_require__(3);
+__webpack_require__(4);
+__webpack_require__(5);
 
 /***/ }),
-
-/***/ 2:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 39:
+/* 2 */
 /***/ (function(module, exports) {
 
 (function ($) {
@@ -135,8 +124,7 @@ __webpack_require__(42);
 })(jQuery);
 
 /***/ }),
-
-/***/ 40:
+/* 3 */
 /***/ (function(module, exports) {
 
 if ($('.alert').length) {
@@ -144,8 +132,7 @@ if ($('.alert').length) {
 }
 
 /***/ }),
-
-/***/ 41:
+/* 4 */
 /***/ (function(module, exports) {
 
 $(window).on('load', function () {
@@ -157,8 +144,7 @@ $(window).on('load', function () {
 });
 
 /***/ }),
-
-/***/ 42:
+/* 5 */
 /***/ (function(module, exports) {
 
 (function ($) {
@@ -171,6 +157,11 @@ $(window).on('load', function () {
 	});
 })(jQuery);
 
-/***/ })
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
 
-/******/ });
+// removed by extract-text-webpack-plugin
+
+/***/ })
+/******/ ]);

@@ -58,7 +58,7 @@
 			{{-- Editor --}}
 			<div id="credits" class="mt-4">
 				<h5>Edited by:</h5>
-				<p><strong>{{ $article->editor->fullName() }}</strong>, {{ $article->editor->position }}</p>
+				<p><strong><a href="{{ $article->editor->path() }}" class="breaker">{{ $article->editor->fullName() }}</a></strong>, {{ $article->editor->position }}</p>
 				<h5 class="mt-3">Original Article:</h5>
 				<p><small>{!! html_entity_decode($article->original_article) !!}</small></p>
 			</div>

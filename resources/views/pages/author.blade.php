@@ -5,23 +5,22 @@
 <div class="container mt-4">
 	<div class="row" id="author">
 		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-			<div class="pt-3">
+			<div class="mt-4 jumbotron">
 				<div class="d-flex align-items-baseline">
 					<h4><i class="fa fa-user mr-2" aria-hidden="true"></i><strong>{{ $author->fullName() }}</strong></h4>
 					<small class="ml-2"><em>joined in {{ $author->created_at->toFormattedDateString() }}</em></small>
 				</div>
-				<div class="p-3">
-					<p class="mb-1">{{ $author->last_name }} is {{ $author->position }} at {{ $author->research_institute }}.</p>
+				<div class="">
+					<p class="mb-1">{{ $author->position }} at {{ $author->research_institute }}.</p>
 					<p class="mb-0">{{ $author->last_name }} has <strong>{{ $author->articles_count }}</strong> {{str_plural('break', $author->articles_count)}} published.</p>
 					@if (!empty($author->general_comments))
 						<p class="text-green mt-4 mb-0 text-center "><em>{!! html_entity_decode($author->general_comments) !!}</em></p>
 					@endif
 				</div>
 			</div>
-			<hr class=" mb-4">
 			<div>
 				@foreach($author->articles as $article)
-				<div class="mt-3 mb-5">
+				<div class="p-3">
 					<h5><a href="{{ $article->path() }}"><i class="fa fa-file-text mr-2" aria-hidden="true"></i><strong>{{ $article->title }}</strong></a></h5>
 
 					@if ($author->isAuthorOf($article->original_article))

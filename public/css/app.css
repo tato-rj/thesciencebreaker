@@ -10416,10 +10416,6 @@ footer #apple-store {
   font-size: 0.9em;
 }
 
-#author .jumbotron {
-  border-left: 5px solid #06b2b8;
-}
-
 #category #title > div:last-of-type {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
