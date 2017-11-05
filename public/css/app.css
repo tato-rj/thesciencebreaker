@@ -9811,6 +9811,10 @@ button:active {
   background: #191919;
 }
 
+.bg-green {
+  background: #06b2b8;
+}
+
 .text-orange {
   color: #f36e41;
 }

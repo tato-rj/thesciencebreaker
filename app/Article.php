@@ -173,4 +173,11 @@ class Article extends Model
             })->orderBy('created_at', 'DESC');
     }
 
+    public function scopeWithTag($query, $tag)
+    {
+        return $query->whereHas('tags', function($query) use ($tag) {
+                    $query->where('name', $tag);
+                });
+    }
+
 }

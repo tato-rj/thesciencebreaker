@@ -55,6 +55,16 @@
 			<div class="mt-4">
 				{!! html_entity_decode($article->content) !!}
 			</div>
+			<div class="mt-4">
+				<hr>
+				<p class="mb-0"><strong>Next read:</strong> <a href="{{ $next_read->path() }}">{{ $next_read->title }}</a>
+				<small>by 
+					@foreach ($next_read->authors as $author)
+						{{ $loop->first ? '' : ', ' }}
+						<a class="breaker" href="{{ $author->path() }}">{{ $author->fullName() }}</a>
+					@endforeach</small></p>
+			</div>
+			<hr>
 			{{-- Editor --}}
 			<div id="credits" class="mt-4">
 				<h5>Edited by:</h5>
@@ -65,8 +75,32 @@
 			{{-- DISQUS --}}
 			<div id="disqus_thread" class="mt-4 mb-5"></div>
 			{{-- More From --}}
-			<div class="jumbotron">
-				<h5>More from {{ $article->category->name }}</h5>
+			<div class="">
+				<h5 class="p-1 pl-2 bg-green text-white">Also about <a href="{{ $article->tags->first()->path() }}">{{ $article->tags->first()->name }}</a></h5>
+				<table id="latest-breaks" class="mt-4">
+					@foreach ($more_like as $break)
+						<tr>
+							<th>
+								<img src="{{ $break->category->iconPath() }}">
+							</th>
+							<td>
+								<p>
+									<a href="{{ $break->path() }}">{{ $break->title }}</a>
+								</p>
+								<p><small><strong>Written by: 
+									@foreach ($break->authors as $author)
+									{{ $loop->first ? '' : ', ' }}
+									{{ $author->fullName() }}
+									@endforeach
+								</strong></small></p>
+								<p><small>Published {{ $break->created_at->diffForHumans() }} in {{ $break->category->name }}</small></p>
+							</td>
+						</tr>					
+					@endforeach
+				</table>
+			</div>
+			<div class="mt-4">
+				<h5 class="p-1 pl-2 bg-green text-white">More from <a href="{{ $article->category->path() }}">{{ $article->category->name }}</a></h5>
 				<table id="latest-breaks" class="mt-4">
 					@foreach ($more_from as $break)
 						<tr>
