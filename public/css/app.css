@@ -10369,9 +10369,7 @@ footer #apple-store {
   color: inherit;
 }
 
-#break #author {
-  margin: 8px 0;
-  padding: 4px 0;
+#break #author-bar {
   border-top: 1px solid;
   border-bottom: 1px solid;
 }

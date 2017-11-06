@@ -47,10 +47,9 @@ class ArticlesController extends Controller
     // READ
     public function show($category, Article $article)
     {
-        $first_tag = $article->tags->first();
-        $more_like = Article::withTag($first_tag->name)->take(4)->get();
+        $next_read = Article::random();
+        $more_like = Article::withTag($article->tags->first());
         $more_from = $article->similar()->get();
-        $next_read = Article::inRandomOrder()->first();
         $article->increment('views');
         return view('pages.article', compact(['article', 'more_from', 'more_like', 'next_read']));
     }

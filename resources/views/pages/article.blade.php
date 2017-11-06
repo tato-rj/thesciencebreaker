@@ -37,16 +37,17 @@
 				</div>
 			</div>
 			{{-- Author --}}
-			<div>
-				<div id="author_info">
-					<p></p>
+			<div id="author-bar" class="mt-2 pt-1 mb-2 pb-1 d-flex align-items-center justify-content-between">
+				<div>
+					<small>by 
+						@foreach ($article->authors as $author)
+							{{ $loop->first ? '' : ', ' }}
+							<a href="{{ $author->path() }}">{{ $author->fullName() }}</a> | {{ $author->position }}
+						@endforeach
+					</small>
 				</div>
-				<small><p id="author">by 
-					@foreach ($article->authors as $author)
-						{{ $loop->first ? '' : ', ' }}
-						<a href="{{ $author->path() }}">{{ $author->fullName() }}</a> | {{ $author->position }}
-					@endforeach
-				</p></small>
+				<i class="ml-2 fa fa-info-circle" tabindex="0" data-toggle="popover" data-html="true" data-placement="auto" data-trigger="focus" title="Editor" data-content="{{ $article->editor->fullName() }}<br><small>{{ $article->editor->position }}</small>"></i>
+
 			</div>
 			
 			@include('partials.reading-time-bar')
@@ -67,16 +68,22 @@
 			<hr>
 			{{-- Editor --}}
 			<div id="credits" class="mt-4">
-				<h5>Edited by:</h5>
-				<p><strong><a href="{{ $article->editor->path() }}" class="breaker">{{ $article->editor->fullName() }}</a></strong>, {{ $article->editor->position }}</p>
+{{-- 				<h5>Edited by:</h5>
+				<p><strong><a href="{{ $article->editor->path() }}" class="breaker">{{ $article->editor->fullName() }}</a></strong>, {{ $article->editor->position }}</p> --}}
 				<h5 class="mt-3">Original Article:</h5>
 				<p><small>{!! html_entity_decode($article->original_article) !!}</small></p>
 			</div>
 			{{-- DISQUS --}}
 			<div id="disqus_thread" class="mt-4 mb-5"></div>
-			{{-- More From --}}
+			{{-- Also About --}}
 			<div class="">
-				<h5 class="p-1 pl-2 bg-green text-white">Also about <a href="{{ $article->tags->first()->path() }}">{{ $article->tags->first()->name }}</a></h5>
+				<h5 class="p-1 pl-2 bg-green text-white">
+					@if ($article->tags->first())
+					Also about <a href="{{ $article->tags->first()->path() }}">{{ $article->tags->first()->name }}</a>
+					@else
+					We thought you might like
+					@endif
+				</h5>
 				<table id="latest-breaks" class="mt-4">
 					@foreach ($more_like as $break)
 						<tr>
@@ -133,4 +140,9 @@
 
 @section('script')
 <script type="text/javascript" src="{{ asset('js/disqus.js') }}"></script>
+<script type="text/javascript">
+$(function () {
+  $('[data-toggle="popover"]').popover();
+})
+</script>
 @endsection

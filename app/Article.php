@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
@@ -28,7 +29,7 @@ class Article extends Model
 
     public function authors()
     {
-    	return $this->belongsToMany('App\Author')->withTimestamps();
+    	return $this->belongsToMany('App\Author')->withPivot('relevance_order')->orderBy('relevance_order')->withTimestamps();
     }
 
     public function tags()
@@ -173,11 +174,22 @@ class Article extends Model
             })->orderBy('created_at', 'DESC');
     }
 
-    public function scopeWithTag($query, $tag)
+    public static function withTag($tag)
     {
-        return $query->whereHas('tags', function($query) use ($tag) {
-                    $query->where('name', $tag);
-                });
+        if (is_null($tag)) {
+            return self::inRandomOrder()->take(4)->get(); 
+        } else {
+            $tag = $tag->name;
+            return self::whereHas('tags', function() use ($tag) {
+                        self::where('name', $tag);
+                    })->take(4)->get();
+        }
+
+    }
+
+    public static function random()
+    {
+        return self::inRandomOrder()->first();
     }
 
 }
