@@ -26,14 +26,6 @@
               @endforeach
             </select>
           </div>
-          <div class="hidden" id="confirm">
-            <p>You selected the Breaker <em><strong></strong></em></p>
-            <div>
-            <a href="" class="btn no-hover btn-theme-orange">
-              Edit Breaker
-            </a>
-          </div>
-        </div>
         </div>
       </div>
     </div>
@@ -41,12 +33,10 @@
 
 @section('scripts')
 <script type="text/javascript">
-$('select').on('change', function() {
+$('select#breaker_id').on('change', function() {
   $title = this.value;
   $slug = $(this).children(':selected').attr('data-slug');
-  $('#confirm strong').text($title);
-  $('#confirm a').attr('href', '/admin/breakers/'+$slug+'/edit');
-  $('#confirm').fadeIn();
+  window.location.href =  '/admin/breakers/'+$slug+'/edit';
 });
 </script>
 @endsection

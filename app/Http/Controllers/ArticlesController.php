@@ -65,9 +65,10 @@ class ArticlesController extends Controller
     public function edit(Article $article)
     {
         $authors = Author::orderBy('first_name')->get();
+        $breaks = Article::orderBy('title')->get();
         $tags = Tag::orderBy('name')->get();
         $editors = Manager::editors();
-        return view('admin/pages/breaks/edit', compact(['editors', 'article', 'authors', 'tags']));
+        return view('admin/pages/breaks/edit', compact(['editors', 'article', 'authors', 'tags', 'breaks']));
     }
 
     public function update(Request $request, Article $article)

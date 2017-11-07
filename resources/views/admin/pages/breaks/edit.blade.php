@@ -16,6 +16,15 @@
           <h2 class="text-muted op-5 mb-3">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Edit Break</strong>
           </h2>
+          <div class="form-group">
+            <label for="exampleSelect2">Select the Break to be edited</label>
+            <select class="form-control" id="break_id" name="break_id">
+              <option selected disabled>I want to edit...</option>
+              @foreach ($breaks as $break)
+              <option data-slug="{{ $break->slug }}">{{ $break->title }}</option>
+              @endforeach
+            </select>
+          </div>
           <form method="POST" action="/admin/breaks/{{ $article->slug }}" enctype="multipart/form-data">
             {{csrf_field()}}
             {{method_field('PATCH')}}
@@ -51,7 +60,7 @@
             </div>
             <div class="form-group">
               <div class=" mb-1 d-flex align-items-center justify-content-between">
-                <label><strong>Breakers</strong> <small>(you can select have as many as you need)</small></label>
+                <label><strong>Breakers</strong><span class="badge badge-warning ml-1">{{ count($article->authors) }}</span> <small>(you can select have as many as you need)</small></label>
                 <button type="button" id="sort_breakers" class="btn btn-sm btn-theme-orange" data-toggle="modal" data-target="#order_breakers">Order</button>
               </div>
               @include('admin/snippets/order_breakers')
@@ -266,6 +275,12 @@ $(document).on('click', '.removeTag', function() {
     $('.modal #fail small span').text('Something went wrong...');
     $('.modal #fail').fadeIn().delay(1000).fadeOut('fast');
   });
+});
+
+$('select#break_id').on('change', function() {
+  $title = this.value;
+  $slug = $(this).children(':selected').attr('data-slug');
+  window.location.href = '/admin/breaks/'+$slug+'/edit';
 });
 
 </script>

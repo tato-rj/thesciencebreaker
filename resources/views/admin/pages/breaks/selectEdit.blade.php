@@ -16,7 +16,6 @@
           <h2 class="text-muted op-5 mb-3">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Choose Break to edit</strong>
           </h2>
-
           <div class="form-group">
             <label for="exampleSelect2">Select the Break to be edited</label>
             <select class="form-control" id="break_id" name="break_id">
@@ -26,14 +25,6 @@
               @endforeach
             </select>
           </div>
-          <div class="hidden" id="confirm">
-            <p>You selected the Break <em><strong></strong></em></p>
-            <div>
-            <a href="" class="btn no-hover btn-theme-orange">
-              Edit Break
-            </a>
-          </div>
-        </div>
         </div>
       </div>
     </div>
@@ -41,12 +32,10 @@
 
 @section('scripts')
 <script type="text/javascript">
-$('select').on('change', function() {
+$('select#break_id').on('change', function() {
   $title = this.value;
   $slug = $(this).children(':selected').attr('data-slug');
-  $('#confirm strong').text($title);
-  $('#confirm a').attr('href', '/admin/breaks/'+$slug+'/edit');
-  $('#confirm').fadeIn();
+  window.location.href = '/admin/breaks/'+$slug+'/edit';
 });
 </script>
 @endsection

@@ -16,6 +16,15 @@
           <h2 class="text-muted op-5 mb-3">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Edit Breaker</strong>
           </h2>
+          <div class="form-group">
+            <label for="exampleSelect2">Select the Breaker to be edited</label>
+            <select class="form-control" id="breaker_id" name="breaker_slug">
+              <option selected disabled>I want to edit...</option>
+              @foreach ($breakers as $breaker)
+              <option data-slug="{{ $breaker->slug }}">{{ $breaker->first_name }} {{ $breaker->last_name }}</option>
+              @endforeach
+            </select>
+          </div>
           <form method="POST" action="/admin/breakers/{{ $author->slug }}">
             {{csrf_field()}}
             {{method_field('PATCH')}}
@@ -108,4 +117,14 @@
         </div>
       </div>
     </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+$('select#breaker_id').on('change', function() {
+  $title = this.value;
+  $slug = $(this).children(':selected').attr('data-slug');
+  window.location.href =  '/admin/breakers/'+$slug+'/edit';
+});
+</script>
 @endsection

@@ -57,7 +57,8 @@ class AuthorsController extends Controller
 
     public function edit(Author $author)
     {
-        return view('admin/pages/breakers/edit', compact(['author']));
+        $breakers = Author::orderBy('first_name')->get();
+        return view('admin/pages/breakers/edit', compact(['author', 'breakers']));
     }
 
     public function update(Request $request, Author $author)
