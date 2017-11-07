@@ -68,7 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(6);
+module.exports = __webpack_require__(5);
 
 
 /***/ }),
@@ -76,13 +76,20 @@ module.exports = __webpack_require__(6);
 /***/ (function(module, exports, __webpack_require__) {
 
 // require('./stickyMenu');
+__webpack_require__(2);
 __webpack_require__(3);
 __webpack_require__(4);
-__webpack_require__(5);
+
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+	$('.dropdown').click(function () {
+		$clicked_menu = $(this).find('.dropdown-menu');
+		$('.dropdown-menu').not($clicked_menu).slideUp('fast');
+		$clicked_menu.slideToggle('fast');
+	});
+}
 
 /***/ }),
-/* 2 */,
-/* 3 */
+/* 2 */
 /***/ (function(module, exports) {
 
 if ($('.alert').length) {
@@ -90,7 +97,7 @@ if ($('.alert').length) {
 }
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports) {
 
 $(window).on('load', function () {
@@ -102,7 +109,7 @@ $(window).on('load', function () {
 });
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports) {
 
 (function ($) {
@@ -116,7 +123,7 @@ $(window).on('load', function () {
 })(jQuery);
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

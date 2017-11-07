@@ -1,5 +1,162 @@
 @media screen and (max-width: 768px)  
-{	
+{
+
+#overlay {
+	img {
+		width: 20%;
+	}
+}
+header {
+    padding-bottom: .95rem;
+    padding-top: 0.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+
+	.container {
+		position: relative;
+		
+		#title-container {
+			margin-bottom: 0!important;
+			
+			#title {
+			    display: none;
+			}
+
+			#title_mobile {
+				display: block!important;
+				width: 12%;
+			}
+		}
+
+		#hamburger {
+			display: block!important;
+			position: absolute;
+			top: 0.7em;
+			right: 0;
+		}
+
+		.dropdown:hover {
+			background: inherit;
+
+			.dropdown-menu {
+				display: none;
+			}
+		}
+	}
+}
+
+main {
+	margin-top: 6.6em;
+
+	#breaks-list {
+		.title {
+			flex-direction: column-reverse;
+		}
+	    
+	}
+
+	#by-subject {
+		display: none;
+	}
+
+	div.highlight {
+		padding: 0;
+	    margin-bottom: 1em;
+	}
+
+	#breaker-btn {
+	    margin-bottom: 2em;
+	}
+
+	#tab-bar {
+		flex-direction: column;
+		border: 0;
+		margin-bottom: 2em;
+
+		.nav-link {
+			border: 0;
+		}
+		.active {
+			background: rgba(0,0,0,0.05);
+		}
+	}
+
+	#side-bar {
+		font-size: 1.2em;
+
+		> div {
+			padding: 6px;
+		}
+	}
+
+	#social {
+	    position: fixed;
+	    bottom: 0;
+	    left: 0;
+	    width: 100%;
+	    z-index: 100;
+	    display: flex;
+	    justify-content: center;
+	    background: white;
+        border-top: 1px solid lightgrey;
+	    font-size: 1.2em;
+
+	    > div {
+			flex-direction: row!important;
+			position: relative;
+			transform: translate(0);
+	    }
+	}
+
+	.pagination {
+		flex-wrap: wrap;
+	}
+
+	.reading-time {
+		span {
+			display: none;
+		}
+	}
+
+	.authors {
+		padding-left: 1em;
+	}
+}
+
+#discussion-container {
+	display: none;
+}
+
+footer {
+	padding-right: 1rem;
+    padding-left: 1rem;
+
+    #social-container {
+   	    justify-content: center;
+		font-size: 1.2em;
+
+   	    h5 {
+   	    	display: none;
+   	    }
+
+   	    .fa {
+   	    	margin: .25em;
+   	    	margin-bottom: .5em;
+   	    }
+    }
+
+    .credits {
+    	padding: 0;
+		
+		li {
+		    display: inline-block;
+		    margin: 0.25em;
+		}
+    }
+}
 
 .flex-flip {
 	flex-direction: column-reverse;
@@ -9,4 +166,7 @@
 	justify-content: center;
 }
 
+.btn {
+	width: 100%;
+}
 }

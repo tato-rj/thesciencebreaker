@@ -10035,6 +10035,7 @@ button:active {
 
 header {
   background: #191919;
+  padding-top: 1.5rem;
 }
 
 header a {
@@ -10090,6 +10091,10 @@ header nav {
   font-weight: bold;
 }
 
+header nav .dropdown-toggle {
+  cursor: pointer;
+}
+
 header nav li {
   padding: 2px 10px;
 }
@@ -10130,6 +10135,7 @@ header nav .dropdown-menu a:focus {
 footer {
   background: #191919;
   color: white;
+  padding: 3rem;
 }
 
 footer .social i {
@@ -10207,7 +10213,7 @@ footer #apple-store {
 
 #latest-breaks p {
   margin: 0;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 #latest-breaks small {
@@ -10665,7 +10671,7 @@ h4.title {
 }
 
 div.highlight {
-  padding: 24px 62px;
+  padding: 2rem 2.5rem;
   font-size: 1.1em;
   font-style: italic;
   color: #f36e41;
@@ -10800,6 +10806,175 @@ a.breaker {
 }
 
 @media screen and (max-width: 768px) {
+  #overlay img {
+    width: 20%;
+  }
+
+  header {
+    padding-bottom: .95rem;
+    padding-top: 0.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
+  header .container {
+    position: relative;
+  }
+
+  header .container #title-container {
+    margin-bottom: 0 !important;
+  }
+
+  header .container #title-container #title {
+    display: none;
+  }
+
+  header .container #title-container #title_mobile {
+    display: block !important;
+    width: 12%;
+  }
+
+  header .container #hamburger {
+    display: block !important;
+    position: absolute;
+    top: 0.7em;
+    right: 0;
+  }
+
+  header .container .dropdown:hover {
+    background: inherit;
+  }
+
+  header .container .dropdown:hover .dropdown-menu {
+    display: none;
+  }
+
+  main {
+    margin-top: 6.6em;
+  }
+
+  main #breaks-list .title {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+
+  main #by-subject {
+    display: none;
+  }
+
+  main div.highlight {
+    padding: 0;
+    margin-bottom: 1em;
+  }
+
+  main #breaker-btn {
+    margin-bottom: 2em;
+  }
+
+  main #tab-bar {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    border: 0;
+    margin-bottom: 2em;
+  }
+
+  main #tab-bar .nav-link {
+    border: 0;
+  }
+
+  main #tab-bar .active {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  main #side-bar {
+    font-size: 1.2em;
+  }
+
+  main #side-bar > div {
+    padding: 6px;
+  }
+
+  main #social {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    background: white;
+    border-top: 1px solid lightgrey;
+    font-size: 1.2em;
+  }
+
+  main #social > div {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+    position: relative;
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+
+  main .pagination {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  main .reading-time span {
+    display: none;
+  }
+
+  main .authors {
+    padding-left: 1em;
+  }
+
+  #discussion-container {
+    display: none;
+  }
+
+  footer {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  footer #social-container {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-size: 1.2em;
+  }
+
+  footer #social-container h5 {
+    display: none;
+  }
+
+  footer #social-container .fa {
+    margin: .25em;
+    margin-bottom: .5em;
+  }
+
+  footer .credits {
+    padding: 0;
+  }
+
+  footer .credits li {
+    display: inline-block;
+    margin: 0.25em;
+  }
+
   .flex-flip {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
@@ -10811,6 +10986,10 @@ a.breaker {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+  }
+
+  .btn {
+    width: 100%;
   }
 }
 

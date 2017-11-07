@@ -1,10 +1,10 @@
-<footer class="container-fluid mt-5 p-5">
+<footer class="container-fluid mt-5">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
-				<div class="d-flex align-items-center mb-4">
+				<div id="social-container" class="d-flex mb-4">
 					<h5 class="m-0 mr-4"><strong>FOLLOW US</strong></h5>
-					<div class="d-flex align-items-center justify-content-center social">
+					<div class="d-flex social">
 						<a href="{{ config('app.facebook') }}" target="_blank">
 							<i class="fa fa-facebook" aria-hidden="true"></i>
 						</a>
@@ -17,7 +17,7 @@
 					</div>	
 				</div>
 				<div class="d-flex align-items-top">
-					<ul class="p-0">
+					<ul class="p-0 d-none d-sm-block">
 						<p>PRESENTATION</p>
 						<li>
 							<a href="/about">about</a>
@@ -32,7 +32,7 @@
 							<a href="/partners">partners</a>
 						</li>					
 					</ul>
-					<ul>
+					<ul class=" d-none d-sm-block">
 						<p>BREAKS</p>
 						@foreach ($categories as $category)
 						<li>
@@ -42,7 +42,7 @@
 						</li>
 						@endforeach
 					</ul>
-					<ul>
+					<ul class=" d-none d-sm-block">
 						<p>FOR BREAKERS</p>
 						<li>					
 							<a href="/information">general information</a>
@@ -54,7 +54,7 @@
 							<a href="/available-articles">available articles</a>
 						</li>						
 					</ul>
-					<ul>
+					<ul class=" d-none d-sm-block">
 						<p>CONTACT US</p>
 						<li>
 							<a href="/contact/ask-a-question">ask a question</a>

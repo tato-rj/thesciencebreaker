@@ -1,4 +1,4 @@
-<footer class="sticky-footer">
+<footer class="sticky-footer d-none">
   <div class="container">
     <div class="text-center">
       <small>Copyright © TheScienceBreaker 2017</small>

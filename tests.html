@@ -21,6 +21,11 @@
                 font-size: 2em;
             }
 
+            h3 {
+                font-family: Tahoma, Helvetica, Arial;
+                font-size: .8em;
+            }
+
             ul {
                 list-style: none;
                 margin-bottom: 1em;
@@ -28,6 +33,7 @@
         </style>
     </head>
     <body>
+        <h3>last updated on November 7, 2017 at 1:48 PM</h3>
         <h2 id="Tests\Feature\AdminArticlesTest">s\Feature\AdminArticles</h2>
         <ul>
             <li style="color: #555753;">✓ A manager can add a new article</li>
@@ -36,6 +42,7 @@
             <li style="color: #555753;">✓ Removing an article also removes its relationships</li>
             <li style="color: #555753;">✓ A pdf is removed along with a removed article</li>
             <li style="color: #555753;">✓ A manager can edit an article</li>
+            <li style="color: #555753;">✓ A manager can reorder the authors of an article</li>
             <li style="color: #555753;">✓ A manager can upload a pdf when editing an article</li>
         </ul>
         <h2 id="Tests\Feature\AdminAvailableArticlesTest">s\Feature\AdminAvailableArticles</h2>
@@ -98,6 +105,7 @@
         <h2 id="Tests\Unit\AuthorsTest">s\Unit\Authors</h2>
         <ul>
             <li style="color: #555753;">✓ Authors can have more than one article</li>
+            <li style="color: #555753;">✓ Authors have their own page</li>
         </ul>
         <h2 id="Tests\Unit\AvailableArticlesTest">s\Unit\AvailableArticles</h2>
         <ul>
@@ -115,6 +123,10 @@
             <li style="color: #555753;">✓ A guest receives an email when inquiring for a new break</li>
             <li style="color: #555753;">✓ A guest receives an email when submitting a new break</li>
             <li style="color: #555753;">✓ Breakers and the editor receive an email when their new break is published</li>
+        </ul>
+        <h2 id="Tests\Unit\ManagersTest">s\Unit\Managers</h2>
+        <ul>
+            <li style="color: #555753;">✓ Managers have their own page</li>
         </ul>
         <h2 id="Tests\Unit\SubscriptionsTest">s\Unit\Subscriptions</h2>
         <ul>

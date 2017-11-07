@@ -5,6 +5,7 @@
 <div id="overlay">
 	<img src="{{ asset('images/logo-small.svg') }}">
 </div>
+
 <div class="container">
 	{{-- INTRO --}}
 	<div class="row mt-5">
@@ -38,8 +39,8 @@
 		</div>
 
 		<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
-			<div class="box">
-				<div class="d-flex align-items-baseline justify-content-between">
+			<div id="breaks-list" class="box">
+				<div class="title d-flex align-items-baseline justify-content-between">
 					<h4>Latest published Breaks</h4>
 					<span class="text-muted"><small>Today, {{ Carbon\Carbon::now()->toFormattedDateString() }}</small></span>
 				</div>
@@ -99,7 +100,7 @@
 	</div>
 
 	{{-- BY SUBJECT --}}
-	<div class="row mt-3">
+	<div id="by-subject" class="row mt-3">
 		<div class="col-12">
 				@component('snippets.title')
 				Breaks by subject
@@ -121,7 +122,7 @@
 	</div>
 
 	{{-- DISCUSSION --}}
-	<div class="row hidden-sm-down mt-5" id="discussion-container">
+	<div class="row mt-5" id="discussion-container">
 		<div class="col-7">
 			@component('snippets.title')
 			Join the discussion!

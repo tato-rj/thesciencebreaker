@@ -1,7 +1,6 @@
 @extends('_core')
 
 @section('content')
-
 <div class="container mt-4">
 	<div class="row">
 		{{-- Social Icons --}}

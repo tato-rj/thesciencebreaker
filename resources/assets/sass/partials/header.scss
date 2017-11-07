@@ -1,5 +1,6 @@
 header {
 	background: $color-bg;
+	padding-top: 1.5rem;
 	
 	a {
 		color: white!important;
@@ -46,6 +47,10 @@ header {
 
 	nav {
 		font-weight: bold;
+
+		.dropdown-toggle {
+			cursor: pointer;
+		}
 
 		li {
 			padding: 2px 10px;

@@ -64,6 +64,11 @@ Hello {{ $breaker->first_name }}, thank you for signing up. You have joined the 
 			<img src="https://www.thesciencebreaker.com/_files/images/breaks_icons/socialsciences.svg">
 		</a>
 	</div>
+	<div class="category">
+		<a href="">
+			<img src="https://www.thesciencebreaker.com/_files/images/breaks_icons/psychology.svg">
+		</a>
+	</div>
 
 </div>
 {{-- @component('mail::panel', ['url' => ''])

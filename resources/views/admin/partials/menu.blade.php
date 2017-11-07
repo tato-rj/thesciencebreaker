@@ -7,12 +7,12 @@
     </a>
   </li>
 
-  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+{{--   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
     <a class="nav-link" href="/admin/graphs">
       <i class="fa fa-bar-chart" aria-hidden="true"></i>
       <span class="nav-link-text">Graphs</span>
     </a>
-  </li>
+  </li> --}}
 
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Breaks">
     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#breaks" data-parent="#exampleAccordion">

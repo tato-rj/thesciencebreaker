@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\ArticleAuthor;
 use Tests\TestCase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -136,6 +137,23 @@ class AdminArticlesTest extends TestCase
         ])->assertDatabaseMissing('articles', [
             'title' => $article->title
         ]);
+    }
+
+    /** @test */
+    public function a_manager_can_reorder_the_authors_of_an_article()
+    {
+        $this->signIn();
+        $article = $this->article;
+        $new_author = factory('App\Author')->create();
+        $article->authors()->save($new_author);
+        
+        $this->assertArraySubset(ArticleAuthor::where('article_id', $article->id)->pluck('relevance_order'), [0,0]);
+
+        $this->post('/admin/breaks/'.$article->slug.'/breakers-order', [
+            'order' => [0,1]
+        ]);
+
+        $this->assertArraySubset(ArticleAuthor::where('article_id', $article->id)->pluck('relevance_order'), [1,0]);
     }
 
     /** @test */

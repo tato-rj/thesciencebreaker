@@ -36,7 +36,7 @@
     		@endforeach
 			</div>
           <div class="text-center mt-5">
-        <a href="#" class="btn bg-default text-white" id="breaker-btn"><img src="/images/logo-small.svg"><strong>SUBMIT YOUR BREAK</strong></a>
+        <a href="/contact/submit-your-break" class="btn bg-default text-white" id="breaker-btn"><img src="/images/logo-small.svg"><strong>SUBMIT YOUR BREAK</strong></a>
       </div>
 		</div>
 		{{-- Side Bar --}}
