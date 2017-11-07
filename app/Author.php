@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\ArticleAuthor;
 use Illuminate\Database\Eloquent\Model;
 
 class Author extends Model
@@ -41,5 +42,10 @@ class Author extends Model
                 'slug' => str_slug($author->first_name.' '.$author->last_name)
             ]);
         }
+    }
+
+    public function orderIn($article)
+    {
+        return ArticleAuthor::where('article_id', $article->id)->where('author_id', $this->id)->pluck('relevance_order')->first();
     }
 }

@@ -17,7 +17,7 @@ class CreateArticleAuthorTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('article_id');
             $table->unsignedInteger('author_id');
-            $table->tinyInteger('relevance_order')->default(1);
+            $table->tinyInteger('relevance_order')->default(0);
             $table->timestamps();
         });
     }

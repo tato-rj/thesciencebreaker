@@ -50,10 +50,14 @@
               @endcomponent
             </div>
             <div class="form-group">
-              <label><strong>Breakers</strong> <small>(you can select have as many as you need)</small></label>
-              <select required multiple class="form-control" size="12" id="authors" name="authors[]">
+              <div class=" mb-1 d-flex align-items-center justify-content-between">
+                <label><strong>Breakers</strong> <small>(you can select have as many as you need)</small></label>
+                <button type="button" id="sort_breakers" class="btn btn-sm btn-theme-orange" data-toggle="modal" data-target="#order_breakers">Order</button>
+              </div>
+              @include('admin/snippets/order_breakers')
+              <select required multiple class="form-control" size="12" id="authors" data-break-slug="{{ $article->slug }}" name="authors[]">
                 @foreach ($authors as $author)
-                  <option value="{{ $author->id }}" {{ in_array($author->id, $article->authorsIds()) ? 'selected' : '' }}>{{ $author->fullName() }}
+                  <option value="{{ $author->id }}" data-sort="{{ $author->orderIn($article) }}" {{ in_array($author->id, $article->authorsIds()) ? 'selected' : '' }}>{{ $author->fullName() }}
                   </option>
                 @endforeach
               </select>
@@ -153,12 +157,61 @@
 
 @section('scripts')
 <script type="text/javascript">
-  
 $.ajaxSetup({
   headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
 });
+
+var list = document.getElementById('breakers_list');
+var sortable = Sortable.create(list);
+
+$('#sort_breakers').on('click', function() {
+  // Reset list and array
+  $('#breakers_list').html('');
+  $html = [];
+
+  // Get selected authors and put them into an array
+  $('#authors option:selected').each(function() {
+    $html.push('<li id="'+$(this).val()+'" class="list-none m-1 p-1 px-2" data-sort="'+$(this).attr('data-sort')+'">'+$(this).text()+'</li>');
+  });
+  // Put the array inside a temp hidden div
+  $('#temp_list').append($html);
+
+  // Sort the div based on the data-sort value and put the list on the final div
+  $('#temp_list li').sort(function(a,b) {
+    return +a.dataset.sort - +b.dataset.sort;
+  }).appendTo('#breakers_list');
+
+  // Reset temp div
+  $('#temp_list').html('');
+  
+});
+
+$('#setOrder').on('click', function() {
+  var $break_slug = $('#authors').attr('data-break-slug');
+  var array = [];
+  $('#breakers_list li').each(function() {
+    array.push($(this).attr('id'));
+  });
+
+  $.post('/admin/breaks/'+$break_slug+'/breakers-order', {'order': array})
+  .done(function(msg){
+    $('.modal #success small span').text('Order updated!');
+    $('.modal #success').fadeIn().delay(1000).fadeOut('fast');
+    $('#breakers_list li').each(function(index) {
+      $('#authors option[value='+$(this).attr('id')+']').attr('data-sort', index);
+    });
+    
+  })
+  .fail(function(xhr, status, error) {
+    $('.modal #fail small span').text('Something went wrong...');
+    $('.modal #fail').fadeIn().delay(1000).fadeOut('fast');
+  });
+
+})
+
+
 
 $(document).on('click', '.tags span a', function() {
   $(this).parent().toggleClass('selected');

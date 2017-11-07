@@ -117,3 +117,11 @@
 		}
 	}
 }
+
+#breakers_list {
+	li {
+		cursor: -webkit-grab;
+		background: rgba(0,0,0,0.05);
+		border-left: 4px solid $color-theme-orange-l;
+	}
+}

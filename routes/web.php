@@ -93,6 +93,7 @@ Route::get('/admin/breaks/{article}/edit', 'ArticlesController@edit');
 Route::get('/admin/breaks/delete', 'ArticlesController@selectDelete');
 
 Route::post('/admin/breaks', 'ArticlesController@store');
+Route::post('/admin/breaks/{article}/breakers-order', 'ArticlesController@authorsOrder');
 Route::patch('/admin/breaks/{article}', 'ArticlesController@update');
 Route::delete('/admin/breaks/{article}', 'ArticlesController@destroy');
 

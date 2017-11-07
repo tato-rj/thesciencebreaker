@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Author;
+use App\ArticleAuthor;
 use App\Category;
 use App\Manager;
 use App\Tag;
@@ -80,6 +81,13 @@ class ArticlesController extends Controller
     public function setTags(Request $request, Article $article)
     {
         $article->tags()->sync($request->tags);
+    }
+
+    public function authorsOrder(Request $request, Article $article)
+    {
+        foreach ($request->order as $order => $author) {
+            ArticleAuthor::where('article_id', $article->id)->where('author_id', $author)->update(['relevance_order' => $order]);
+        }
     }
 
     // DELETE

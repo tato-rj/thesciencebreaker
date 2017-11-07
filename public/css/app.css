@@ -10635,6 +10635,12 @@ footer #apple-store {
   color: white;
 }
 
+#breakers_list li {
+  cursor: -webkit-grab;
+  background: rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #f36e41;
+}
+
 #login {
   width: 100%;
   height: 100vh;

@@ -18,5 +18,8 @@
         "laravel-mix": "^1.5.1",
         "lodash": "^4.17.4",
         "vue": "^2.5.2"
+    },
+    "dependencies": {
+        "sortablejs": "^1.7.0"
     }
 }
