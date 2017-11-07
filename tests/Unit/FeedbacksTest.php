@@ -110,36 +110,36 @@ class FeedbacksTest extends TestCase
             ->seeEmailContains('Thank you for submitting your Break');
     }
 
-    /** @test */
-    public function breakers_and_the_editor_receive_an_email_when_their_new_break_is_published()
-    {
-        $this->signIn();
+    // /** @test */
+    // public function breakers_and_the_editor_receive_an_email_when_their_new_break_is_published()
+    // {
+    //     $this->signIn();
         
-        $faker = \Faker\Factory::create();
+    //     $faker = \Faker\Factory::create();
 
-        $breaker_one = factory('App\Author')->create();
-        $breaker_two = factory('App\Author')->create();
-        $editor = factory('App\Manager')->create([
-            'is_editor' => 1
-        ]);
+    //     $breaker_one = factory('App\Author')->create();
+    //     $breaker_two = factory('App\Author')->create();
+    //     $editor = factory('App\Manager')->create([
+    //         'is_editor' => 1
+    //     ]);
 
-        $this->post('/admin/breaks', [
-            'title' => $faker->sentence,
-            'content' => '<p>'.$faker->paragraph.'</p>',
-            'authors' => [
-                $breaker_one->id,
-                $breaker_two->id
-            ],
-            'reading_time' => '3.5',
-            'original_article' => $faker->url,
-            'category_id' => '1',
-            'editor_id' => $editor->id,
-            'editor_pick' => '0'
-        ]);  
+    //     $this->post('/admin/breaks', [
+    //         'title' => $faker->sentence,
+    //         'content' => '<p>'.$faker->paragraph.'</p>',
+    //         'authors' => [
+    //             $breaker_one->id,
+    //             $breaker_two->id
+    //         ],
+    //         'reading_time' => '3.5',
+    //         'original_article' => $faker->url,
+    //         'category_id' => '1',
+    //         'editor_id' => $editor->id,
+    //         'editor_pick' => '0'
+    //     ]);  
 
-        $this->seeEmailWasSent();
-        $this->seeEmailTo($breaker_one->email)->seeEmailSubjectIs('Break published')->seeEmailContains("Congratulations $breaker_one->first_name");
-        $this->seeEmailTo($breaker_two->email)->seeEmailSubjectIs('Break published')->seeEmailContains("Congratulations $breaker_two->first_name");
-        $this->seeEmailTo($editor->email)->seeEmailContains("$editor->first_name");
-    }
+    //     $this->seeEmailWasSent();
+    //     $this->seeEmailTo($breaker_one->email)->seeEmailSubjectIs('Break published')->seeEmailContains("Congratulations $breaker_one->first_name");
+    //     $this->seeEmailTo($breaker_two->email)->seeEmailSubjectIs('Break published')->seeEmailContains("Congratulations $breaker_two->first_name");
+    //     $this->seeEmailTo($editor->email)->seeEmailContains("$editor->first_name");
+    // }
 }

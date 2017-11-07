@@ -41,7 +41,7 @@ class ArticlesController extends Controller
         ValidateBreak::createCheck($request);
         $break = Article::createFrom($request);
         $file = self::saveFile($request);
-        MailFactory::sendNotificationsTo($request->authors, $request->editor_id, $break);
+        // MailFactory::sendNotificationsTo($request->authors, $request->editor_id, $break);
         return redirect()->back()->with('db_feedback', 'The Break has been successfully added!');
     }
 
