@@ -55,7 +55,7 @@
             {{-- Email --}}
             <div class="form-group">
               <label><strong>Email</strong></label>
-              <input required type="text" value="{{ $author->email }}" name="email" class="form-control" id="email" aria-describedby="email" placeholder="E-mail">
+              <input type="text" value="{{ $author->email }}" name="email" class="form-control" id="email" aria-describedby="email" placeholder="E-mail">
               {{-- Error --}}
               @component('admin/snippets/error')
                 email

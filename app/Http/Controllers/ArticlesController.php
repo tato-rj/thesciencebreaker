@@ -11,6 +11,7 @@ use App\Tag;
 use App\Mail\MailFactory;
 use App\Http\Controllers\Validators\ValidateBreak;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller

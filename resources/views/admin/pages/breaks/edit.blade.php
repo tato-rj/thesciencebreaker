@@ -86,19 +86,19 @@
             <hr>
             <div class="form-inline form-group">
               {{-- Reading Time --}}
-              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-addon"><i class="fa fa-hourglass-half" aria-hidden="true"></i></div>
                 <input required type="text" value="{{ $article->reading_time }}" name="reading_time" size="10" class="form-control" id="reading_time" placeholder="Reading time">
               </div>
               {{-- Category --}}
-              <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="category_id" name="category_id">
+              <select class="custom-select mb-2 mr-sm-2" id="category_id" name="category_id">
                 <option  selected disabled>Category</option>
                 @foreach ($categories as $category)
                   <option value="{{ $category->id }}" {{ ($article->category_id == $category->id) ? 'selected' : '' }}>{{ $category->name }}</option>
                 @endforeach
               </select>
               {{-- Editor --}}
-              <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="editor_id" name="editor_id">
+              <select class="custom-select mb-2 mr-sm-2" id="editor_id" name="editor_id">
                 <option  selected disabled>Editor</option>
                 @foreach ($editors as $editor)
                   <option value="{{ $editor->id }}" {{ ($article->editor_id == $editor->id) ? 'selected' : '' }}>{{ $editor->fullName() }}</option>
@@ -129,11 +129,14 @@
             <hr>
             {{-- PDF --}}
             <div class="form-group">
-              <label class="custom-file">
-                <input type="file" id="file" name="file" class="custom-file-input">
-                <span class="custom-file-control"></span>
-              </label>
-              <small class="form-text text-muted">Use this option to upload a PDF file for this break</small>
+              <input type="file" class="form-control-file" id="file" name="file">
+              <small class="form-text text-muted">
+                @if(false)
+                The file <strong><a href="">title.pdf</a></strong> has already been uploaded
+                @else
+                This break is <u class="text-danger">missing</u> the PDF
+                @endif
+              </small>
               {{-- Error --}}
               @component('admin/snippets/error')
                 file

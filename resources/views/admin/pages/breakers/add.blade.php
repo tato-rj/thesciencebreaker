@@ -53,7 +53,7 @@
             </div>
             {{-- Email --}}
             <div class="form-group">
-              <input required type="text" value="{{ old('email') }}" name="email" class="form-control" id="email" aria-describedby="email" placeholder="E-mail">
+              <input type="text" value="{{ old('email') }}" name="email" class="form-control" id="email" aria-describedby="email" placeholder="E-mail">
               {{-- Error --}}
               @component('admin/snippets/error')
                 email
