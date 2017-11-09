@@ -9,7 +9,7 @@ class SubscriptionsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['store']]);
+        $this->middleware('auth', ['except' => ['store', 'unsubscribe']]);
     }
 
     // CREATE
@@ -33,5 +33,15 @@ class SubscriptionsController extends Controller
     {
         $email->delete();
         return redirect()->back()->with('db_feedback', 'The email has been removed');
+    }
+    public function unsubscribe(Request $request)
+    {
+        $subscription = Subscription::where('email', $request->email);
+        if ($subscription->exists()) {
+            $subscription->delete();
+            return back()->with('success', 'You email has been successfully removed');
+        } else {
+            return back()->with('error', 'This email is not on our list');
+        }
     }
 }

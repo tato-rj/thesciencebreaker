@@ -3,7 +3,7 @@
 
 @include('emails/snippets/response')
 
-@component('mail::button', ['url' => $file])
+@component('mail::button', ['url' => asset($file)])
 Click here to download the Break
 @slot('color')
 breaker

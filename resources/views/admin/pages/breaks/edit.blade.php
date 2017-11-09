@@ -131,8 +131,8 @@
             <div class="form-group">
               <input type="file" class="form-control-file" id="file" name="file">
               <small class="form-text text-muted">
-                @if(false)
-                The file <strong><a href="">title.pdf</a></strong> has already been uploaded
+                @if(File::exists($article->pdf()))
+                A <strong><a class="text-success" href="{{ asset($article->pdf()) }}">PDF</a></strong> has already been uploaded
                 @else
                 This break is <u class="text-danger">missing</u> the PDF
                 @endif

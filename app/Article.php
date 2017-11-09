@@ -5,6 +5,8 @@ namespace App;
 use App\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class Article extends Model
 {
@@ -54,7 +56,18 @@ class Article extends Model
 
     public function pdf()
     {
-        return Storage::url("breaks/pdf/$this->slug.pdf");
+        return "storage/app/breaks/$this->slug.pdf";
+    }
+
+    public static function saveFile(Request $request)
+    {
+        if ($request->file('file') !== null) {
+            $file = $request->file('file');
+            $ext = $file->extension();
+            $name = str_slug($request->title);
+            $filename = "/breaks/$name.$ext";
+            Storage::put($filename, File::get($file));
+        }
     }
 
     public static function createFrom($request)

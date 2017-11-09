@@ -16,6 +16,7 @@ use App\Author;
 use App\Article;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\Queue\Queue;
 
 class MailFactory
@@ -78,7 +79,8 @@ class MailFactory
         $file = $request->file('file');
         $ext = $file->extension();
         $name = $request->institution_email.'_'.Carbon::now()->toDateString();
-        $file->storeAs("breaks/", "$name.$ext", 'public');
-        return Storage::url("$name.$ext");
+        $filename = "/uploaded-breaks/$name.$ext";
+        Storage::put($filename, File::get($file));
+        return "storage/app".$filename;
     }
 }

@@ -78,10 +78,7 @@
 							<p class="p-2"><strong>Break manuscript upload</strong></p>
 							<p>Please make sure that you read and respected the <a href="#">guidelines for authors</a>! If not, your Break will not be eligible for publication.</p>
 							<p><small>Upload only <strong>.doc, .docx, .odt, .txt or .pdf</strong> files. Files exceeding 3 MB will not be uploaded.</small></p>
-							<label class="custom-file">
-								<input type="file" name="file" class="custom-file-input">
-								<span class="custom-file-control"></span>
-							</label>
+							<input type="file" class="form-control-file" id="file" name="file">
 							{{-- Error --}}
 							@component('admin/snippets/error')
 							file

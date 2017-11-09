@@ -40,7 +40,7 @@ class AdminArticlesTest extends TestCase
     /** @test */
     public function a_manager_can_upload_a_pdf_when_adding_a_new_article()
     {
-        Storage::fake('public');
+        // Storage::fake('folder');
         $this->signIn();
         $faker = \Faker\Factory::create();
         $title = $faker->sentence;
@@ -58,7 +58,7 @@ class AdminArticlesTest extends TestCase
             'file' => $file = UploadedFile::fake()->create('document.pdf', 20)
         ]);
 
-        Storage::disk('public')->assertExists('breaks/pdf/'.str_slug($title).'.pdf');
+        Storage::assertExists('breaks/'.str_slug($title).'.pdf');
     }
 
     /** @test */
@@ -90,7 +90,7 @@ class AdminArticlesTest extends TestCase
     /** @test */
     public function a_pdf_is_removed_along_with_a_removed_article()
     {
-        Storage::fake('public');
+        // Storage::fake('breaks');
         $this->signIn();
         $faker = \Faker\Factory::create();
         $title = $faker->sentence;
@@ -106,11 +106,11 @@ class AdminArticlesTest extends TestCase
             'authors' => [1],
             'file' => $file = UploadedFile::fake()->create('document.pdf', 20)
         ]);
-        Storage::disk('public')->assertExists('breaks/pdf/'.str_slug($title).'.pdf');
+        Storage::assertExists('breaks/'.str_slug($title).'.pdf');
 
         $this->delete('/admin/breaks/'.str_slug($title));
         
-        Storage::disk('public')->assertMissing('/breaks/pdf/'.str_slug($title).'.pdf');
+        Storage::assertMissing('breaks/'.str_slug($title).'.pdf');
     }
 
     /** @test */
@@ -159,7 +159,7 @@ class AdminArticlesTest extends TestCase
     /** @test */
     public function a_manager_can_upload_a_pdf_when_editing_an_article()
     {
-        Storage::fake('public');
+        // Storage::fake('breaks');
         $this->signIn();
         $article = $this->article;
 
@@ -176,6 +176,6 @@ class AdminArticlesTest extends TestCase
             'file' => $file = UploadedFile::fake()->create('document.pdf', 20)
         ]);
 
-        Storage::disk('public')->assertExists('breaks/pdf/'.str_slug($article->title).'.pdf');
+        Storage::assertExists('breaks/'.str_slug($article->title).'.pdf');
     }
 }

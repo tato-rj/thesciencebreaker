@@ -15,7 +15,11 @@ Route::get('/breaks/{category}', 'CategoryController@show');
 Route::get('/tags/{tag}', 'TagsController@show');
 // Search
 Route::get('/search', 'SearchController@index');
-
+// Unsubscribe
+Route::get('/unsubscribe', function() {
+	return view('pages.unsubscribe');
+});
+Route::delete('/unsubscribe', 'SubscriptionsController@unsubscribe');
 /*
 * 
 *	Presentation Pages

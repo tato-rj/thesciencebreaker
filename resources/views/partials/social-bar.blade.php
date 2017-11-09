@@ -12,8 +12,10 @@
 		<a href="{{ config('app.googleplus') }}">
 			<i class="fa fa-google" aria-hidden="true"></i>
 		</a>
-		<a href="{{ $article->pdf() }}">
+		@if(File::exists($article->pdf()))
+		<a href="{{ asset($article->pdf()) }}" target="_blank">
 			<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
 		</a>
+		@endif
 	</div>
 </div>

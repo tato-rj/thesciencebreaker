@@ -55,7 +55,7 @@ class ContactPageTest extends TestCase
     /** @test */
     public function a_guest_can_submit_a_new_break()
     {
-        Storage::fake('public');
+        // Storage::fake('test-folder');
         $faker = \Faker\Factory::create();
 
         $request = [
@@ -71,7 +71,7 @@ class ContactPageTest extends TestCase
 
         $this->post('/contact/submit-a-break', $request)->assertSessionHas('contact');
 
-        Storage::disk('public')->assertExists('breaks/'.$request['institution_email'].'_'.Carbon::now()->toDateString().'.doc');
+        Storage::assertExists('uploaded-breaks/'.$request['institution_email'].'_'.Carbon::now()->toDateString().'.doc');
 
         $this->seeEmailWasSent()->seeEmailsSent(2);
         $this->seeEmailTo(config('app.email'))

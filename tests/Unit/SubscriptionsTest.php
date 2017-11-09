@@ -95,4 +95,18 @@ class SubscriptionsTest extends TestCase
             'email' => $request['email']
         ]);
     }
+
+    /** @test */
+    public function a_guest_can_unsubscribe()
+    {
+        $email = $this->subscription->email;
+
+        $this->delete("/unsubscribe", [
+            'email' => $email
+        ]);
+
+        $this->assertDatabaseMissing('subscriptions', [
+            'email' => $email
+        ]);
+    }
 }
