@@ -10507,6 +10507,10 @@ footer #apple-store {
   padding-bottom: 1rem;
 }
 
+#available_articles .card ul li:first-of-type {
+  padding-top: 1rem;
+}
+
 #inquiry_news .nav-link {
   padding: .25em .5em;
 }

@@ -3,7 +3,7 @@
 
 @include('emails/snippets/response')
 
-@component('mail::button', ['url' => $request['email']])
+@component('mail::button', ['url' => 'mailto:'.$request['email']])
 Click here to reply
 @slot('color')
 breaker

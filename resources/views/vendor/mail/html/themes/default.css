@@ -8,7 +8,7 @@ body, body *:not(html):not(style):not(br):not(tr):not(code) {
 }
 
 body {
-    background-color: #f5f8fa;
+    background-color: rgba(0,0,0,0.02);
     color: #191919;
     height: 100%;
     hyphens: auto;
@@ -91,7 +91,6 @@ img {
 /* Layout */
 
 .wrapper {
-    background-color: #f5f8fa;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -133,8 +132,6 @@ img {
 
 .body {
     background-color: #FFFFFF;
-    border-bottom: 1px solid #EDEFF2;
-    border-top: 1px solid #EDEFF2;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -169,7 +166,7 @@ img {
 
 .footer {
     margin: 0 auto;
-    padding: 0;
+    padding: 0 0 20px 0;
     text-align: center;
     width: 570px;
     color: #AEAEAE!important;
@@ -239,7 +236,6 @@ img {
 
 .button {
     border-radius: 3px;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
     color: #FFF;
     display: inline-block;
     font-family: inherit;
@@ -330,9 +326,10 @@ img {
     font-size: 0.9em;
 }
 
-.list img {
-    width: 28px;
-    opacity: 0.1;
+.list h1 {
+    margin: 0 .35em 0 .1em;
+    font-size: 3em;
+    color: rgba(0,0,0,0.1);
 }
 
 /*Contact*/

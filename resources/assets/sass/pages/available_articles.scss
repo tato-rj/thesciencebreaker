@@ -17,6 +17,10 @@
 				border-bottom: 1px dotted grey;
 				padding-bottom: 1rem;
 			}
+
+			li:first-of-type {
+				padding-top: 1rem;
+			}
 		}
 	}
 }
