@@ -1,5 +1,41 @@
 @extends('_core')
 
+@section('meta')
+<meta property="og:site_name" content="{{ config('app.name') }}">
+<meta property="og:url" content="{{ url()->full() }}" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ $article->title }}" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="" />
+
+<meta name="twitter:title" content="{{ $article->title }}">
+<meta name="twitter:description" content="TheScienceBreaker promotes the dialogue and the dissemination of a scientific culture so that society-relevant opinions can be discussed and decisions may be taken accordingly">
+<meta name="twitter:image" content="">
+<meta name="twitter:card" content="summary">
+@endsection
+
+@section('earlyJS')
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1737765819883440',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+@endsection
+
 @section('content')
 <div class="container mt-4">
 	<div class="row">
@@ -143,5 +179,25 @@
 $(function () {
   $('[data-toggle="popover"]').popover();
 })
+
+document.getElementById('shareFacebook').onclick = function() {
+  FB.ui({
+    method: 'share',
+    display: 'popup',
+    href: window.location.href,
+  }, function(response){});
+}
+
+$('#twitter').on('click', function() {
+	popitup($(this).attr('data-link'), 300);
+});
+$('#google-plus').on('click', function() {
+	popitup($(this).attr('data-link'), 500);
+});
+function popitup(url, height) {
+	newwindow=window.open(url ,'Share','height='+height+',width=450');
+	if (window.focus) {newwindow.focus()}
+	return false;
+}
 </script>
 @endsection
