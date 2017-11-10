@@ -75,6 +75,7 @@ class Article extends Model
         $article = self::create([
             'title' => $request->title,
             'slug' => str_slug($request->title, '-'),
+            'description' => $request->description,
             'content' => $request->content,
             'reading_time' => $request->reading_time,
             'original_article' => $request->original_article,
@@ -96,6 +97,7 @@ class Article extends Model
         $this->update([
             'title' => $request->title,
             'slug' => str_slug($request->title, '-'),
+            'description' => $request->description,
             'content' => $request->content,
             'reading_time' => $request->reading_time,
             'original_article' => $request->original_article,

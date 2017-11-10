@@ -60,6 +60,12 @@ class ArticlesTest extends TestCase
     {
         $this->get('/')->assertSee($this->article->title);
     }
+
+    /** @test */
+    public function article_page_shows_the_description()
+    {
+        $this->get($this->article->path())->assertSee($this->article->description);
+    }
     
     /** @test */
     public function guests_can_read_an_article()

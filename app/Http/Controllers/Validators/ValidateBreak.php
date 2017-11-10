@@ -8,6 +8,7 @@ class ValidateBreak implements Validator
 	{
 		return $request->validate([
             'title' => 'required|unique:articles|max:255',
+            'description' => 'max:255',
             'content' => 'required',
             'reading_time' => 'required',
             'original_article' => 'required',
@@ -20,6 +21,7 @@ class ValidateBreak implements Validator
     {
         return $request->validate([
             'title' => 'required|max:255',
+            'description' => 'max:255',
             'content' => 'required',
             'reading_time' => 'required',
             'original_article' => 'required',

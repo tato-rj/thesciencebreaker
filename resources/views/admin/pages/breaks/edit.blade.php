@@ -45,7 +45,17 @@
                   @endslot
                 @endcomponent
               </div>
-            
+            {{-- Description --}}
+            <div class="form-group">
+              <textarea class="form-control" name="description" id="description" rows="2" maxlength="255" placeholder="Description (max 255 characters)">{{ $article->description }}</textarea>
+              {{-- Error --}}
+              @component('admin/snippets/error')
+                description
+                @slot('feedback')
+                {{ $errors->first('description') }}
+                @endslot
+              @endcomponent
+            </div>
             {{-- Content --}}
             <div class="form-group">
               <label><strong>Content</strong></label>

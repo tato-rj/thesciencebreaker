@@ -5,11 +5,11 @@
 <meta property="og:url" content="{{ url()->full() }}" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="{{ $article->title }}" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="{{ $article->description }}" />
 <meta property="og:image" content="" />
 
 <meta name="twitter:title" content="{{ $article->title }}">
-<meta name="twitter:description" content="TheScienceBreaker promotes the dialogue and the dissemination of a scientific culture so that society-relevant opinions can be discussed and decisions may be taken accordingly">
+<meta name="twitter:description" content="{{ $article->description }}">
 <meta name="twitter:image" content="">
 <meta name="twitter:card" content="summary">
 @endsection
@@ -57,6 +57,7 @@
 			</h5>
 			{{-- Title --}}
 			<h3><strong>{{ $article->title }}</strong></h3>
+			<p class="text-muted">{{ $article->description }}</p>
 			{{-- Open access, cc and doi link --}}
 			<div class="d-flex justify-content-between mt-4">
 				<div class="d-flex align-items-baseline">
