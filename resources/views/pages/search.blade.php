@@ -5,9 +5,9 @@
 <div class="container mt-4">
 	<div class="row">
 		{{-- Break Content --}}
-		<div id="category" class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+		<div id="category" class="col-lg-9 col-md-12">
 			{{-- Title --}}
-			<div id="title" class="d-flex align-items-center">
+			<div id="title" class="d-flex align-items-center mt-4">
 				<h3>
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</h3>

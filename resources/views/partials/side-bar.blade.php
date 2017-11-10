@@ -1,4 +1,4 @@
-<div class="col-lg-3 col-md-3 col-sm-3 hidden-xs">
+<div class="col-lg-3 col-md-12">
 	<div id="side-bar">
 		<div>
 			<strong><p class="mb-3">Editor's picks</p></strong>

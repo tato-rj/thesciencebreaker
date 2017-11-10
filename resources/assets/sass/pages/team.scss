@@ -51,3 +51,9 @@
 		margin: 20px;
 	}
 }
+
+#profile {
+	> img {
+		max-width: 170px;
+	}
+}

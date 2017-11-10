@@ -4,9 +4,9 @@
 
 <div class="container mt-4">
 	<div class="row" id="author">
-		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+		<div class="col-lg-9 col-md-12">
 			<div class="row" id="member-container">
-				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
 					@include('snippets/profile/main')
 				</div>
 				<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12">

@@ -8,15 +8,15 @@
         	</tr>
         	<tr>
         		<td class="content-cell text-center" align="center">
-        			<div class="d-flex align-items-center justify-content-center social">
+        			<div class="social">
                         <a href="{{ config('app.facebook') }}">
-                            <img src="{{ config('app.url') }}/images/emails/facebook.svg">
+                            <img src="{{ config('app.url') }}/images/emails/facebook.png">
                         </a>
                         <a href="{{ config('app.twitter') }}">
-                            <img src="{{ config('app.url') }}/images/emails/twitter.svg">
+                            <img src="{{ config('app.url') }}/images/emails/twitter.png">
                         </a>
                         <a href="{{ config('app.googleplus') }}">
-                            <img src="{{ config('app.url') }}/images/emails/google-plus.svg">
+                            <img src="{{ config('app.url') }}/images/emails/google-plus.png">
                         </a>
         			</div>	
         		</td>

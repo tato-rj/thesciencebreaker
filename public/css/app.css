@@ -10486,6 +10486,10 @@ footer #apple-store {
   margin: 20px;
 }
 
+#profile > img {
+  max-width: 170px;
+}
+
 #available_articles .card {
   border: 0;
 }
@@ -10809,11 +10813,7 @@ a.breaker {
   background: #f7f7f7;
 }
 
-@media screen and (max-width: 768px) {
-  #overlay img {
-    width: 20%;
-  }
-
+@media screen and (max-width: 992px) {
   header {
     padding-bottom: .95rem;
     padding-top: 0.5rem;
@@ -10832,20 +10832,19 @@ a.breaker {
     margin-bottom: 0 !important;
   }
 
-  header .container #title-container #title {
-    display: none;
-  }
-
-  header .container #title-container #title_mobile {
-    display: block !important;
-    width: 12%;
-  }
-
   header .container #hamburger {
     display: block !important;
     position: absolute;
-    top: 0.7em;
+    top: 2.8rem;
     right: 0;
+  }
+
+  header .container #hamburger h3 {
+    font-size: 2.75rem;
+  }
+
+  header .container #hamburger_menu {
+    padding-top: 1rem;
   }
 
   header .container .dropdown:hover {
@@ -10857,7 +10856,7 @@ a.breaker {
   }
 
   main {
-    margin-top: 6.6em;
+    margin-top: 12rem;
   }
 
   main #breaks-list .title {
@@ -10945,10 +10944,6 @@ a.breaker {
     padding-left: 1em;
   }
 
-  #discussion-container {
-    display: none;
-  }
-
   footer {
     padding-right: 1rem;
     padding-left: 1rem;
@@ -10990,6 +10985,44 @@ a.breaker {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+  }
+}
+
+@media screen and (max-width: 748px) {
+  #overlay img {
+    width: 20%;
+  }
+
+  header #title {
+    display: none;
+  }
+
+  header #title_mobile {
+    display: block !important;
+    width: 12%;
+  }
+
+  header #hamburger {
+    top: 1rem !important;
+  }
+
+  header #hamburger h3 {
+    font-size: 1.75rem !important;
+  }
+
+  main {
+    margin-top: 6.8rem;
+  }
+
+  #author > div:first-of-type > div:first-of-type > div:first-of-type {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+
+  #discussion-container {
+    display: none;
   }
 
   .btn {

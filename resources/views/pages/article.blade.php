@@ -6,7 +6,7 @@
 		{{-- Social Icons --}}
 		@include('partials.social-bar')
 		{{-- Break Content --}}
-		<div id="break" class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+		<div id="break" class="col-lg-8 col-md-12">
 			<div class="tags mb-3">
 				@foreach ($article->tags as $tag)
 				<a href="{{ $tag->path() }}">
@@ -96,10 +96,10 @@
 								<p><small><strong>Written by: 
 									@foreach ($break->authors as $author)
 									{{ $loop->first ? '' : ', ' }}
-									{{ $author->fullName() }}
+									<a class="breaker" href="{{ $author->path() }}">{{ $author->fullName() }}</a>
 									@endforeach
 								</strong></small></p>
-								<p><small>Published {{ $break->created_at->diffForHumans() }} in {{ $break->category->name }}</small></p>
+								<p><small>Published {{ $break->created_at->diffForHumans() }} in <a class="breaker" href="{{ $break->category->path() }}">{{ $break->category->name }}</a></small></p>
 							</td>
 						</tr>					
 					@endforeach
@@ -120,10 +120,10 @@
 								<p><small><strong>Written by: 
 									@foreach ($break->authors as $author)
 									{{ $loop->first ? '' : ', ' }}
-									{{ $author->fullName() }}
+									<a class="breaker" href="{{ $author->path() }}">{{ $author->fullName() }}</a>
 									@endforeach
 								</strong></small></p>
-								<p><small>Published {{ $break->created_at->diffForHumans() }} in {{ $break->category->name }}</small></p>
+								<p><small>Published {{ $break->created_at->diffForHumans() }} in <a class="breaker" href="{{ $break->category->path() }}">{{ $break->category->name }}</a></small></p>
 							</td>
 						</tr>					
 					@endforeach

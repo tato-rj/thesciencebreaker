@@ -3,13 +3,13 @@
 		<a href="mailto:{{ config('app.email') }}">
 			<i class="fa fa-envelope-open" aria-hidden="true"></i>
 		</a>
-		<a href="{{ config('app.facebook') }}">
+		<a href="{{ config('app.facebook') }}" target="_blank">
 			<i class="fa fa-facebook" aria-hidden="true"></i>
 		</a>
-		<a href="{{ config('app.twitter') }}">
+		<a href="{{ config('app.twitter') }}" target="_blank">
 			<i class="fa fa-twitter" aria-hidden="true"></i>
 		</a>
-		<a href="{{ config('app.googleplus') }}">
+		<a href="{{ config('app.googleplus') }}" target="_blank">
 			<i class="fa fa-google" aria-hidden="true"></i>
 		</a>
 		@if(File::exists($article->pdf()))
