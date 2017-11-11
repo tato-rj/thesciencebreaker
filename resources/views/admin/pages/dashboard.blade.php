@@ -13,6 +13,14 @@
 
       <div class="row" id="cards">
           <div class="col-lg-5 col-md-6 col-sm-8 col-xs-10 mx-auto d-flex justify-content-center flex-column">
+          <div id="card-views" class="card no-border text-white o-hidden h-100 mt-3">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-trophy" aria-hidden="true"></i>
+              </div>
+              <div class="mr-3"><strong>{{ $total_views }}</strong> Breaks views</div>
+            </div>
+          </div>
           <div id="card-breaks" class="card no-border text-white o-hidden h-100 mt-3">
             <div class="card-body">
               <div class="card-body-icon">

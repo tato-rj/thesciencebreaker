@@ -9723,7 +9723,8 @@ textarea {
   font-family: inherit;
 }
 
-button {
+button,
+input[type="submit"] {
   cursor: pointer;
 }
 
@@ -9790,12 +9791,12 @@ button:active {
 }
 
 .alert-container {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  z-index: 1000;
+  z-index: 100;
 }
 
 .hidden {
@@ -10575,6 +10576,10 @@ footer #apple-store {
 
 #cards .card-body-icon {
   right: -10px !important;
+}
+
+#cards #card-views {
+  background: #fd5858;
 }
 
 #cards #card-breaks {

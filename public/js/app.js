@@ -68,17 +68,22 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(5);
+module.exports = __webpack_require__(6);
 
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// require('./stickyMenu');
-__webpack_require__(2);
+$.ajaxSetup({
+	headers: {
+		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	}
+});
+
 __webpack_require__(3);
 __webpack_require__(4);
+__webpack_require__(5);
 
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 	$('.dropdown').click(function () {
@@ -88,8 +93,13 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 	});
 }
 
+$('form').submit(function () {
+	$(this).find(':input[type=submit]').prop('disabled', true).val('Working on it...');
+});
+
 /***/ }),
-/* 2 */
+/* 2 */,
+/* 3 */
 /***/ (function(module, exports) {
 
 if ($('.alert').length) {
@@ -97,7 +107,7 @@ if ($('.alert').length) {
 }
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 $(window).on('load', function () {
@@ -109,7 +119,7 @@ $(window).on('load', function () {
 });
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 (function ($) {
@@ -123,7 +133,7 @@ $(window).on('load', function () {
 })(jQuery);
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

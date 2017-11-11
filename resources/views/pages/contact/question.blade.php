@@ -47,7 +47,7 @@
 							<span class="custom-control-indicator"></span>
 							<span class="custom-control-description">Join the newsletter</span>
 						</label>
-						<button type="submit" class="btn btn-theme-green">Send</button>
+						<input type="submit" value="Send" class="btn btn-theme-green">
 					</form>				
 				</div>
 			</div>

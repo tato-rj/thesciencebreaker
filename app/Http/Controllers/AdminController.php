@@ -19,12 +19,13 @@ class AdminController extends Controller
 
     public function index()
     {
+        $total_views = Article::sum('views');
     	$breaks_count = Article::count();
     	$authors_count = Author::count();
     	$available_count = AvailableArticle::count();
     	$subscription_count = Subscription::count();
 
-    	return view('admin/pages/dashboard', compact(['breaks_count', 'authors_count', 'available_count', 'subscription_count']));
+    	return view('admin/pages/dashboard', compact(['breaks_count', 'authors_count', 'available_count', 'subscription_count', 'total_views']));
     }
 
     public function graphs()

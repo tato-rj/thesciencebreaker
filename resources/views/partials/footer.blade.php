@@ -81,24 +81,9 @@
 							<input required type="email" class="form-control" name="subscription" placeholder="Enter email">
 							<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 						</div>
-						<button type="submit" class="btn btn-theme-green btn-block">Submit</button>
+						<input type="submit" value="Subscribe me" class="btn btn-theme-green btn-block">
 					</form>
-					{{-- Error --}}
-					@component('admin/snippets/error')
-					subscription
-					@slot('feedback')
-					{{ $errors->first('subscription') }}
-					@endslot
-					@endcomponent
 				</div>
-{{-- 				<div class="d-flex align-items-center mt-4">
-					<h5 class="m-0 mr-4"><strong>OUR APP</strong></h5>
-					<div class="d-flex align-items-center justify-content-center social">
-						<a href="https://www.facebook.com/sciencebreaker/?fref=ts" target="_blank">
-							<img id="apple-store" src="{{ asset('images/ios-app/apple-store.svg') }}">
-						</a>
-					</div>	
-				</div> --}}
 			</div>
 		</div>
 		<div class="mt-4 text-center">

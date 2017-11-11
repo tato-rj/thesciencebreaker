@@ -169,7 +169,7 @@
                 @endslot
               @endcomponent
             </div>
-            <button type="submit" class="btn btn-theme-orange">Submit</button>
+            <input type="submit" value="Submit" class="btn btn-theme-orange">
           </form>
         </div>
       </div>
@@ -179,11 +179,6 @@
 
 @section('scripts')
 <script type="text/javascript">
-$.ajaxSetup({
-  headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
 
 var list = document.getElementById('breakers_list');
 var sortable = Sortable.create(list);

@@ -122,7 +122,7 @@
                 @endslot
               @endcomponent
             </div>
-            <button type="submit" class="btn btn-theme-orange">Submit</button>
+            <input type="submit" value="Submit" class="btn btn-theme-orange">
           </form>
         </div>
       </div>
