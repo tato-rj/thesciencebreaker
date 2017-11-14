@@ -19,7 +19,7 @@ class CreateManagersTable extends Migration
             $table->string('last_name');
             $table->string('slug')->slug();
             $table->string('email')->unique();
-            $table->string('division');
+            $table->unsignedInteger('division_id');
             $table->string('position');
             $table->text('biography')->nullable();
             $table->string('research_institute');

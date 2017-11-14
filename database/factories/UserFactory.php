@@ -82,7 +82,7 @@ $factory->define(App\Manager::class, function (Faker $faker) {
         'last_name' => $last_name,
         'slug' => str_slug($first_name.' '.$last_name),
         'email' =>$faker->unique()->safeEmail,
-        'division' => $faker->word,
+        'division_id' => '1',
         'position' => $faker->word,
         'biography' => $faker->paragraph,
         'research_institute' => $faker->sentence,

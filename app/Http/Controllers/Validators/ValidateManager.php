@@ -10,7 +10,7 @@ class ValidateManager implements Validator
             'first_name' => 'required|min:2',
             'last_name' => 'required|min:2',
             'email' => 'required|email|unique:managers',
-            'division' => 'required',
+            'division_id' => 'required',
             'position' => 'required',
             'research_institute' => 'required'
         ]);
@@ -22,7 +22,7 @@ class ValidateManager implements Validator
             'first_name' => 'required|min:2',
             'last_name' => 'required|min:2',
             'email' => 'required|email',
-            'division' => 'required',
+            'division_id' => 'required',
             'position' => 'required',
             'research_institute' => 'required'
         ]);

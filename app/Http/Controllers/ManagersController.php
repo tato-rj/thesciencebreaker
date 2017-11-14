@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Manager;
 use App\Author;
+use App\Division;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Validators\ValidateManager;
 use Illuminate\Support\Facades\Input;
 
 class ManagersController extends Controller
 {
-    use ManagersRoles;
 
     public function __construct()
     {
@@ -19,10 +19,10 @@ class ManagersController extends Controller
 
     public function index()
     {
-        $founders = $this->founders();
-        $editors = $this->editors();
-        $comm_officers = $this->commOfficers();
-        $advisors = $this->advisors();
+        $founders = Manager::where('division_id', 1)->get();
+        $editors = Manager::where('division_id', 2)->get();
+        $comm_officers = Manager::where('division_id', 3)->get();
+        $advisors = Manager::where('division_id', 4)->get();
         $breakers = Author::orderBy('first_name')->paginate(10);
         $paginated = Input::get('page');
 
@@ -32,7 +32,8 @@ class ManagersController extends Controller
     // CREATE
     public function create()
     {
-        return view('admin/pages/managers/add');
+        $divisions = Division::all();
+        return view('admin/pages/managers/add', compact('divisions'));
     }
 
     public function store(Request $request)
@@ -43,7 +44,7 @@ class ManagersController extends Controller
             'last_name' => $request->last_name,
             'slug' => str_slug($request->first_name.' '.$request->last_name),
             'email' => $request->email,
-            'division' => $request->division,
+            'division_id' => $request->division_id,
             'position' => $request->position,
             'biography' => $request->biography,
             'research_institute' => $request->research_institute,
@@ -68,7 +69,9 @@ class ManagersController extends Controller
 
     public function edit(Manager $manager)
     {
-        return view('admin/pages/managers/edit', compact(['manager']));
+        $divisions = Division::all();
+        $managers = Manager::orderBy('first_name')->get();
+        return view('admin/pages/managers/edit', compact(['manager', 'divisions', 'managers']));
     }
 
     public function update(Request $request, Manager $manager)

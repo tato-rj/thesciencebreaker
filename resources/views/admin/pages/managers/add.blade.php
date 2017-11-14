@@ -51,29 +51,35 @@
                 @endslot
               @endcomponent
             </div>
-            <div class="form-group form-inline">
-              {{-- Division --}}
-              <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="division" name="division">
+            
+            {{-- Division --}}         
+            <div class="form-inline form-group">
+              <select class="custom-select mb-2 mr-sm-2" id="division_id" name="division_id">
                 <option  selected disabled>Division</option>
-                <option value="core_team" {{ (old('division') == 'core_team') ? 'selected' : '' }}>Core Team</option>
-                <option value="advisory_board" {{ (old('division') == 'advisory_board') ? 'selected' : '' }}>Advisory Board</option>
+                @foreach ($divisions as $division)
+                  <option value="{{ $division->id }}" {{ (old('division_id') == $division->id) ? 'selected' : '' }}>{{ $division->name }}</option>
+                @endforeach
               </select>
-              {{-- Error --}}
-              @component('admin/snippets/error')
-                division
-                @slot('feedback')
-                {{ $errors->first('division') }}
-                @endslot
-              @endcomponent
               {{-- Position --}}
-              <input required type="text" value="{{ old('position') }}" name="position" class="form-control" id="position" aria-describedby="position" placeholder="Position">
-              {{-- Error --}}
-              @component('admin/snippets/error')
-                position
-                @slot('feedback')
-                {{ $errors->first('position') }}
-                @endslot
-              @endcomponent
+              <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                <input required type="text" value="{{ old('position') }}" name="position" size="16" class="form-control" id="position" placeholder="Position">
+              </div>
+              <div class="d-block">
+                {{-- Errors --}}
+                @component('admin/snippets/error')
+                  division_id
+                  @slot('feedback')
+                  {{ $errors->first('division_id') }}
+                  @endslot
+                @endcomponent
+                @component('admin/snippets/error')
+                  position
+                  @slot('feedback')
+                  {{ $errors->first('position') }}
+                  @endslot
+                @endcomponent
+              </div>
             </div>
             {{-- Biography --}}
             <div class="form-group">
@@ -94,17 +100,6 @@
                 research_institute
                 @slot('feedback')
                 {{ $errors->first('research_institute') }}
-                @endslot
-              @endcomponent
-            </div>
-            {{-- Field Research --}}
-            <div class="form-group">
-              <input required type="text" value="{{ old('field_research') }}" name="field_research" class="form-control" id="field_research" aria-describedby="field_research" placeholder="Field Research">
-              {{-- Error --}}
-              @component('admin/snippets/error')
-                field_research
-                @slot('feedback')
-                {{ $errors->first('field_research') }}
                 @endslot
               @endcomponent
             </div>

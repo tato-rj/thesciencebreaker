@@ -17,9 +17,6 @@
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#advisors" role="tab">Advisory Board</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link {{ ($paginated) ? 'active' : ''}}" data-toggle="tab" href="#breakers" role="tab">Breakers Community</a>
-        </li>
       </ul>
 
       <!-- Tab panes -->
@@ -50,12 +47,6 @@
           @foreach ($advisors as $member)
             @include('snippets.breakers')
           @endforeach
-        </div>
-        <div class="tab-pane {{ ($paginated) ? 'active' : ''}}" id="breakers" role="tabpanel">
-          @foreach ($breakers as $member)
-            @include('snippets.breakers')
-          @endforeach
-          {{ $breakers->links() }}
         </div>
       </div>
     </div>

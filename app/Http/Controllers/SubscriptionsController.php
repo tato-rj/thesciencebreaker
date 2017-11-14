@@ -23,7 +23,7 @@ class SubscriptionsController extends Controller
     // READ
     public function index()
     {
-        $subscriptions = Subscription::orderBy('email')->paginate(40);
+        $subscriptions = Subscription::paginate(40);
         $subscriptions_count = Subscription::count();
         return view('admin/pages/subscriptions', compact(['subscriptions', 'subscriptions_count']));
     }

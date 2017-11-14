@@ -36,6 +36,8 @@ Route::get('/mission', function() {
 });
 // Team
 Route::get('/the-team', 'ManagersController@index');
+// Breakers
+Route::get('/breakers', 'AuthorsController@index');
 // Partners
 Route::get('/partners', function() {
 	return view('pages.presentation.partners');

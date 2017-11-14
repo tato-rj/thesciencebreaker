@@ -26,14 +26,6 @@
               @endforeach
             </select>
           </div>
-          <div class="hidden" id="confirm">
-            <p>You selected <em><strong></strong></em></p>
-            <div>
-            <a href="" class="btn no-hover btn-theme-orange">
-              Edit manager
-            </a>
-          </div>
-        </div>
         </div>
       </div>
     </div>
@@ -41,12 +33,10 @@
 
 @section('scripts')
 <script type="text/javascript">
-$('select').on('change', function() {
+$('select#manager_slug').on('change', function() {
   $title = this.value;
   $slug = $(this).children(':selected').attr('data-slug');
-  $('#confirm strong').text($title);
-  $('#confirm a').attr('href', '/admin/managers/'+$slug+'/edit');
-  $('#confirm').fadeIn();
+  window.location.href =  '/admin/managers/'+$slug+'/edit';
 });
 </script>
 @endsection

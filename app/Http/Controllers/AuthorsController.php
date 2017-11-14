@@ -16,6 +16,13 @@ class AuthorsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
+    public function index()
+    {
+        $breakers = Author::orderBy('first_name')->paginate(10);
+
+        return view('pages.presentation.breakers', compact('breakers'));
+    }
+
     // CREATE
     public function create()
     {

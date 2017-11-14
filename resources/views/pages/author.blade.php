@@ -3,9 +3,13 @@
 @section('content')
 
 <div class="container mt-4">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/breakers">Breakers</a></li>
+		<li class="breadcrumb-item active">{{ $author->fullName() }}</li>
+	</ol>
 	<div class="row" id="author">
 		<div class="col-lg-9 col-md-12">
-			<div class="mt-4 jumbotron">
+			<div class="mt-4 mb-4">
 				<div class="d-flex align-items-baseline">
 					<h4><i class="fa fa-user mr-2" aria-hidden="true"></i><strong>{{ $author->fullName() }}</strong></h4>
 					<small class="ml-2"><em>joined in {{ $author->created_at->toFormattedDateString() }}</em></small>
@@ -20,7 +24,7 @@
 			</div>
 			<div>
 				@foreach($author->articles as $article)
-				<div class="p-3">
+				<div>
 					<h5><a href="{{ $article->path() }}"><i class="fa fa-file-text mr-2" aria-hidden="true"></i><strong>{{ $article->title }}</strong></a></h5>
 
 					@if ($author->isAuthorOf($article->original_article))

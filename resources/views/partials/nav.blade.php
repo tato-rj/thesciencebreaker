@@ -15,6 +15,7 @@
 					<a class="dropdown-item" href="/about">ABOUT</a>
 					<a class="dropdown-item" href="/mission">MISSION</a>
 					<a class="dropdown-item" href="/the-team">THE TEAM</a>
+					<a class="dropdown-item" href="/breakers">BREAKERS</a>
 					<a class="dropdown-item" href="/partners">PARTNERS</a>
 				</div>
 			</li>
@@ -33,7 +34,7 @@
 					FOR BREAKERS
 				</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown-breakers">
-					<a class="dropdown-item" href="/information">INFORMATION</a>
+					<a class="dropdown-item" href="/information">INFORMATION FOR AUTHORS</a>
 					<a class="dropdown-item" href="/faq">FAQ</a>
 					<a class="dropdown-item" href="/available-articles">AVAILABLE ARTICLES</a>
 				</div>
@@ -43,9 +44,9 @@
 					CONTACT
 				</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown-contact">
-					<a class="dropdown-item" href="/contact/ask-a-question">ASK A QUESTION</a>
-					<a class="dropdown-item" href="/contact/break-inquiry">BREAK INQUIRY</a>
 					<a class="dropdown-item" href="/contact/submit-your-break">SUBMIT YOUR BREAK</a>
+					<a class="dropdown-item" href="/contact/break-inquiry">BREAK INQUIRY</a>
+					<a class="dropdown-item" href="/contact/ask-a-question">ASK A QUESTION</a>
 				</div>
 			</li>
 		</ul>

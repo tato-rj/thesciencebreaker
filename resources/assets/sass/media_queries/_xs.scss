@@ -14,7 +14,7 @@ header {
 
 	#title_mobile {
 		display: block!important;
-		width: 12%;
+		width: 40%;
 	}
 
 	#hamburger {
@@ -44,7 +44,9 @@ main {
 	display: none;
 }
 
-
+.d-xs-none {
+	display: none;
+}
 
 .btn {
 	width: 100%;

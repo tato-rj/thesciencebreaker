@@ -60,7 +60,7 @@
 			<p class="text-muted">{{ $article->description }}</p>
 			{{-- Open access, cc and doi link --}}
 			<div class="d-flex justify-content-between mt-4">
-				<div class="d-flex align-items-baseline">
+				<div class="d-flex align-items-end">
 					<a href="https://en.wikipedia.org/wiki/Open_access" target="_blank">
 						<img src="/images/util-icons/open-access.svg">
 					</a>
@@ -82,7 +82,10 @@
 						@endforeach
 					</small>
 				</div>
-				<i class="ml-2 fa fa-info-circle" tabindex="0" data-toggle="popover" data-html="true" data-placement="auto" data-trigger="focus" title="Editor" data-content="{{ $article->editor->fullName() }}<br><small>{{ $article->editor->position }}</small>"></i>
+				<div>
+					<small class="d-xs-none">Edited by</small>
+					<i class="ml-1 fa fa-info-circle" tabindex="0" data-toggle="popover" data-html="true" data-placement="auto" data-trigger="focus" title="Editor" data-content="{{ $article->editor->fullName() }}<br><small>{{ $article->editor->position }}</small>"></i>
+				</div>
 
 			</div>
 			

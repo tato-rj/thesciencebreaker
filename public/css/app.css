@@ -9809,7 +9809,7 @@ button:active {
 
 .jumbotron {
   padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.04);
+  background: #e9ecef;
 }
 
 .bg-default {
@@ -11008,7 +11008,7 @@ a.breaker {
 
   header #title_mobile {
     display: block !important;
-    width: 12%;
+    width: 40%;
   }
 
   header #hamburger {
@@ -11031,6 +11031,10 @@ a.breaker {
   }
 
   #discussion-container {
+    display: none;
+  }
+
+  .d-xs-none {
     display: none;
   }
 

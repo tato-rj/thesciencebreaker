@@ -12,6 +12,11 @@ class Manager extends Model
     {
         return 'slug';
     }
+
+    public function division()
+    {
+        return $this->belongsTo('App\Division');
+    }
     
     public function fullName()
     {
@@ -51,4 +56,5 @@ class Manager extends Model
             ]);
         }
     }
+
 }

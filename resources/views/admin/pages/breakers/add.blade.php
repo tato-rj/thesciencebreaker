@@ -73,17 +73,6 @@
                 @endslot
               @endcomponent
             </div>
-            {{-- Field Research --}}
-            <div class="form-group">
-              <input type="text" value="{{ old('field_research') }}" name="field_research" class="form-control" id="field_research" aria-describedby="field_research" placeholder="Field Research">
-              {{-- Error --}}
-              @component('admin/snippets/error')
-                field_research
-                @slot('feedback')
-                {{ $errors->first('field_research') }}
-                @endslot
-              @endcomponent
-            </div>
             {{-- General Comments --}}
             <div class="form-group">
               <textarea class="form-control" name="general_comments" id="general_comments" rows="8" placeholder="General Comments">{{ old('general_comments') }}</textarea>

@@ -40,6 +40,9 @@
 			<p>Sure! Just send us the link (e.g. to a Wikipedia article, a special website or forum etc.) and we’ll add it to the Break, embedded in the text.</p>
 			<p><strong>Q: Which is the target audience?</strong></p>
 			<p>Our readership ideally consists of scientists from very different areas and, above all, laypeople. Keep in mind that most of the audience will be not acquainted with scientific terms and “jargonic” expressions. Therefore, the pitch of the Break must be tuned accordingly.</p>
+			<div class="text-center mt-5">
+				<a href="/contact/ask-a-question" class="btn bg-default text-white" id="breaker-btn"><i class="fa fa-question-circle mr-2 align-middle" aria-hidden="true"></i><strong>ASK A QUESTION</strong></a>
+			</div>
 		</div>
 		{{-- Side Bar --}}
 		@include('partials.side-bar')

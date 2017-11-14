@@ -88,18 +88,6 @@
                 @endslot
               @endcomponent
             </div>
-            {{-- Field Research --}}
-            <div class="form-group">
-              <label><strong>Field Research</strong></label>
-              <input type="text" value="{{ $author->field_research }}" name="field_research" class="form-control" id="field_research" aria-describedby="field_research" placeholder="Field Research">
-              {{-- Error --}}
-              @component('admin/snippets/error')
-                field_research
-                @slot('feedback')
-                {{ $errors->first('field_research') }}
-                @endslot
-              @endcomponent
-            </div>
             {{-- General Comments --}}
             <div class="form-group">
               <label><strong>General Comments</strong></label>

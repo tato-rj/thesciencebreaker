@@ -16,6 +16,15 @@
           <h2 class="text-muted op-5 mb-3">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Edit member</strong>
           </h2>
+          <div class="form-group">
+            <label for="exampleSelect2">Select the Manager to be edited</label>
+            <select class="form-control" id="manager_slug" name="manager_slug">
+              <option selected disabled>I want to edit...</option>
+              @foreach ($managers as $member)
+              <option data-slug="{{ $member->slug }}">{{ $member->first_name }} {{ $member->last_name }}</option>
+              @endforeach
+            </select>
+          </div>
           <form method="POST" action="/admin/managers/{{ $manager->slug }}">
             {{csrf_field()}}
             {{method_field('PATCH')}}
@@ -55,29 +64,35 @@
                 @endslot
               @endcomponent
             </div>
-            {{-- Division --}}
-            <div class="form-group">
-              <label><strong>Division</strong></label>
-              <input required type="text" value="{{ $manager->division }}" name="division" class="form-control" id="division" aria-describedby="division" placeholder="Division">
-              {{-- Error --}}
-              @component('admin/snippets/error')
-                division
-                @slot('feedback')
-                {{ $errors->first('division') }}
-                @endslot
-              @endcomponent
-            </div>
-            {{-- Position --}}
-            <div class="form-group">
-              <label><strong>Position</strong></label>
-              <input required type="text" value="{{ $manager->position }}" name="position" class="form-control" id="position" aria-describedby="position" placeholder="Position">
-              {{-- Error --}}
-              @component('admin/snippets/error')
-                position
-                @slot('feedback')
-                {{ $errors->first('position') }}
-                @endslot
-              @endcomponent
+            {{-- Division --}}         
+            <label class="form-group" style="margin-bottom: .5rem"><strong>Position</strong></label>
+            <div class="form-inline form-group">
+              <select class="custom-select mb-2 mr-sm-2" id="division_id" name="division_id">
+                <option  selected disabled>Division</option>
+                @foreach ($divisions as $division)
+                  <option value="{{ $division->id }}" {{ ($manager->division_id == $division->id) ? 'selected' : '' }}>{{ $division->name }}</option>
+                @endforeach
+              </select>
+              {{-- Position --}}
+              <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                <input required type="text" value="{{ $manager->position }}" name="position" size="16" class="form-control" id="position" placeholder="Position">
+              </div>
+              <div class="d-block">
+                {{-- Errors --}}
+                @component('admin/snippets/error')
+                  division_id
+                  @slot('feedback')
+                  {{ $errors->first('division_id') }}
+                  @endslot
+                @endcomponent
+                @component('admin/snippets/error')
+                  position
+                  @slot('feedback')
+                  {{ $errors->first('position') }}
+                  @endslot
+                @endcomponent
+              </div>
             </div>
             {{-- Biography --}}
             <div class="form-group">
@@ -122,4 +137,14 @@
         </div>
       </div>
     </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+$('select#manager_slug').on('change', function() {
+  $title = this.value;
+  $slug = $(this).children(':selected').attr('data-slug');
+  window.location.href =  '/admin/managers/'+$slug+'/edit';
+});
+</script>
 @endsection

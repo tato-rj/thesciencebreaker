@@ -34,16 +34,6 @@
 							@endcomponent		
 						</div>
 						<div class="form-group">
-							<input required type="text" class="form-control" value="{{ old('field_research') }}" name="field_research" placeholder="Field of research">
-							{{-- Error --}}
-							@component('admin/snippets/error')
-							field_research
-							@slot('feedback')
-							{{ $errors->first('field_research') }}
-							@endslot
-							@endcomponent		
-						</div>
-						<div class="form-group">
 							<input required type="text" class="form-control" name="research_institute" value="{{ old('research_institute') }}" placeholder="Research institute, Department, Unit...">
 							{{-- Error --}}
 							@component('admin/snippets/error')

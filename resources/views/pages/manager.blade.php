@@ -3,6 +3,10 @@
 @section('content')
 
 <div class="container mt-4">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/the-team">The Team</a></li>
+		<li class="breadcrumb-item active">{{ $member->fullName() }}</li>
+	</ol>
 	<div class="row" id="author">
 		<div class="col-lg-9 col-md-12">
 			<div class="row" id="member-container">
