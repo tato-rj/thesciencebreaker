@@ -78,7 +78,18 @@
 					<small>by 
 						@foreach ($article->authors as $author)
 							{{ $loop->first ? '' : ', ' }}
-							<a href="{{ $author->path() }}">{{ $author->fullName() }}</a> | {{ $author->position }}
+							<div class="author d-inline" data-url="{{ config('app.url').$author->path() }}">
+								<span class="text-orange cursor-link">{{ $author->fullName() }}</span>
+								<div class="author-container">
+									<p class="px-3 pt-3 mb-2"><strong>{{ $author->fullName() }}</strong> is {{ $author->position }} at {{ $author->research_institute }}.</p>
+									@if ($author->isAuthorOf($article))
+										<p class="px-3 mb-3 text-muted">
+											<strong>{{ $author->fullName() }} is also an author of the <a>original article</a></strong>
+										</p>
+									@endif
+									<p class="px-3 py-2 m-0"><a href="{{ $author->path() }}" target="_blank">View Breaker's Profile</a></p>
+								</div>
+							</div> | {{ $author->position }}
 						@endforeach
 					</small>
 				</div>
@@ -202,6 +213,22 @@ function popitup(url, height) {
 	newwindow=window.open(url ,'Share','height='+height+',width=450');
 	if (window.focus) {newwindow.focus()}
 	return false;
+}
+</script>
+<script type="text/javascript">
+$('#author-bar .author').on('click', function() {
+	$url = $(this).attr('data-url');
+	if(isMobile()) {
+		window.location.href = $url;
+	} else {
+		$container = $(this).find('.author-container');
+		$('.author-container').not($container).hide();
+		$container.toggle();
+	}
+});
+
+function isMobile () {
+	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 </script>
 @endsection
