@@ -6,7 +6,9 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   
-  <title>TheScienceBreaker - Admin</title>
+  <title>{{ config('app.name') }} | Admin</title>
+  <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon-32x32.png') }}" sizes="32x32" />
+  <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon-16x16.png') }}" sizes="16x16" />
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/tables.admin.css') }}" rel="stylesheet" type="text/css">
