@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class CategoryController extends Controller
 {
@@ -27,9 +28,12 @@ class CategoryController extends Controller
     }
 
 
-    public function show(Category $category)
+    public function show(Category $category, Request $request)
     {
-        $articles = $category->articles()->orderBY('id', 'desc')->paginate(4);
+        $sort = ($request->sort) ? $request->sort : 'created_at';
+        $order = ($sort == 'title') ? 'ASC' : 'DESC';
+        $show = ($request->show) ? $request->show : 5;
+        $articles = $category->articles()->orderBy($sort, $order)->paginate($show);
         return view('pages.category', compact(['articles', 'category']));
     }
 

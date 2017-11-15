@@ -186,7 +186,7 @@ class Article extends Model
                 $query->where('name', 'LIKE', "%$word%");
             })->orWhereHas('tags', function($query) use ($word) {
                 $query->where('name', 'LIKE', "%$word%");
-            })->orderBy('created_at', 'DESC');
+            });
     }
 
     public static function withTag($tag)

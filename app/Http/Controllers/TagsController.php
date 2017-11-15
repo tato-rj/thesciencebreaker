@@ -17,9 +17,13 @@ class TagsController extends Controller
     }
 
     // READ
-    public function show(Tag $tag)
+    public function show(Tag $tag, Request $request)
     {
-        $articles = $tag->articles()->paginate(4);
+        $input = $request->for;
+        $sort = ($request->sort) ? $request->sort : 'created_at';
+        $order = ($sort == 'title') ? 'ASC' : 'DESC';
+        $show = ($request->show) ? $request->show : 5;
+        $articles = $tag->articles()->orderBy($sort, $order)->paginate($show);
         return view('pages.tag', compact(['tag', 'articles']));
     }
 
