@@ -20,8 +20,12 @@
             <label for="exampleSelect2">Select the Break to be edited</label>
             <select class="form-control" id="break_id" name="break_id">
               <option selected disabled>I want to edit...</option>
-              @foreach ($breaks as $break)
-              <option data-slug="{{ $break->slug }}">{{ $break->title }}</option>
+              @foreach ($categories as $category)
+                <optgroup label="{{ $category->name }}">
+                  @foreach ($category->articles as $break)
+                  <option data-slug="{{ $break->slug }}">{{ $break->title }}</option>
+                  @endforeach
+                </optgroup>
               @endforeach
             </select>
           </div>
@@ -286,8 +290,7 @@ $(document).on('click', '.removeTag', function() {
 });
 
 $('select#break_id').on('change', function() {
-  $title = this.value;
-  $slug = $(this).children(':selected').attr('data-slug');
+  $slug = $(this).find(':selected').attr('data-slug');
   window.location.href = '/admin/breaks/'+$slug+'/edit';
 });
 

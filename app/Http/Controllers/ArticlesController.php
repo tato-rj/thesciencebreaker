@@ -59,8 +59,10 @@ class ArticlesController extends Controller
     // UPDATE
     public function selectEdit()
     {
-        $breaks = Article::orderBy('title')->get();
-        return view('admin/pages/breaks/selectEdit', compact(['breaks']));
+        $breaksByCategory = Category::with(['articles' => function($query) {
+            return $query->orderBy('created_at', 'DESC');
+        }])->get();
+        return view('admin/pages/breaks/selectEdit', compact(['breaksByCategory']));
     }
 
     public function edit(Article $article)
@@ -95,8 +97,10 @@ class ArticlesController extends Controller
     // DELETE
     public function selectDelete()
     {
-        $breaks = Article::orderBy('title')->get();
-        return view('admin/pages/breaks/selectDelete', compact(['breaks']));   
+        $breaksByCategory = Category::with(['articles' => function($query) {
+            return $query->orderBy('created_at', 'DESC');
+        }])->get();
+        return view('admin/pages/breaks/selectDelete', compact(['breaksByCategory']));   
     }
 
     public function destroy(Article $article)

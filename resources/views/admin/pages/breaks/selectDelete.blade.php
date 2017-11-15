@@ -21,8 +21,12 @@
             <label for="exampleSelect2">Select the Break to be deleted</label>
             <select class="form-control" id="break_slug" name="break_slug">
               <option selected disabled>I want to delete...</option>
-              @foreach ($breaks as $break)
-              <option data-slug="{{ $break->slug }}">{{ $break->title }}</option>
+              @foreach ($breaksByCategory as $category)
+                <optgroup label="{{ $category->name }}">
+                  @foreach ($category->articles as $break)
+                  <option data-slug="{{ $break->slug }}">{{ $break->title }} (from {{ $break->created_at->toFormattedDateString() }})</option>
+                  @endforeach
+                </optgroup>
               @endforeach
             </select>
           </div>
@@ -41,7 +45,7 @@
 <script type="text/javascript">
 $('select').on('change', function() {
   $title = this.value;
-  $slug = $(this).children(':selected').attr('data-slug');
+  $slug = $(this).find(':selected').attr('data-slug');
   $('#confirm button').attr('data-slug', $slug).attr('data-title', $title);
   $('#confirm').fadeIn();
 });
