@@ -8,7 +8,6 @@ class ValidateBreakSubmission implements Validator
         return $request->validate([
             'full_name' => 'required|min:2',
             'institution_email' => 'required|email',
-            'field_research' => 'required|min:2',
             'research_institute' => 'required|min:2',
             'original_article' => 'required',
             'position' => 'required',

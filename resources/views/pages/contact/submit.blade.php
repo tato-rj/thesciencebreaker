@@ -61,9 +61,12 @@
 								<option value="Research assistant" {{ (old('position') == 'Research assistant') ? 'selected' : '' }}>Research assistant</option>
 								<option value="Lecturer" {{ (old('position') == "Lecturer") ? 'selected' : '' }}>Lecturer</option>
 								<option value="Professor" {{ (old('position') == "Professor") ? 'selected' : '' }}>Professor</option>
+								<option id="other">Other</option>
 							</select>
 						</div>
-						
+						<div class="form-group">
+							<input type="text" class="form-control" style="display: none" name="other" value="" placeholder="Your position here">	
+						</div>					
 						<div class="form-group d-flex flex-column align-items-center" id="upload_container">
 							<p class="p-2"><strong>Break manuscript upload</strong></p>
 							<p>Please make sure that you read and respected the <a href="#">guidelines for authors</a>! If not, your Break will not be eligible for publication.</p>
@@ -108,4 +111,20 @@
 @if($flash = session('contact'))
 @include('admin/snippets/alerts/success')
 @endif
+@endsection
+
+@section('script')
+<script type="text/javascript">
+
+$('select[name="position"]').on('change', function() {
+	$option = $(this).children(':selected').attr('id');
+	$input = $('input[name="other"]');
+	if ($option == 'other') {
+		$input.fadeIn();
+	} else {
+		$input.val('');
+		$input.hide();
+	}
+});
+</script>
 @endsection
