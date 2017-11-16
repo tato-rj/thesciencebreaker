@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Category;
 use Illuminate\Http\Request;
 
 class EditorPicksController extends Controller
@@ -22,9 +23,11 @@ class EditorPicksController extends Controller
     // UPDATE
     public function edit()
     {
-        $articles = Article::orderBy('title')->get();
+        $breaksByCategory = Category::with(['articles' => function($query) {
+            return $query->orderBy('created_at', 'DESC');
+        }])->get();
         $picks = Article::picks();
-        return view('admin/pages/picks', compact(['picks', 'articles']));
+        return view('admin/pages/picks', compact(['picks', 'breaksByCategory']));
     }
 
     public function update(Request $request, $id)

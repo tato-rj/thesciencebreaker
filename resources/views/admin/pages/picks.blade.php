@@ -29,10 +29,12 @@
                 <div class="input-group">
                   <div class="input-group-addon">{{ $loop->iteration }}</div>
                   <select required class="form-control" id="pick" name="pick">
-                    @foreach ($articles as $article)
-                    <option value="{{ $article->id }}" {{ ($article->id == $pick->id) ? 'selected' : ''}}>
-                      {{ $article->title }}
-                    </option>
+                    @foreach ($breaksByCategory as $category)
+                      <optgroup label="{{ $category->name }}">
+                        @foreach ($category->articles as $break)
+                        <option {{ ($break->id == $pick->id) ? 'selected' : ''}} value="{{ $break->id }}">{{ $break->title }} (from {{ $break->created_at->toFormattedDateString() }})</option>
+                        @endforeach
+                      </optgroup>
                     @endforeach
                   </select>
                 </div>
