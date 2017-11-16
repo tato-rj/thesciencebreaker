@@ -15,11 +15,14 @@ class AvailableArticlesController extends Controller
     }
 
     // CREATE
-    public function create()
+    public function create(Request $request)
     {
-        $articles = AvailableArticle::orderBy('created_at', 'desc')->paginate(8);
-        $available_count = AvailableArticle::count();
-        return view('admin.pages.available_articles', compact(['articles', 'available_count']));
+        $sort = ($request->sort) ? $request->sort : 'created_at';
+        $order = ($sort == 'category_id') ? 'ASC' : 'DESC';
+        $show = ($request->show) ? $request->show : 5;
+        $articles = AvailableArticle::orderBy($sort, $order)->paginate($show);
+
+        return view('admin.pages.available_articles', compact('articles'));
     }
 
     public function store(Request $request)

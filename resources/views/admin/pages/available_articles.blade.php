@@ -41,7 +41,7 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
-          <p class="text-muted"><i class="fa fa-exclamation-circle mr-2" aria-hidden="true"></i>You currently have <strong>{{ $available_count }}</strong> available articles</p>
+          <p class="text-muted"><i class="fa fa-exclamation-circle mr-2" aria-hidden="true"></i>You currently have <strong>{{ $articles->total() }}</strong> available articles</p>
               {{-- Error --}}
               @component('admin/snippets/error')
                 article
@@ -49,6 +49,35 @@
                 {{ $errors->first('article') }}
                 @endslot
               @endcomponent
+
+      {{-- Sort --}}
+      <small class="d-flex justify-content-between align-items-end mt-4">
+        <div>
+          showing <strong>{{ $articles->firstItem() }}-{{ $articles->lastItem() }}</strong> of {{ $articles->total() }} breaks
+        </div>
+        <div class="form-inline">
+          <label class="mr-sm-2">show</label>
+          <form>
+            <input type="hidden" name="sort" value="{{ Request::input('sort') }}">
+            <select class="mb-2 mr-sm-2 mb-sm-0" name="show" onchange="this.form.submit()" id="show">
+              <option value="5" {{ (Request::input('show') == '5') ? 'selected' : '' }}>5</option>
+              <option value="10" {{ (Request::input('show') == '10') ? 'selected' : '' }}>10</option>
+              <option value="15" {{ (Request::input('show') == '15') ? 'selected' : '' }}>15</option>
+              <option value="{{ $articles->total() }}" {{ (Request::input('show') == $articles->total()) ? 'selected' : '' }}>all</option>
+            </select>
+          </form>
+          <label class="mr-sm-2">sort by</label>
+          <form>
+            <input type="hidden" name="show" value="{{ Request::input('show') }}">
+            <select class="mb-2 mr-sm-2 mb-sm-0" name="sort" onchange="this.form.submit()" id="sort">
+              <option value="created_at" {{ (Request::input('sort') == 'created_at') ? 'selected' : '' }}>newest</option>
+              <option value="category_id" {{ (Request::input('sort') == 'category_id') ? 'selected' : '' }}>category</option>
+            </select>
+          </form>
+        </div>
+      </small>
+      <hr style="margin-top: .5rem">
+
           @foreach ($articles as $article)
           <div class="d-flex align-items-center mt-4 mb-2 pb-2">
             <div class="flex-grow mr-2">
