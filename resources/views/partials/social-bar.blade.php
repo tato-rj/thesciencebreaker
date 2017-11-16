@@ -6,7 +6,7 @@
 		<a class="cursor-link" id="shareFacebook" title="Share this break on Facebook">
 			<i class="fa fa-facebook" aria-hidden="true"></i>
 		</a>
-		<a id="twitter" class="cursor-link" data-link="https://twitter.com/share?text=Check out this story @sciencebreaker&hashtags=thesciencebreaker
+		<a id="twitter" class="cursor-link" data-link="https://twitter.com/share?text={{ $article->title }} @sciencebreaker&hashtags=thesciencebreaker
 		@foreach ($article->tags as $tag)
 		,{{ $tag->name }}
 		@endforeach

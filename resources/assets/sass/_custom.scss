@@ -121,3 +121,18 @@ a:focus {
 .no-border {
 	border: 0!important;
 }
+
+/* Popover Header */
+.popover-title {
+    background-color: #73AD21!important; 
+    color: #FFFFFF; 
+    font-size: 88px;
+    text-align:center;
+}
+
+/* Popover Body */
+.popover-content {
+    background-color: coral;
+    color: #FFFFFF;
+    padding: 25px;
+}

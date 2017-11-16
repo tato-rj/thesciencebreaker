@@ -49,6 +49,26 @@ class Article extends Model
         return $this->authors->pluck('id')->toArray();
     }
 
+    public function authorsList()
+    {
+        $namesList = '';
+        foreach ($this->authors as $author) {
+            $namesList .= $author->fullName().', ';
+        }
+        $namesList = substr($namesList, 0, -2);
+        return $namesList;
+    }
+
+    public function tagsList()
+    {
+        $tagsList = '';
+        foreach ($this->tags as $tag) {
+            $tagsList .= $tag->name.', ';
+        }
+        $tagsList = substr($tagsList, 0, -2);
+        return $tagsList;
+    }
+
     public function path()
     {
         return "/breaks/{$this->category->slug}/{$this->slug}";

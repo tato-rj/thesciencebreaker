@@ -4,7 +4,25 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
         @yield('meta')
+        
+        <meta property="og:site_name" content="{{ config('app.name') }} | Science Meets Society">
+        <meta property="og:url" content="{{ url()->full() }}" />
+        <meta property="og:title" content="{{ config('app.name') }} | Science Meets Society" />
+        <meta property="og:description" content="For the democratization of scientific literature" />
+        <meta property="og:image" content="{{ asset('images/tsb-default.png') }}" />
+
+        <meta itemprop="name" content="{{ config('app.name') }} | Science Meets Society" />
+        <meta itemprop="description" content="For the democratization of scientific literature" />
+        <meta itemprop="image" content="{{ asset('images/tsb-default.png') }}" />
+
+        <meta name="description" content="For the democratization of scientific literature" />
+        <meta name="keywords" content="{{ $tagsList }}" />
+        <meta name="news_keywords" content="{{ $tagsList }}" />
+
+        <link rel="image_src" href="{{ asset('images/tsb-default.png') }}" />
+        
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         

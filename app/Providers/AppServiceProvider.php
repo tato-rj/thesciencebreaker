@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Category;
 use App\Article;
+use App\Tag;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -21,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
         \View::composer('*', function($view) {
             $view->with('categories', Category::orderBy('name')->get());
             $view->with('popular', Article::popular(5)->get());
+            $view->with('tagsList', Tag::list());
         });
         
         \View::composer('partials.side-bar', function($view) {

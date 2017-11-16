@@ -1,17 +1,35 @@
 @extends('_core')
 
 @section('meta')
-<meta property="og:site_name" content="{{ config('app.name') }}">
-<meta property="og:url" content="{{ url()->full() }}" />
+<meta property="fb:app_id" content="1737765819883440" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="{{ $article->title }}" />
-<meta property="og:description" content="{{ $article->description }}" />
-<meta property="og:image" content="" />
+<meta property="og:description" content="{{ $article->description }} - submission by {{ $article->authorsList() }}" />
+<meta property="og:image" content="{{ asset('images/tsb-default.png') }}" />
 
+<meta name="twitter:site" content="@sciencebreaker" />
 <meta name="twitter:title" content="{{ $article->title }}">
-<meta name="twitter:description" content="{{ $article->description }}">
-<meta name="twitter:image" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="{{ url()->full() }}" />
+<meta name="twitter:description" content="{{ $article->description }} - submission by {{ $article->authorsList() }}">
+<meta name="twitter:image" content="{{ asset('images/tsb-default.png') }}">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta itemprop="name" content="{{ $article->title }}" />
+<meta itemprop="description" content="{{ $article->description }} - submission by {{ $article->authorsList() }}" />
+<meta itemprop="image" content="{{ asset('images/tsb-default.png') }}" />
+
+<meta property="article:author" content="{{ $article->authorsList() }}" />
+<meta property="article:publisher" content="{{ url()->full() }}" />
+<meta property="article:section" content="{{ $article->category->name }}" />
+<meta property="article:published_time" content="{{ $article->created_at }}" />
+
+<meta name="description" content="{{ $article->description }} - submission by {{ $article->authorsList() }}" />
+<meta name="abstract" content="{{ $article->description }} - submission by {{ $article->authorsList() }}" />
+<meta name="keywords" content="{{ $article->tagsList() }}" />
+<meta name="news_keywords" content="{{ $article->tagsList() }}" />
+
+<link rel="image_src" href="{{ asset('images/tsb-default.png') }}" />
+<link rel="shortlink" href="{{ $article->doi }}" />
 @endsection
 
 @section('earlyJS')
@@ -94,8 +112,7 @@
 					</small>
 				</div>
 				<div>
-					<small class="d-xs-none">Edited by</small>
-					<i class="ml-1 fa fa-info-circle" tabindex="0" data-toggle="popover" data-html="true" data-placement="auto" data-trigger="focus" title="Editor" data-content="{{ $article->editor->fullName() }}<br><small>{{ $article->editor->position }}</small>"></i>
+					<i class="ml-1 fa fa-info-circle" tabindex="0" data-toggle="popover" data-html="true" data-placement="auto" data-trigger="focus" title="Edited by" data-content="{{ $article->editor->fullName() }}<br><small>{{ $article->editor->position }}</small>"></i>
 				</div>
 
 			</div>
@@ -193,7 +210,7 @@
 <script type="text/javascript">
 $(function () {
   $('[data-toggle="popover"]').popover();
-})
+});
 
 document.getElementById('shareFacebook').onclick = function() {
   FB.ui({
