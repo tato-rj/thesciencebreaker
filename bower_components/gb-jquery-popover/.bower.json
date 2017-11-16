@@ -1,0 +1,15 @@
+{
+  "name": "gb-jquery-popover",
+  "homepage": "https://github.com/goodybag/jquery-popover",
+  "version": "0.0.4",
+  "_release": "0.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.4",
+    "commit": "74a464f6a7c3fb8c9eb0b992821e227aa8c26465"
+  },
+  "_source": "https://github.com/goodybag/jquery-popover.git",
+  "_target": "^0.0.4",
+  "_originalSource": "gb-jquery-popover",
+  "_direct": true
+}

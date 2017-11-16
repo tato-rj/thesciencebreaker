@@ -89,7 +89,7 @@ a:focus {
 }
 
 .text-orange {
-	color: $color-theme-orange-l;
+	color: $color-theme-orange-l!important;
 }
 
 .text-green {
@@ -122,17 +122,17 @@ a:focus {
 	border: 0!important;
 }
 
-/* Popover Header */
-.popover-title {
-    background-color: #73AD21!important; 
-    color: #FFFFFF; 
-    font-size: 88px;
-    text-align:center;
+.popover-body {
+	overflow: inherit!important;
+	max-height: none!important;
+	padding: 0!important;
 }
 
-/* Popover Body */
-.popover-content {
-    background-color: coral;
-    color: #FFFFFF;
-    padding: 25px;
+.popover-modal {
+	left: -14px;
+	z-index: 10!important;
+}
+
+.editor {
+	width: 150px!important;
 }

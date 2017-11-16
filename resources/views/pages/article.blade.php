@@ -55,6 +55,7 @@
 @endsection
 
 @section('content')
+
 <div class="container mt-4">
 	<div class="row">
 		{{-- Social Icons --}}
@@ -95,26 +96,39 @@
 				<div>
 					<small>by 
 						@foreach ($article->authors as $author)
-							{{ $loop->first ? '' : ', ' }}
-							<div class="author d-inline" data-url="{{ config('app.url').$author->path() }}">
-								<span class="text-orange cursor-link">{{ $author->fullName() }}</span>
-								<div class="author-container">
-									<p class="px-3 pt-3 mb-2"><strong>{{ $author->fullName() }}</strong> is {{ $author->position }} at {{ $author->research_institute }}.</p>
+						{{ $loop->first ? '' : ', ' }}
+							<span class="popover-wrapper">
+							  <a data-role="popover" class="author text-orange cursor-link" data-url="{{ $author->path() }}" data-target="{{ $author->slug }}-popover">{{ $author->fullName() }}</a> | {{ $author->position }}
+							  <div class="popover-modal p-3 {{ $author->slug }}-popover">
+							    <div class="popover-body popover-body-padded">
+							      <p class="mb-2"><i class="fa fa-user mr-2" aria-hidden="true"></i><strong>{{ $author->fullName() }}</strong> is {{ $author->position }} at {{ $author->research_institute }}.</p>
 									@if ($author->isAuthorOf($article))
-										<p class="px-3 mb-3 text-muted">
+										<p class="mb-0 text-green">
 											<strong>{{ $author->fullName() }} is also an author of the <a>original article</a></strong>
 										</p>
 									@endif
-									<p class="px-3 py-2 m-0"><a href="{{ $author->path() }}" target="_blank">View Breaker's Profile</a></p>
-								</div>
-							</div> | {{ $author->position }}
+									<a href="{{ $author->path() }}" class="btn btn-theme-orange no-hover py-0 px-3 pull-right btn-sm" target="_blank">Profile</a>
+							    </div>
+							  </div>
+							</span>
 						@endforeach
 					</small>
 				</div>
-				<div>
-					<i class="ml-1 fa fa-info-circle" tabindex="0" data-toggle="popover" data-html="true" data-placement="auto" data-trigger="focus" title="Edited by" data-content="{{ $article->editor->fullName() }}<br><small>{{ $article->editor->position }}</small>"></i>
+				<div class="d-xs-none">
+					<span class="popover-wrapper">
+						<a data-role="popover" data-target="{{ $article->editor->slug }}-popover"><i class="ml-1 fa fa-info-circle"></i></a>
+						<div class="popover-modal editor p-3 {{ $author->slug }}-popover">
+							<div class="popover-body popover-body-padded">
+								<small>
+									<p class="mb-1"><strong>Edited by</strong></p>
+									<p class="mb-0"> {{ $article->editor->fullName() }}</p>
+									<p class="mb-2 text-muted"><em>{{ $article->editor->position }}</em></p>
+									<a href="{{ $article->editor->path() }}" class="btn btn-theme-orange no-hover p-0 btn-block btn-sm" target="_blank">Profile</a>
+								</small>
+							</div>
+						</div>
+					</span>					
 				</div>
-
 			</div>
 			
 			@include('partials.reading-time-bar')
@@ -208,9 +222,11 @@
 @section('script')
 <script type="text/javascript" src="{{ asset('js/disqus.js') }}"></script>
 <script type="text/javascript">
-$(function () {
-  $('[data-toggle="popover"]').popover();
-});
+
+
+// $(function () {
+//   $('[data-toggle="popover"]').popover();
+// });
 
 document.getElementById('shareFacebook').onclick = function() {
   FB.ui({
@@ -237,12 +253,12 @@ $('#author-bar .author').on('click', function() {
 	$url = $(this).attr('data-url');
 	if(isMobile()) {
 		window.location.href = $url;
-	} else {
-		$container = $(this).find('.author-container');
-		$('.author-container').not($container).hide();
-		$container.toggle();
 	}
 });
+
+if (!isMobile()) {
+	$('[data-role="popover"]').popover();
+}
 
 function isMobile () {
 	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);

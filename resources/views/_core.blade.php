@@ -30,7 +30,8 @@
         <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon-32x32.png') }}" sizes="32x32" />
         <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon-16x16.png') }}" sizes="16x16" />
         <script src="{{ asset('js/pace.min.js') }}"></script>
-        <link href="{{ asset('css/app.css') }}?version=1" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/jquery-popover-0.0.3.css') }}">
+        <link href="{{ asset('css/app.css') }}?version=10" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     </head>
     <body id="page-top">
@@ -59,9 +60,11 @@
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/stickyMenu.js') }}"></script>
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script src="{{ asset('js/admin/jquery.easing.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery-popover-0.0.3.js') }}"></script>
     @yield('script')
 
 </body>
