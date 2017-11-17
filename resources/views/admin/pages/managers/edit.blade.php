@@ -31,7 +31,7 @@
             {{method_field('PATCH')}}
             
             <div class="row">
-              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
+              <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
                 {{-- First Name --}}
                 <div class="form-group">
                   <label><strong>First Name</strong></label>
@@ -68,30 +68,6 @@
                     @endslot
                   @endcomponent
                 </div>
-              </div>
-              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
-                
-                <div class="form-group">
-                  <label><strong>Avatar</strong></label>
-                  <div id="upload-box" class="card">
-                    <input type="file" id="avatar" name="avatar" style="display:none;" />
-                    <img class="card-img-top mt-2" id="avatar-img" src="{{ asset($manager->avatar()) }}" alt="Not an image">
-                    <div class="card-body text-center">
-                      <button type="button" id="upload-button" class="btn bg-default text-white"><i class="fa fa-cloud-upload mr-1" aria-hidden="true"></i>Upload</button>
-                    </div>
-
-                  </div>
-                  {{-- Error --}}
-                  @component('admin/snippets/error')
-                  avatar
-                  @slot('feedback')
-                  {{ $errors->first('avatar') }}
-                  @endslot
-                  @endcomponent
-                </div>
-
-              </div>
-            </div>
             {{-- Research Institute --}}
             <div class="form-group">
               <label><strong>Research Institute</strong></label>
@@ -134,6 +110,31 @@
                 @endcomponent
               </div>
             </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                
+                <div class="form-group">
+                  <label><strong>Avatar</strong></label>
+                  <div id="upload-box" class="card">
+                    <input type="file" id="avatar" name="avatar" style="display:none;" />
+                    <img class="card-img-top" id="avatar-img" src="{{ asset($manager->avatar()) }}" alt="Not an image">
+                    <div class="card-body text-center">
+                      <button type="button" id="upload-button" class="btn bg-default text-white"><i class="fa fa-cloud-upload mr-1" aria-hidden="true"></i>Upload</button>
+                    </div>
+
+                  </div>
+                  {{-- Error --}}
+                  @component('admin/snippets/error')
+                  avatar
+                  @slot('feedback')
+                  {{ $errors->first('avatar') }}
+                  @endslot
+                  @endcomponent
+                </div>
+
+              </div>
+            </div>
+
             {{-- Biography --}}
             <div class="form-group">
               <label><strong>Biography</strong></label>

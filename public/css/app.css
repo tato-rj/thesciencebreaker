@@ -10456,7 +10456,9 @@ footer #apple-store {
 
 .cover-image figcaption {
   position: absolute;
-  bottom: 10px;
+  bottom: 8px;
+  border-bottom-right-radius: .25rem;
+  border-bottom-left-radius: .25rem;
   width: 100%;
   padding: 1rem;
   font-size: 80%;
@@ -10746,6 +10748,7 @@ div.highlight {
 .scroll-to-top {
   position: fixed;
   right: 15px;
+  z-index: 100;
   bottom: 15px;
   display: none;
   width: 50px;
@@ -11092,6 +11095,10 @@ a.breaker {
 
   .btn {
     width: 100%;
+  }
+
+  .cover-image figcaption {
+    padding: .5rem;
   }
 }
 

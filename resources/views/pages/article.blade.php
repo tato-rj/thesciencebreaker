@@ -81,7 +81,7 @@
 			@if ($article->image() != 'images/no-image.png')
 			<figure class="figure cover-image mb-0">
 				<img src="{{ asset($article->image()) }}" class="figure-img img-fluid rounded" alt="{{ $article->image_caption }}">
-				<figcaption class="figure-caption">{{ $article->image_caption }} <strong>{{ $article->image_credits }}</strong></figcaption>
+				<figcaption class="figure-caption"><small>{{ $article->image_caption }} <strong>Credits: {{ $article->image_credits }}</strong></small></figcaption>
 			</figure>
 			@endif
 

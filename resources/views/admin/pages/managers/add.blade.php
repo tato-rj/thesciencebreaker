@@ -19,7 +19,7 @@
           <form method="POST" action="/admin/managers"  enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="row">
-              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
+              <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
                 {{-- First Name --}}
                 <div class="form-group">
                   <input required type="text" value="{{ old('first_name') }}" name="first_name" class="form-control" id="first_name" aria-describedby="first_name" placeholder="First Name">
@@ -63,30 +63,8 @@
                 {{ $errors->first('research_institute') }}
                 @endslot
               @endcomponent
-            </div>         
-              </div>
-              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
-                <div class="form-group">
-                  <div id="upload-box" class="card">
-                    <input type="file" id="avatar" name="avatar" style="display:none;" />
-                    <img class="card-img-top mt-2" id="avatar-img" src="{{ asset('images/no-avatar.png') }}" alt="Not an image">
-                    <div class="card-body text-center">
-                      <button type="button" id="upload-button" class="btn bg-default text-white"><i class="fa fa-cloud-upload mr-1" aria-hidden="true"></i>Upload</button>
-                    </div>
+            </div>     
 
-                  </div>
-                  {{-- Error --}}
-                  @component('admin/snippets/error')
-                  avatar
-                  @slot('feedback')
-                  {{ $errors->first('avatar') }}
-                  @endslot
-                  @endcomponent
-                </div>                
-              </div>
-            </div>
-
-            
             {{-- Division --}}         
             <div class="form-inline form-group">
               <select class="custom-select mb-2 mr-sm-2" id="division_id" name="division_id">
@@ -115,7 +93,30 @@
                   @endslot
                 @endcomponent
               </div>
+            </div>    
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <div id="upload-box" class="card">
+                    <input type="file" id="avatar" name="avatar" style="display:none;" />
+                    <img class="card-img-top" id="avatar-img" src="{{ asset('images/no-avatar.png') }}" alt="Not an image">
+                    <div class="card-body text-center">
+                      <button type="button" id="upload-button" class="btn bg-default text-white"><i class="fa fa-cloud-upload mr-1" aria-hidden="true"></i>Upload</button>
+                    </div>
+
+                  </div>
+                  {{-- Error --}}
+                  @component('admin/snippets/error')
+                  avatar
+                  @slot('feedback')
+                  {{ $errors->first('avatar') }}
+                  @endslot
+                  @endcomponent
+                </div>                
+              </div>
             </div>
+
+
             {{-- Biography --}}
             <div class="form-group">
               <textarea class="form-control" name="biography" id="biography" rows="8" placeholder="Biography">{{ old('biography') }}</textarea>
