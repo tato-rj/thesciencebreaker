@@ -2,7 +2,7 @@
  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
  */
-$doi = $('.breakContent').attr('data-doi');
+$doi = $('#doi').attr('href');
 console.log($doi);
 var disqus_config = function () {
     this.page.url = window.location.href;  // Replace PAGE_URL with your page's canonical URL variable

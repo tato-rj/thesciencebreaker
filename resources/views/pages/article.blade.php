@@ -96,7 +96,7 @@
 					</a>
 				</div>
 				<div>
-					<a href="{{ $article->doi }}"><small>{{ $article->doi }}</small></a>
+					<a id="doi" href="{{ $article->doi }}"><small>{{ $article->doi }}</small></a>
 				</div>
 			</div>
 			{{-- Author --}}
