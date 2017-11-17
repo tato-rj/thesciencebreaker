@@ -79,15 +79,13 @@ class Article extends Model
         return "storage/app/breaks/$this->slug.pdf";
     }
 
-    public static function saveFile(Request $request)
+    public function image()
     {
-        if ($request->file('file') !== null) {
-            $file = $request->file('file');
-            $ext = $file->extension();
-            $name = str_slug($request->title);
-            $filename = "/breaks/$name.$ext";
-            Storage::put($filename, File::get($file));
-        }
+        if (File::exists("storage/app/breaks/images/$this->slug")) {
+            return File::allFiles("storage/app/breaks/images/$this->slug")[0];
+        } else {
+            return "images/no-image.png";
+        }   
     }
 
     public static function createFrom($request)
@@ -96,6 +94,8 @@ class Article extends Model
             'title' => $request->title,
             'slug' => str_slug($request->title, '-'),
             'description' => $request->description,
+            'image_caption' => $request->image_caption,
+            'image_credits' => $request->image_credits,
             'content' => $request->content,
             'reading_time' => $request->reading_time,
             'original_article' => $request->original_article,
@@ -118,6 +118,8 @@ class Article extends Model
             'title' => $request->title,
             'slug' => str_slug($request->title, '-'),
             'description' => $request->description,
+            'image_caption' => $request->image_caption,
+            'image_credits' => $request->image_credits,
             'content' => $request->content,
             'reading_time' => $request->reading_time,
             'original_article' => $request->original_article,

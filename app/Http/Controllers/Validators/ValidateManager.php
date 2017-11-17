@@ -12,7 +12,7 @@ class ValidateManager implements Validator
             'email' => 'required|email|unique:managers',
             'division_id' => 'required',
             'position' => 'required',
-            'research_institute' => 'required'
+            'avatar' => 'mimes:jpg,jpeg,png,svg|max:6000'
         ]);
 	}
 
@@ -24,7 +24,7 @@ class ValidateManager implements Validator
             'email' => 'required|email',
             'division_id' => 'required',
             'position' => 'required',
-            'research_institute' => 'required'
+            'avatar' => 'mimes:jpg,jpeg,png,svg|max:6000'
         ]);
     }
 }

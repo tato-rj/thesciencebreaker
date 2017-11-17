@@ -35,6 +35,7 @@ $factory->define(App\Article::class, function (Faker $faker) {
         'title' => $title,
         'slug' => str_slug($title),
         'description' => $faker->sentence,
+        'image_caption' => $faker->sentence,
         'content' => $faker->paragraph,
         'reading_time' => $faker->randomDigitNotNull,
         'original_article' => $faker->sentence,

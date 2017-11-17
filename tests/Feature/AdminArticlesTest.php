@@ -40,7 +40,6 @@ class AdminArticlesTest extends TestCase
     /** @test */
     public function a_manager_can_upload_a_pdf_when_adding_a_new_article()
     {
-        // Storage::fake('folder');
         $this->signIn();
         $faker = \Faker\Factory::create();
         $title = $faker->sentence;
@@ -55,10 +54,34 @@ class AdminArticlesTest extends TestCase
             'doi' => $faker->url,
             'editor_pick' => '0',
             'authors' => [1],
-            'file' => $file = UploadedFile::fake()->create('document.pdf', 20)
+            'pdf' => $file = UploadedFile::fake()->create('document.pdf', 20)
         ]);
 
         Storage::assertExists('breaks/'.str_slug($title).'.pdf');
+    }
+
+    /** @test */
+    public function a_manager_can_upload_a_cover_image_when_adding_a_new_article()
+    {
+        $this->signIn();
+        $faker = \Faker\Factory::create();
+        $title = $faker->sentence;
+        $slug = str_slug($title);
+
+        $this->post('/admin/breaks', [
+            'title' => $title,
+            'content' => $faker->paragraph,
+            'reading_time' => $faker->randomDigitNotNull,
+            'original_article' => $faker->sentence,
+            'category_id' => 1,
+            'editor_id' => 1,
+            'doi' => $faker->url,
+            'editor_pick' => '0',
+            'authors' => [1],
+            'image' => UploadedFile::fake()->create('image.jpeg', 200)
+        ]);
+
+        Storage::assertExists('breaks/images/'.$slug.'/'.$slug.'.jpeg');
     }
 
     /** @test */
@@ -90,7 +113,6 @@ class AdminArticlesTest extends TestCase
     /** @test */
     public function a_pdf_is_removed_along_with_a_removed_article()
     {
-        // Storage::fake('breaks');
         $this->signIn();
         $faker = \Faker\Factory::create();
         $title = $faker->sentence;
@@ -104,13 +126,67 @@ class AdminArticlesTest extends TestCase
             'doi' => $faker->url,
             'editor_pick' => '0',
             'authors' => [1],
-            'file' => $file = UploadedFile::fake()->create('document.pdf', 20)
+            'pdf' => $file = UploadedFile::fake()->create('document.pdf', 20)
         ]);
         Storage::assertExists('breaks/'.str_slug($title).'.pdf');
 
         $this->delete('/admin/breaks/'.str_slug($title));
         
         Storage::assertMissing('breaks/'.str_slug($title).'.pdf');
+    }
+
+    /** @test */
+    public function a_cover_image_is_removed_along_with_a_removed_article()
+    {
+        $this->signIn();
+        $faker = \Faker\Factory::create();
+        $title = $faker->sentence;
+        $slug = str_slug($title);
+
+        $article = $this->post('/admin/breaks', [
+            'title' => $title,
+            'content' => $faker->paragraph,
+            'reading_time' => $faker->randomDigitNotNull,
+            'original_article' => $faker->sentence,
+            'category_id' => 1,
+            'editor_id' => 1,
+            'doi' => $faker->url,
+            'editor_pick' => '0',
+            'authors' => [1],
+            'image' => $file = UploadedFile::fake()->create('image.jpeg', 20)
+        ]);
+        Storage::assertExists('breaks/images/'.$slug.'/'.$slug.'.jpeg');
+
+        $this->delete('/admin/breaks/'.$slug);
+        
+        Storage::assertMissing('breaks/images/'.$slug.'/'.$slug.'.jpeg');
+    }
+
+    /** @test */
+    public function a_manager_can_remove_a_cover_image()
+    {
+        $this->signIn();
+        $faker = \Faker\Factory::create();
+        $title = $faker->sentence;
+        $slug = str_slug($title);
+
+        $article = $this->post('/admin/breaks', [
+            'title' => $title,
+            'content' => $faker->paragraph,
+            'reading_time' => $faker->randomDigitNotNull,
+            'original_article' => $faker->sentence,
+            'category_id' => 1,
+            'editor_id' => 1,
+            'doi' => $faker->url,
+            'editor_pick' => '0',
+            'authors' => [1],
+            'image' => $file = UploadedFile::fake()->create('image.jpeg', 20)
+        ]);
+        Storage::assertExists('breaks/images/'.$slug.'/'.$slug.'.jpeg');
+
+        $this->delete('/admin/breaks/images/'.$slug);
+        
+        Storage::assertMissing('breaks/images/'.$slug.'/'.$slug.'.jpeg');
     }
 
     /** @test */
@@ -159,7 +235,6 @@ class AdminArticlesTest extends TestCase
     /** @test */
     public function a_manager_can_upload_a_pdf_when_editing_an_article()
     {
-        // Storage::fake('breaks');
         $this->signIn();
         $article = $this->article;
 
@@ -173,9 +248,32 @@ class AdminArticlesTest extends TestCase
             'doi' => $article->doi,
             'editor_pick' => $article->editor_pick,
             'authors' => [1],
-            'file' => $file = UploadedFile::fake()->create('document.pdf', 20)
+            'pdf' => $file = UploadedFile::fake()->create('document.pdf', 20)
         ]);
 
         Storage::assertExists('breaks/'.str_slug($article->title).'.pdf');
+    }
+
+    /** @test */
+    public function a_manager_can_upload_a_cover_image_when_editing_an_article()
+    {
+        $this->signIn();
+        $article = $this->article;
+        $slug = str_slug($article->title);
+
+        $this->patch('/admin/breaks/'.$article->slug, [
+            'title' => $article->title,
+            'content' => $article->content,
+            'reading_time' =>$article->reading_time,
+            'original_article' => $article->original_article,
+            'category_id' => $article->category_id,
+            'editor_id' => $article->editor_id,
+            'doi' => $article->doi,
+            'editor_pick' => $article->editor_pick,
+            'authors' => [1],
+            'image' => $file = UploadedFile::fake()->create('image.jpeg', 200)
+        ]);
+
+        Storage::assertExists('breaks/images/'.$slug.'/'.$slug.'.jpeg');
     }
 }

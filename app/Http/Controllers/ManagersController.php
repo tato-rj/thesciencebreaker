@@ -8,6 +8,8 @@ use App\Division;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Validators\ValidateManager;
 use Illuminate\Support\Facades\Input;
+use App\Files\Upload;
+use Illuminate\Support\Facades\File;
 
 class ManagersController extends Controller
 {
@@ -39,10 +41,11 @@ class ManagersController extends Controller
     public function store(Request $request)
     {
         ValidateManager::createCheck($request);
+        $slug = str_slug($request->first_name.' '.$request->last_name);
         Manager::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
-            'slug' => str_slug($request->first_name.' '.$request->last_name),
+            'slug' => $slug,
             'email' => $request->email,
             'division_id' => $request->division_id,
             'position' => $request->position,
@@ -50,6 +53,10 @@ class ManagersController extends Controller
             'research_institute' => $request->research_institute,
             'is_editor' => $request->is_editor
         ]);
+
+        if ($request->file('avatar')) {
+            (new Upload($request->file('avatar')))->name($slug)->path("/managers/avatars/$slug/")->save();            
+        }
 
         return redirect()->back()->with('db_feedback', $request->first_name.' '.$request->last_name.' has been successfully added to the team!');
     }
@@ -77,9 +84,12 @@ class ManagersController extends Controller
     public function update(Request $request, Manager $manager)
     {
         ValidateManager::editCheck($request);
-        $manager->update($request->all());
+        $manager->update($request->except('avatar'));
         $manager->update(['slug' => str_slug($request->first_name.' '.$request->last_name)]);
-        return redirect()->back()->with('db_feedback', $manager->first_name.'\'s profile has been updated');
+        if ($request->file('avatar')) {
+            (new Upload($request->file('avatar')))->name($slug)->path("/managers/avatars/$slug/")->replace();            
+        }
+        return redirect("admin/managers/$manager->slug/edit")->with('db_feedback', $manager->first_name.'\'s profile has been updated');
     }
 
     // DELETE
@@ -91,7 +101,9 @@ class ManagersController extends Controller
 
     public function destroy(Manager $manager)
     {
+        File::deleteDirectory("storage/app/managers/avatars/$manager->slug");
         $manager->delete();
         return redirect()->back()->with('db_feedback', 'The team member has been removed from the database');
     }
+
 }

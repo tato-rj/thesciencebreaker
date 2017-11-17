@@ -11,7 +11,9 @@ use App\Tag;
 use App\Mail\MailFactory;
 use App\Http\Controllers\Validators\ValidateBreak;
 use Illuminate\Support\Facades\Storage;
+use App\Files\Upload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ArticlesController extends Controller
 {
@@ -38,11 +40,18 @@ class ArticlesController extends Controller
 
     public function store(Request $request)
     {
+        $slug = str_slug($request->title);
         ValidateBreak::createCheck($request);
         Article::createFrom($request);
-        Article::saveFile($request);
-        // Notifications turned off
-        // MailFactory::sendNotificationsTo($request->authors, $request->editor_id, $break);
+
+        if ($request->file('pdf')) {
+            (new Upload($request->file('pdf')))->name($slug)->path("/breaks/")->save();            
+        }
+
+        if ($request->file('image')) {
+            (new Upload($request->file('image')))->name($slug)->path("/breaks/images/$slug/")->save();            
+        }
+
         return redirect()->back()->with('db_feedback', 'The Break has been successfully added!');
     }
 
@@ -76,9 +85,19 @@ class ArticlesController extends Controller
 
     public function update(Request $request, Article $article)
     {
+
         ValidateBreak::editCheck($request);
         $article->updateFrom($request);
-        Article::saveFile($request);
+        $slug = $article->slug;
+
+        if ($request->file('pdf')) {
+            (new Upload($request->file('pdf')))->name($slug)->path("/breaks/")->save();            
+        }
+
+        if ($request->file('image')) {
+            (new Upload($request->file('image')))->name($slug)->path("/breaks/images/$slug/")->replace();            
+        }
+
         return redirect()->back()->with('db_feedback', 'The Break has been updated');
     }
 
@@ -107,8 +126,15 @@ class ArticlesController extends Controller
     {
         $article->authors()->detach();
         Storage::delete("breaks/$article->slug.pdf");
+        File::deleteDirectory("storage/app/breaks/images/$article->slug");
         $article->delete();
 
         return redirect()->back()->with('db_feedback', 'The Break has been deleted');
+    }
+
+    public function destroyImage(Article $article)
+    {
+        $deleted = File::deleteDirectory("storage/app/breaks/images/$article->slug");
+        return redirect()->back()->with('db_feedback', 'The image has been deleted');
     }
 }

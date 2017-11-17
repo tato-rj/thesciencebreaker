@@ -102,6 +102,7 @@ Route::post('/admin/breaks', 'ArticlesController@store');
 Route::post('/admin/breaks/{article}/breakers-order', 'ArticlesController@authorsOrder');
 Route::patch('/admin/breaks/{article}', 'ArticlesController@update');
 Route::delete('/admin/breaks/{article}', 'ArticlesController@destroy');
+Route::delete('/admin/breaks/images/{article}', 'ArticlesController@destroyImage');
 
 // Breakers routes
 Route::get('/admin/breakers/add', 'AuthorsController@create');

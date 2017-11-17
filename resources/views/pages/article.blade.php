@@ -3,32 +3,33 @@
 @section('meta')
 <meta property="fb:app_id" content="1737765819883440" />
 <meta property="og:type" content="article" />
+<meta property="og:url" content="{{ url()->full() }}" />
 <meta property="og:title" content="{{ $article->title }}" />
 <meta property="og:description" content="{{ $article->description }} - submission by {{ $article->authorsList() }}" />
-<meta property="og:image" content="{{ asset('images/tsb-default.png') }}" />
+<meta property="og:image" content="{{ asset($article->image()) }}" />
 
 <meta name="twitter:site" content="@sciencebreaker" />
 <meta name="twitter:title" content="{{ $article->title }}">
 <meta name="twitter:url" content="{{ url()->full() }}" />
 <meta name="twitter:description" content="{{ $article->description }} - submission by {{ $article->authorsList() }}">
-<meta name="twitter:image" content="{{ asset('images/tsb-default.png') }}">
+<meta name="twitter:image" content="{{ asset($article->image()) }}">
 <meta name="twitter:card" content="summary_large_image">
 
 <meta itemprop="name" content="{{ $article->title }}" />
 <meta itemprop="description" content="{{ $article->description }} - submission by {{ $article->authorsList() }}" />
-<meta itemprop="image" content="{{ asset('images/tsb-default.png') }}" />
+<meta itemprop="image" content="{{ asset($article->image()) }}" />
 
 <meta property="article:author" content="{{ $article->authorsList() }}" />
 <meta property="article:publisher" content="{{ url()->full() }}" />
 <meta property="article:section" content="{{ $article->category->name }}" />
-<meta property="article:published_time" content="{{ $article->created_at }}" />
+<meta property="article:published_time" content="{{ $article->created_at->toDateTimeString() }}" />
 
 <meta name="description" content="{{ $article->description }} - submission by {{ $article->authorsList() }}" />
 <meta name="abstract" content="{{ $article->description }} - submission by {{ $article->authorsList() }}" />
 <meta name="keywords" content="{{ $article->tagsList() }}" />
 <meta name="news_keywords" content="{{ $article->tagsList() }}" />
 
-<link rel="image_src" href="{{ asset('images/tsb-default.png') }}" />
+<link rel="image_src" href="{{ asset($article->image()) }}" />
 <link rel="shortlink" href="{{ $article->doi }}" />
 @endsection
 
@@ -77,8 +78,15 @@
 			{{-- Title --}}
 			<h3><strong>{{ $article->title }}</strong></h3>
 			<p class="text-muted">{{ $article->description }}</p>
+			@if ($article->image() != 'images/no-image.png')
+			<figure class="figure cover-image mb-0">
+				<img src="{{ asset($article->image()) }}" class="figure-img img-fluid rounded" alt="{{ $article->image_caption }}">
+				<figcaption class="figure-caption">{{ $article->image_caption }} <strong>{{ $article->image_credits }}</strong></figcaption>
+			</figure>
+			@endif
+
 			{{-- Open access, cc and doi link --}}
-			<div class="d-flex justify-content-between mt-4">
+			<div class="d-flex justify-content-between mt-3">
 				<div class="d-flex align-items-end">
 					<a href="https://en.wikipedia.org/wiki/Open_access" target="_blank">
 						<img src="/images/util-icons/open-access.svg">
@@ -107,7 +115,7 @@
 											<strong>{{ $author->fullName() }} is also an author of the <a>original article</a></strong>
 										</p>
 									@endif
-									<a href="{{ $author->path() }}" class="btn btn-theme-orange no-hover py-0 px-3 pull-right btn-sm" target="_blank">Profile</a>
+									<a href="{{ $author->path() }}" class="btn bg-default no-hover py-0 px-3 pull-right btn-sm" target="_blank">Profile</a>
 							    </div>
 							  </div>
 							</span>
@@ -123,7 +131,7 @@
 									<p class="mb-1"><strong>Edited by</strong></p>
 									<p class="mb-0"> {{ $article->editor->fullName() }}</p>
 									<p class="mb-2 text-muted"><em>{{ $article->editor->position }}</em></p>
-									<a href="{{ $article->editor->path() }}" class="btn btn-theme-orange no-hover p-0 btn-block btn-sm" target="_blank">Profile</a>
+									<a href="{{ $article->editor->path() }}" class="btn bg-default no-hover p-0 btn-block btn-sm" target="_blank">Profile</a>
 								</small>
 							</div>
 						</div>

@@ -112,3 +112,22 @@
 		}
 	}
 }
+
+.cover-image {
+	width: 100%;
+	position: relative;
+
+	img {
+		width: 100%;
+	}
+
+	figcaption {
+		position: absolute;
+		bottom: 10px;
+		width: 100%;
+		padding: 1rem;
+		font-size: 80%;
+		background: rgba(0,0,0,0.4);
+		color: lightgrey;
+	}
+}
