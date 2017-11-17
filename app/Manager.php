@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
 
 class Manager extends Model
 {
@@ -26,6 +27,15 @@ class Manager extends Model
     public function path()
     {
         return "/core-team/$this->slug";
+    }
+
+    public function avatar()
+    {
+        if (File::exists("storage/app/managers/avatars/$this->slug")) {
+            return File::allFiles("storage/app/managers/avatars/$this->slug")[0];//"storage/app/managers/avatars/$this->slug/$this->slug.png";
+        } else {
+            return "images/no-avatar.png";
+        }        
     }
 
     public static function select($section, $position)

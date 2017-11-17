@@ -16,41 +16,76 @@
           <h2 class="text-muted op-5">
             <i class="fa fa-file-text mr-1" aria-hidden="true"></i> <strong>New member</strong>
           </h2>
-          <form method="POST" action="/admin/managers">
+          <form method="POST" action="/admin/managers"  enctype="multipart/form-data">
             {{csrf_field()}}
-            {{-- First Name --}}
+            <div class="row">
+              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
+                {{-- First Name --}}
+                <div class="form-group">
+                  <input required type="text" value="{{ old('first_name') }}" name="first_name" class="form-control" id="first_name" aria-describedby="first_name" placeholder="First Name">
+                  {{-- Error --}}
+                  @component('admin/snippets/error')
+                    first_name
+                    @slot('feedback')
+                    {{ $errors->first('first_name') }}
+                    @endslot
+                  @endcomponent
+                </div>
+                {{-- Last Name --}}
+                <div class="form-group">
+                  <input required type="text" value="{{ old('last_name') }}" name="last_name" class="form-control" id="last_name" aria-describedby="last_name" placeholder="Last Name">
+                  {{-- Error --}}
+                  @component('admin/snippets/error')
+                    last_name
+                    @slot('feedback')
+                    {{ $errors->first('last_name') }}
+                    @endslot
+                  @endcomponent
+                </div>
+                {{-- Email --}}
+                <div class="form-group">
+                  <input required type="text" value="{{ old('email') }}" name="email" class="form-control" id="email" aria-describedby="email" placeholder="E-mail">
+                  {{-- Error --}}
+                  @component('admin/snippets/error')
+                    email
+                    @slot('feedback')
+                    {{ $errors->first('email') }}
+                    @endslot
+                  @endcomponent
+                </div>      
+            {{-- Research Institute --}}
             <div class="form-group">
-              <input required type="text" value="{{ old('first_name') }}" name="first_name" class="form-control" id="first_name" aria-describedby="first_name" placeholder="First Name">
+              <input required type="text" value="{{ old('research_institute') }}" name="research_institute" class="form-control" id="research_institute" aria-describedby="research_institute" placeholder="Research Institute">
               {{-- Error --}}
               @component('admin/snippets/error')
-                first_name
+                research_institute
                 @slot('feedback')
-                {{ $errors->first('first_name') }}
+                {{ $errors->first('research_institute') }}
                 @endslot
               @endcomponent
+            </div>         
+              </div>
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <div id="upload-box" class="card">
+                    <input type="file" id="avatar" name="avatar" style="display:none;" />
+                    <img class="card-img-top mt-2" id="avatar-img" src="{{ asset('images/no-avatar.png') }}" alt="Not an image">
+                    <div class="card-body text-center">
+                      <button type="button" id="upload-button" class="btn bg-default text-white"><i class="fa fa-cloud-upload mr-1" aria-hidden="true"></i>Upload</button>
+                    </div>
+
+                  </div>
+                  {{-- Error --}}
+                  @component('admin/snippets/error')
+                  avatar
+                  @slot('feedback')
+                  {{ $errors->first('avatar') }}
+                  @endslot
+                  @endcomponent
+                </div>                
+              </div>
             </div>
-            {{-- Last Name --}}
-            <div class="form-group">
-              <input required type="text" value="{{ old('last_name') }}" name="last_name" class="form-control" id="last_name" aria-describedby="last_name" placeholder="Last Name">
-              {{-- Error --}}
-              @component('admin/snippets/error')
-                last_name
-                @slot('feedback')
-                {{ $errors->first('last_name') }}
-                @endslot
-              @endcomponent
-            </div>
-            {{-- Email --}}
-            <div class="form-group">
-              <input required type="text" value="{{ old('email') }}" name="email" class="form-control" id="email" aria-describedby="email" placeholder="E-mail">
-              {{-- Error --}}
-              @component('admin/snippets/error')
-                email
-                @slot('feedback')
-                {{ $errors->first('email') }}
-                @endslot
-              @endcomponent
-            </div>
+
             
             {{-- Division --}}         
             <div class="form-inline form-group">
@@ -63,7 +98,7 @@
               {{-- Position --}}
               <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
-                <input required type="text" value="{{ old('position') }}" name="position" size="16" class="form-control" id="position" placeholder="Position">
+                <input required type="text" value="{{ old('position') }}" name="position" class="form-control" id="position" placeholder="Position">
               </div>
               <div class="d-block">
                 {{-- Errors --}}
@@ -92,17 +127,7 @@
                 @endslot
               @endcomponent
             </div>
-            {{-- Research Institute --}}
-            <div class="form-group">
-              <input required type="text" value="{{ old('research_institute') }}" name="research_institute" class="form-control" id="research_institute" aria-describedby="research_institute" placeholder="Research Institute">
-              {{-- Error --}}
-              @component('admin/snippets/error')
-                research_institute
-                @slot('feedback')
-                {{ $errors->first('research_institute') }}
-                @endslot
-              @endcomponent
-            </div>
+
             {{-- Is Editor --}}
             <div class="form-check">
               <label class="form-check-label mb-2">
@@ -122,4 +147,29 @@
         </div>
       </div>
     </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+$('#upload-button').on('click', function() {
+  $('input#avatar').click();
+});
+
+function readURL(input) {
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#avatar-img').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("input#avatar").change(function() {
+  readURL(this);
+});
+</script>
 @endsection

@@ -1,5 +1,5 @@
 <div id="profile" class="text-center">
-	<img src="{{ asset("images/avatars/$member->slug.png") }}" class="p-4 img-fluid">
+	<img src="{{ asset($member->avatar()) }}" class="p-4 img-fluid">
 	<h5 class="mb-0">{{ $member->fullName() }}</h5>
 	<p class="mb-2"><small>{{ $member->position }}</small></p>
 	<div class="d-flex align-items-center justify-content-center">

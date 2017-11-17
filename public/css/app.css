@@ -9861,6 +9861,7 @@ button:active {
 }
 
 .popover-modal {
+  top: 18px;
   left: -14px;
   z-index: 10 !important;
 }
@@ -10444,6 +10445,25 @@ footer #apple-store {
   font-size: 0.9em;
 }
 
+.cover-image {
+  width: 100%;
+  position: relative;
+}
+
+.cover-image img {
+  width: 100%;
+}
+
+.cover-image figcaption {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  padding: 1rem;
+  font-size: 80%;
+  background: rgba(0, 0, 0, 0.4);
+  color: lightgrey;
+}
+
 #category #title > div:last-of-type {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -10677,6 +10697,19 @@ footer #apple-store {
   cursor: -webkit-grab;
   background: rgba(0, 0, 0, 0.05);
   border-left: 4px solid #f36e41;
+}
+
+#upload-box {
+  width: 100%;
+  height: 100%;
+  border-radius: .25rem;
+  background: #e9ecef;
+}
+
+#upload-box img {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 #login {

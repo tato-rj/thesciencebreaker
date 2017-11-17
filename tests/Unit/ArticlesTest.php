@@ -5,6 +5,8 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class ArticlesTest extends TestCase
 {
@@ -90,6 +92,31 @@ class ArticlesTest extends TestCase
         ]);
 
         $this->get($this->article->path())->assertSee($popular_article->title);
+    }
+
+    /** @test */
+    public function a_guest_see_the_cover_image_if_it_exists()
+    {
+        $this->signIn();
+        $faker = \Faker\Factory::create();
+        $title = $faker->sentence;
+        $slug = str_slug($title);
+        $category = $this->category;
+
+        $article = $this->post('/admin/breaks', [
+            'title' => $title,
+            'content' => $faker->paragraph,
+            'reading_time' => $faker->randomDigitNotNull,
+            'original_article' => $faker->sentence,
+            'category_id' => $category->id,
+            'editor_id' => 1,
+            'doi' => $faker->url,
+            'editor_pick' => '0',
+            'authors' => [1],
+            'image' => UploadedFile::fake()->create('image.jpeg', 200)
+        ]);
+
+        $this->get("breaks/$category->slug/$slug")->assertSee("$slug.jpeg");
     }
 
     /** @test */
