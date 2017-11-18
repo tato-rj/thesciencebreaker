@@ -14,6 +14,10 @@ h3, h4, h5 {
 	font-weight: bold;
 }
 
+h6 {
+	line-height: 1.3;
+}
+
 h4 {
 	margin-bottom: 1rem;
 }
@@ -59,12 +63,20 @@ a:focus {
 	flex-grow: 1;
 }
 
+.l-height-1 {
+	line-height: 1.2;
+}
+
 .alert-container {
 	position: fixed;
 	top: 20px;
 	left: 50%;
 	transform: translateX(-50%);
 	z-index: 100;
+}
+
+.h-auto {
+	height: auto!important;
 }
 
 .hidden {
@@ -77,11 +89,15 @@ a:focus {
 
 .jumbotron {
     padding: 1.5rem;
-    background: #e9ecef;
+    background: #e9ecef69;
 }
 
 .bg-default {
 	background: $body-bg;
+}
+
+.text-default, .text-default:hover {
+	color: #212529;
 }
 
 .bg-green {

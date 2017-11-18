@@ -25,8 +25,13 @@ class ArticlesController extends Controller
 
     public function index()
     {
-        Manager::generateSlugs();
+        // Manager::generateSlugs();
         return view('pages.welcome');
+    }
+
+    public function newIndex()
+    {
+        return view('pages.newWelcome');
     }
 
     // CREATE

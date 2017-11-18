@@ -144,3 +144,38 @@ a.breaker {
         background: #f7f7f7;
     }
 }
+
+.round-corners {
+    border-radius: calc(0.25rem - 1px);
+}
+
+.card-image {    
+    span {
+        position: absolute;
+        top: .5em;
+        left: 1em;
+    }
+}
+
+.breaks-main-grid {
+    .card-image {
+        max-height: 160px;
+        overflow: hidden;
+    }
+}
+
+.two-line-clamp {
+        overflow: hidden!important;
+    max-height: 80px!important;
+    text-overflow: ellipsis!important;
+    display: -webkit-box!important;
+    -webkit-line-clamp: 2!important;
+    -webkit-box-orient: vertical;
+}
+
+.one-line-clamp {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

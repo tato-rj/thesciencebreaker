@@ -9738,6 +9738,10 @@ h5 {
   font-weight: bold;
 }
 
+h6 {
+  line-height: 1.3;
+}
+
 h4 {
   margin-bottom: 1rem;
 }
@@ -9790,6 +9794,10 @@ button:active {
           flex-grow: 1;
 }
 
+.l-height-1 {
+  line-height: 1.2;
+}
+
 .alert-container {
   position: fixed;
   top: 20px;
@@ -9797,6 +9805,10 @@ button:active {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   z-index: 100;
+}
+
+.h-auto {
+  height: auto !important;
 }
 
 .hidden {
@@ -9809,11 +9821,16 @@ button:active {
 
 .jumbotron {
   padding: 1.5rem;
-  background: #e9ecef;
+  background: #e9ecef69;
 }
 
 .bg-default {
   background: #191919;
+}
+
+.text-default,
+.text-default:hover {
+  color: #212529;
 }
 
 .bg-green {
@@ -10295,10 +10312,6 @@ footer #apple-store {
   font-size: 9em !important;
   color: lightgrey;
   opacity: 0.6;
-}
-
-.box {
-  margin-bottom: 2rem;
 }
 
 #overlay {
@@ -10871,6 +10884,37 @@ a.breaker {
   padding: 2px 8px;
   border-radius: 4px;
   background: #f7f7f7;
+}
+
+.round-corners {
+  border-radius: calc(0.25rem - 1px);
+}
+
+.card-image span {
+  position: absolute;
+  top: .5em;
+  left: 1em;
+}
+
+.breaks-main-grid .card-image {
+  max-height: 160px;
+  overflow: hidden;
+}
+
+.two-line-clamp {
+  overflow: hidden !important;
+  max-height: 80px !important;
+  text-overflow: ellipsis !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical;
+}
+
+.one-line-clamp {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 992px) {

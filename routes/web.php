@@ -1,8 +1,12 @@
 <?php
+
 Auth::routes();
 
+// Preview to new main welcome page
+Route::get('/new-main-page-preview', 'ArticlesController@newIndex');
+
 // Welcome page
-Route::get('/', 'ArticlesController@index')->name('home');;
+Route::get('/', 'ArticlesController@index')->name('home');
 // Breaks
 Route::get('/breaks/{category}/{article}', 'ArticlesController@show');
 // Breakers
