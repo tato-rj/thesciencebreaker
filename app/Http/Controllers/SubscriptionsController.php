@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Subscription;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SubscriptionsController extends Controller
 {
@@ -25,6 +26,23 @@ class SubscriptionsController extends Controller
     {
         $subscriptions = Subscription::paginate(40);
         $subscriptions_count = Subscription::count();
+
+        $excel = Excel::create('subscriptions', function($excel) use ($subscriptions) {
+
+            $excel->sheet('Subscriptions', function($sheet) use ($subscriptions) {
+                $sheet->fromModel(Subscription::select('email as Email', 'created_at as Date')->orderBy('created_at')->get(), null, 'A1', true);
+            });
+
+        })->store('xls', storage_path('app/subscriptions/excel'));
+
+        $csv = Excel::create('subscriptions', function($excel) use ($subscriptions) {
+
+            $excel->sheet('Subscriptions', function($sheet) use ($subscriptions) {
+                $sheet->fromModel(Subscription::select('email')->orderBy('created_at')->get(), null, 'A1', true);
+            });
+
+        })->store('csv', storage_path('app/subscriptions/csv'));
+
         return view('admin/pages/subscriptions', compact(['subscriptions', 'subscriptions_count']));
     }
 

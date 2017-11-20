@@ -7,7 +7,7 @@
 	{{ str_plural('Author', count($article->authors->toArray())) }}: 
 	@foreach($article->authors as $author)
 		{{ $loop->first ? '' : ', ' }}
-		{{ slug_str($author->slug) }}
+		{{ $author->fullName() }}
 	@endforeach
 	%0A%0A
 	You can fing this article here:%0A

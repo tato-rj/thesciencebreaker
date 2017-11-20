@@ -11,18 +11,18 @@
 	<div class="row mt-4 jumbotron mb-2">
 		<div class="col-lg-6">
 			<div class="mb-2">
-				<h4 class="text-orange">Why TheScienceBreaker?</h4>
+				<h4>Why TheScienceBreaker?</h4>
 				<p class="mb-0">TheScienceBreaker promotes the dialogue and the dissemination of a scientific culture so that society-relevant opinions can be discussed and decisions may be taken accordingly. Discover our <a href="/mission">mission</a>.</p>
 			</div>			
 		</div>
 		<div class="col-lg-6">
 			<div class="mb-2">
-				<h4 class="text-orange">What is a Break?</h4>
+				<h4>What is a Break?</h4>
 				<p class="mb-0">We publish short lay summaries, called Breaks, where scientific papers are explained by scientists, called Breakers, directly involved in the field of research. <a href="/about">Learn more</a></p>
 			</div>			
 		</div>
 	</div>
-	<div class="row no-gutters mt-3">
+	<div class="row no-gutters mt-4">
 		<div class="col-lg-12">
 			@component('snippets.title')
 			Highlights
@@ -118,7 +118,7 @@
 						<div class="card px-2 h-auto">
 							<div class="card-block">
 								<a class="text-default" href="{{ $highlights->get(4)->path() }}">
-									<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $highlights->get(4)->title }}</strong></h6>
+									<h6 class="card-title mb-2 two-line-clamp l-height-1"><strong>{{ $highlights->get(4)->title }}</strong></h6>
 								</a>
 								<small class="d-block">{{ $highlights->get(4)->created_at->toFormattedDateString() }} | {{ $highlights->get(4)->reading_time }} min read</small>
 							</div>
@@ -127,7 +127,7 @@
 						<div class="card px-2 h-auto">
 							<div class="card-block">
 								<a class="text-default" href="{{ $highlights->get(5)->path() }}">
-									<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $highlights->get(5)->title }}</strong></h6>
+									<h6 class="card-title mb-2 two-line-clamp l-height-1"><strong>{{ $highlights->get(5)->title }}</strong></h6>
 								</a>
 								<small class="d-block">{{ $highlights->get(5)->created_at->toFormattedDateString() }} | {{ $highlights->get(5)->reading_time }} min read</small>
 							</div>
@@ -136,7 +136,7 @@
 						<div class="card px-2 h-auto">
 							<div class="card-block">
 								<a class="text-default" href="{{ $highlights->get(6)->path() }}">
-									<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $highlights->get(6)->title }}</strong></h6>
+									<h6 class="card-title mb-2 two-line-clamp l-height-1"><strong>{{ $highlights->get(6)->title }}</strong></h6>
 								</a>
 								<small class="d-block">{{ $highlights->get(6)->created_at->toFormattedDateString() }} | {{ $highlights->get(6)->reading_time }} min read</small>
 							</div>
@@ -145,8 +145,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="row mt-5">
-			<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 mb-4">
+		<div class="row mt-4">
+			<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
 				<div id="app-container" class="box row align-items-center justify-space-around jumbotron m-1 text-center">
 					<h5 class="mb-2 mx-auto"><strong>TheScienceBreaker <span class="text-orange">APP</span></strong></h5>
 					<div class="col-lg-6 col-md-12 mt-2 hidden-sm-down">
@@ -162,11 +162,10 @@
 			</div>
 
 			<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
-				<div id="breaks-list" class="mb-2">
-					<div class="title d-flex align-items-baseline justify-content-between">
-						<h4>Latest published Breaks</h4>
-						<span class="text-muted"><small>Today, {{ Carbon\Carbon::now()->toFormattedDateString() }}</small></span>
-					</div>
+				<div id="breaks-list">
+					@component('snippets.title')
+					Latest published Breaks
+					@endcomponent
 					<div class="mb-2">
 						<table id="latest-breaks">
 							@foreach ($latest_articles as $break)
@@ -193,7 +192,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row no-gutters">
+		<div class="row mt-4 no-gutters">
 			<div class="col-lg-12">
 				@component('snippets.title')
 				Most Popular

@@ -33,7 +33,13 @@ header {
 	#search-form {
 		input {
 			color: white;
-			background: rgba(255,255,255,0.15);
+			background: 0;
+			width: 6em;
+			transition: 0.2s;
+		}
+
+		input:focus {
+			width: 12em;
 		}
 
 		button {
@@ -41,8 +47,12 @@ header {
 		}
 
 		@include placeholder {
-			color: white;
+			color: lightgrey;
 		}
+	}
+
+	a#sign-in {
+		font-weight: normal;
 	}
 
 	nav {

@@ -9717,6 +9717,13 @@ a.text-dark:hover {
   visibility: hidden !important;
 }
 
+.simple-box {
+  outline: none;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
 button,
 input,
 textarea {
@@ -9822,6 +9829,8 @@ button:active {
 .jumbotron {
   padding: 1.5rem;
   background: #e9ecef69;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16);
 }
 
 .bg-default {
@@ -10102,7 +10111,14 @@ header #partner-container img {
 
 header #search-form input {
   color: white;
-  background: rgba(255, 255, 255, 0.15);
+  background: 0;
+  width: 6em;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+header #search-form input:focus {
+  width: 12em;
 }
 
 header #search-form button {
@@ -10110,19 +10126,23 @@ header #search-form button {
 }
 
 header #search-form ::-webkit-input-placeholder {
-  color: white;
+  color: lightgrey;
 }
 
 header #search-form :-moz-placeholder {
-  color: white;
+  color: lightgrey;
 }
 
 header #search-form ::-moz-placeholder {
-  color: white;
+  color: lightgrey;
 }
 
 header #search-form :-ms-input-placeholder {
-  color: white;
+  color: lightgrey;
+}
+
+header a#sign-in {
+  font-weight: normal;
 }
 
 header nav {

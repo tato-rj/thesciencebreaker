@@ -40,11 +40,15 @@
       </div>
 
       <div class="row">
-        <div class="col-12 text-center">
-          <p class="text-muted">
+        <div class="col-12 text-center">   
+          <p class="text-muted mb-2">
             <i class="fa fa-exclamation-circle mr-2" aria-hidden="true"></i>
             You currently have <strong>{{ $subscriptions_count }}</strong> subscriptions
           </p>
+          <div class="mb-4">
+            <a href="{{ asset('storage/app/subscriptions/excel/subscriptions.xls') }}" class="btn btn-sm btn-theme-green text-white" title="Export as XLS">Export Excel file</a>
+            <a href="{{ asset('storage/app/subscriptions/csv/subscriptions.csv') }}" class="btn btn-sm btn-theme-green text-white" title="Export as CSV">Export CSV file</a>
+          </div>
         </div>
         <div class="col-lg-10 col-md-12 mx-auto d-flex align-items-center justify-content-center flex-wrap">
           @foreach ($subscriptions as $subscription)
