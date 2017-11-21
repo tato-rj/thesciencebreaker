@@ -30,12 +30,8 @@ class AppServiceProvider extends ServiceProvider
         });
 
         \View::composer('pages.welcome', function($view) {
-            $view->with('latest_articles', Article::recent(5)->get());
-        });
-
-        \View::composer('pages.newWelcome', function($view) {
             $view->with('highlights', Article::recent(7)->get());
-            $view->with('latest_articles', Article::recent(5)->get());
+            $view->with('latest_articles', Article::recent(4)->get());
         });
 
     }

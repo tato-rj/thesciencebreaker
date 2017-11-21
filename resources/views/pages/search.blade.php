@@ -45,10 +45,10 @@
 					</form>
 				</div>
 			</small>
-			<hr style="margin-top: .5rem">
+			<hr class="mb-4 mt-2">
 			{{-- Breaks --}}
 			@foreach ($articles as $article)
-				@include('snippets/breaks_list')
+				@include('snippets/breaks_grid/rows_lg')
 			@endforeach
 			{{ $articles->appends(Request::except('page'))->links() }}
 		</div>

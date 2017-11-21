@@ -10256,28 +10256,6 @@ footer #apple-store {
   border-color: #06b2b8;
 }
 
-#latest-breaks th {
-  vertical-align: initial;
-}
-
-#latest-breaks td {
-  padding-left: 12px;
-  padding-bottom: 12px;
-}
-
-#latest-breaks img {
-  width: 46px;
-}
-
-#latest-breaks p {
-  margin: 0;
-  line-height: 1.2;
-}
-
-#latest-breaks small {
-  font-size: 70%;
-}
-
 #subject-icons {
   max-width: 800px;
   margin: 0 auto;
@@ -10443,12 +10421,6 @@ footer #apple-store {
   margin-left: 12px;
 }
 
-#break #latest-breaks i {
-  font-size: 2em;
-  -webkit-transform: rotate(25deg);
-          transform: rotate(25deg);
-}
-
 #side-bar > div {
   padding: 16px;
 }
@@ -10476,6 +10448,10 @@ footer #apple-store {
 
 #side-bar > div > div em {
   font-size: 0.9em;
+}
+
+.category-title img {
+  width: 1.5em;
 }
 
 .cover-image {
@@ -10510,7 +10486,7 @@ footer #apple-store {
 }
 
 #category .authors li {
-  margin-top: 8px;
+  margin-top: .25em;
 }
 
 #core a:hover {
@@ -10937,6 +10913,12 @@ a.breaker {
   text-overflow: ellipsis;
 }
 
+.bg-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 @media screen and (max-width: 992px) {
   header {
     padding-bottom: .95rem;
@@ -11163,6 +11145,10 @@ a.breaker {
 
   .cover-image figcaption {
     padding: .5rem;
+  }
+
+  .card-horizontal-sm .card-image {
+    height: 9em !important;
   }
 }
 

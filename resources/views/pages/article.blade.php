@@ -29,6 +29,9 @@
 <meta name="keywords" content="{{ $article->tagsList() }}" />
 <meta name="news_keywords" content="{{ $article->tagsList() }}" />
 
+<meta name="disqus:title" content="{{ $article->title }}">
+<meta name="disqus:slug" content="{{ $article->slug }}">
+
 <link rel="image_src" href="{{ asset($article->image()) }}" />
 <link rel="shortlink" href="{{ $article->doi }}" />
 @endsection
@@ -72,8 +75,8 @@
 			</div>
 			
 			{{-- Category --}}
-			<h5>
-				<a href="{{ $article->category->path() }}">{{ $article->category->name }}</a>
+			<h5 class="category-title d-flex align-items-center">
+				<img class="mr-2" src="{{ $article->category->iconPath() }}"><a href="{{ $article->category->path() }}">{{ $article->category->name }}</a>
 			</h5>
 			{{-- Title --}}
 			<h3><strong>{{ $article->title }}</strong></h3>
@@ -165,59 +168,19 @@
 			{{-- DISQUS --}}
 			<div id="disqus_thread" class="mt-4 mb-5"></div>
 			{{-- Also About --}}
-			<div class="">
+			<div>
 				<h5 class="p-1 pl-2 bg-green text-white">
-					@if ($article->tags->first())
-					Also about <a href="{{ $article->tags->first()->path() }}">{{ $article->tags->first()->name }}</a>
-					@else
 					We thought you might like
-					@endif
 				</h5>
-				<table id="latest-breaks" class="mt-4">
-					@foreach ($more_like as $break)
-						<tr>
-							<th>
-								<img src="{{ $break->category->iconPath() }}">
-							</th>
-							<td>
-								<p>
-									<a href="{{ $break->path() }}">{{ $break->title }}</a>
-								</p>
-								<p><small><strong>Written by: 
-									@foreach ($break->authors as $author)
-									{{ $loop->first ? '' : ', ' }}
-									<a class="breaker" href="{{ $author->path() }}">{{ $author->fullName() }}</a>
-									@endforeach
-								</strong></small></p>
-								<p><small>Published {{ $break->created_at->diffForHumans() }} in <a class="breaker" href="{{ $break->category->path() }}">{{ $break->category->name }}</a></small></p>
-							</td>
-						</tr>					
-					@endforeach
-				</table>
+				@foreach ($more_like as $article)
+						@include('snippets/breaks_grid/rows_sm')			
+				@endforeach
 			</div>
 			<div class="mt-4">
 				<h5 class="p-1 pl-2 bg-green text-white">More from <a href="{{ $article->category->path() }}">{{ $article->category->name }}</a></h5>
-				<table id="latest-breaks" class="mt-4">
-					@foreach ($more_from as $break)
-						<tr>
-							<th>
-								<i class="fa fa-flask text-muted" aria-hidden="true"></i>
-							</th>
-							<td>
-								<p>
-									<a href="{{ $break->path() }}">{{ $break->title }}</a>
-								</p>
-								<p><small><strong>Written by: 
-									@foreach ($break->authors as $author)
-									{{ $loop->first ? '' : ', ' }}
-									<a class="breaker" href="{{ $author->path() }}">{{ $author->fullName() }}</a>
-									@endforeach
-								</strong></small></p>
-								<p><small>Published {{ $break->created_at->diffForHumans() }} in <a class="breaker" href="{{ $break->category->path() }}">{{ $break->category->name }}</a></small></p>
-							</td>
-						</tr>					
-					@endforeach
-				</table>
+				@foreach ($more_from as $article)
+					@include('snippets/breaks_grid/rows_sm')			
+				@endforeach
 			</div>
 		</div>
 		{{-- Side Bar --}}

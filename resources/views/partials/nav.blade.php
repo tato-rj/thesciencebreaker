@@ -52,7 +52,7 @@
 		</ul>
 		<form method="GET" action="/search" class="form-inline my-2 my-lg-0">
 			<div class="input-group" id="search-form">
-				<input type="text" name="for" class="simple-box px-0 pl-2 form-control border-0 input-sm" placeholder="Search for...">
+				<input required type="text" name="for" class="simple-box px-0 pl-2 form-control border-0 input-sm" placeholder="Search for...">
 				<span class="input-group-btn">
 					<button class="btn border-0 btn-link text-white" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 				</span>

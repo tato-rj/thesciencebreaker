@@ -34,7 +34,7 @@
                 {{-- Description --}}
                 <div class="form-group">
                 
-                  <textarea class="form-control" name="description" id="description" rows="6" maxlength="500" placeholder="Description (max 500 characters)"">{{ old('description') }}</textarea>
+                  <textarea class="form-control" name="description" id="description" rows="6" maxlength="400" placeholder="Description (max 500 characters)"">{{ old('description') }}</textarea>
                   {{-- Error --}}
                   @component('admin/snippets/error')
                     description

@@ -133,7 +133,7 @@ class Article extends Model
     public function preview()
     {
         $pieces = explode(" ", strip_tags($this->content, '<br>'));
-        return implode(" ", array_splice($pieces, 0, 120));
+        return implode(" ", array_splice($pieces, 0, 45));
     }
 
     public static function records($length)
@@ -209,19 +209,6 @@ class Article extends Model
             })->orWhereHas('tags', function($query) use ($word) {
                 $query->where('name', 'LIKE', "%$word%");
             });
-    }
-
-    public static function withTag($tag)
-    {
-        if (is_null($tag)) {
-            return self::inRandomOrder()->take(4)->get(); 
-        } else {
-            $tag = $tag->name;
-            return self::whereHas('tags', function() use ($tag) {
-                        self::where('name', $tag);
-                    })->take(4)->get();
-        }
-
     }
 
     public static function random()

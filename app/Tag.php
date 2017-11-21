@@ -33,4 +33,5 @@ class Tag extends Model
         $tagsList = substr($tagsList, 0, -2);
         return $tagsList;
     }
+
 }

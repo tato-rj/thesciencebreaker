@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Author;
+use App\Suggestion;
 use App\ArticleAuthor;
 use App\Category;
 use App\Manager;
@@ -27,11 +28,6 @@ class ArticlesController extends Controller
     {
         // Manager::generateSlugs();
         return view('pages.welcome');
-    }
-
-    public function newIndex()
-    {
-        return view('pages.newWelcome');
     }
 
     // CREATE
@@ -63,8 +59,8 @@ class ArticlesController extends Controller
     // READ
     public function show($category, Article $article)
     {
-        $next_read = Article::random();
-        $more_like = Article::withTag($article->tags->first());
+        $next_read = Suggestion::one($article);
+        $more_like = Suggestion::byTag($article);
         $more_from = $article->similar()->get();
         $article->increment('views');
         return view('pages.article', compact(['article', 'more_from', 'more_like', 'next_read']));

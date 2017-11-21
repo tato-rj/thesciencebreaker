@@ -20,23 +20,23 @@
 			{{-- Sort --}}
 			<small class="d-flex justify-content-between align-items-end mt-4">
 				<div>
-					showing <strong>{{ $articles->firstItem() }}-{{ $articles->lastItem() }}</strong> of {{ $category->articles_count }} breaks
+					<span class="d-none d-sm-inline">showing </span><strong>{{ $articles->firstItem() }}-{{ $articles->lastItem() }}</strong> of {{ $category->articles_count }}<span class="d-none d-sm-inline"> breaks</span>
 				</div>
 				<div class="form-inline">
-					<label class="mr-sm-2">show</label>
+					<label class="mb-0 mr-2 d-none d-sm-inline">show</label>
 					<form>
 						<input type="hidden" name="sort" value="{{ Request::input('sort') }}">
-						<select class="mb-2 mr-sm-2 mb-sm-0" name="show" onchange="this.form.submit()" id="show">
+						<select class="mr-2" name="show" onchange="this.form.submit()" id="show">
 							<option value="5" {{ (Request::input('show') == '5') ? 'selected' : '' }}>5</option>
 							<option value="10" {{ (Request::input('show') == '10') ? 'selected' : '' }}>10</option>
 							<option value="15" {{ (Request::input('show') == '15') ? 'selected' : '' }}>15</option>
 							<option value="{{ $category->articles_count }}" {{ (Request::input('show') == $category->articles_count) ? 'selected' : '' }}>all</option>
 						</select>
 					</form>
-					<label class="mr-sm-2">sort by</label>
+					<label class="mb-0 mr-2 d-none d-sm-inline">sort by</label>
 					<form>
 						<input type="hidden" name="show" value="{{ Request::input('show') }}">
-						<select class="mb-2 mr-sm-2 mb-sm-0" name="sort" onchange="this.form.submit()" id="sort">
+						<select name="sort" onchange="this.form.submit()" id="sort">
 							<option value="created_at" {{ (Request::input('sort') == 'created_at') ? 'selected' : '' }}>newest</option>
 							<option value="views" {{ (Request::input('sort') == 'views') ? 'selected' : '' }}>most popular</option>
 							<option value="title" {{ (Request::input('sort') == 'title') ? 'selected' : '' }}>title (a to z)</option>
@@ -45,10 +45,10 @@
 					</form>
 				</div>
 			</small>
-			<hr style="margin-top: .5rem">
+			<hr class="mb-4 mt-2">
 			{{-- Breaks --}}
 			@foreach ($articles as $article)
-				@include('snippets/breaks_list')
+				@include('snippets/breaks_grid/rows_lg')
 			@endforeach
 			{{ $articles->appends(Request::except('page'))->links() }}
 		</div>
