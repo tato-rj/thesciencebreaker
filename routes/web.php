@@ -2,9 +2,6 @@
 
 Auth::routes();
 
-// Preview to new main welcome page
-Route::get('/new-main-page-preview', 'ArticlesController@newIndex');
-
 // Welcome page
 Route::get('/', 'ArticlesController@index')->name('home');
 // Breaks

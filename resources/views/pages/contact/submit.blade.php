@@ -80,7 +80,16 @@
 							@endslot
 							@endcomponent
 						</div>
-
+						<div class="form-group">
+							<textarea required type="text" class="form-control" name="description" rows="4" maxlength="400" placeholder="Short description (max 400 characters)">{{ old('description') }}</textarea>
+							{{-- Error --}}
+							@component('admin/snippets/error')
+							description
+							@slot('feedback')
+							{{ $errors->first('description') }}
+							@endslot
+							@endcomponent		
+						</div>
 						<div class="form-group">
 							<textarea class="form-control" name="message" value="{{ old('message') }}" rows="5" placeholder="Add your message here and please include full information for additional Breakers, if any. Thank you!"></textarea>
 							{{-- Error --}}
