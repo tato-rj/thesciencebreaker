@@ -29,6 +29,9 @@
 							<a href="/the-team">the team</a>
 						</li>
 						<li>
+							<a href="/breakers">breakers</a>
+						</li>
+						<li>
 							<a href="/partners">partners</a>
 						</li>					
 					</ul>

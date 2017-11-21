@@ -34,7 +34,7 @@ class Manager extends Model
         if (File::exists("storage/app/managers/avatars/$this->slug")) {
             return File::allFiles("storage/app/managers/avatars/$this->slug")[0];//"storage/app/managers/avatars/$this->slug/$this->slug.png";
         } else {
-            return "images/no-avatar.png";
+            return "images/missing-avatar.svg";
         }        
     }
 

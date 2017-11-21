@@ -8,7 +8,7 @@
 
 <div class="container">
 	{{-- INTRO --}}
-	<div class="row mt-4 jumbotron mb-2">
+	<div class="row mt-4 jumbotron mb-2 d-none d-sm-flex">
 		<div class="col-lg-6">
 			<div class="mb-2">
 				<h4>Why TheScienceBreaker?</h4>
@@ -30,14 +30,9 @@
 		</div>
 		<div class="col-lg-6 col-md-12">
 			<div class="card px-2">
-				<div class="card-image">
-					<a href="{{ $highlights->get(0)->category->path() }}">
-						<span class="badge badge-info btn-theme-green">in {{ $highlights->get(0)->category->name }}</span>
-					</a>
-					<a href="{{ $highlights->get(0)->path() }}">
-						<img class="card-img-top round-corners" src="{{ asset($highlights->get(0)->image()) }}">
-					</a>
-				</div>
+				<a class="card-image card-img-top round-corners bg-image" href="{{ $highlights->get(0)->path() }}" style="height: 22em;background-image: url({{ $highlights->get(0)->image() }})">
+					<span class="badge badge-info btn-theme-green">in {{ $highlights->get(0)->category->name }}</span>
+				</a>
 				<div class="card-block px-2 py-3">
 					<a class="text-default" href="{{ $highlights->get(0)->path() }}">
 						<h4 class="card-title mb-2"><strong>{{ $highlights->get(0)->title }}</strong></h4>
@@ -57,14 +52,9 @@
 				<div class="row no-gutters">
 					<div class="col-lg-6 col-md-6 col-xs-12">
 						<div class="card px-2">
-							<div class="card-image">
-								<a href="{{ $highlights->get(1)->category->path() }}">
-									<span class="badge badge-info btn-theme-green">in {{ $highlights->get(1)->category->name }}</span>
-								</a>
-								<a href="{{ $highlights->get(1)->path() }}">
-									<img class="card-img-top round-corners" src="{{ asset($highlights->get(1)->image()) }}">
-								</a>
-							</div>
+							<a class="card-image card-img-top round-corners bg-image mobile-default-height" href="{{ $highlights->get(1)->path() }}" style="height: 10em;background-image: url({{ $highlights->get(1)->image() }})">
+								<span class="badge badge-info btn-theme-green">in {{ $highlights->get(1)->category->name }}</span>
+							</a>
 							<div class="card-block px-2 py-3">
 								<a class="text-default" href="{{ $highlights->get(1)->path() }}">
 									<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $highlights->get(1)->title }}</strong></h6>
@@ -76,14 +66,9 @@
 					</div>
 					<div class="col-lg-6 col-md-6 col-xs-12">
 						<div class="card px-2">
-							<div class="card-image">
-								<a href="{{ $highlights->get(2)->category->path() }}">
-									<span class="badge badge-info btn-theme-green">in {{ $highlights->get(2)->category->name }}</span>
-								</a>
-								<a href="{{ $highlights->get(2)->path() }}">
-									<img class="card-img-top round-corners" src="{{ asset($highlights->get(2)->image()) }}">
-								</a>
-							</div>
+							<a class="card-image card-img-top round-corners bg-image mobile-default-height" href="{{ $highlights->get(2)->path() }}" style="height: 10em;background-image: url({{ $highlights->get(2)->image() }})">
+								<span class="badge badge-info btn-theme-green">in {{ $highlights->get(2)->category->name }}</span>
+							</a>
 							<div class="card-block px-2 py-3">
 								<a class="text-default" href="{{ $highlights->get(2)->path() }}">
 									<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $highlights->get(2)->title }}</strong></h6>
@@ -97,14 +82,9 @@
 				<div class="row no-gutters">
 					<div class="col-lg-5 hidden-md-down">
 						<div class="card px-2">
-							<div class="card-image">
-								<a href="{{ $highlights->get(3)->category->path() }}">
-									<span class="badge badge-info btn-theme-green">in {{ $highlights->get(3)->category->name }}</span>
-								</a>
-								<a href="{{ $highlights->get(3)->path() }}">
-									<img class="card-img-top round-corners" src="{{ asset($highlights->get(3)->image()) }}">
-								</a>
-							</div>
+							<a class="card-image card-img-top round-corners bg-image mobile-default-height" href="{{ $highlights->get(3)->path() }}" style="height: 8em;background-image: url({{ $highlights->get(3)->image() }})">
+								<span class="badge badge-info btn-theme-green">in {{ $highlights->get(3)->category->name }}</span>
+							</a>
 							<div class="card-block px-2 py-3">
 								<a class="text-default" href="{{ $highlights->get(3)->path() }}">
 									<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $highlights->get(3)->title }}</strong></h6>

@@ -60,24 +60,28 @@ class ArticlesTest extends TestCase
     /** @test */
     public function welcome_page_shows_latest_articles()
     {
+        factory('App\Article', 10)->create();
         $this->get('/')->assertSee($this->article->title);
     }
 
     /** @test */
     public function article_page_shows_the_description()
     {
+        factory('App\Article', 10)->create();
         $this->get($this->article->path())->assertSee($this->article->description);
     }
     
     /** @test */
     public function guests_can_read_an_article()
     {
+        factory('App\Article', 10)->create();
         $this->get($this->article->path())->assertSee($this->article->title);
     }
 
     /** @test */
     public function guests_can_view_tags_on_the_article_page()
     {
+        factory('App\Article', 10)->create();
         $article = $this->article;
         $article->tags()->attach($this->tag);
 

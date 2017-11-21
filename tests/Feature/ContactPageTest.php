@@ -66,6 +66,7 @@ class ContactPageTest extends TestCase
                 'original_article' => $faker->url,
                 'position' => $faker->word,
                 'file' => $file = UploadedFile::fake()->create('document.doc', 20),
+                'description' => $faker->sentence,
                 'message' => $faker->paragraph
             ];
 

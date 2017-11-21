@@ -9826,7 +9826,8 @@ button:active {
   z-index: 10;
 }
 
-.jumbotron {
+.jumbotron,
+.breadcrumb {
   padding: 1.5rem;
   background: #e9ecef69;
   -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16);
@@ -11149,6 +11150,10 @@ a.breaker {
 
   .card-horizontal-sm .card-image {
     height: 9em !important;
+  }
+
+  .mobile-default-height {
+    height: 16em !important;
   }
 }
 

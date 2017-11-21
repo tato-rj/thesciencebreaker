@@ -59,7 +59,9 @@ class ArticlesController extends Controller
     // READ
     public function show($category, Article $article)
     {
+
         $next_read = Suggestion::one($article);
+        // return $article;
         $more_like = Suggestion::byTag($article);
         $more_from = $article->similar()->get();
         $article->increment('views');

@@ -8,6 +8,7 @@ class Suggestion {
 
     public static function byTag($article)
     {
+        return Article::inRandomOrder()->take(4)->get(); 
     	$tag = $article->tags()->having('articles_count', '!=', '1')->inRandomOrder()->first();
 
         if (is_null($tag)) {
@@ -20,10 +21,12 @@ class Suggestion {
 
 	public static function one($article)
 	{
-        $suggestion = $article->tags()->having('articles_count', '!=', '1')->inRandomOrder()->first();
-        if (is_null($suggestion)) {
-            $suggestion = $article->category;
-        }
+        // $suggestion = $article->tags()->having('articles_count', '!=', '1')->inRandomOrder()->first();
+        // if (is_null($suggestion)) {
+        //     $suggestion = $article->category;
+        // }
+        
+        $suggestion = $article->category;
         $article = $suggestion->articles()->inRandomOrder()->whereNotIn('id', [$article->id])->first();
         return $article;
 	}
