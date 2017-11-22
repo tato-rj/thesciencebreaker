@@ -9,7 +9,7 @@ class ValidateBreaker implements Validator
 		return $request->validate([
             'first_name' => 'required|min:2',
             'last_name' => 'required|min:2',
-            'email' => 'required|email|unique:authors',
+            'email' => 'email',
             'position' => 'required',
             'research_institute' => 'required'
         ]);
@@ -20,7 +20,7 @@ class ValidateBreaker implements Validator
         return $request->validate([
             'first_name' => 'required|min:2',
             'last_name' => 'required|min:2',
-            'email' => 'required|email',
+            'email' => 'email',
             'position' => 'required',
             'research_institute' => 'required'
         ]);
