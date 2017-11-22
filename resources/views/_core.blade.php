@@ -42,7 +42,7 @@
         <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon-16x16.png') }}" sizes="16x16" />
         <script src="{{ asset('js/pace.min.js') }}"></script>
         <link rel="stylesheet" href="{{ asset('css/jquery-popover-0.0.3.css') }}">
-        <link href="{{ asset('css/app.css') }}?version=112" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/app.css') }}?version=114" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     </head>
     

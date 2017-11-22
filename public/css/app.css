@@ -10539,7 +10539,7 @@ footer #apple-store {
 }
 
 #profile > img {
-  max-width: 170px;
+  max-height: 220px;
 }
 
 #available_articles .card {
@@ -10724,6 +10724,12 @@ footer #apple-store {
   text-align: center;
 }
 
+.tag-item {
+  background: none;
+  color: grey;
+  border: 1px solid;
+}
+
 #login {
   width: 100%;
   height: 100vh;
@@ -10848,7 +10854,7 @@ a.breaker {
 }
 
 .avatars figure img {
-  width: 90px;
+  height: 120px;
 }
 
 .avatars figure figcaption {

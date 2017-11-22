@@ -30,9 +30,9 @@
           </div>
             {{-- Error --}}
             @component('admin/snippets/error')
-              subscription
+              tag
               @slot('feedback')
-              {{ $errors->first('subscription') }}
+              {{ $errors->first('tag') }}
               @endslot
             @endcomponent
         </form>          
@@ -46,7 +46,7 @@
         </div>
         <div class="col-lg-10 col-md-12 mx-auto d-flex align-items-center justify-content-center flex-wrap">
           @foreach ($tags as $tag)
-          <div class="d-flex align-items-center justify-content-center p-1 px-2 m-2 btn-theme-green round-corners">
+          <div class="d-flex align-items-center justify-content-center p-1 px-2 m-2 tag-item round-corners">
             <p class="m-0">
               {{$tag->name}}
             </p>
