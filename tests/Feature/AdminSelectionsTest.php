@@ -6,8 +6,9 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Article;
+use App\Highlight;
 
-class AdminEditorPicksTest extends TestCase
+class AdminSelectionsTest extends TestCase
 {
 	use DatabaseMigrations;
 
@@ -25,4 +26,19 @@ class AdminEditorPicksTest extends TestCase
         $this->assertTrue(Article::find($old_pick->id)->editor_pick == 0);
         $this->assertTrue(Article::find($new_pick->id)->editor_pick == 1);
     }
+
+    /** @test */
+    public function a_manager_can_update_the_highlights()
+    {
+        $this->signIn();
+        $highlight = factory('App\Highlight')->create();
+        $new_article = factory('App\Article')->create();
+
+        $this->patch('/admin/highlights/'.$highlight->id, [
+            'article_id' => $new_article->id
+        ])->assertSessionHas('db_feedback');
+
+        $this->assertTrue(Highlight::find($highlight->id)->article_id == $new_article->id);
+    }
+
 }

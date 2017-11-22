@@ -9,6 +9,7 @@ use App\ArticleAuthor;
 use App\Category;
 use App\Manager;
 use App\Tag;
+use Carbon\Carbon;
 use App\Mail\MailFactory;
 use App\Http\Controllers\Validators\ValidateBreak;
 use Illuminate\Support\Facades\Storage;
@@ -22,6 +23,11 @@ class ArticlesController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
+    public function testing()
+    {
+        return 'Use this to test new code on the server';
     }
 
     public function index()
@@ -57,12 +63,11 @@ class ArticlesController extends Controller
     }
 
     // READ
-    public function show($category, Article $article)
+    public function show(Category $category, Article $article)
     {
 
-        $next_read = Suggestion::one($article);
-        // return $article;
-        $more_like = Suggestion::byTag($article);
+        $next_read = $article->suggestion();
+        $more_like = Article::inRandomOrder()->take(4)->get();
         $more_from = $article->similar()->get();
         $article->increment('views');
         return view('pages.article', compact(['article', 'more_from', 'more_like', 'next_read']));
@@ -88,7 +93,12 @@ class ArticlesController extends Controller
 
     public function update(Request $request, Article $article)
     {
-
+        try {
+            $request->created_at = Carbon::parse("$request->created_at 00:00:00")->format('Y-m-d H:i:s');
+        } catch(\Exception $e) {
+            return redirect()->back()->withErrors(['Check the date format! It must be M/D/Y']);
+        }
+        
         ValidateBreak::editCheck($request);
         $article->updateFrom($request);
         $slug = $article->slug;

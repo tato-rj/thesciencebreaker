@@ -47,7 +47,8 @@ class FeedbacksTest extends TestCase
         $faker = \Faker\Factory::create();
 
         $request = [
-                'full_name' => $faker->name,
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
                 'email' => $faker->safeEmail,
                 'message' => $faker->paragraph
             ];
@@ -67,7 +68,8 @@ class FeedbacksTest extends TestCase
         $faker = \Faker\Factory::create();
 
         $request = [
-                'full_name' => $faker->name,
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
                 'email' => $faker->safeEmail,
                 'news_from' => $faker->word,
                 'article_title' => $faker->sentence,
@@ -91,7 +93,8 @@ class FeedbacksTest extends TestCase
         $faker = \Faker\Factory::create();
 
         $request = [
-                'full_name' => $faker->name,
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
                 'institution_email' => $faker->safeEmail,
                 'field_research' => $faker->word,
                 'research_institute' => $faker->word,

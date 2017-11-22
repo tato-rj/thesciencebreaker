@@ -20,7 +20,6 @@
         @foreach ($tags as $tag)
           <span class="badge badge-pill m-1 {{ (in_array($tag->id, $article->tagsIds())) ? 'selected' : '' }}" data-id="{{ $tag->id }}">
             <a>{{ $tag->name }} ({{ $tag->articles->count() }})</a>
-            <i class="fa fa-times ml-1 removeTag" title="Click to delete this tag" aria-hidden="true"></i>
           </span>
         @endforeach
       </div>

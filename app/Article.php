@@ -114,6 +114,9 @@ class Article extends Model
 
     public function updateFrom($request)
     {
+
+       
+
         $this->update([
             'title' => $request->title,
             'slug' => str_slug($request->title, '-'),
@@ -125,7 +128,8 @@ class Article extends Model
             'original_article' => $request->original_article,
             'category_id' => $request->category_id,
             'editor_id' => $request->editor_id,
-            'editor_pick' => $request->editor_pick
+            'editor_pick' => $request->editor_pick,
+            'created_at' => $request->created_at
         ]);
         $this->authors()->sync($request->authors);
     }
@@ -161,6 +165,11 @@ class Article extends Model
         return self::where('editor_pick', 1)->orderBy('title')->get();
     }
 
+    public static function highlights()
+    {
+        return self::where('highlight', 1)->orderBy('title')->get();
+    }
+
     public static function last()
     {
         return self::orderBy('id', 'desc')->first();
@@ -175,9 +184,26 @@ class Article extends Model
         }
     }
 
+    public function suggestion()
+    {
+        if (count($this->tags)) {
+            $collection = $this->tags()->inRandomOrder()->first();
+        } else {
+            $collection = $this->category;
+        }
+
+        $results = $collection->articles->where('slug', '!=', $this->slug);
+        
+        if (count($results)) {
+            return $results->first();
+        }
+
+        return $this->category->articles->where('slug', '!=', $this->slug)->first();
+    }
+
     public function scopeRecent($query, $number)
     {
-        return $query->orderBy('id', 'desc')->take($number);
+        return $query->orderBy('created_at', 'desc')->take($number);
     }
 
     public function scopeSimilar($query)

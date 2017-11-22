@@ -74,10 +74,25 @@
       <span class="nav-link-text">Available Articles</span>
     </a>
   </li>
+
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Editor's Picks">
+    <a class="nav-link" href="/admin/highlights">
+      <i class="fa fa-star mr-1" aria-hidden="true"></i>
+      <span class="nav-link-text">Highlights</span>
+    </a>
+  </li>
+
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Editor's Picks">
     <a class="nav-link" href="/admin/editor-picks">
-      <i class="fa fa-star mr-1" aria-hidden="true"></i>
+      <i class="fa fa-heart mr-1" aria-hidden="true"></i>
       <span class="nav-link-text">Editor's picks</span>
+    </a>
+  </li>
+
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Subscriptions">
+    <a class="nav-link" href="/admin/tags">
+      <i class="fa fa-tag mr-1" aria-hidden="true"></i>
+      <span class="nav-link-text">Tags</span>
     </a>
   </li>
 

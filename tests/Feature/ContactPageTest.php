@@ -6,7 +6,6 @@ use Tests\TestCase;
 use Tests\AppAssertions;
 use Tests\TestingEmailsListener;
 use Tests\MailManagement;
-use Carbon\Carbon;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -25,13 +24,14 @@ class ContactPageTest extends TestCase
     {
         $faker = \Faker\Factory::create();
         $request = [
-                'full_name' => $faker->name,
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
                 'email' => $faker->safeEmail,
                 'message' => $faker->paragraph
             ];
 
         $this->post('/contact/ask-a-question', $request)->assertSessionHas('contact');
-        $this->seeEmailWasSent()->seeEmailSubjectIs('New Contact')->seeEmailContains($request['full_name']);
+        $this->seeEmailWasSent()->seeEmailSubjectIs('New Contact')->seeEmailContains($request['first_name']);
     }
 
     /** @test */
@@ -39,7 +39,8 @@ class ContactPageTest extends TestCase
     {
         $faker = \Faker\Factory::create();
         $request = [
-                'full_name' => $faker->name,
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
                 'email' => $faker->safeEmail,
                 'news_from' => $faker->word,
                 'article_title' => $faker->sentence,
@@ -49,7 +50,7 @@ class ContactPageTest extends TestCase
             ];
 
         $this->post('/contact/break-inquiry', $request)->assertSessionHas('contact');
-        $this->seeEmailWasSent()->seeEmailSubjectIs('Break Inquiry')->seeEmailContains($request['full_name']);
+        $this->seeEmailWasSent()->seeEmailSubjectIs('Break Inquiry')->seeEmailContains($request['first_name']);
     }
 
     /** @test */
@@ -59,7 +60,8 @@ class ContactPageTest extends TestCase
         $faker = \Faker\Factory::create();
 
         $request = [
-                'full_name' => $faker->name,
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
                 'institution_email' => $faker->safeEmail,
                 'field_research' => $faker->word,
                 'research_institute' => $faker->word,
@@ -72,11 +74,11 @@ class ContactPageTest extends TestCase
 
         $this->post('/contact/submit-a-break', $request)->assertSessionHas('contact');
 
-        Storage::assertExists('uploaded-breaks/'.$request['institution_email'].'_'.Carbon::now()->toDateString().'.doc');
+        Storage::assertExists('uploaded-breaks/'.$request['last_name'].'_'.$request['first_name'].'_break_v1.doc');
 
         $this->seeEmailWasSent()->seeEmailsSent(2);
         $this->seeEmailTo(config('app.email'))
             ->seeEmailSubjectIs('New Break Submission')
-            ->seeEmailContains($request['full_name']);
+            ->seeEmailContains($request['first_name']);
     }
 }

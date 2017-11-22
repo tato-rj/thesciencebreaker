@@ -11,6 +11,7 @@
   <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon-16x16.png') }}" sizes="16x16" />
 
   <!-- Custom styles for this template-->
+  <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link href="{{ asset('css/tables.admin.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('css/admin.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">

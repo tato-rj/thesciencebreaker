@@ -13,12 +13,22 @@
 					<form method="POST" action="/contact/ask-a-question">
 						{{csrf_field()}}
 						<div class="form-group">
-							<input required type="full_name" class="form-control" id="full_name" name="full_name" aria-describedby="full_nameHelp" placeholder="Full name">
+							<input required type="text" value="{{ old('first_name') }}" class="form-control" name="first_name" placeholder="First name">
 							{{-- Error --}}
 							@component('admin/snippets/error')
-							full_name
+							first_name
 							@slot('feedback')
-							{{ $errors->first('full_name') }}
+							{{ $errors->first('first_name') }}
+							@endslot
+							@endcomponent						
+						</div>
+						<div class="form-group">
+							<input required type="text" value="{{ old('last_name') }}" class="form-control" name="last_name" placeholder="Last name">
+							{{-- Error --}}
+							@component('admin/snippets/error')
+							last_name
+							@slot('feedback')
+							{{ $errors->first('last_name') }}
 							@endslot
 							@endcomponent						
 						</div>

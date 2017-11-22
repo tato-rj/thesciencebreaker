@@ -120,3 +120,11 @@ $factory->define(App\Tag::class, function (Faker $faker) {
         'name' => $faker->unique()->word
     ];
 });
+
+$factory->define(App\Highlight::class, function (Faker $faker) {
+    return [
+        'article_id' => function() {
+            return factory('App\Article')->create()->id;
+        }
+    ];
+});

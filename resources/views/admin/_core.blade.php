@@ -15,6 +15,9 @@
     @if($flash = session('db_feedback'))
       @include('admin/snippets/alerts/success')
     @endif
+    @if ($errors->any())
+    @include('admin/snippets/alerts/error')
+    @endif
     
     @include('admin/partials/footer')
     @include('admin/partials/js')

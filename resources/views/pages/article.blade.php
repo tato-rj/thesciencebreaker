@@ -172,13 +172,13 @@
 				<h5 class="p-1 pl-2 bg-green text-white">
 					We thought you might like
 				</h5>
-				@foreach ($more_like as $article)
+				@foreach ($more_like as $suggestion)
 						@include('snippets/breaks_grid/rows_sm')			
 				@endforeach
 			</div>
 			<div class="mt-4">
 				<h5 class="p-1 pl-2 bg-green text-white">More from <a href="{{ $article->category->path() }}">{{ $article->category->name }}</a></h5>
-				@foreach ($more_from as $article)
+				@foreach ($more_from as $suggestion)
 					@include('snippets/breaks_grid/rows_sm')			
 				@endforeach
 			</div>

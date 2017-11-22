@@ -19,7 +19,7 @@
 			{{-- Sort --}}
 			@component('snippets/sort_bar')
 				@slot('head')
-					<span class="d-none d-sm-inline">showing </span><strong>{{ $articles->firstItem() }}-{{ $articles->lastItem() }}</strong> of {{ $articles->total() }}<span class="d-none d-sm-inline"> breaks</span>
+					showing <strong>{{ $articles->firstItem() }}-{{ $articles->lastItem() }}</strong> of {{ $articles->total() }}<span class="d-none d-sm-inline"> breaks</span>
 				@endslot
 				@slot('show')
 					<option value="5" {{ (Request::input('show') == '5') ? 'selected' : '' }}>5</option>

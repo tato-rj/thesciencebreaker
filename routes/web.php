@@ -2,6 +2,9 @@
 
 Auth::routes();
 
+// Testing code
+Route::get('/testing-code', 'ArticlesController@testing');
+
 // Welcome page
 Route::get('/', 'ArticlesController@index')->name('home');
 // Breaks
@@ -136,6 +139,10 @@ Route::delete('/admin/available-articles/{availableArticle}', 'AvailableArticles
 Route::get('/admin/editor-picks', 'EditorPicksController@edit');
 Route::patch('/admin/editor-picks/{pick}', 'EditorPicksController@update');
 
+// Highlights routes
+Route::get('/admin/highlights', 'HighlightsController@edit');
+Route::patch('/admin/highlights/{highlight}', 'HighlightsController@update');
+
 // Subscription routes
 Route::get('/admin/subscriptions', 'SubscriptionsController@index');
 
@@ -143,6 +150,8 @@ Route::post('admin/subscriptions', 'SubscriptionsController@store');
 Route::delete('/admin/subscriptions/{email}', 'SubscriptionsController@destroy');
 
 // Tags
+Route::get('/admin/tags', 'TagsController@index');
 Route::post('/admin/breaks/{article}/tags', 'ArticlesController@setTags');
 Route::post('/admin/tags', 'TagsController@store');
+Route::patch('/admin/tags/{tag}', 'TagsController@update');
 Route::delete('/admin/tags/{tag}', 'TagsController@destroy');

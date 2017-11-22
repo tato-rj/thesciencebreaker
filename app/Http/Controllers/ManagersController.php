@@ -85,7 +85,9 @@ class ManagersController extends Controller
     {
         ValidateManager::editCheck($request);
         $manager->update($request->except('avatar'));
-        $manager->update(['slug' => str_slug($request->first_name.' '.$request->last_name)]);
+        $slug = str_slug($request->first_name.' '.$request->last_name);
+
+        $manager->update(['slug' => $slug]);
         if ($request->file('avatar')) {
             (new Upload($request->file('avatar')))->name($slug)->path("/managers/avatars/$slug/")->replace();            
         }

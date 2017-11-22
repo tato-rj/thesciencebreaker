@@ -276,4 +276,29 @@ class AdminArticlesTest extends TestCase
 
         Storage::assertExists('breaks/images/'.$slug.'/'.$slug.'.jpeg');
     }
+
+    /** @test */
+    public function a_manager_can_change_the_date_a_break_was_created()
+    {
+        $this->signIn();
+        $article = $this->article;
+        $old_date = $article->created_at;
+
+        $this->patch('/admin/breaks/'.$article->slug, [
+            'title' => $article->title,
+            'content' => $article->content,
+            'reading_time' =>$article->reading_time,
+            'original_article' => $article->original_article,
+            'category_id' => $article->category_id,
+            'editor_id' => $article->editor_id,
+            'doi' => $article->doi,
+            'editor_pick' => $article->editor_pick,
+            'authors' => [1],
+            'created_at' => '06/23/1984'
+        ]);
+
+        $this->assertNotEquals($old_date, $article->fresh()->created_at);
+
+    }
+
 }

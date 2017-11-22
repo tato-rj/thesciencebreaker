@@ -1,6 +1,6 @@
 @component('mail::message')
 
-Hello {{ $request->full_name }},
+Hello {{ $request->first_name }},
 
 {{ $message['body'] }}
 

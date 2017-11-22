@@ -78,7 +78,7 @@ class MailFactory
     {
         $file = $request->file('file');
         $ext = $file->extension();
-        $name = $request->institution_email.'_'.Carbon::now()->toDateString();
+        $name = $request->last_name.'_'.$request->first_name.'_break_v1';
         $filename = "/uploaded-breaks/$name.$ext";
         Storage::put($filename, File::get($file));
         return "storage/app".$filename;

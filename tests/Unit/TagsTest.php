@@ -47,6 +47,23 @@ class TagsTest extends TestCase
     }
 
     /** @test */
+    public function a_manager_can_edit_tags()
+    {
+        $tag = $this->tag;
+        $old_name = $tag->name;
+        $this->patch("/admin/tags/$tag->name", [
+            'tag' => 'newname'
+        ]);
+
+        $this->assertDatabaseMissing('tags', [
+            'name' => $old_name
+        ]);
+        $this->assertDatabaseHas('tags', [
+            'name' => 'newname'
+        ]);
+    }
+
+    /** @test */
     public function a_removed_tag_also_removes_its_relationships_with_articles()
     {
         $tag = $this->tag;

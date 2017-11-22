@@ -13,10 +13,21 @@ class TagsController extends Controller
     {
         $request->validate(['tag' => 'required|unique:tags,name']);
         $new_tag = Tag::create(['name' => $request->tag]);
-        return $new_tag->id;
+        
+        if ($request->ajax()) {
+            return $new_tag->id;
+        }
+        
+        return redirect()->back()->with('db_feedback', 'The tag has been created');
     }
 
     // READ
+    public function index()
+    {
+        $tags = Tag::orderBy('name')->get();
+        return view('admin/pages/tags', compact('tags'));
+    }
+
     public function show(Tag $tag, Request $request)
     {
         $input = $request->for;
@@ -30,7 +41,9 @@ class TagsController extends Controller
     // UPDATE
     public function update(Request $request, Tag $tag)
     {
-        //
+        $request->validate(['tag' => 'required|unique:tags,name']);
+        $tag->update(['name' => $request->tag]);
+        return redirect()->back()->with('db_feedback', 'The tag has been updated');
     }
 
     // DELETE
@@ -38,5 +51,6 @@ class TagsController extends Controller
     {
         $tag->articles()->detach();
         $tag->delete();
+        return redirect()->back()->with('db_feedback', 'The tag has been removed');
     }
 }
