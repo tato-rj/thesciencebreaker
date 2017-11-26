@@ -188,44 +188,6 @@
 
 @endsection
 
-@section('script')
-<script type="text/javascript" src="{{ asset('js/disqus.js') }}"></script>
-<script type="text/javascript">
-
-	document.getElementById('shareFacebook').onclick = function() {
-		FB.ui({
-			method: 'share',
-			display: 'popup',
-			href: window.location.href,
-		}, function(response){});
-	}
-
-	$('#twitter').on('click', function() {
-		popitup($(this).attr('data-link'), 300);
-	});
-	$('#google-plus').on('click', function() {
-		popitup($(this).attr('data-link'), 500);
-	});
-	function popitup(url, height) {
-		newwindow=window.open(url ,'Share','height='+height+',width=450');
-		if (window.focus) {newwindow.focus()}
-			return false;
-	}
-</script>
-<script type="text/javascript">
-	$('#author-bar .author').on('click', function() {
-		$url = $(this).attr('data-url');
-		if(isMobile()) {
-			window.location.href = $url;
-		}
-	});
-
-	if (!isMobile()) {
-		$('[data-role="popover"]').popover();
-	}
-
-	function isMobile () {
-		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-	}
-</script>
+@section('scripts')
+	@include('javascript/article')
 @endsection

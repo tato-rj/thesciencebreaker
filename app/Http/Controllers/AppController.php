@@ -19,7 +19,7 @@ class AppController extends Controller
     	->select(array_merge($articlesQuery, $categoriesQuery, $managersQuery))
     	->leftJoin('categories', 'articles.category_id', '=', 'categories.id')
     	->leftJoin('managers', 'articles.editor_id', '=', 'managers.id')
-    	->orderBy('articles.created_at')
+    	->orderBy('articles.created_at', 'DESC')
     	->get();
  
     	foreach ($breaks as $break) {
