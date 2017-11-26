@@ -1,4 +1,4 @@
-@extends('_core')
+@extends('app')
 
 @section('content')
 
@@ -24,12 +24,12 @@
 			</div>
 			<div>
 				@foreach($author->articles as $article)
-					@include('snippets/breaks_grid/rows_lg')
+					@include('components/partials/grids/results')
 				@endforeach
 			</div>
 		</div>
 		{{-- Side Bar --}}
-		@include('partials.side-bar')
+		@include('components/partials/side_bars/suggestions')
 	</div>
 </div>
 

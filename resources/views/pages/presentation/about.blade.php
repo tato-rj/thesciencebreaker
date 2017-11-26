@@ -1,11 +1,11 @@
-@extends('_core')
+@extends('app')
 
 @section('content')
 
 <div class="container mt-4">
 	<div class="row">
 		<div class="col-lg-9 col-md-12">
-			@component('snippets.title')
+			@component('components/snippets/title')
 			About
 			@endcomponent
 			<div class="highlight">
@@ -17,8 +17,10 @@
 			</div>
 			<p>Importantly, at TheScienceBreaker, we believe that the dialogue between scientists and citizens will promote the public engagement with science and technology. To achieve this, don't hesitate to join the discussion in the comment sections below each published Break.</p>
 		</div>
-		{{-- Side Bar --}}
-		@include('partials.side-bar')
+		
+		{{-- Side Bar: Suggestion --}}
+		@include('components/partials/side_bars/suggestions')
+
 	</div>
 </div>
 

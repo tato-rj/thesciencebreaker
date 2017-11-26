@@ -1,4 +1,4 @@
-@extends('_core')
+@extends('app')
 
 @section('content')
 
@@ -10,7 +10,7 @@
 
 	<div class="row" id="member-container">
 		<div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
-			@include('snippets/profile/main')
+			@include('components/snippets/avatars/profile')
 		</div>
 		<div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
 			<div class="p-4" id="bio">
@@ -24,7 +24,7 @@
 				<p>{{ $member->first_name }} is the editor of <strong>{{ $member->editedArticlesCount() }}</strong> {{ str_plural('Break', $member->editedArticlesCount()) }}:</p>
 				<div class="row no-gutters">
 					@foreach ($member->editedArticles() as $article)
-					@include('snippets/breaks_grid/columns')				
+					@include('components/partials/grids/columns')				
 					@endforeach
 				</div>
 

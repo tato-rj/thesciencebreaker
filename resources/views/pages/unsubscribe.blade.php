@@ -1,4 +1,4 @@
-@extends('_core')
+@extends('app')
 
 @section('content')
 

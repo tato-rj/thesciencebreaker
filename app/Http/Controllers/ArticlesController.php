@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Files\Upload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 
 class ArticlesController extends Controller
 {
@@ -34,6 +35,14 @@ class ArticlesController extends Controller
     {
         // Manager::generateSlugs();
         return view('pages.welcome');
+    }
+
+    public function feed()
+    {
+        $tags = Tag::all();
+        $articles = Article::all();
+        $content = view('feed', compact(['articles', 'tags']));
+        return Response::make($content, '200')->header('Content-Type', 'text/xml');
     }
 
     // CREATE

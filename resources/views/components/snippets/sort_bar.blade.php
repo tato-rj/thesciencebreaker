@@ -1,6 +1,6 @@
 <small class="d-flex justify-content-between align-items-end mt-4">
 	<div>
-		{{$head}}
+		{{$slot}}
 	</div>
 	<div class="form-inline">
 		<label class="mb-0 mr-2 d-none d-sm-inline">show</label>

@@ -13,3 +13,7 @@
 	You can fing this article here:%0A
 	{{ url()->full() }}%0A%0A
 	For more awesome articles about science, please visit {{ config('app.url') }}%0A%0A">
+		
+	<i class="fa fa-envelope-open" aria-hidden="true"></i>
+
+</a>

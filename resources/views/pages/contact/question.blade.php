@@ -1,11 +1,11 @@
-@extends('_core')
+@extends('app')
 
 @section('content')
 
 <div class="container mt-4">
 	<div class="row">
 		<div class="col-lg-9 col-md-12">
-			@component('snippets.title')
+			@component('components/snippets/title')
 			<i class="fa fa-question-circle-o mr-2" aria-hidden="true"></i>Ask a Question
 			@endcomponent
 			<div class="row">
@@ -61,14 +61,16 @@
 					</form>				
 				</div>
 			</div>
-		@include('snippets.headquarters')
+
+			{{-- Headquarters map --}}
+			@include('components/snippets/map')
+	
 		</div>
-		{{-- Side Bar --}}
-		@include('partials.side-bar')
+
+		{{-- Side Bar: Suggestion --}}
+		@include('components/partials/side_bars/suggestions')
+
 	</div>
 </div>
-{{-- Feedback Messages --}}
-@if($flash = session('contact'))
-@include('admin/snippets/alerts/success')
-@endif
+
 @endsection

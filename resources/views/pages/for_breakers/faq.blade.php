@@ -1,11 +1,11 @@
-@extends('_core')
+@extends('app')
 
 @section('content')
 
 <div class="container mt-4">
 	<div class="row">
 		<div class="col-lg-9 col-12">
-			@component('snippets.title')
+			@component('components/snippets/title')
 			Frequently Asked Questions
 			@endcomponent
 			<p><strong>Q: What is a Break?</strong></p>
@@ -41,11 +41,18 @@
 			<p><strong>Q: Which is the target audience?</strong></p>
 			<p>Our readership ideally consists of scientists from very different areas and, above all, laypeople. Keep in mind that most of the audience will be not acquainted with scientific terms and “jargonic” expressions. Therefore, the pitch of the Break must be tuned accordingly.</p>
 			<div class="text-center mt-5">
-				<a href="/contact/ask-a-question" class="btn bg-default text-white" id="breaker-btn"><i class="fa fa-question-circle mr-2 align-middle" aria-hidden="true"></i><strong>ASK A QUESTION</strong></a>
+				@component('components/snippets/buttons/brand')
+					ASK A QUESTION
+					@slot('url')
+					/contact/ask-a-question
+					@endslot
+				@endcomponent
 			</div>
 		</div>
-		{{-- Side Bar --}}
-		@include('partials.side-bar')
+		
+		{{-- Side Bar: Suggestion --}}
+		@include('components/partials/side_bars/suggestions')
+
 	</div>
 </div>
 

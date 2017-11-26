@@ -24,6 +24,7 @@ Route::get('/unsubscribe', function() {
 	return view('pages.unsubscribe');
 });
 Route::delete('/unsubscribe', 'SubscriptionsController@unsubscribe');
+Route::get('/services/feed', 'ArticlesController@feed');
 /*
 * 
 *	Presentation Pages
@@ -85,7 +86,16 @@ Route::post('/contact/ask-a-question', 'ContactsController@question');
 Route::post('/contact/break-inquiry', 'ContactsController@inquiry');
 Route::post('/contact/submit-a-break', 'ContactsController@submit');
 
+/*
+* 
+*	App
+* 
+*/
 
+Route::get('/app/breaks', 'AppController@breaks');
+Route::get('/app/picks', 'AppController@picks');
+Route::get('/app/tags', 'AppController@tags');
+Route::get('/app/breakers', 'AppController@breakers');
 
 /*
 * 

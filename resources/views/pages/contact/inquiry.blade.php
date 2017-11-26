@@ -1,11 +1,11 @@
-@extends('_core')
+@extends('app')
 
 @section('content')
 
 <div class="container mt-4">
 	<div class="row">
 		<div class="col-lg-9 col-md-12">
-			@component('snippets.title')
+			@component('components/snippets/title')
 			<i class="fa fa-newspaper-o mr-2" aria-hidden="true"></i>Break Inquiry
 			@endcomponent
 			<div class="row">
@@ -13,7 +13,6 @@
 					<p class="text-center">If a scientific news attracted your attention and you wish to know more about it, directly from the scientists involved - let us know: we'll Break about it!</p>
 				</div>
 				<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 mx-auto mt-2">
-
 					<form method="POST" action="/contact/break-inquiry">
 						{{csrf_field()}}
 						<div class="form-group">
@@ -189,14 +188,16 @@
 					</form>				
 				</div>
 			</div>
-			@include('snippets.headquarters')
+
+			{{-- Headquarters map --}}
+			@include('components/snippets/map')
+	
 		</div>
-		{{-- Side Bar --}}
-		@include('partials.side-bar')
+
+		{{-- Side Bar: Suggestion --}}
+		@include('components/partials/side_bars/suggestions')
+
 	</div>
 </div>
-{{-- Feedback Messages --}}
-@if($flash = session('contact'))
-@include('admin/snippets/alerts/success')
-@endif
+
 @endsection

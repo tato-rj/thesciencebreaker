@@ -103,3 +103,15 @@
 <a class="scroll-to-top rounded" href="#page-top">
 	<i class="fa fa-angle-up"></i>
 </a>
+
+@if ($flash = session('contact'))
+    @include('components/alerts/success')
+@endif
+
+@if ($flash = session('subscription'))
+    @include('components/alerts/success')
+@endif
+
+@if ($errors->any())
+    @include('components/alerts/error')
+@endif

@@ -26,11 +26,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with('tagsList', Tag::list());
         });
         
-        \View::composer('partials.side-bar', function($view) {
+        \View::composer('components/partials/side_bars/suggestions', function($view) {
             $view->with('editor_picks', Article::editorPicks()->get());  
         });
 
-        \View::composer('pages.welcome', function($view) {
+        \View::composer('pages/welcome', function($view) {
             $view->with('highlights', Highlight::orderBy('relevance_order')->get());
             $view->with('latest_articles', Article::recent(4)->get());
         });

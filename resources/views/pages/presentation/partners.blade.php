@@ -1,11 +1,11 @@
-@extends('_core')
+@extends('app')
 
 @section('content')
 
 <div class="container mt-4">
 	<div class="row">
 		<div class="col-lg-9 col-md-12" id="partners">
-			@component('snippets.title')
+			@component('components/snippets/title')
 			Partners
 			@endcomponent
 			<div class="d-flex flex-row justify-content-center align-items-center flex-wrap mt-4">
@@ -23,8 +23,10 @@
 				</a>
 			</div>
 		</div>
-		{{-- Side Bar --}}
-		@include('partials.side-bar')
+
+		{{-- Side Bar: Suggestion --}}
+		@include('components/partials/side_bars/suggestions')
+
 	</div>
 </div>
 

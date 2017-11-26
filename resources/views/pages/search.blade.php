@@ -1,4 +1,4 @@
-@extends('_core')
+@extends('app')
 
 @section('content')
 
@@ -17,10 +17,8 @@
 				</div>
 			</div>
 			{{-- Sort --}}
-			@component('snippets/sort_bar')
-				@slot('head')
-					showing <strong>{{ $articles->firstItem() }}-{{ $articles->lastItem() }}</strong> of {{ $articles->total() }}<span class="d-none d-sm-inline"> breaks</span>
-				@endslot
+			@component('components/snippets/sort_bar')
+				showing <strong>{{ $articles->firstItem() }}-{{ $articles->lastItem() }}</strong> of {{ $articles->total() }}<span class="d-none d-sm-inline"> breaks</span>
 				@slot('show')
 					<option value="5" {{ (Request::input('show') == '5') ? 'selected' : '' }}>5</option>
 					<option value="10" {{ (Request::input('show') == '10') ? 'selected' : '' }}>10</option>
@@ -36,12 +34,12 @@
 			@endcomponent
 			{{-- Breaks --}}
 			@foreach ($articles as $article)
-				@include('snippets/breaks_grid/rows_lg')
+				@include('components/partials/grids/results')
 			@endforeach
 			{{ $articles->appends(Request::except('page'))->links() }}
 		</div>
 		{{-- Side Bar --}}
-		@include('partials.side-bar')
+		@include('components/partials/side_bars/suggestions')
 	</div>
 </div>
 

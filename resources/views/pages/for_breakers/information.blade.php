@@ -1,11 +1,11 @@
-@extends('_core')
+@extends('app')
 
 @section('content')
 
 <div class="container mt-4">
 	<div class="row">
 		<div class="col-lg-9 col-12">
-			@component('snippets.title')
+			@component('components/snippets/title')
 			Information for Authors
 			@endcomponent
 			<div class="highlight">
@@ -37,11 +37,18 @@
 			</div>
 			<p>Read more on the <a href="/faq">F.A.Q. for Breakers</a>.</p>
 			<div class="text-center mt-5">
-				<a href="/contact/submit-your-break" class="btn bg-default text-white" id="breaker-btn"><img src="/images/logo-small.svg"><strong>SUBMIT YOUR BREAK</strong></a>
+				@component('components/snippets/buttons/brand')
+					SUBMIT YOUR BREAK
+					@slot('url')
+					/contact/submit-your-break
+					@endslot
+				@endcomponent
 			</div>
 		</div>
-		{{-- Side Bar --}}
-		@include('partials.side-bar')
+
+		{{-- Side Bar: Suggestion --}}
+		@include('components/partials/side_bars/suggestions')
+
 	</div>
 </div>
 

@@ -1,0 +1,1 @@
+<a href="{{$url}}" class="btn bg-default text-white" id="breaker-btn"><img src="/images/logo-small.svg"><strong>{{$slot}}</strong></a>
