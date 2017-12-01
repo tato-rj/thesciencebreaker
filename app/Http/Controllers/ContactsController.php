@@ -33,7 +33,6 @@ class ContactsController extends Controller
     {
 
         ValidateBreakSubmission::createCheck($request);
-
         MailFactory::submit($request);
         if ($request->subscribe_me) Subscription::createOrIgnore($request->institution_email);
 

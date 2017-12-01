@@ -6,8 +6,6 @@ use App\Tag;
 use App\Article;
 use Illuminate\Support\Facades\Response;
 
-use Illuminate\Http\Request;
-
 class FeedController extends Controller
 {
     public function index()

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
 use App\Category;
 use App\Highlight;
 use Illuminate\Http\Request;

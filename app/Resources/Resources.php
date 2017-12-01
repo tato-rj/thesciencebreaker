@@ -2,7 +2,7 @@
 
 namespace App\Resources;
 
-use App\Manager\TheScienceBreaker;
+use App\TheScienceBreaker;
 
 abstract class Resources
 {

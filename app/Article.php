@@ -2,9 +2,8 @@
 
 namespace App;
 
+use App\TheScienceBreaker;
 use App\Manager\Traits\ArticleScopeQueries;
-use App\Manager\TheScienceBreaker;
-use Illuminate\Http\Request;
 use App\Resources\ArticlePaths;
 use App\Resources\ArticleResources;
 

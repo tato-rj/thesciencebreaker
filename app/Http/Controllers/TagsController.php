@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class TagsController extends Controller
 {
-
     // CREATE
     public function store(Request $request)
     {

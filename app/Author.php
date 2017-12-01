@@ -2,8 +2,7 @@
 
 namespace App;
 
-use App\Manager\TheScienceBreaker;
-use Illuminate\Database\Eloquent\Model;
+use App\TheScienceBreaker;
 use App\Resources\AuthorPaths;
 use App\Resources\AuthorResources;
 

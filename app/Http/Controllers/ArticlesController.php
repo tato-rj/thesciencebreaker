@@ -4,16 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Author;
-use App\Suggestion;
 use App\ArticleAuthor;
 use App\Category;
 use App\Manager;
 use App\Tag;
-use Carbon\Carbon;
-use App\Mail\MailFactory;
-use App\Http\Controllers\Validators\ValidateBreak;
 use Illuminate\Support\Facades\Storage;
-use App\Files\Upload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ArticleRequest;

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Category;
 use App\Article;
 use App\Author;
 use App\AvailableArticle;

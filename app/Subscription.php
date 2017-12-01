@@ -2,8 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Manager\TheScienceBreaker;
+use App\TheScienceBreaker;
 use Illuminate\Database\QueryException;
 
 class Subscription extends TheScienceBreaker

@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Author;
-use App\Article;
 use App\Mail\MailFactory;
-use App\Http\Controllers\Validators\ValidateBreaker;
 use Illuminate\Http\Request;
 use App\Http\Requests\AuthorRequest;
 

@@ -11,7 +11,7 @@ class UserRoutesTest extends TestCase
 	use DatabaseMigrations;
 
     /** @test */
-    public function all_get_requests_work()
+    public function all_web_get_requests_work()
     {
         $this->signIn();
 
@@ -38,8 +38,6 @@ class UserRoutesTest extends TestCase
 
         factory('App\Highlight', 10)->create();
         
-        foreach ($routes as $route) {
-	        $this->get($route)->assertSuccessful();        	
-        }
+        check($this, $routes);
     }
 }

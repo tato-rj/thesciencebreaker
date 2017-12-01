@@ -2,8 +2,7 @@
 
 namespace App;
 
-use App\Manager\TheScienceBreaker;
-use Illuminate\Database\Eloquent\Model;
+use App\TheScienceBreaker;
 
 class Highlight extends TheScienceBreaker
 {

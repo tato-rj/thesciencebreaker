@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\TheScienceBreaker;
 
-class Division extends Model
+class Division extends TheScienceBreaker
 {
     //
 }

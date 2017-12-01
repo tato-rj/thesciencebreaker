@@ -2,10 +2,7 @@
 
 namespace App;
 
-use App\Article;
-use App\Manager\TheScienceBreaker;
-use App\Manager\Traits\RouteKeyName;
-use Illuminate\Database\Eloquent\Model;
+use App\TheScienceBreaker;
 use App\Resources\CategoryPaths;
 
 class Category extends TheScienceBreaker

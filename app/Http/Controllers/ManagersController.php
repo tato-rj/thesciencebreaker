@@ -6,9 +6,7 @@ use App\Manager;
 use App\Author;
 use App\Division;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Validators\ValidateManager;
 use Illuminate\Support\Facades\Input;
-use App\Files\Upload;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ManagerRequest;
 

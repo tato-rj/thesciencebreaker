@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-use App\Article;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 class AppController extends Controller

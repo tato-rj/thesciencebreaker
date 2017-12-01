@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Article;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 
 class CategoryController extends Controller
 {

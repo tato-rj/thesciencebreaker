@@ -11,7 +11,7 @@ class GuestRoutesTest extends TestCase
 	use DatabaseMigrations;
 
     /** @test */
-    public function all_get_requests_work()
+    public function all_web_get_requests_work()
     {
     	$routes = [
     		'/',
@@ -36,17 +36,24 @@ class GuestRoutesTest extends TestCase
     		'/contact/submit-your-break',
     		'/contact/ask-a-question',
     		'/contact/break-inquiry',
-    		'/contact/submit-your-break',
-    		'/app/breaks',
-    		'/app/picks',
-    		'/app/tags',
-    		'/app/breakers'
+    		'/contact/submit-your-break'
     	];
 
         factory('App\Highlight', 10)->create();
         
-        foreach ($routes as $route) {
-	        $this->get($route)->assertSuccessful();        	
-        }
+        check($this, $routes);
+    }
+
+    /** @test */
+    public function app_routes_work()
+    {
+        $routes = [
+            '/app/breaks',
+            '/app/picks',
+            '/app/tags',
+            '/app/breakers'
+        ];
+
+        check($this, $routes);
     }
 }

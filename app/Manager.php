@@ -2,10 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Manager\Traits\RouteKeyName;
+use App\TheScienceBreaker;
 use App\Manager\Traits\ManagerScopeQueries;
-use App\Manager\TheScienceBreaker;
 use App\Resources\ManagerPaths;
 use App\Resources\ManagerResources;
 
