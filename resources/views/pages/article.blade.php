@@ -41,7 +41,7 @@
 
 			{{-- Category --}}
 			<h5 class="category-title d-flex align-items-center">
-				<img class="mr-2" src="{{ $article->category->iconPath() }}"><a href="{{ $article->category->path() }}">{{ $article->category->name }}</a>
+				<img class="mr-2" src="{{ $article->category->paths()->icon() }}"><a href="{{ $article->category->paths()->route() }}">{{ $article->category->name }}</a>
 			</h5>
 
 			{{-- Title --}}
@@ -49,9 +49,9 @@
 			<p class="text-muted">{{ $article->description }}</p>
 
 			{{-- Image --}}
-			@if ($article->image() != 'images/no-image.png')
+			@if ($article->paths()->image() != 'images/no-image.png')
 			<figure class="figure cover-image mb-0">
-				<img src="{{ asset($article->image()) }}" class="figure-img img-fluid rounded" alt="{{ $article->image_caption }}">
+				<img src="{{ asset($article->paths()->image()) }}" class="figure-img img-fluid rounded" alt="{{ $article->image_caption }}">
 				<figcaption class="figure-caption"><small>{{ $article->image_caption }} <strong>Credits: {{ $article->image_credits }}</strong></small></figcaption>
 			</figure>
 			@endif
@@ -78,16 +78,16 @@
 						@foreach ($article->authors as $author)
 						{{ $loop->first ? '' : ', ' }}
 						<span class="popover-wrapper">
-							<a data-role="popover" class="author text-orange cursor-link" data-url="{{ $author->path() }}" data-target="{{ $author->slug }}-popover">{{ $author->fullName() }}</a> | {{ $author->position }}
+							<a data-role="popover" class="author text-orange cursor-link" data-url="{{ $author->paths()->route() }}" data-target="{{ $author->slug }}-popover">{{ $author->resources()->fullName() }}</a> | {{ $author->position }}
 							<div class="popover-modal p-3 {{ $author->slug }}-popover">
 								<div class="popover-body popover-body-padded">
-									<p class="mb-2"><i class="fa fa-user mr-2" aria-hidden="true"></i><strong>{{ $author->fullName() }}</strong> is {{ $author->position }} at {{ $author->research_institute }}.</p>
-									@if ($author->isAuthorOf($article))
+									<p class="mb-2"><i class="fa fa-user mr-2" aria-hidden="true"></i><strong>{{ $author->resources()->fullName() }}</strong> is {{ $author->position }} at {{ $author->research_institute }}.</p>
+									@if ($author->resources()->isAuthorOf($article))
 									<p class="mb-0 text-green">
-										<strong>{{ $author->fullName() }} is also an author of the <a>original article</a></strong>
+										<strong>{{ $author->resources()->fullName() }} is also an author of the <a>original article</a></strong>
 									</p>
 									@endif
-									<a href="{{ $author->path() }}" class="btn bg-default no-hover py-0 px-3 pull-right btn-sm" target="_blank">Profile</a>
+									<a href="{{ $author->paths()->route() }}" class="btn bg-default no-hover py-0 px-3 pull-right btn-sm" target="_blank">Profile</a>
 								</div>
 							</div>
 						</span>
@@ -101,9 +101,9 @@
 							<div class="popover-body popover-body-padded">
 								<small>
 									<p class="mb-1"><strong>Edited by</strong></p>
-									<p class="mb-0"> {{ $article->editor->fullName() }}</p>
+									<p class="mb-0"> {{ $article->editor->resources()->fullName() }}</p>
 									<p class="mb-2 text-muted"><em>{{ $article->editor->position }}</em></p>
-									<a href="{{ $article->editor->path() }}" class="btn bg-default no-hover p-0 btn-block btn-sm" target="_blank">Profile</a>
+									<a href="{{ $article->editor->paths()->route() }}" class="btn bg-default no-hover p-0 btn-block btn-sm" target="_blank">Profile</a>
 								</small>
 							</div>
 						</div>
@@ -134,11 +134,11 @@
 			{{-- Suggestion (based on tag) --}}
 			<div class="mt-4">
 				<hr>
-				<p class="mb-0"><strong>Next read:</strong> <a href="{{ $next_read->path() }}">{{ $next_read->title }}</a>
+				<p class="mb-0"><strong>Next read:</strong> <a href="{{ $next_read->paths()->route() }}">{{ $next_read->title }}</a>
 					<small>by 
 						@foreach ($next_read->authors as $author)
 						{{ $loop->first ? '' : ', ' }}
-						<a class="breaker" href="{{ $author->path() }}">{{ $author->fullName() }}</a>
+						<a class="breaker" href="{{ $author->paths()->route() }}">{{ $author->resources()->fullName() }}</a>
 					@endforeach</small></p>
 				</div>
 				<hr>
@@ -149,7 +149,7 @@
 						<h5>Edited by:</h5>
 						<p>
 							<strong>
-								<a href="{{ $article->editor->path() }}" class="breaker">{{ $article->editor->fullName() }}</a>
+								<a href="{{ $article->editor->paths()->route() }}" class="breaker">{{ $article->editor->resources()->fullName() }}</a>
 							</strong>, {{ $article->editor->position }}
 						</p>
 					</div>
@@ -172,7 +172,7 @@
 				{{-- Suggestions (based on category) --}}
 				<div class="mt-4">
 					<h5 class="p-1 pl-2 bg-green text-white">
-						More from <a href="{{ $article->category->path() }}">{{ $article->category->name }}</a>
+						More from <a href="{{ $article->category->paths()->route() }}">{{ $article->category->name }}</a>
 					</h5>
 					@foreach ($more_from as $suggestion)
 					@include('components/partials/grids/rows')			

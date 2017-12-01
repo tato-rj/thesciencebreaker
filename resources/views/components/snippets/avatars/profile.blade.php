@@ -1,6 +1,6 @@
 <div id="profile" class="text-center">
-	<img src="{{ asset($member->avatar()) }}" class="p-4 img-fluid">
-	<h5 class="mb-0">{{ $member->fullName() }}</h5>
+	<img src="{{ asset($member->paths()->avatar()) }}" class="p-4 img-fluid">
+	<h5 class="mb-0">{{ $member->resources()->fullName() }}</h5>
 	<p class="mb-2"><small>{{ $member->position }}</small></p>
 	<div class="d-flex align-items-center justify-content-center">
 		<h5>

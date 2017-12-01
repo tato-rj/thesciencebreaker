@@ -125,9 +125,9 @@
 		</div>
 		<div class="d-flex flex-row justify-content-center align-items-center flex-wrap" id="subject-icons">
 			@foreach ($categories as $category)
-			<a href="{{ $category->path() }}">
+			<a href="{{ $category->paths()->route() }}">
 				<div class="icon-wrapper">
-					<img src="{{ $category->iconPath() }}">
+					<img src="{{ $category->paths()->icon() }}">
 					<div class="d-flex align-items-center justify-content-center flex-column text-center">
 						<h5><strong>{{ $category->name }}</strong></h5>
 						<h5><strong>{{ $category->articles_count }} Breaks</strong></h5>

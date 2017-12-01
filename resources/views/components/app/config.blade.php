@@ -23,29 +23,29 @@
 <meta name="twitter:url" content="{{ url()->full() }}" />
 <meta name="twitter:card" content="summary_large_image">
 {{-- Check if current page is an article. If so, show specific meta tags for that page --}}
-@if(isset($article) && $article->path() == '/'.\Request::path())
+@if(isset($article) && $article->paths()->route() == '/'.\Request::path())
     {{-- Facebook --}}
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ $article->title }}" />
-    <meta property="og:description" content="{{ $article->description }} - submission by {{ $article->authorsList() }}" />
-    <meta property="og:image" content="{{ asset($article->image()) }}" />
+    <meta property="og:description" content="{{ $article->description }} - submission by {{ $article->resources()->authorsList() }}" />
+    <meta property="og:image" content="{{ asset($article->paths()->image()) }}" />
     {{-- Twitter --}}
     <meta name="twitter:title" content="{{ $article->title }}">
-    <meta name="twitter:description" content="{{ $article->description }} - submission by {{ $article->authorsList() }}">
-    <meta name="twitter:image" content="{{ asset($article->image()) }}">
+    <meta name="twitter:description" content="{{ $article->description }} - submission by {{ $article->resources()->authorsList() }}">
+    <meta name="twitter:image" content="{{ asset($article->paths()->image()) }}">
     {{-- Global --}}
     <meta itemprop="name" content="{{ $article->title }}" />
-    <meta itemprop="description" content="{{ $article->description }} - submission by {{ $article->authorsList() }}" />
-    <meta itemprop="image" content="{{ asset($article->image()) }}" />
-    <meta property="article:author" content="{{ $article->authorsList() }}" />
+    <meta itemprop="description" content="{{ $article->description }} - submission by {{ $article->resources()->authorsList() }}" />
+    <meta itemprop="image" content="{{ asset($article->paths()->image()) }}" />
+    <meta property="article:author" content="{{ $article->resources()->authorsList() }}" />
     <meta property="article:publisher" content="{{ url()->full() }}" />
     <meta property="article:section" content="{{ $article->category->name }}" />
     <meta property="article:published_time" content="{{ $article->created_at->toDateTimeString() }}" />
-    <meta name="description" content="{{ $article->description }} - submission by {{ $article->authorsList() }}" />
-    <meta name="abstract" content="{{ $article->description }} - submission by {{ $article->authorsList() }}" />
-    <meta name="keywords" content="{{ $article->tagsList() }}" />
-    <meta name="news_keywords" content="{{ $article->tagsList() }}" />
-    <link rel="image_src" href="{{ asset($article->image()) }}" />
+    <meta name="description" content="{{ $article->description }} - submission by {{ $article->resources()->authorsList() }}" />
+    <meta name="abstract" content="{{ $article->description }} - submission by {{ $article->resources()->authorsList() }}" />
+    <meta name="keywords" content="{{ $article->resources()->tagsList() }}" />
+    <meta name="news_keywords" content="{{ $article->resources()->tagsList() }}" />
+    <link rel="image_src" href="{{ asset($article->paths()->image()) }}" />
     <link rel="shortlink" href="{{ $article->doi }}" />
     {{-- Disqus --}}
     <meta name="disqus:title" content="{{ $article->title }}">

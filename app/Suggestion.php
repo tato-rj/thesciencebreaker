@@ -8,7 +8,6 @@ class Suggestion {
 
     public static function byTag($article)
     {
-
     	$tag = $article->tags()->having('articles_count', '>', 1)->inRandomOrder()->first();
 
         if (is_null($tag)) {
@@ -16,7 +15,6 @@ class Suggestion {
         }
 
         return $tag->articles()->where('slug', '!=', $article->slug)->take(4)->get();
-
     }
 
 	public static function one($article)

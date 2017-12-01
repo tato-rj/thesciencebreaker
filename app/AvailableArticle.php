@@ -3,12 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Manager\TheScienceBreaker;
 
-class AvailableArticle extends Model
+class AvailableArticle extends TheScienceBreaker
 {
     protected $table = 'available_articles';
     protected $with = ['category'];
-    protected $guarded = [];
 
     public function category()
     {

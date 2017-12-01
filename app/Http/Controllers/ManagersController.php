@@ -10,6 +10,7 @@ use App\Http\Controllers\Validators\ValidateManager;
 use Illuminate\Support\Facades\Input;
 use App\Files\Upload;
 use Illuminate\Support\Facades\File;
+use App\Http\Requests\ManagerRequest;
 
 class ManagersController extends Controller
 {
@@ -40,24 +41,7 @@ class ManagersController extends Controller
 
     public function store(Request $request)
     {
-        ValidateManager::createCheck($request);
-        $slug = str_slug($request->first_name.' '.$request->last_name);
-        Manager::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'slug' => $slug,
-            'email' => $request->email,
-            'division_id' => $request->division_id,
-            'position' => $request->position,
-            'biography' => $request->biography,
-            'research_institute' => $request->research_institute,
-            'is_editor' => $request->is_editor
-        ]);
-
-        if ($request->file('avatar')) {
-            (new Upload($request->file('avatar')))->name($slug)->path("/managers/avatars/$slug/")->save();            
-        }
-
+        ManagerRequest::get()->save();
         return redirect()->back()->with('db_feedback', $request->first_name.' '.$request->last_name.' has been successfully added to the team!');
     }
 
@@ -83,14 +67,7 @@ class ManagersController extends Controller
 
     public function update(Request $request, Manager $manager)
     {
-        ValidateManager::editCheck($request);
-        $manager->update($request->except('avatar'));
-        $slug = str_slug($request->first_name.' '.$request->last_name);
-
-        $manager->update(['slug' => $slug]);
-        if ($request->file('avatar')) {
-            (new Upload($request->file('avatar')))->name($slug)->path("/managers/avatars/$slug/")->replace();            
-        }
+        ManagerRequest::get()->update($manager);
         return redirect("admin/managers/$manager->slug/edit")->with('db_feedback', $manager->first_name.'\'s profile has been updated');
     }
 

@@ -29,6 +29,6 @@ class AuthorsTest extends TestCase
     {
         $author = $this->author;
 
-        $this->get($author->path())->assertSee($author->first_name);
+        $this->get($author->paths()->route())->assertSee($author->first_name);
     }
 }

@@ -7,6 +7,7 @@ use App\Article;
 use App\Mail\MailFactory;
 use App\Http\Controllers\Validators\ValidateBreaker;
 use Illuminate\Http\Request;
+use App\Http\Requests\AuthorRequest;
 
 class AuthorsController extends Controller
 {
@@ -20,7 +21,7 @@ class AuthorsController extends Controller
     {
         $breakers = Author::orderBy('first_name')->paginate(10);
 
-        return view('pages.presentation.breakers', compact('breakers'));
+        return view('pages/presentation/breakers', compact('breakers'));
     }
 
     // CREATE
@@ -31,19 +32,7 @@ class AuthorsController extends Controller
 
     public function store(Request $request)
     {
-        ValidateBreaker::createCheck($request);
-
-        $breaker = Author::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'slug' => str_slug($request->first_name.' '.$request->last_name),
-            'email' => $request->email,
-            'position' => $request->position,
-            'research_institute' => $request->research_institute,
-            'field_research' => $request->field_research,
-            'general_comments' => $request->general_comments
-        ]);
-        
+        $breaker = AuthorRequest::get()->save();
         MailFactory::sendWelcomeEmail($breaker);
         
         return redirect()->back()->with('db_feedback', 'The Breaker '.$request->first_name.' '.$request->last_name.' has been successfully added!');
@@ -70,9 +59,7 @@ class AuthorsController extends Controller
 
     public function update(Request $request, Author $author)
     {
-        ValidateBreaker::editCheck($request);
-        $author->update($request->all());
-        $author->update(['slug' => str_slug($request->first_name.' '.$request->last_name)]);
+        AuthorRequest::get()->update($author);
         return redirect('/admin/breakers/edit')->with('db_feedback', $author->first_name.'\'s profile has been updated');
     }
 

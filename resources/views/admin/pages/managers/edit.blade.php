@@ -117,7 +117,7 @@
                   <label><strong>Avatar</strong></label>
                   <div id="upload-box" class="card">
                     <input type="file" id="avatar" name="avatar" style="display:none;" />
-                    <img class="card-img-top" id="avatar-img" src="{{ asset($manager->avatar()) }}" alt="Not an image">
+                    <img class="card-img-top" id="avatar-img" src="{{ asset($manager->paths()->avatar()) }}" alt="Not an image">
                     <div class="card-body text-center">
                       <button type="button" id="upload-button" class="btn bg-default text-white"><i class="fa fa-cloud-upload mr-1" aria-hidden="true"></i>Upload</button>
                     </div>

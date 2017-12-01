@@ -88,7 +88,7 @@
               <select class="custom-select form-control mb-2 mr-sm-2" id="editor_id" name="editor_id">
                 <option  selected disabled>Editor</option>
                 @foreach ($editors as $editor)
-                <option value="{{ $editor->id }}" {{ ($article->editor_id == $editor->id) ? 'selected' : '' }}>{{ $editor->fullName() }}</option>
+                <option value="{{ $editor->id }}" {{ ($article->editor_id == $editor->id) ? 'selected' : '' }}>{{ $editor->resources()->fullName() }}</option>
                 @endforeach
               </select>
               @component('admin/snippets/error')
@@ -142,11 +142,11 @@
               <label><strong>Cover Image</strong></label>
               <div id="upload-box" class="card">
                 <input type="file" id="image" name="image" style="display:none;" />
-                <img class="card-img-top" id="cover-img" src="{{ asset($article->image()) }}" alt="Not an image">
+                <img class="card-img-top" id="cover-img" src="{{ asset($article->paths()->image()) }}" alt="Not an image">
                 <div class="card-body text-center">
                   <button type="button" id="upload-button" class="btn bg-default text-white my-1"><i class="fa fa-cloud-upload mr-1" aria-hidden="true"></i>Upload</button>
-                  @if ($article->image() != 'images/no-image.png')
-                  <button type="button" id="remove-image" class="btn btn-danger my-1" data-title="{{ $article->image() }}" data-slug="{{ $article->slug }}" data-toggle="modal" data-target="#delete_modal">
+                  @if ($article->paths()->image() != 'images/no-image.png')
+                  <button type="button" id="remove-image" class="btn btn-danger my-1" data-title="{{ $article->paths()->image() }}" data-slug="{{ $article->slug }}" data-toggle="modal" data-target="#delete_modal">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                   </button>
                   @endif
@@ -183,7 +183,7 @@
           @include('admin/snippets/order_breakers')
           <select required multiple class="form-control" size="12" id="authors" data-break-slug="{{ $article->slug }}" name="authors[]">
             @foreach ($authors as $author)
-            <option value="{{ $author->id }}" data-sort="{{ $author->orderIn($article) }}" {{ in_array($author->id, $article->authorsIds()) ? 'selected' : '' }}>{{ $author->fullName() }}
+            <option value="{{ $author->id }}" data-sort="{{ $author->resources()->orderIn($article) }}" {{ in_array($author->id, $article->resources()->authorsIds()) ? 'selected' : '' }}>{{ $author->resources()->fullName() }}
             </option>
             @endforeach
           </select>
@@ -233,8 +233,8 @@
           <label><strong>PDF</strong></label>
           <input type="file" class="form-control-file" id="pdf" name="pdf">
           <small class="form-text text-muted">
-            @if(File::exists($article->pdf()))
-            A PDF already exists. <strong><a class="text-success" href="{{ asset($article->pdf()) }}">Click here</a></strong> to view it.
+            @if(File::exists($article->paths()->pdf()))
+            A PDF already exists. <strong><a class="text-success" href="{{ asset($article->paths()->pdf()) }}">Click here</a></strong> to view it.
             @else
             This break is <u class="text-danger">missing</u> the PDF
             @endif

@@ -3,9 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Manager\TheScienceBreaker;
 
-class ArticleAuthor extends Model
+class ArticleAuthor extends TheScienceBreaker
 {
     protected $table = 'article_author';
-    protected $guarded = [];
 }
