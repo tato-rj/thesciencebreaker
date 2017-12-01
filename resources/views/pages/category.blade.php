@@ -10,7 +10,7 @@
 			{{-- Category title (icon and name) --}}
 			<div id="title" class="d-flex align-items-center mt-3">
 				<div>
-					<img src="{{ $category->iconPath() }}">
+					<img src="{{ $category->paths()->icon() }}">
 				</div>
 				<div class="ml-3">
 					<h2 class="mb-0 text-green"><strong>{{ $category->name }}</strong></h2>

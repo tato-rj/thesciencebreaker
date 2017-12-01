@@ -25,7 +25,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown-breaks">
 						@foreach ($categories as $category)
-						<a class="dropdown-item d-flex align-items-center" href="{{ $category->path() }}">{{ strtoupper($category->name) }}<span class="badge badge-warning ml-2">{{ $category->articles_count }}</span></a>
+						<a class="dropdown-item d-flex align-items-center" href="{{ $category->paths()->route() }}">{{ strtoupper($category->name) }}<span class="badge badge-warning ml-2">{{ $category->articles_count }}</span></a>
 						@endforeach
 					</div>
 				</li>

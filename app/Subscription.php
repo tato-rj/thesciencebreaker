@@ -3,12 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Manager\TheScienceBreaker;
 use Illuminate\Database\QueryException;
 
-class Subscription extends Model
+class Subscription extends TheScienceBreaker
 {
-	protected $guarded = [];
-
 	public static function createOrIgnore($email)
 	{
 		try

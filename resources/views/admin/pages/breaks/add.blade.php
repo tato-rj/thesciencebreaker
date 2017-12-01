@@ -33,7 +33,6 @@
               <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
                 {{-- Description --}}
                 <div class="form-group">
-                
                   <textarea class="form-control" name="description" id="description" rows="6" maxlength="400" placeholder="Description (max 500 characters)"">{{ old('description') }}</textarea>
                   {{-- Error --}}
                   @component('admin/snippets/error')
@@ -46,8 +45,7 @@
               </div>
               <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
                 <div class="form-group">
-                  {{-- Category --}}
-                
+                  {{-- Category --}}                
                   <select class="custom-select form-control" id="category_id" name="category_id">
                     <option  selected disabled>Category</option>
                     @foreach ($categories as $category)
@@ -62,12 +60,11 @@
                   @endcomponent
                 </div> 
                 <div class="form-group">
-                  {{-- Editor --}}
-                
+                  {{-- Editor --}}             
                   <select class="custom-select form-control mb-2 mr-sm-2" id="editor_id" name="editor_id">
                     <option  selected disabled>Editor</option>
                     @foreach ($editors as $editor)
-                      <option value="{{ $editor->id }}" {{ (old('editor_id') == $editor->id) ? 'selected' : '' }}>{{ $editor->fullName() }}</option>
+                      <option value="{{ $editor->id }}" {{ (old('editor_id') == $editor->id) ? 'selected' : '' }}>{{ $editor->resources()->fullName() }}</option>
                     @endforeach
                   </select>
                   @component('admin/snippets/error')
@@ -148,7 +145,7 @@
               <label><strong>Breakers</strong> <small>(you can select have as many as you need)</small></label>
               <select required multiple class="form-control" size="12" id="authors" name="authors[]">
                 @foreach ($authors as $author)
-                  <option value="{{ $author->id }}">{{ $author->fullName() }}</option>
+                  <option value="{{ $author->id }}">{{ $author->resources()->fullName() }}</option>
                 @endforeach
               </select>
             </div>
@@ -218,14 +215,11 @@ $('#upload-button').on('click', function() {
 });
 
 function readURL(input) {
-
   if (input.files && input.files[0]) {
     var reader = new FileReader();
-
     reader.onload = function(e) {
       $('#cover-img').attr('src', e.target.result);
     }
-
     reader.readAsDataURL(input.files[0]);
   }
 }

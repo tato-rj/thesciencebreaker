@@ -2,9 +2,6 @@
 
 Auth::routes();
 
-// Testing code
-Route::get('/testing-code', 'ArticlesController@testing');
-
 // Welcome page
 Route::get('/', 'ArticlesController@index')->name('home');
 // Breaks
@@ -24,7 +21,9 @@ Route::get('/unsubscribe', function() {
 	return view('pages.unsubscribe');
 });
 Route::delete('/unsubscribe', 'SubscriptionsController@unsubscribe');
-Route::get('/services/feed', 'ArticlesController@feed');
+// RSS Feed
+Route::get('/services/feed', 'FeedController@index');
+
 /*
 * 
 *	Presentation Pages

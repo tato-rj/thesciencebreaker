@@ -35,7 +35,7 @@ class CategoriesTest extends TestCase
             'category_id' => $category->id
         ]);
 
-        $this->get("{$category->path()}")
+        $this->get("{$category->paths()->route()}")
             ->assertSee($article_one->title)
             ->assertSee($article_two->title)
             ->assertSee($article_three->title);

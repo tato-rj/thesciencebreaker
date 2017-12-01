@@ -17,17 +17,17 @@
 @foreach($articles as $article)
   <entry>
     <title>{{$article->title}}</title>
-    <link href="{{ config('app.url').$article->path()}}"/>
+    <link href="{{ config('app.url').$article->paths()->route()}}"/>
     <id>{{$article->doi}}</id>
     <updated>{{$article->updated_at}}</updated>
     <summary>{{$article->description}}</summary>
-    <content>{{$article->preview()}}</content>
-    <category term="{{$article->tagsList()}}"/>
+    <content>{{$article->resources()->preview()}}</content>
+    <category term="{{$article->resources()->tagsList()}}"/>
     <published>{{$article->created_at}}</published>
 
     @foreach ($article->authors as $author)
       <author>
-        <name>{{$author->fullName()}}</name>
+        <name>{{$author->resources()->fullName()}}</name>
       </author>
     @endforeach
   

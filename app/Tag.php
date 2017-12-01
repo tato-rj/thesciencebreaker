@@ -3,10 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Manager\TheScienceBreaker;
 
-class Tag extends Model
+class Tag extends TheScienceBreaker
 {
-	protected $guarded = [];
 	protected $withCount = ['articles'];
 
     public function getRouteKeyName()

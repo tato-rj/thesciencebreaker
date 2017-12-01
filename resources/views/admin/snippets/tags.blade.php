@@ -18,7 +18,7 @@
         </div>
         <div class="tags">
         @foreach ($tags as $tag)
-          <span class="badge badge-pill m-1 {{ (in_array($tag->id, $article->tagsIds())) ? 'selected' : '' }}" data-id="{{ $tag->id }}">
+          <span class="badge badge-pill m-1 {{ (in_array($tag->id, $article->resources()->tagsIds())) ? 'selected' : '' }}" data-id="{{ $tag->id }}">
             <a>{{ $tag->name }} ({{ $tag->articles->count() }})</a>
           </span>
         @endforeach

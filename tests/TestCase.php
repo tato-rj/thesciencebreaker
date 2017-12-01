@@ -16,7 +16,6 @@ abstract class TestCase extends BaseTestCase
 
         $this->disableExceptionHandling();
 
-        
         $this->manager = factory('App\Manager')->create();
 		$this->author = factory('App\Author')->create();
 		$this->editor = factory('App\Manager')->create([

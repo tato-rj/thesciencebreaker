@@ -15,7 +15,7 @@
           <a class="collapsed" data-toggle="collapse" data-parent="#available_articles" href="#collapse{{$loop->iteration}}" aria-expanded="false" aria-controls="collapse{{$loop->iteration}}">
             <div class="card-header d-flex align-items-center justify-content-between" role="tab" id="heading{{$loop->iteration}}">
               <div class="d-flex align-items-center">
-                <img src="{{ $category->iconPath() }}" class="mr-2"><strong>{{$category->name}}</strong>
+                <img src="{{ $category->paths()->icon() }}" class="mr-2"><strong>{{$category->name}}</strong>
               </div>
               <div>
                 <span class="badge btn-theme-green">{{ count($category->available_articles) }} articles</span>

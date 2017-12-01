@@ -2,11 +2,11 @@
 
 namespace App;
 
+use App\Manager\TheScienceBreaker;
 use Illuminate\Database\Eloquent\Model;
 
-class Highlight extends Model
+class Highlight extends TheScienceBreaker
 {
-	protected $guarded = [];
     protected $with = ['article'];
 
     public function article()

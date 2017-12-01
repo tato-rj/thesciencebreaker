@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Files\Upload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Response;
+use App\Http\Requests\ArticleRequest;
 
 class ArticlesController extends Controller
 {
@@ -26,29 +26,15 @@ class ArticlesController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-    public function testing()
-    {
-        return 'Use this to test new code on the server';
-    }
-
     public function index()
     {
-        // Manager::generateSlugs();
         return view('pages.welcome');
-    }
-
-    public function feed()
-    {
-        $tags = Tag::all();
-        $articles = Article::all();
-        $content = view('feed', compact(['articles', 'tags']));
-        return Response::make($content, '200')->header('Content-Type', 'text/xml');
     }
 
     // CREATE
     public function create()
     {
-        $editors = Manager::editors();
+        $editors = Manager::editors()->get();
         $tags = Tag::orderBy('name')->get();
         $authors = Author::orderBy('first_name')->get();
         return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags']));
@@ -56,18 +42,7 @@ class ArticlesController extends Controller
 
     public function store(Request $request)
     {
-        $slug = str_slug($request->title);
-        ValidateBreak::createCheck($request);
-        Article::createFrom($request);
-
-        if ($request->file('pdf')) {
-            (new Upload($request->file('pdf')))->name($slug)->path("/breaks/")->save();            
-        }
-
-        if ($request->file('image')) {
-            (new Upload($request->file('image')))->name($slug)->path("/breaks/images/$slug/")->save();            
-        }
-
+        ArticleRequest::get()->save();
         return redirect()->back()->with('db_feedback', 'The Break has been successfully added!');
     }
 
@@ -75,7 +50,7 @@ class ArticlesController extends Controller
     public function show(Category $category, Article $article)
     {
 
-        $next_read = $article->suggestion();
+        $next_read = $article->resources()->suggestion();
         $more_like = Article::inRandomOrder()->take(4)->get();
         $more_from = $article->similar()->get();
         $article->increment('views');
@@ -96,30 +71,14 @@ class ArticlesController extends Controller
         $authors = Author::orderBy('first_name')->get();
         $breaks = Article::orderBy('title')->get();
         $tags = Tag::orderBy('name')->get();
-        $editors = Manager::editors();
+        $editors = Manager::editors()->get();
         return view('admin/pages/breaks/edit', compact(['editors', 'article', 'authors', 'tags', 'breaks']));
     }
 
     public function update(Request $request, Article $article)
     {
-        try {
-            $request->created_at = Carbon::parse("$request->created_at 00:00:00")->format('Y-m-d H:i:s');
-        } catch(\Exception $e) {
-            return redirect()->back()->withErrors(['Check the date format! It must be M/D/Y']);
-        }
-        
-        ValidateBreak::editCheck($request);
-        $article->updateFrom($request);
-        $slug = $article->slug;
 
-        if ($request->file('pdf')) {
-            (new Upload($request->file('pdf')))->name($slug)->path("/breaks/")->save();            
-        }
-
-        if ($request->file('image')) {
-            (new Upload($request->file('image')))->name($slug)->path("/breaks/images/$slug/")->replace();            
-        }
-
+        ArticleRequest::get()->update($article);
         return redirect()->back()->with('db_feedback', 'The Break has been updated');
     }
 

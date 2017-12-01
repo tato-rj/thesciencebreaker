@@ -39,7 +39,7 @@
 						<p>BREAKS</p>
 						@foreach ($categories as $category)
 						<li>
-							<a href="{{ $category->path() }}">
+							<a href="{{ $category->paths()->route() }}">
 								{{ strtolower($category->name) }}
 							</a>
 						</li>

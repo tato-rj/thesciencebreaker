@@ -68,14 +68,14 @@ class ArticlesTest extends TestCase
     public function article_page_shows_the_description()
     {
         factory('App\Highlight', 10)->create();
-        $this->get($this->article->path())->assertSee($this->article->description);
+        $this->get($this->article->paths()->route())->assertSee($this->article->description);
     }
     
     /** @test */
     public function guests_can_read_an_article()
     {
         factory('App\Highlight', 10)->create();
-        $this->get($this->article->path())->assertSee($this->article->title);
+        $this->get($this->article->paths()->route())->assertSee($this->article->title);
     }
 
     /** @test */
@@ -85,7 +85,7 @@ class ArticlesTest extends TestCase
         $article = $this->article;
         $article->tags()->attach($this->tag);
 
-        $this->get($article->path())->assertSee($article->tags->first()->name);
+        $this->get($article->paths()->route())->assertSee($article->tags->first()->name);
     }
 
     /** @test */
@@ -95,7 +95,7 @@ class ArticlesTest extends TestCase
             'views' => 10
         ]);
 
-        $this->get($this->article->path())->assertSee($popular_article->title);
+        $this->get($this->article->paths()->route())->assertSee($popular_article->title);
     }
 
     /** @test */

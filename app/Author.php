@@ -2,12 +2,13 @@
 
 namespace App;
 
-use App\ArticleAuthor;
+use App\Manager\TheScienceBreaker;
 use Illuminate\Database\Eloquent\Model;
+use App\Resources\AuthorPaths;
+use App\Resources\AuthorResources;
 
-class Author extends Model
+class Author extends TheScienceBreaker
 {
-    protected $guarded = [];
     protected $withCount = ['articles'];
 
     public function getRouteKeyName()
@@ -15,37 +16,19 @@ class Author extends Model
         return 'slug';
     }
     
+    public function resources()
+    {
+        return new AuthorResources($this);
+    }
+
+    public function paths()
+    {
+        return new AuthorPaths($this);
+    }
+
     public function articles()
     {
     	return $this->belongsToMany('App\Article')->withTimestamps();
     }
 
-    public function fullName()
-    {
-    	return $this->first_name.' '.$this->last_name;
-    }
-
-    public function path()
-    {
-        return "/breakers/$this->slug";
-    }
-
-    public function isAuthorOf($article)
-    {
-        return (stripos(' '.$article, $this->last_name));
-    }
-
-    public static function generateSlugs()
-    {
-        foreach (self::all() as $author) {
-            $author->update([
-                'slug' => str_slug($author->first_name.' '.$author->last_name)
-            ]);
-        }
-    }
-
-    public function orderIn($article)
-    {
-        return ArticleAuthor::where('article_id', $article->id)->where('author_id', $this->id)->pluck('relevance_order')->first();
-    }
 }

@@ -5,7 +5,7 @@
 <div class="container mt-4">
 	<ol class="breadcrumb jumbotron py-3 mb-2">
 		<li class="breadcrumb-item"><a href="/the-team">The Team</a></li>
-		<li class="breadcrumb-item active">{{ $member->fullName() }}</li>
+		<li class="breadcrumb-item active">{{ $member->resources()->fullName() }}</li>
 	</ol>
 
 	<div class="row" id="member-container">
@@ -19,16 +19,16 @@
 				<p>{{ $member->biography }}</p>
 				@endif
 
-				@if ($member->editedArticlesCount() > 0)
+				@if ($member->resources()->editedArticlesCount() > 0)
 
-				<p>{{ $member->first_name }} is the editor of <strong>{{ $member->editedArticlesCount() }}</strong> {{ str_plural('Break', $member->editedArticlesCount()) }}:</p>
+				<p>{{ $member->first_name }} is the editor of <strong>{{ $member->resources()->editedArticlesCount() }}</strong> {{ str_plural('Break', $member->resources()->editedArticlesCount()) }}:</p>
 				<div class="row no-gutters">
-					@foreach ($member->editedArticles() as $article)
+					@foreach ($member->resources()->editedArticles() as $article)
 					@include('components/partials/grids/columns')				
 					@endforeach
 				</div>
 
-				{{ $member->editedArticles()->links() }}
+				{{ $member->resources()->editedArticles()->links() }}
 
 				@endif
 			</div>
