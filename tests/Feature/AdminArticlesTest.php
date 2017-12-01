@@ -298,7 +298,5 @@ class AdminArticlesTest extends TestCase
         ]);
 
         $this->assertNotEquals($old_date, $article->fresh()->created_at);
-
     }
-
 }

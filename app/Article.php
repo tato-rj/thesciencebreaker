@@ -48,5 +48,4 @@ class Article extends TheScienceBreaker
     {
         return $this->belongsToMany('App\Tag');
     }
-
 }

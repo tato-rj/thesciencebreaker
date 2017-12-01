@@ -48,7 +48,7 @@ class ArticleRequest extends Form
             'original_article' => $this->original_article,
             'category_id' => $this->category_id,
             'editor_id' => $this->editor_id,
-            'doi' => Article::createDoi(),
+            'doi' => (new Article)->resources()->createDoi(),
             'editor_pick' => $this->editor_pick
         ]);
 
