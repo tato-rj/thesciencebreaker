@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
@@ -9,7 +10,8 @@ class AppController extends Controller
 {
     public function breaks()
     {
-    	$articlesQuery = ['articles.id as break_id', 'title', 'views', 'articles.slug as article_slug', 'content', 'reading_time', 'original_article', 'doi as imzy_link', 'articles.created_at as date_created'];
+
+    	$articlesQuery = ['articles.id as break_id', 'title', 'views', 'articles.slug as article_slug', 'content', 'description','image_caption', 'image_credits', 'reading_time', 'original_article', 'doi as disqus_url', 'articles.created_at as date_created'];
     	$categoriesQuery = ['categories.id as category_id', 'name as category_name', 'categories.slug as category_slug'];
     	$managersQuery = ['managers.id as editor_id', 'managers.first_name as editor_first_name', 'managers.last_name as editor_last_name', 'managers.position as editor_position'];
 
@@ -21,11 +23,16 @@ class AppController extends Controller
     	->get();
  
     	foreach ($breaks as $break) {
-    		if (File::exists("storage/app/breaks/images/$break->article_slug")) {
+    		// Add image
+            if (File::exists("storage/app/breaks/images/$break->article_slug")) {
 	    		$file = File::allFiles("storage/app/breaks/images/$break->article_slug");
 	    		$path = (count($file)) ? asset($file[0]): 'no-image';
 	    		$break->image = $path;
     		}
+            // Add tags
+            $break->tags = Article::find($break->break_id)->tags()->pluck('name')->toArray();
+            // Add authors
+            $break->authors = Article::find($break->break_id)->authors()->select('first_name', 'last_name', 'relevance_order')->get()->toArray();
     	}
 
     	return $breaks;
