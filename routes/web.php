@@ -95,6 +95,7 @@ Route::get('/app/breaks', 'AppController@breaks');
 Route::get('/app/picks', 'AppController@picks');
 Route::get('/app/tags', 'AppController@tags');
 Route::get('/app/breakers', 'AppController@breakers');
+Route::get('/app/suggestions', 'AppController@suggestions');
 
 /*
 * 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Article;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Http\Request;
 
 class AppController extends Controller
 {
@@ -85,5 +86,21 @@ class AppController extends Controller
     	->leftJoin('tags', 'article_tag.tag_id', '=', 'tags.id')
     	->get();
     	return $breakers;
+    }
+
+    public function suggestions(Request $request)
+    {
+        $article = Article::find($request->id);
+        $collection = [];
+        foreach ($article->tags as $tag) {
+            foreach ($tag->articles as $article) {
+                ($article->id != $article->id) ? array_push($collection, $article) : null;
+            }
+        }
+        array_unique($collection);
+        if (count($collection) > 4) {
+            $collection = array_slice($collection, 0, 4);
+        }
+        return (count($collection)) ? $collection : Article::inRandomOrder()->take(4)->get();
     }
 }

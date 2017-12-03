@@ -2,6 +2,9 @@
 
 namespace App\Resources;
 
+use Illuminate\Support\Collection;
+use App\Article;
+
 class ArticleResources extends Resources
 {
     public function tagsIds()
@@ -40,7 +43,7 @@ class ArticleResources extends Resources
         return implode(" ", array_splice($pieces, 0, 45));
     }
 
-    public function suggestion()
+    public function nextRead()
     {
         if (count($this->model->tags)) {
             $collection = $this->model->tags()->inRandomOrder()->first();
@@ -55,6 +58,21 @@ class ArticleResources extends Resources
         }
 
         return $this->model->category->articles->where('slug', '!=', $this->model->slug)->first();
+    }
+
+    public function suggestions()
+    {
+        $collection = [];
+        foreach ($this->model->tags as $tag) {
+            foreach ($tag->articles as $article) {
+                ($article->id != $this->model->id) ? array_push($collection, $article) : null;
+            }
+        }
+        array_unique($collection);
+        if (count($collection) > 4) {
+            $collection = array_slice($collection, 0, 4);
+        }
+        return (count($collection)) ? $collection : Article::inRandomOrder()->take(4)->get();
     }
 
     public function createDoi()

@@ -45,8 +45,8 @@ class ArticlesController extends Controller
     public function show(Category $category, Article $article)
     {
 
-        $next_read = $article->resources()->suggestion();
-        $more_like = Article::inRandomOrder()->take(4)->get();
+        $next_read = $article->resources()->nextRead();
+        $more_like = $article->resources()->suggestions();
         $more_from = $article->similar()->get();
         $article->increment('views');
         return view('pages.article', compact(['article', 'more_from', 'more_like', 'next_read']));
