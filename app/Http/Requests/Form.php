@@ -69,7 +69,7 @@ abstract class Form
         }
 
         if ($this->request->file('avatar')) {
-            (new Upload($this->request->file('avatar')))->name($this->slug)->path("/managers/avatars/$this->slug/")->save();            
+            (new FileUpload($this->request->file('avatar')))->name($this->slug)->path("/managers/avatars/$this->slug/")->save();            
         }
     }
 

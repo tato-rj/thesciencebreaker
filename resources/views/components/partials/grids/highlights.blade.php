@@ -5,7 +5,7 @@
 		</a>
 		<div class="card-block px-2 py-3">
 			<a class="text-default" href="{{ $highlights->get(0)->article->paths()->route() }}">
-				<h4 class="card-title mb-2"><strong>{{ $highlights->get(0)->article->title }}</strong></h4>
+				<h4 class="card-title mb-2">{{ $highlights->get(0)->article->title }}</h4>
 			</a>
 			<p class="card-text text-muted mb-2 l-height-1">{{ $highlights->get(0)->article->description }}</p>
 			<small class="d-block">published on {{ $highlights->get(0)->article->created_at->toFormattedDateString() }}</small>

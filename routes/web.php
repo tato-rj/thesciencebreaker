@@ -111,6 +111,7 @@ Route::get('/admin/breaks/add', 'ArticlesController@create');
 Route::get('/admin/breaks/edit', 'ArticlesController@selectEdit');
 Route::get('/admin/breaks/{article}/edit', 'ArticlesController@edit');
 Route::get('/admin/breaks/delete', 'ArticlesController@selectDelete');
+Route::get('/admin/preview-doi', 'ArticlesController@previewDOI');
 
 Route::post('/admin/breaks', 'ArticlesController@store');
 Route::post('/admin/breaks/{article}/breakers-order', 'ArticlesController@authorsOrder');

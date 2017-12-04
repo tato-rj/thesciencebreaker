@@ -22,9 +22,13 @@ class SubscriptionsController extends Controller
     }
 
     // READ
-    public function index()
+    public function index(Request $request)
     {
-        $subscriptions = Subscription::paginate(40);
+        $sort = ($request->sort) ? $request->sort : 'created_at';
+        $order = ($sort == 'email') ? 'ASC' : 'DESC';
+        $show = ($request->show) ? $request->show : 20;
+
+        $subscriptions = Subscription::orderBy($sort, $order)->paginate($show);
         $subscriptions_count = Subscription::count();
 
         $excel = Excel::create('subscriptions', function($excel) use ($subscriptions) {

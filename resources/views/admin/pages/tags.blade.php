@@ -38,6 +38,25 @@
         </form>          
       </div>
       <div class="row">
+        <div class="col-8 mx-auto">
+          {{-- Sort results bar --}}
+          @component('components/snippets/sort_bar')
+            showing <strong>{{ $tags->firstItem() }}-{{ $tags->lastItem() }}</strong> of {{ $tags->total() }}<span class="d-none d-sm-inline"> tags</span>
+
+            @slot('show')
+            <option value="20" {{ (Request::input('show') == '20') ? 'selected' : '' }}>20</option>
+            <option value="40" {{ (Request::input('show') == '40') ? 'selected' : '' }}>40</option>
+            <option value="80" {{ (Request::input('show') == '80') ? 'selected' : '' }}>80</option>
+            <option value="{{ $tags->total() }}" {{ (Request::input('show') == $tags->total()) ? 'selected' : '' }}>all</option>
+            @endslot
+
+            @slot('sort')
+            <option value="created_at" {{ (Request::input('sort') == 'created_at') ? 'selected' : '' }}>newest</option>
+            <option value="articles_count" {{ (Request::input('sort') == 'articles_count') ? 'selected' : '' }}>most used</option>
+            <option value="name" {{ (Request::input('sort') == 'name') ? 'selected' : '' }}>tag (a to z)</option>
+            @endslot
+          @endcomponent
+        </div>
         <div class="col-12 text-center">   
           <p class="text-muted mb-2">
             <i class="fa fa-exclamation-circle mr-2" aria-hidden="true"></i>
@@ -51,18 +70,13 @@
               {{$tag->name}}
             </p>
               <i data-toggle="modal" data-target="#delete_modal" data-id="{{ $tag->id }}" data-name="{{ $tag->name }}" class="ml-2 fa fa-trash align-middle cursor-link" aria-hidden="true"></i>
-              <i data-toggle="modal" data-target="#edit_modal" data-id="{{ $tag->id }}" data-name="{{ $tag->name }}" class="ml-2 fa fa-pencil-square-o align-middle cursor-link" aria-hidden="true"></i>
+              <i data-toggle="modal" data-target="#edit_modal" data-id="{{ $tag->id }}" data-name="{{ $tag->name }}" data-count="{{ $tag->articles_count }}" class="ml-2 fa fa-pencil-square-o align-middle cursor-link" aria-hidden="true" style="margin-top: 3px"></i>
           </div>
-{{--           <h5 class="m-1">
-            <span class="subscription badge badge-default">{{ $tag->name }}
-              <i data-toggle="modal" data-target="#delete_modal" data-id="{{ $tag->id }}" class="ml-2 fa fa-times-circle align-middle" aria-hidden="true"></i>
-            </span>
-          </h5> --}}
           @endforeach
         </div>
-{{--         <div class="col-12 d-flex justify-content-center">
-          {{ $subscriptions->links() }}
-        </div> --}}
+        <div class="col-12 d-flex justify-content-center">
+          {{ $tags->links() }}
+        </div>
       </div>
 
       @include('admin/snippets/confirm_delete')
@@ -84,9 +98,11 @@ $('.fa-trash').on('click', function() {
 $('.fa-pencil-square-o').on('click', function() {
   $id = $(this).attr('data-id');
   $name = $(this).attr('data-name');
+  $count = $(this).attr('data-count');
 
   $('#edit_modal form').attr('action', '/admin/tags/'+$name);
   $('#edit_modal input[name="tag"]').val($name);
+  $('#edit_modal span#count').text($count);
 });
 </script>
 @endsection

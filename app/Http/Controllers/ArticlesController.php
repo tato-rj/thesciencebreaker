@@ -26,6 +26,11 @@ class ArticlesController extends Controller
         return view('pages.welcome');
     }
 
+    public function previewDOI()
+    {
+        return (new Article)->resources()->createDoi();
+    }
+
     // CREATE
     public function create()
     {

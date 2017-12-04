@@ -15,9 +15,11 @@
         <div class="form-group mb-0">
           <input type="text" class="form-control" name="tag">
         </div>
+        <p class="mt-2 mb-2">
+          <small>This tag is linked to <strong><span id="count"></span></strong> break(s)</small>
+        </p>
       </div>
       <div class="modal-footer">
-
           <button type="submit" class="btn btn-theme-orange">Update tag</button>
         </form>
       </div>

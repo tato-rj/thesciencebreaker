@@ -21,9 +21,13 @@ class TagsController extends Controller
     }
 
     // READ
-    public function index()
+    public function index(Request $request)
     {
-        $tags = Tag::orderBy('name')->get();
+        $sort = ($request->sort) ? $request->sort : 'created_at';
+        $order = ($sort == 'name') ? 'ASC' : 'DESC';
+        $show = ($request->show) ? $request->show : 20;
+
+        $tags = Tag::orderBy($sort, $order)->paginate($show);
         return view('admin/pages/tags', compact('tags'));
     }
 

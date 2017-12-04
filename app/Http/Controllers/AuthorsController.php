@@ -15,9 +15,12 @@ class AuthorsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $breakers = Author::orderBy('first_name')->paginate(10);
+        $sort = ($request->sort) ? $request->sort : 'created_at';
+        $order = ($sort == 'first_name' || $sort == 'last_name') ? 'ASC' : 'DESC';
+        $show = ($request->show) ? $request->show : 5;
+        $breakers = Author::orderBy($sort, $order)->paginate($show);
 
         return view('pages/presentation/breakers', compact('breakers'));
     }

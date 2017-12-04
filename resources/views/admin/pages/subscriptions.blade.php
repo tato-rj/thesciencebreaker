@@ -40,6 +40,24 @@
       </div>
 
       <div class="row">
+        <div class="col-8 mx-auto">
+          {{-- Sort results bar --}}
+          @component('components/snippets/sort_bar')
+            showing <strong>{{ $subscriptions->firstItem() }}-{{ $subscriptions->lastItem() }}</strong> of {{ $subscriptions->total() }}<span class="d-none d-sm-inline"> subscriptions</span>
+
+            @slot('show')
+            <option value="20" {{ (Request::input('show') == '20') ? 'selected' : '' }}>20</option>
+            <option value="40" {{ (Request::input('show') == '40') ? 'selected' : '' }}>40</option>
+            <option value="80" {{ (Request::input('show') == '80') ? 'selected' : '' }}>80</option>
+            <option value="{{ $subscriptions->total() }}" {{ (Request::input('show') == $subscriptions->total()) ? 'selected' : '' }}>all</option>
+            @endslot
+
+            @slot('sort')
+            <option value="created_at" {{ (Request::input('sort') == 'created_at') ? 'selected' : '' }}>newest</option>
+            <option value="email" {{ (Request::input('sort') == 'email') ? 'selected' : '' }}>email (a to z)</option>
+            @endslot
+          @endcomponent
+        </div>
         <div class="col-12 text-center">   
           <p class="text-muted mb-2">
             <i class="fa fa-exclamation-circle mr-2" aria-hidden="true"></i>

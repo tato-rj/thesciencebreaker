@@ -30,6 +30,12 @@
               @endcomponent
             </div>
             <div class="row">
+              <div class="col-12 ml-2">
+                <p class="mb-0"><small id="url-preview"></small></p>
+                <p><small id="doi-preview"></small></p>
+              </div>
+            </div>
+            <div class="row">
               <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
                 {{-- Description --}}
                 <div class="form-group">
@@ -227,5 +233,40 @@ function readURL(input) {
 $("input#image").change(function() {
   readURL(this);
 });
+</script>
+<script type="text/javascript">
+$('input[name="title"], select[name="category_id"]').on('keyup change', function() {
+  $title = $('input[name="title"]').val();
+  $category = $('#category_id option:selected').text();
+  $url = $('#url-preview');
+  $doi = $('#doi-preview');
+  
+  $input = removeSpecialCharacters($title);
+  $category = removeSpecialCharacters($category);
+
+  $category_slug = createSlug($category);
+  $title_slug = createSlug($input);
+
+  if ($title != '') {
+    if ($category_slug != 'category') {
+      $url.html('<strong>URL</strong> https://www.thesciencebreaker.com/breaks/'+$category_slug+'/'+$title_slug);
+    } else {
+      $url.html('<strong>URL</strong> select the category to display a preview');
+    }
+    $.get("/admin/preview-doi", function(data, status){
+      $doi.html('<strong>DOI</strong> '+data);
+    });
+  } else {
+    $url.html('');
+    $doi.html('');
+  }
+});
+
+function removeSpecialCharacters ($string) {
+  return $string.replace(/[^a-zA-Z 0-9]+/g, '');
+}
+function createSlug ($string) {
+  return $string.replace(/\s+/g, '-').toLowerCase()
+}
 </script>
 @endsection
