@@ -36,7 +36,7 @@
 			@foreach ($articles as $article)
 				@include('components/partials/grids/results')
 			@endforeach
-			{{ $articles->links() }}
+			{{ $articles->appends(Request::except('page'))->links() }}
 		</div>
 		{{-- Side Bar --}}
 		@include('components/partials/side_bars/suggestions')

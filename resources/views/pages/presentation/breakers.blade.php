@@ -42,7 +42,7 @@
         <p class="mt-2 ml-4 mb-4"><em><u>{!! html_entity_decode($member->general_comments) !!}</u></em></p>
       </div>
       @endforeach
-      {{ $breakers->links() }}
+      {{ $breakers->appends(Request::except('page'))->links() }}
 
     </div>
 

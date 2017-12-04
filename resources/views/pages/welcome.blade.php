@@ -118,23 +118,39 @@
 	--}}
 
 	<div id="by-subject" class="row mt-3">
-		<div class="col-12">
+		<div class="col-lg-8">
 			@component('components/snippets/title')
 			Breaks by category
 			@endcomponent
-		</div>
-		<div class="d-flex flex-row justify-content-center align-items-center flex-wrap" id="subject-icons">
-			@foreach ($categories as $category)
-			<a href="{{ $category->paths()->route() }}">
-				<div class="icon-wrapper">
-					<img src="{{ $category->paths()->icon() }}">
-					<div class="d-flex align-items-center justify-content-center flex-column text-center">
-						<h5><strong>{{ $category->name }}</strong></h5>
-						<h5><strong>{{ $category->articles_count }} Breaks</strong></h5>
+			<div class="d-flex flex-row justify-content-center align-items-center flex-wrap" id="subject-icons">
+				@foreach ($categories as $category)
+				<a href="{{ $category->paths()->route() }}">
+					<div class="icon-wrapper">
+						<img src="{{ $category->paths()->icon() }}">
+						<div class="d-flex align-items-center justify-content-center flex-column text-center">
+							<h5><strong>{{ $category->name }}</strong></h5>
+							<h5><strong>{{ $category->articles_count }} Breaks</strong></h5>
+						</div>
 					</div>
+				</a>
+				@endforeach
+			</div>			
+		</div>
+		<div class="col-lg-4">
+						@component('components/snippets/title')
+			Popular topics
+			@endcomponent
+							<div class="d-flex flex-wrap">
+					@foreach ($topics as $topic)
+					
+						<div class="d-flex tags m-1">
+							<a href="{{ $topic->path() }}">
+								<span class="badge badge-pill">{{ $topic->name }}</span>
+							</a>
+						</div>
+					
+					@endforeach
 				</div>
-			</a>
-			@endforeach
 		</div>
 	</div>
 	

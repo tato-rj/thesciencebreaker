@@ -42,5 +42,21 @@
 				</div>
 			@endforeach
 		</div>
+		@if(isset($topics))
+			<div>
+				<strong><p class="mb-3">Popular topics</p></strong>
+				<div class="d-flex flex-wrap">
+					@foreach ($topics as $topic)
+					
+						<div class="d-flex tags m-1">
+							<a href="{{ $topic->path() }}">
+								<span class="badge badge-pill">{{ $topic->name }}</span>
+							</a>
+						</div>
+					
+					@endforeach
+				</div>
+			</div>
+		@endif
 	</div>
 </div>

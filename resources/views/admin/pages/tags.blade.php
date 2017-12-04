@@ -52,7 +52,7 @@
 
             @slot('sort')
             <option value="created_at" {{ (Request::input('sort') == 'created_at') ? 'selected' : '' }}>newest</option>
-            <option value="articles_count" {{ (Request::input('sort') == 'articles_count') ? 'selected' : '' }}>most used</option>
+            <option value="articles_count" {{ (Request::input('sort') == 'articles_count') ? 'selected' : '' }}>number of usage</option>
             <option value="name" {{ (Request::input('sort') == 'name') ? 'selected' : '' }}>tag (a to z)</option>
             @endslot
           @endcomponent
@@ -65,17 +65,24 @@
         </div>
         <div class="col-lg-10 col-md-12 mx-auto d-flex align-items-center justify-content-center flex-wrap">
           @foreach ($tags as $tag)
-          <div class="d-flex align-items-center justify-content-center p-1 px-2 m-2 tag-item round-corners">
+          <div class="d-flex align-items-center justify-content-center  flex-column p-1 px-2 m-2 tag-item round-corners">
+            <div class="d-flex align-items-center bb-1 pb-1">
             <p class="m-0">
-              {{$tag->name}}
+              <strong>{{$tag->name}}</strong>
             </p>
               <i data-toggle="modal" data-target="#delete_modal" data-id="{{ $tag->id }}" data-name="{{ $tag->name }}" class="ml-2 fa fa-trash align-middle cursor-link" aria-hidden="true"></i>
               <i data-toggle="modal" data-target="#edit_modal" data-id="{{ $tag->id }}" data-name="{{ $tag->name }}" data-count="{{ $tag->articles_count }}" class="ml-2 fa fa-pencil-square-o align-middle cursor-link" aria-hidden="true" style="margin-top: 3px"></i>
+            </div>
+            <div>
+              <small>
+                {{$tag->articles_count}} breaks
+              </small>
+            </div>
           </div>
           @endforeach
         </div>
         <div class="col-12 d-flex justify-content-center">
-          {{ $tags->links() }}
+          {{ $tags->appends(Request::except('page'))->links() }}
         </div>
       </div>
 

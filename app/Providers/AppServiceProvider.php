@@ -27,7 +27,11 @@ class AppServiceProvider extends ServiceProvider
         });
         
         \View::composer('components/partials/side_bars/suggestions', function($view) {
-            $view->with('editor_picks', Article::editorPicks()->get());  
+            $view->with('editor_picks', Article::editorPicks()->get()); 
+        });
+
+        \View::composer(['pages/welcome', 'pages/article', 'pages/category'], function($view) {
+            $view->with('topics', Tag::orderBy('articles_count', 'DESC')->take(25)->get()); 
         });
 
         \View::composer('pages/welcome', function($view) {
