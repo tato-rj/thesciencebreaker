@@ -3,12 +3,14 @@
 @section('content')
 
 <div class="container mt-4">
-	<ol class="breadcrumb jumbotron py-3 mb-2">
-		<li class="breadcrumb-item"><a href="/breakers">Breakers</a></li>
-		<li class="breadcrumb-item active">{{ $author->resources()->fullName() }}</li>
-	</ol>
 	<div class="row" id="author">
 		<div class="col-lg-9 col-md-12">
+			@component('components/snippets/back')
+				@slot('url')
+				/breakers
+				@endslot
+				Back to Breakers
+			@endcomponent
 			<div class="mt-4 mb-4">
 				<div class="d-flex align-items-baseline">
 					<h4><i class="fa fa-user mr-2" aria-hidden="true"></i><strong>{{ $author->resources()->fullName() }}</strong></h4>

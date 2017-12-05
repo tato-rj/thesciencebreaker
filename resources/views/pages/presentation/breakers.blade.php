@@ -35,7 +35,7 @@
         <p class="ml-2 mb-0">{{ $member->position }} at {{ $member->research_institute }}.</p>
         <p class="ml-2 mb-0">
           
-            <small><strong class="text-muted"><i class="fa fa-book mr-1" aria-hidden="true"></i> {{ $member->resources()->fullName() }} has {{ $member->articles_count }} published {{ str_plural('break', $member->articles_count) }}</strong></small>
+            <small><strong class="text-muted"><i class="fa fa-book mr-1" aria-hidden="true"></i> {{ $member->resources()->fullName() }} has {{ $member->articles_count }} {{ str_plural('break', $member->articles_count) }} published</strong></small>
           
           </p>
         <p class="ml-2"><small><a href="{{ $member->paths()->route() }}">Click here</a> for more info</small></p>

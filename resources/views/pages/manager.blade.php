@@ -3,11 +3,12 @@
 @section('content')
 
 <div class="container mt-4">
-	<ol class="breadcrumb jumbotron py-3 mb-2">
-		<li class="breadcrumb-item"><a href="/the-team">The Team</a></li>
-		<li class="breadcrumb-item active">{{ $member->resources()->fullName() }}</li>
-	</ol>
-
+	@component('components/snippets/back')
+		@slot('url')
+		/the-team
+		@endslot
+		Back to The Team
+	@endcomponent
 	<div class="row" id="member-container">
 		<div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
 			@include('components/snippets/avatars/profile')
