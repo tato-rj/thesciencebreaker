@@ -203,6 +203,7 @@ a.breaker {
         border: 1px solid lightgrey;
         border-top: 0;
         display: none;
+        z-index: 5;
 
         > div {
             padding: .5em;

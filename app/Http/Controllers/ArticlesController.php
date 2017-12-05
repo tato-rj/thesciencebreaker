@@ -58,20 +58,13 @@ class ArticlesController extends Controller
     }
 
     // UPDATE
-    public function selectEdit()
-    {
-        $breaksByCategory = Category::with(['articles' => function($query) {
-            return $query->orderBy('created_at', 'DESC');
-        }])->get();
-        return view('admin/pages/breaks/selectEdit', compact(['breaksByCategory']));
-    }
-
-    public function edit(Article $article)
+    public function edit(Article $article = null)
     {
         $authors = Author::orderBy('first_name')->get();
         $breaks = Article::orderBy('title')->get();
         $tags = Tag::orderBy('name')->get();
         $editors = Manager::editors()->get();
+
         return view('admin/pages/breaks/edit', compact(['editors', 'article', 'authors', 'tags', 'breaks']));
     }
 

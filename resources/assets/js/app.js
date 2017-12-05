@@ -19,3 +19,4 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 $('form').submit(function(){
     $(this).find(':input[type=submit]').prop('disabled', true).val('Working on it...');
 });
+

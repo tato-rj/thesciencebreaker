@@ -29,6 +29,12 @@
           @endforeach
         </select>
       </div>
+      <div class="form-group">
+        @include('components/snippets/search')
+      </div>
+      
+
+      @if($article)
       <small class="text-muted pull-right d-none d-sm-block"><em>This break was last updated on {{ $article->updated_at->toDayDateTimeString() }}</em></small>
       <form method="POST" action="/admin/breaks/{{ $article->slug }}" enctype="multipart/form-data">
         {{csrf_field()}}
@@ -263,20 +269,37 @@
         </div>
         <input type="submit" value="Submit" class="btn btn-theme-orange">
       </form>
+      @include('admin/snippets/tags')
+      @include('admin/snippets/confirm_delete')
+      @endif
+
     </div>
   </div>
 </div>
-@include('admin/snippets/tags')
-@include('admin/snippets/confirm_delete')
+
 @endsection
 
 @section('scripts')
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+@include('javascript/search')
+
 <script type="text/javascript">
-$('.datepicker').datepicker();  
+  awesomeSearch('/search/breaks', ['title'], 'admin');
 </script>
 
 <script type="text/javascript">
+    $('select#break_id').on('change', function() {
+    $slug = $(this).find(':selected').attr('data-slug');
+    window.location.href = '/admin/breaks/'+$slug+'/edit';
+  });
+</script>
+
+@if($article)
+
+<script type="text/javascript">
+$('.datepicker').datepicker();  
+
   $('#remove-image').on('click', function() {
     $slug = $(this).attr('data-slug');
     $title = $(this).attr('data-title');
@@ -375,14 +398,6 @@ $('#temp_list').html('');
       $('.modal #fail').fadeIn().delay(1000).fadeOut('fast');
     });
   });
-
- 
-
-  $('select#break_id').on('change', function() {
-    $slug = $(this).find(':selected').attr('data-slug');
-    window.location.href = '/admin/breaks/'+$slug+'/edit';
-  });
-
 </script>
 <script type="text/javascript">
   $('#upload-button').on('click', function() {
@@ -406,5 +421,5 @@ $('#temp_list').html('');
     readURL(this);
   });
 </script>
-
+@endif
 @endsection

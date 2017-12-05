@@ -12,7 +12,7 @@ class AuthorsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     public function index(Request $request)
@@ -23,21 +23,6 @@ class AuthorsController extends Controller
         $breakers = Author::orderBy($sort, $order)->paginate($show);
 
         return view('pages/presentation/breakers', compact('breakers'));
-    }
-
-    public function search(Request $request)
-    {
-        if ($request->name != '') {
-            $results = Author::
-                where('first_name', 'LIKE', '%'.$request->name.'%')->
-                orWhere('last_name', 'LIKE', '%'.$request->name.'%')->take(10)->get();
-
-            foreach ($results as $result) {
-                $result->url = $result->paths()->route();
-            }
-
-            return $results;
-        }        
     }
 
     // CREATE
@@ -61,13 +46,7 @@ class AuthorsController extends Controller
     }
 
     // UPDATE
-    public function selectEdit()
-    {
-        $breakers = Author::orderBy('first_name')->get();
-        return view('admin/pages/breakers/selectEdit', compact(['breakers']));
-    }
-
-    public function edit(Author $author)
+    public function edit(Author $author = null)
     {
         $breakers = Author::orderBy('first_name')->get();
         return view('admin/pages/breakers/edit', compact(['author', 'breakers']));

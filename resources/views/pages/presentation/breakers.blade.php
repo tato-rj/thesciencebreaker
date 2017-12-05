@@ -26,16 +26,9 @@
         <option value="last_name" {{ (Request::input('sort') == 'last_name') ? 'selected' : '' }}>last name (a to z)</option>
         @endslot
       @endcomponent
-      <div id="search-group">
-        <input type="text" name="search" autocomplete="off" class="simple-box p-1 pl-2" placeholder="Type here to search...">
-        <div id="search-results">
-          <div class="d-none">
-            <a href="" class="breaker no-a-underline">
-              <div></div>
-            </a>
-          </div>
-        </div>
-      </div>
+
+      @include('components/snippets/search')
+      
       @foreach ($breakers as $member)
       <div class="mt-3">
         <p class="no-indent mb-2">
@@ -63,37 +56,11 @@
 @endsection
 
 @section('scripts')
-<script type="text/javascript">
-$(document).click(function(event) {
-    $('#search-group > div').fadeOut('fast');
-    $('#search-results > div').not('.d-none').remove();
-    $container.find('> p').remove();
-});
 
-$('#search-group input[name="search"]').on('keyup', function() {
-  $search_container = $('#search-group > div');
-  $input = $(this).val();
-    $.post('/search/breakers',
-    {
-      name: $input
-    },
-    function(data, status){
-        $container = $('#search-results');
-        $container.find('> div').not('.d-none').remove();
-        $container.find('> p').remove();
-        $.each(data, function(index, author) {
-          $result_box = $container.find('.d-none').clone().removeClass('d-none');
-          $breaker = $result_box.find('.breaker');
-          $breaker.find('> div').text(author['first_name']+' '+author['last_name']);
-          $breaker.attr('href', author['url']);
-          $container.append($result_box);
-        });
-        if (data.length == 10) {
-          $container.append('<p><small>Too many results! Narrow your search a bit more...</small></p>');
-        }
-        $container.fadeIn('fast');
-    });
-  
-});
+@include('javascript/search')
+
+<script type="text/javascript">
+  awesomeSearch('/search/breakers', ['first_name', 'last_name'], 'url');
 </script>
+
 @endsection

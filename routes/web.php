@@ -16,7 +16,8 @@ Route::get('/breaks/{category}', 'CategoryController@show');
 Route::get('/tags/{tag}', 'TagsController@show');
 // Search
 Route::get('/search', 'SearchController@index');
-Route::post('/search/breakers', 'AuthorsController@search');
+Route::post('/search/breakers', 'SearchController@authors');
+Route::post('/search/breaks', 'SearchController@articles');
 // Unsubscribe
 Route::get('/unsubscribe', function() {
 	return view('pages.unsubscribe');
@@ -109,7 +110,7 @@ Route::get('/admin/graphs', 'AdminController@graphs');
 
 // Breaks routes
 Route::get('/admin/breaks/add', 'ArticlesController@create');
-Route::get('/admin/breaks/edit', 'ArticlesController@selectEdit');
+Route::get('/admin/breaks/edit', 'ArticlesController@edit');
 Route::get('/admin/breaks/{article}/edit', 'ArticlesController@edit');
 Route::get('/admin/breaks/delete', 'ArticlesController@selectDelete');
 Route::get('/admin/preview-doi', 'ArticlesController@previewDOI');
@@ -122,7 +123,7 @@ Route::delete('/admin/breaks/images/{article}', 'ArticlesController@destroyImage
 
 // Breakers routes
 Route::get('/admin/breakers/add', 'AuthorsController@create');
-Route::get('/admin/breakers/edit', 'AuthorsController@selectEdit');
+Route::get('/admin/breakers/edit', 'AuthorsController@edit');
 Route::get('/admin/breakers/{author}/edit', 'AuthorsController@edit');
 Route::get('/admin/breakers/delete', 'AuthorsController@selectDelete');
 

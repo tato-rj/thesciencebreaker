@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Author;
 
 class SearchController extends Controller
 {
@@ -15,5 +16,38 @@ class SearchController extends Controller
         $show = ($request->show) ? $request->show : 5;
     	$articles = Article::search($input)->orderBy($sort, $order)->paginate($show);
     	return view("pages/search", compact(['articles', 'input']));
+    }
+
+    public function authors(Request $request)
+    {
+        if ($request->input != '') {
+            $results = Author::where('first_name', 'LIKE', '%'.$request->input.'%')
+            			->orWhere('last_name', 'LIKE', '%'.$request->input.'%')
+            			->take(10)
+            			->get();
+
+            foreach ($results as $result) {
+                $result->url = $result->paths()->route();
+                $result->admin = '/admin/breakers/'.$result->slug.'/edit';
+            }
+
+            return $results;
+        }        
+    }
+
+    public function articles(Request $request)
+    {
+        if ($request->input != '') {
+            $results = Article::where('title', 'LIKE', '%'.$request->input.'%')
+            			->take(10)
+            			->get();
+
+            foreach ($results as $result) {
+                $result->url = $result->paths()->route();
+                $result->admin = '/admin/breaks/'.$result->slug.'/edit';
+            }
+
+            return $results;
+        }        
     }
 }

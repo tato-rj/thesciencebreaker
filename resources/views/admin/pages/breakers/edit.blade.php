@@ -25,6 +25,11 @@
               @endforeach
             </select>
           </div>
+          <div class="form-group">
+            @include('components/snippets/search')
+          </div>
+
+          @if($author)
           <form method="POST" action="/admin/breakers/{{ $author->slug }}">
             {{csrf_field()}}
             {{method_field('PATCH')}}
@@ -102,12 +107,19 @@
             </div>
             <input type="submit" value="Submit" class="btn btn-theme-orange">
           </form>
+          @endif
         </div>
       </div>
     </div>
 @endsection
 
 @section('scripts')
+@include('javascript/search')
+
+<script type="text/javascript">
+  awesomeSearch('/search/breakers', ['first_name', 'last_name'], 'admin');
+</script>
+
 <script type="text/javascript">
 $('select#breaker_id').on('change', function() {
   $title = this.value;
