@@ -26,6 +26,16 @@
         <option value="last_name" {{ (Request::input('sort') == 'last_name') ? 'selected' : '' }}>last name (a to z)</option>
         @endslot
       @endcomponent
+      <div id="search-group">
+        <input type="text" name="search" autocomplete="off" class="simple-box p-1 pl-2" placeholder="Type here to search...">
+        <div id="search-results">
+          <div class="d-none">
+            <a href="" class="breaker no-a-underline">
+              <div></div>
+            </a>
+          </div>
+        </div>
+      </div>
       @foreach ($breakers as $member)
       <div class="mt-3">
         <p class="no-indent mb-2">
@@ -34,9 +44,7 @@
         </p>
         <p class="ml-2 mb-0">{{ $member->position }} at {{ $member->research_institute }}.</p>
         <p class="ml-2 mb-0">
-          
             <small><strong class="text-muted"><i class="fa fa-book mr-1" aria-hidden="true"></i> {{ $member->resources()->fullName() }} has {{ $member->articles_count }} {{ str_plural('break', $member->articles_count) }} published</strong></small>
-          
           </p>
         <p class="ml-2"><small><a href="{{ $member->paths()->route() }}">Click here</a> for more info</small></p>
         <p class="mt-2 ml-4 mb-4"><em><u>{!! html_entity_decode($member->general_comments) !!}</u></em></p>
@@ -52,4 +60,40 @@
   </div>
 </div>
 
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+$(document).click(function(event) {
+    $('#search-group > div').fadeOut('fast');
+    $('#search-results > div').not('.d-none').remove();
+    $container.find('> p').remove();
+});
+
+$('#search-group input[name="search"]').on('keyup', function() {
+  $search_container = $('#search-group > div');
+  $input = $(this).val();
+    $.post('/search/breakers',
+    {
+      name: $input
+    },
+    function(data, status){
+        $container = $('#search-results');
+        $container.find('> div').not('.d-none').remove();
+        $container.find('> p').remove();
+        $.each(data, function(index, author) {
+          $result_box = $container.find('.d-none').clone().removeClass('d-none');
+          $breaker = $result_box.find('.breaker');
+          $breaker.find('> div').text(author['first_name']+' '+author['last_name']);
+          $breaker.attr('href', author['url']);
+          $container.append($result_box);
+        });
+        if (data.length == 10) {
+          $container.append('<p><small>Too many results! Narrow your search a bit more...</small></p>');
+        }
+        $container.fadeIn('fast');
+    });
+  
+});
+</script>
 @endsection

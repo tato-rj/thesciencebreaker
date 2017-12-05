@@ -12,7 +12,7 @@ class AuthorsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
     }
 
     public function index(Request $request)
@@ -23,6 +23,21 @@ class AuthorsController extends Controller
         $breakers = Author::orderBy($sort, $order)->paginate($show);
 
         return view('pages/presentation/breakers', compact('breakers'));
+    }
+
+    public function search(Request $request)
+    {
+        if ($request->name != '') {
+            $results = Author::
+                where('first_name', 'LIKE', '%'.$request->name.'%')->
+                orWhere('last_name', 'LIKE', '%'.$request->name.'%')->take(10)->get();
+
+            foreach ($results as $result) {
+                $result->url = $result->paths()->route();
+            }
+
+            return $results;
+        }        
     }
 
     // CREATE

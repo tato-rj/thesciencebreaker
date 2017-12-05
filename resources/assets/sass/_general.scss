@@ -184,3 +184,45 @@ a.breaker {
     background-position: center;
 }
 
+#search-group {
+    position: relative;
+
+    input {
+        width: 100%;
+        border:0;
+        background: rgba(0,0,0,0.05);
+        font-family: inherit;
+    }
+
+    #search-results {
+        position: absolute;
+        top: 32px;
+        left: 0;
+        width: 100%;
+        background: white;
+        border: 1px solid lightgrey;
+        border-top: 0;
+        display: none;
+
+        > div {
+            padding: .5em;
+            transition: 0.2s;
+        }
+
+        > div:hover {
+            background: rgba(6,178,184,0.05);
+        }
+
+        > div:not(:last-of-type) {
+            border-bottom: 1px solid lightgrey;
+        }
+
+        > p {
+            margin: 0;
+            padding: .25em;
+            font-style: italic;
+            text-align: center;
+            background: rgba(243,110,65, 0.1);
+        }
+    }
+}
