@@ -61,8 +61,10 @@
 
 	<div class="row mt-4">
 		<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
-			<div id="app-container" class="box row align-items-center justify-space-around jumbotron m-1 text-center">
-				<h5 class="mb-2 mx-auto"><strong>TheScienceBreaker <span class="text-orange">APP</span></strong></h5>
+			@component('components/snippets/title')
+				TheScienceBreaker <span class="text-orange">APP</span>
+			@endcomponent
+			<div id="app-container" class="row align-items-center justify-space-around text-center mb-4">
 				<div class="col-lg-6 col-md-12 mt-2 hidden-sm-down">
 					<img src="{{ asset('images/ios-app/app.svg') }}">
 				</div>
