@@ -33,7 +33,7 @@ class AppController extends Controller
             // Add tags
             $break->tags = Article::find($break->break_id)->tags()->pluck('name')->toArray();
             // Add authors
-            $break->authors = Article::find($break->break_id)->authors()->select('first_name', 'last_name', 'relevance_order')->get()->toArray();
+            $break->authors = Article::find($break->break_id)->authors()->select('first_name', 'last_name', 'position', 'research_institute', 'relevance_order')->get()->toArray();
     	}
 
     	return $breaks;

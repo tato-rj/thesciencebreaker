@@ -25,7 +25,8 @@
 			<small><li><strong><a href="{{ $author->paths()->route() }}" class="breaker">{{ $author->resources()->fullName() }}</a></strong> | {{ $author->position }} at {{ $author->research_institute }}</li></small>
 			@endforeach
 		</ul>
-		<div class="d-flex mb-3">
+		{{-- Tags --}}
+		<div class="d-flex mb-3 flex-wrap">
 			@foreach ($article->tags as $tag)
 				<div class="d-flex tags m-1">
 					<a href="{{ $tag->path() }}">

@@ -60,7 +60,17 @@
 @include('javascript/search')
 
 <script type="text/javascript">
-  awesomeSearch('/search/breakers', ['first_name', 'last_name'], 'url');
+
+var search = new AwesomeSearch({
+    container: '#search-group',
+    call: '/search/breakers',
+    fields: ['first_name', 'last_name'],
+    redirect: 'url',
+    limit: 10
+  });
+
+search.init();
+
 </script>
 
 @endsection
