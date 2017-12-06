@@ -285,7 +285,15 @@
 @include('javascript/search')
 
 <script type="text/javascript">
-  awesomeSearch('/search/breaks', ['title'], 'admin');
+var search = new AwesomeSearch({
+    container: '#search-group',
+    call: '/search/breaks',
+    fields: ['title'],
+    redirect: 'admin',
+    limit: 10
+  });
+
+search.init();
 </script>
 
 <script type="text/javascript">
