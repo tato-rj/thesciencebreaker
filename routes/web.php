@@ -25,6 +25,8 @@ Route::get('/unsubscribe', function() {
 Route::delete('/unsubscribe', 'SubscriptionsController@unsubscribe');
 // RSS Feed
 Route::get('/services/feed', 'FeedController@index');
+// Localization
+Route::post('/language', 'LanguageController@set');
 
 /*
 * 

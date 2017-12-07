@@ -20,14 +20,14 @@
 	<div class="row mt-4 jumbotron mb-2 d-none d-sm-flex">
 		<div class="col-lg-6">
 			<div class="mb-2">
-				<h4>Why TheScienceBreaker?</h4>
-				<p class="mb-0">TheScienceBreaker promotes the dialogue and the dissemination of a scientific culture so that society-relevant opinions can be discussed and decisions may be taken accordingly. Discover our <a href="/mission">mission</a>.</p>
+				<h4>{!! __('welcome.description.why-title') !!}</h4>
+				<p class="mb-0">{!! __('welcome.description.why-text') !!}</p>
 			</div>			
 		</div>
 		<div class="col-lg-6">
 			<div class="mb-2">
-				<h4>What is a Break?</h4>
-				<p class="mb-0">We publish short lay summaries, called Breaks, where scientific papers are explained by scientists, called Breakers, directly involved in the field of research. <a href="/about">Learn more</a></p>
+				<h4>{!! __('welcome.description.what-title') !!}</h4>
+				<p class="mb-0">{!! __('welcome.description.what-text') !!}</p>
 			</div>			
 		</div>
 	</div>
@@ -44,7 +44,7 @@
 	<div class="row no-gutters mt-4">
 		<div class="col-lg-12">
 			@component('components/snippets/title')
-			Highlights
+			{{__('welcome.highlights')}}
 			@endcomponent
 		</div>
 		@include('components/partials/grids/highlights')
@@ -69,7 +69,7 @@
 					<img src="{{ asset('images/ios-app/app.svg') }}">
 				</div>
 				<div class="p-2 col-lg-6 col-md-12">
-					<p>Our iOS app is coming out soon, <strong>stay tuned</strong>!</p>
+					<p>{!!__('welcome.app')!!}</p>
 					<a href="https://www.facebook.com/sciencebreaker/?fref=ts" target="_blank">
 						<img id="apple-store" src="{{ asset('images/ios-app/apple-store.svg') }}">
 					</a>
@@ -79,7 +79,7 @@
 		<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
 			<div id="breaks-list">
 				@component('components/snippets/title')
-				Latest published Breaks
+				{{__('global.latest')}}
 				@endcomponent
 				<div class="mb-2">
 					@foreach ($latest_articles as $suggestion)
@@ -102,7 +102,7 @@
 	<div class="row mt-4 no-gutters">
 		<div class="col-lg-12">
 			@component('components/snippets/title')
-			Most Popular
+			{{__('global.popular')}}
 			@endcomponent
 		</div>
 		@foreach ($popular as $article)
@@ -122,7 +122,7 @@
 	<div id="by-subject" class="row mt-3">
 		<div class="col-lg-8">
 			@component('components/snippets/title')
-			Breaks by category
+			{{__('welcome.categories')}}
 			@endcomponent
 			<div class="d-flex flex-row justify-content-center align-items-center flex-wrap" id="subject-icons">
 				@foreach ($categories as $category)
@@ -130,7 +130,7 @@
 					<div class="icon-wrapper">
 						<img src="{{ $category->paths()->icon() }}">
 						<div class="d-flex align-items-center justify-content-center flex-column text-center">
-							<h5><strong>{{ $category->name }}</strong></h5>
+							<h5><strong>{{__('categories.'.$category->slug)}}</strong></h5>
 							<h5><strong>{{ $category->articles_count }} Breaks</strong></h5>
 						</div>
 					</div>
@@ -139,8 +139,8 @@
 			</div>			
 		</div>
 		<div class="col-lg-4">
-						@component('components/snippets/title')
-			Popular topics
+			@component('components/snippets/title')
+			{{__('global.topics')}}
 			@endcomponent
 							<div class="d-flex flex-wrap">
 					@foreach ($topics as $topic)
@@ -169,9 +169,9 @@
 	<div class="row mt-5" id="discussion-container">
 		<div class="col-7">
 			@component('components/snippets/title')
-			Join the discussion!
+			{{__('welcome.discussion.title')}}
 			@endcomponent
-			<p>TheScienceBreaker is an open-access environment where everyone, scientists and laypeople, can meet and discuss about the latest scientific discoveries. For each and every Break, you may join the discussion-space below each published Break and help us build a better future with more dialogues and less walls!</p>
+			<p>{{__('welcome.discussion.text')}}</p>
 		</div>
 		<div class="col-4 offset-1">
 			<i class="fa fa-comments-o" aria-hidden="true"></i>

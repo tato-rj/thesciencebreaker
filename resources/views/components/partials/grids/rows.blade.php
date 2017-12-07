@@ -12,8 +12,8 @@
 		<a class="text-default" href="{{ $suggestion->paths()->route() }}">
 			<p class="card-title mb-1 two-line-clamp l-height-1"><strong>{{ $suggestion->title }}</strong></p>
 		</a>
-		<small class="d-block">{{ $suggestion->created_at->toFormattedDateString() }} in <a class="breaker" href="{{ $suggestion->category->paths()->route() }}"><strong>{{ $suggestion->category->name }}</strong></a> | {{ $suggestion->reading_time }} min read</small>
-		<small class="d-block l-height-1">by 
+		<small class="d-block">{{ $suggestion->created_at->toFormattedDateString() }} {{__('global.in')}} <a class="breaker" href="{{ $suggestion->category->paths()->route() }}"><strong>{{ $suggestion->category->name }}</strong></a> | {{ $suggestion->reading_time }} min {{__('global.read')}}</small>
+		<small class="d-block l-height-1">{{__('global.by')}} 
 			@foreach ($suggestion->authors as $author)
 			{{ $loop->first ? '' : ',' }}
 			<a style="margin-right: -2px;" href="{{ $author->paths()->route() }}">{{ $author->resources()->fullName() }}</a>

@@ -89,4 +89,4 @@
 {{-- CSS --}}
 <link rel="stylesheet" href="{{ asset('css/jquery-popover-0.0.3.css') }}">
 <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/app.css') }}?version=120" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/app.css') }}?version=130" rel="stylesheet" type="text/css">

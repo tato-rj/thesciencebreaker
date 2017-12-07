@@ -14,7 +14,7 @@
 				<h5 class="card-title"><strong>{{ $article->title }}</strong></h5>
 			</a>
 			{{-- Break preview --}}
-			<p class="mb-2">{!! html_entity_decode($article->resources()->preview()) !!}... <a href="{{ $article->paths()->route() }}">click to read more</a></p>
+			<p class="mb-2">{!! html_entity_decode($article->resources()->preview()) !!}... <a href="{{ $article->paths()->route() }}">{{__('global.click_to_read')}}</a></p>
 		</div>		
 	</div>
 
@@ -22,7 +22,7 @@
 		{{-- Author's list --}}
 		<ul class="authors mb-1">
 			@foreach ($article->authors as $author)
-			<small><li><strong><a href="{{ $author->paths()->route() }}" class="breaker">{{ $author->resources()->fullName() }}</a></strong> | {{ $author->position }} at {{ $author->research_institute }}</li></small>
+			<small><li><strong><a href="{{ $author->paths()->route() }}" class="breaker">{{ $author->resources()->fullName() }}</a></strong> | {{ $author->position }} {{__('global.at')}} {{ $author->research_institute }}</li></small>
 			@endforeach
 		</ul>
 		{{-- Tags --}}
@@ -39,14 +39,14 @@
 		<div class="d-flex justify-content-between align-items-center reading-time">
 			<div>
 				<i class="fa fa-eye" aria-hidden="true"></i>
-				<small><span>Views </span>{{ $article->views }}</small>
+				<small><span>{{ucfirst(__('global.views'))}} </span>{{ $article->views }}</small>
 			</div>
 			<div class="flex-grow ml-2">
 				<i class="fa fa-clock-o" aria-hidden="true"></i>
-				<small><span>Reading time </span>{{ $article->reading_time }} min</small>
+				<small><span>{{__('global.reading_time')}} </span>{{ $article->reading_time }} min</small>
 			</div>
 			<div>
-				<small>published on {{ $article->created_at->toFormattedDateString() }}</small>
+				<small>{{__('global.published')}} {{ $article->created_at->toFormattedDateString() }}</small>
 			</div>
 		</div>
 	</div>

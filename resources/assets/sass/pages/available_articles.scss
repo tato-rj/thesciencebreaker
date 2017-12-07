@@ -24,3 +24,7 @@
 		}
 	}
 }
+
+.faq-question::before {
+	content: 'Q: ';
+}

@@ -41,7 +41,7 @@
 
 			{{-- Category --}}
 			<h5 class="category-title d-flex align-items-center">
-				<img class="mr-2" src="{{ $article->category->paths()->icon() }}"><a href="{{ $article->category->paths()->route() }}">{{ $article->category->name }}</a>
+				<img class="mr-2" src="{{ $article->category->paths()->icon() }}"><a href="{{ $article->category->paths()->route() }}">{{__('categories.'.$article->category->slug)}}</a>
 			</h5>
 
 			{{-- Title --}}
@@ -74,7 +74,7 @@
 			{{-- Author --}}
 			<div id="author-bar" class="mt-2 pt-1 mb-2 pb-1 d-flex align-items-center justify-content-between">
 				<div>
-					<small>by 
+					<small>{{__('global.by')}} 
 						@foreach ($article->authors as $author)
 						{{ $loop->first ? '' : ', ' }}
 						<span class="popover-wrapper">
@@ -115,14 +115,14 @@
 			<div class="d-flex justify-content-between align-items-center reading-time">
 				<div>
 					<i class="fa fa-eye" aria-hidden="true"></i>
-					<small><span>Views </span>{{ $article->views }}</small>
+					<small><span>{{ucfirst(__('global.views'))}} </span>{{ $article->views }}</small>
 				</div>
 				<div class="flex-grow ml-2">
 					<i class="fa fa-clock-o" aria-hidden="true"></i>
-					<small><span>Reading time </span>{{ $article->reading_time }} min</small>
+					<small><span>{{__('global.reading_time')}} </span>{{ $article->reading_time }} min</small>
 				</div>
 				<div>
-					<small>published on {{ $article->created_at->toFormattedDateString() }}</small>
+					<small>{{__('global.published')}} {{ $article->created_at->toFormattedDateString() }}</small>
 				</div>
 			</div>
 
