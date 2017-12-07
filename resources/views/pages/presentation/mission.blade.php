@@ -6,16 +6,16 @@
 	<div class="row">
 		<div class="col-lg-9 col-md-12">
 			@component('components/snippets/title')
-			Mission
+			{{__('menu.presentation.mission')}}
 			@endcomponent
-			<p>More and more, science and society are pulled apart by fears, misunderstandings and manipulated information. TheScienceBreaker wants to break this wall of miscommunication. By doing this, the seed of a new informed generation could eventually germinate on the solid ground of a shared scientific consciousness.</p>
+			<p>{{__('mission.p1')}}</p>
 			<div class="highlight">
-				The mission of TheScienceBreaker is to engage the public with science and technology through the democratization of scientific literature.
+				{{__('mission.highlight')}}
 			</div>
-			<p>We believe that science is made by the people for the people with no discrimination of gender, faith, ethnic origin, age, political view, sexual behaviors or whatsoever. Not respecting this principle will generate pitfalls of isolation where misused information becomes an illusion of science and science, in turn, is left as an impotent observer.</p>
+			<p>{{__('mission.p2')}}</p>
 			<div class="text-center mt-5">
 				@component('components/snippets/buttons/brand')
-					LEARN HOW TO BECOME A BREAKER
+					{{__('mission.button')}}
 					@slot('url')
 					/information
 					@endslot

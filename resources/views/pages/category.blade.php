@@ -13,7 +13,7 @@
 					<img src="{{ $category->paths()->icon() }}">
 				</div>
 				<div class="ml-3">
-					<h2 class="mb-0 text-green"><strong>{{ $category->name }}</strong></h2>
+					<h2 class="mb-0 text-green"><strong>{{__('categories.'.$category->slug)}}</strong></h2>
 				</div>
 			</div>
 	

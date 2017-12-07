@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ArticleRequest;
+use Illuminate\Support\Facades\Lang;
 
 class ArticlesController extends Controller
 {
