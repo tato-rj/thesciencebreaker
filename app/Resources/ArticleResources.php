@@ -4,6 +4,7 @@ namespace App\Resources;
 
 use Illuminate\Support\Collection;
 use App\Article;
+use App;
 
 class ArticleResources extends Resources
 {
@@ -84,6 +85,13 @@ class ArticleResources extends Resources
         $doi_number = str_pad($current_number, 3, '0', STR_PAD_LEFT);
         
         return $doi_base.$doi_number;
+    }
+
+    public function localize($input)
+    {
+        $column = $input.'_'.App::getLocale();
+        $request = ($this->model->$column) ? $this->model->$column : $this->model->$input;
+        return $request;   
     }
 
     // public static function highlights()

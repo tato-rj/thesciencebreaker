@@ -19,7 +19,9 @@ class ArticleRequest extends Form
     {
         return [
             'title' => 'required|max:255',
+            'title_fr' => 'max:255',
             'description' => 'max:500',
+            'description_fr' => 'max:500',
             'content' => 'required',
             'reading_time' => 'required',
             'original_article' => 'required',
@@ -39,11 +41,14 @@ class ArticleRequest extends Form
 
         $article = Article::create([
             'title' => $this->title,
+            'title_fr' => $this->title_fr,
             'slug' => $this->slug,
             'description' => $this->description,
+            'description_fr' => $this->description_fr,
             'image_caption' => $this->image_caption,
             'image_credits' => $this->image_credits,
             'content' => $this->content,
+            'content_fr' => $this->content_fr,
             'reading_time' => $this->reading_time,
             'original_article' => $this->original_article,
             'category_id' => $this->category_id,
@@ -66,11 +71,14 @@ class ArticleRequest extends Form
 
         $article->update([
             'title' => $this->title,
+            'title_fr' => $this->title_fr,
             'slug' => $this->slug,
             'description' => $this->description,
+            'description_fr' => $this->description_fr,
             'image_caption' => $this->image_caption,
             'image_credits' => $this->image_credits,
             'content' => $this->content,
+            'content_fr' => $this->content_fr,
             'reading_time' => $this->reading_time,
             'original_article' => $this->original_article,
             'category_id' => $this->category_id,

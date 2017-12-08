@@ -45,8 +45,8 @@
 			</h5>
 
 			{{-- Title --}}
-			<h3><strong>{{ $article->title }}</strong></h3>
-			<p class="text-muted">{{ $article->description }}</p>
+			<h3><strong>{{ $article->resources()->localize('title') }}</strong></h3>
+			<p class="text-muted">{{ $article->resources()->localize('description') }}</p>
 
 			{{-- Image --}}
 			@if ($article->paths()->image() != 'images/no-image.png')
@@ -128,7 +128,7 @@
 
 			{{-- Body --}}
 			<div class="mt-4">
-				{!! html_entity_decode($article->content) !!}
+				{!! html_entity_decode($article->resources()->localize('content')) !!}
 			</div>
 
 			{{-- Suggestion (based on tag) --}}

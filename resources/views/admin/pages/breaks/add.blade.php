@@ -13,9 +13,12 @@
 
       <div class="row mt-4">
         <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
-          <h2 class="text-muted op-5 mb-3">
-            <i class="fa fa-file-text mr-1" aria-hidden="true"></i> <strong>New Break</strong>
-          </h2>
+          <div class="d-flex justify-content-between align-items-start">
+            <h2 class="text-muted op-5 mb-3">
+              <i class="fa fa-file-text mr-1" aria-hidden="true"></i> <strong>New Break</strong>
+            </h2>
+            <button class="btn-sm btn btn-theme-orange" data-toggle="modal" data-target="#french">French</button>
+          </div>
           <form method="POST" action="/admin/breaks" enctype="multipart/form-data">
             {{csrf_field()}}
             {{-- Title --}}
@@ -208,6 +211,7 @@
               @endcomponent
             </div>
             <input type="submit" value="Submit" class="btn btn-theme-orange">
+            @include('admin/snippets/languages/add_french')
           </form>
         </div>
       </div>

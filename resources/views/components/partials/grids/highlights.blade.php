@@ -5,9 +5,9 @@
 		</a>
 		<div class="card-block px-2 py-3">
 			<a class="text-default" href="{{ $highlights->get(0)->article->paths()->route() }}">
-				<h4 class="card-title mb-2">{{ $highlights->get(0)->article->title }}</h4>
+				<h4 class="card-title mb-2">{{ $highlights->get(0)->article->resources()->localize('title') }}</h4>
 			</a>
-			<p class="card-text text-muted mb-2 l-height-1">{{ $highlights->get(0)->article->description }}</p>
+			<p class="card-text text-muted mb-2 l-height-1">{{ $highlights->get(0)->article->resources()->localize('description') }}</p>
 			<small class="d-block">{{__('global.published')}} {{ $highlights->get(0)->article->created_at->toFormattedDateString() }}</small>
 			<small>{{__('global.by')}} 
 				@foreach ($highlights->get(0)->article->authors as $author)
@@ -27,9 +27,9 @@
 					</a>
 					<div class="card-block px-2 py-3">
 						<a class="text-default" href="{{ $highlights->get(1)->article->paths()->route() }}">
-							<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $highlights->get(1)->article->title }}</strong></h6>
+							<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $highlights->get(1)->article->resources()->localize('title') }}</strong></h6>
 						</a>
-						<p class="card-text text-muted mb-2 l-height-1 two-line-clamp">{{ $highlights->get(1)->article->description }}</p>
+						<p class="card-text text-muted mb-2 l-height-1 two-line-clamp">{{ $highlights->get(1)->article->resources()->localize('description') }}</p>
 						<small class="d-block">{{ $highlights->get(1)->article->created_at->toFormattedDateString() }} | {{ $highlights->get(1)->article->reading_time }} min {{__('global.read')}}</small>
 					</div>
 				</div>					
@@ -41,9 +41,9 @@
 					</a>
 					<div class="card-block px-2 py-3">
 						<a class="text-default" href="{{ $highlights->get(2)->article->paths()->route() }}">
-							<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $highlights->get(2)->article->title }}</strong></h6>
+							<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $highlights->get(2)->article->resources()->localize('title') }}</strong></h6>
 						</a>
-						<p class="card-text text-muted mb-2 l-height-1 two-line-clamp">{{ $highlights->get(2)->article->description }}</p>
+						<p class="card-text text-muted mb-2 l-height-1 two-line-clamp">{{ $highlights->get(2)->article->resources()->localize('description') }}</p>
 						<small class="d-block">{{ $highlights->get(2)->article->created_at->toFormattedDateString() }} | {{ $highlights->get(2)->article->reading_time }} min {{__('global.read')}}</small>
 					</div>
 				</div>	
@@ -57,9 +57,9 @@
 					</a>
 					<div class="card-block px-2 py-3">
 						<a class="text-default" href="{{ $highlights->get(3)->article->paths()->route() }}">
-							<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $highlights->get(3)->article->title }}</strong></h6>
+							<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $highlights->get(3)->article->resources()->localize('title') }}</strong></h6>
 						</a>
-						<p class="card-text text-muted mb-2 l-height-1 one-line-clamp">{{ $highlights->get(3)->article->description }}</p>
+						<p class="card-text text-muted mb-2 l-height-1 one-line-clamp">{{ $highlights->get(3)->article->resources()->localize('description') }}</p>
 						<small class="d-block">{{ $highlights->get(3)->article->created_at->toFormattedDateString() }} | {{ $highlights->get(3)->article->reading_time }} min {{__('global.read')}}</small>
 					</div>
 				</div>							
@@ -68,7 +68,7 @@
 				<div class="card px-2 h-auto">
 					<div class="card-block">
 						<a class="text-default" href="{{ $highlights->get(4)->article->paths()->route() }}">
-							<h6 class="card-title mb-2 two-line-clamp l-height-1"><strong>{{ $highlights->get(4)->article->title }}</strong></h6>
+							<h6 class="card-title mb-2 two-line-clamp l-height-1"><strong>{{ $highlights->get(4)->article->resources()->localize('title') }}</strong></h6>
 						</a>
 						<small class="d-block">{{ $highlights->get(4)->article->created_at->toFormattedDateString() }} | {{ $highlights->get(4)->article->reading_time }} min {{__('global.read')}}</small>
 					</div>
@@ -77,7 +77,7 @@
 				<div class="card px-2 h-auto">
 					<div class="card-block">
 						<a class="text-default" href="{{ $highlights->get(5)->article->paths()->route() }}">
-							<h6 class="card-title mb-2 two-line-clamp l-height-1"><strong>{{ $highlights->get(5)->article->title }}</strong></h6>
+							<h6 class="card-title mb-2 two-line-clamp l-height-1"><strong>{{ $highlights->get(5)->article->resources()->localize('title') }}</strong></h6>
 						</a>
 						<small class="d-block">{{ $highlights->get(5)->article->created_at->toFormattedDateString() }} | {{ $highlights->get(5)->article->reading_time }} min {{__('global.read')}}</small>
 					</div>
@@ -86,7 +86,7 @@
 				<div class="card px-2 h-auto">
 					<div class="card-block">
 						<a class="text-default" href="{{ $highlights->get(6)->article->paths()->route() }}">
-							<h6 class="card-title mb-2 two-line-clamp l-height-1"><strong>{{ $highlights->get(6)->article->title }}</strong></h6>
+							<h6 class="card-title mb-2 two-line-clamp l-height-1"><strong>{{ $highlights->get(6)->article->resources()->localize('title') }}</strong></h6>
 						</a>
 						<small class="d-block">{{ $highlights->get(6)->article->created_at->toFormattedDateString() }} | {{ $highlights->get(6)->article->reading_time }} min {{__('global.read')}}</small>
 					</div>

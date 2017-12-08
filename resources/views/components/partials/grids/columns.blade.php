@@ -9,9 +9,9 @@
 		</a>
 		<div class="card-block px-2">
 			<a class="text-default" href="{{ $article->paths()->route() }}">
-				<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $article->title }}</strong></h6>
+				<h6 class="card-title mb-2 two-line-clamp"><strong>{{ $article->resources()->localize('title') }}</strong></h6>
 			</a>
-			<p class="card-text text-muted mb-2 l-height-1 two-line-clamp">{{ $article->description }}</p>
+			<p class="card-text text-muted mb-2 l-height-1 two-line-clamp">{{ $article->resources()->localize('description') }}</p>
 			<small class="d-block">{{ $article->created_at->toFormattedDateString() }} | {{ $article->reading_time }} min {{__('global.read')}}</small>
 		</div>
 	</div>						

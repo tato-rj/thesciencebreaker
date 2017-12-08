@@ -13,9 +13,14 @@
 
   <div class="row mt-4">
     <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
-      <h2 class="text-muted op-5 mb-3">
-        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Edit Break</strong>
-      </h2>
+      <div class="d-flex justify-content-between align-items-start">
+        <h2 class="text-muted op-5 mb-3">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Edit Break</strong>
+        </h2>
+        @if($article)
+        <button class="btn-sm btn btn-theme-orange" data-toggle="modal" data-target="#french">French</button>
+        @endif
+      </div>
       <div class="form-group">
         <label for="exampleSelect2">Select the Break to be edited</label>
         <select class="form-control" id="break_id" name="break_id">
@@ -268,6 +273,7 @@
           @endcomponent
         </div>
         <input type="submit" value="Submit" class="btn btn-theme-orange">
+        @include('admin/snippets/languages/edit_french')
       </form>
       @include('admin/snippets/tags')
       @include('admin/snippets/confirm_delete')

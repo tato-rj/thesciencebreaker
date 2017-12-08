@@ -11,3 +11,12 @@ function check($class, $array)
         $class->get($route)->assertSuccessful();         
     }	
 }
+
+function createHighlights()
+{
+    factory('App\Highlight', 10)->create();
+}
+function localize($lang)
+{
+    \Session::put('lang', $lang);
+}
