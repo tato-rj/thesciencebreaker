@@ -42,7 +42,7 @@
 				<small><span>{{ucfirst(__('global.views'))}} </span>{{ $article->views }}</small>
 			</div>
 			<div class="flex-grow ml-2">
-				<i class="fa fa-clock-o" aria-hidden="true"></i>
+				<i class="far fa-clock"></i>
 				<small><span>{{__('global.reading_time')}} </span>{{ $article->reading_time }} min</small>
 			</div>
 			<div>

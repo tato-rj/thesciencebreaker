@@ -6,13 +6,13 @@
 					<h5 class="m-0 mr-4"><strong>{{__('footer.follow')}}</strong></h5>
 					<div class="d-flex social">
 						<a href="{{ config('app.facebook') }}" target="_blank">
-							<i class="fa fa-facebook" aria-hidden="true"></i>
+							<i class="fab fa-facebook-f"></i>
 						</a>
 						<a href="{{ config('app.twitter') }}" target="_blank">
-							<i class="fa fa-twitter" aria-hidden="true"></i>
+							<i class="fab fa-twitter"></i>
 						</a>
 						<a href="{{ config('app.googleplus') }}" target="_blank">
-							<i class="fa fa-google-plus" aria-hidden="true"></i>
+							<i class="fab fa-google-plus-g"></i>
 						</a>
 					</div>	
 				</div>

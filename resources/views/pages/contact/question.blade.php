@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-lg-9 col-md-12">
 			@component('components/snippets/title')
-			<i class="fa fa-question-circle-o mr-2" aria-hidden="true"></i>Ask a Question
+			ASK A QUESTION
 			@endcomponent
 			<div class="row">
 				<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 mx-auto mt-3">

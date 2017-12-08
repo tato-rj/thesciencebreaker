@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-lg-9 col-md-12">
       @component('components/snippets/title')
-      The Team
+      THE TEAM
       @endcomponent
 
       {{-- Nav tabs --}}

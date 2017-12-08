@@ -5,8 +5,8 @@
 				<a href="{{ config('app.url') }}"><img src="/images/logo_{{App::getLocale()}}.svg" id="title"></a>
 				<a href="{{ config('app.url') }}"><img src="/images/logo-small.svg" class="d-none" id="title_mobile"></a>
 				<div id="buttons-container" class="ml-5 d-none d-lg-block">
-					<a href="/contact/submit-your-break" class="btn btn-block"><i class="fa fa-upload mr-2" aria-hidden="true"></i><span>{{__('menu.contact.submit')}}</span></a>
-					<a href="/contact/break-inquiry" class="btn btn-block"><i class="fa fa-newspaper-o mr-2" aria-hidden="true"></i><span>{{__('menu.contact.inquiry')}}</span></a>
+					<a href="/contact/submit-your-break" class="btn btn-block"><i class="fas fa-upload mr-2" aria-hidden="true"></i><span>{{__('menu.contact.submit')}}</span></a>
+					<a href="/contact/break-inquiry" class="btn btn-block"><i class="fas fa-newspaper mr-2" aria-hidden="true"></i><span>{{__('menu.contact.inquiry')}}</span></a>
 				</div>
 			</div>					
 		</div>

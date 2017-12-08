@@ -87,7 +87,10 @@
 										<strong>{{ $author->resources()->fullName() }} is also an author of the <a>original article</a></strong>
 									</p>
 									@endif
-									<a href="{{ $author->paths()->route() }}" class="btn bg-default no-hover py-0 px-3 pull-right btn-sm" target="_blank">Profile</a>
+									<div class="text-right">
+										<a href="{{ $author->paths()->route() }}" class="btn bg-default no-hover py-0 px-3 btn-sm" target="_blank">Profile</a>
+									</div>
+									
 								</div>
 							</div>
 						</span>
@@ -118,7 +121,7 @@
 					<small><span>{{ucfirst(__('global.views'))}} </span>{{ $article->views }}</small>
 				</div>
 				<div class="flex-grow ml-2">
-					<i class="fa fa-clock-o" aria-hidden="true"></i>
+					<i class="far fa-clock"></i>
 					<small><span>{{__('global.reading_time')}} </span>{{ $article->reading_time }} min</small>
 				</div>
 				<div>

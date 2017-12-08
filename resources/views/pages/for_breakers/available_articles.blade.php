@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-lg-9 col-md-12">
       @component('components/snippets/title')
-      Available Articles
+      AVAILABLE ARTICLES
       @endcomponent
       <p>Here below, a list of articles that were object of a Break-request. Don’t hesitate to <a href="/contact/submit-your-break">get in touch</a> if you wish to draft a Break-manuscript!</p>
       <div id="available_articles" class="mt-5" role="tablist" aria-multiselectable="true">

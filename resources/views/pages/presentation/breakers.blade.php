@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-lg-9 col-md-12">
       @component('components/snippets/title')
-      Breakers Community
+      BREAKERS COMMUNITY
       @endcomponent
       {{-- Sort results bar --}}
       @component('components/snippets/sort_bar')

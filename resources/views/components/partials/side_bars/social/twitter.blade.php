@@ -3,5 +3,5 @@
 	,{{ strtolower(str_replace(' ','',$tag->name)) }}
 	@endforeach
 ">
-	<i class="fa fa-twitter" aria-hidden="true"></i>
+	<i class="fab fa-twitter"></i>
 </a>

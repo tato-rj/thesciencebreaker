@@ -15,7 +15,7 @@
 		transition: 0.2s;
 	}
 
-	.fa:hover {
+	i:hover {
 		transform: scale(1.2);
 	}
 
@@ -23,7 +23,7 @@
 		color: $color-theme-orange-l;
 	}
 
-	.fa-facebook:hover {
+	.fa-facebook-f:hover {
 		color: #3B5998;
 	}
 
@@ -31,11 +31,11 @@
 		color: #1da1f2;
 	}
 
-	.fa-google:hover {
+	.fa-google-plus-g:hover {
 		color: #d34836;
 	}
 
-	.fa-file-pdf-o:hover {
+	.fa-file-pdf:hover {
 		color: $color-theme-green;
 	}
 }

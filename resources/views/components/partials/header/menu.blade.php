@@ -54,7 +54,7 @@
 				<div class="input-group" id="search-form">
 					<input required type="text" name="for" class="simple-box px-0 pl-2 form-control border-0 input-sm" placeholder="{{__('menu.search')}}...">
 					<span class="input-group-btn">
-						<button class="btn border-0 btn-link text-white" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+						<button class="btn border-0 btn-link text-white" type="submit"><i class="fas fa-search"></i></button>
 					</span>
 				</div>
 			</form>

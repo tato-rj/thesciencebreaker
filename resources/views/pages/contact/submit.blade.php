@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-lg-9 col-md-12">
 			@component('components/snippets/title')
-			<i class="fa fa-upload mr-2" aria-hidden="true"></i>Submit your Break
+			SUBMIT YOUR BREAK
 			@endcomponent
 			<div class="row">
 				<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 mx-auto mt-3">

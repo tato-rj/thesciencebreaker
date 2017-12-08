@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-lg-9 col-md-12" id="partners">
 			@component('components/snippets/title')
-			Partners
+			PARTNERS
 			@endcomponent
 			<div class="d-flex flex-row justify-content-center align-items-center flex-wrap mt-4">
 				<a href="http://antibiotic-action.com/" target="_blank">
