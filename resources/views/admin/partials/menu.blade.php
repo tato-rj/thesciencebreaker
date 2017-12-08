@@ -2,7 +2,7 @@
 
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
     <a class="nav-link" href="/admin/dashboard">
-      <i class="fa fa-tachometer mr-1" aria-hidden="true"></i>
+      <i class="fas fa-tachometer-alt mr-1" aria-hidden="true"></i>
       <span class="nav-link-text">Dashboard</span>
     </a>
   </li>

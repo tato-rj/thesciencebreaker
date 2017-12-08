@@ -41,7 +41,7 @@ class AppController extends Controller
 
     public function picks()
     {
-    	$articlesQuery = ['articles.id as break_id', 'title', 'articles.slug as article_slug', 'views', 'articles.slug as article_slug', 'content', 'reading_time', 'original_article', 'doi as imzy_link', 'articles.created_at as date_created'];
+    	$articlesQuery = ['articles.id as break_id', 'title', 'articles.slug as article_slug', 'views', 'articles.slug as article_slug', 'content', 'reading_time', 'original_article', 'doi as disqus_url', 'articles.created_at as date_created'];
     	$categoriesQuery = ['categories.id as category_id', 'name as category_name', 'categories.slug as category_slug'];
     	$managersQuery = ['managers.id as editor_id', 'managers.first_name as editor_first_name', 'managers.last_name as editor_last_name', 'managers.position as editor_position'];
 
@@ -99,6 +99,16 @@ class AppController extends Controller
         $articles = $articles->resources()->suggestions();
 
         foreach ($articles as $break) {
+            
+            $break->break_id = $break->id;
+            $break->article_slug = $break->slug;
+            $break->disqus_url = $break->doi;
+            $break->date_created = $break->created_at;
+            unset($break->created_at);
+            unset($break->doi);
+            unset($break->slug);
+            unset($break->id);
+
             if (File::exists("storage/app/breaks/images/$break->slug")) {
                 $file = File::allFiles("storage/app/breaks/images/$break->slug");
                 $path = (count($file)) ? asset($file[0]): 'no-image';
