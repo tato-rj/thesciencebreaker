@@ -50,8 +50,10 @@ class GuestRoutesTest extends TestCase
         $routes = [
             '/app/breaks',
             '/app/picks',
-            '/app/tags',
-            '/app/breakers'
+            '/app/suggestions',
+            '/app/highlights',
+            '/app/latest',
+            '/app/popular'
         ];
 
         check($this, $routes);

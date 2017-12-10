@@ -97,9 +97,10 @@ Route::post('/contact/submit-a-break', 'ContactsController@submit');
 
 Route::get('/app/breaks', 'AppController@breaks');
 Route::get('/app/picks', 'AppController@picks');
-Route::get('/app/tags', 'AppController@tags');
-Route::get('/app/breakers', 'AppController@breakers');
 Route::get('/app/suggestions', 'AppController@suggestions');
+Route::get('/app/highlights', 'AppController@highlights');
+Route::get('/app/popular', 'AppController@popular');
+Route::get('/app/latest', 'AppController@latest');
 
 /*
 * 
