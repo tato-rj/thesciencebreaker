@@ -186,6 +186,7 @@
           @endslot
           @endcomponent
         </div>
+        {{-- Authors --}}
         <div class="form-group">
           <div class=" mb-1 d-flex align-items-center justify-content-between">
             <label><strong>Breakers</strong><span class="badge badge-warning ml-1">{{ count($article->authors) }}</span> <small>(you can select have as many as you need)</small></label>
@@ -194,7 +195,7 @@
           @include('admin/snippets/order_breakers')
           <select required multiple class="form-control" size="12" id="authors" data-break-slug="{{ $article->slug }}" name="authors[]">
             @foreach ($authors as $author)
-            <option value="{{ $author->id }}" data-sort="{{ $author->resources()->orderIn($article) }}" {{ in_array($author->id, $article->resources()->authorsIds()) ? 'selected' : '' }}>{{ $author->resources()->fullName() }}
+            <option value="{{ $author->id }}" data-position="{{ $author->position }}" data-sort="{{ $author->resources()->orderIn($article) }}" {{ in_array($author->id, $article->resources()->authorsIds()) ? 'selected' : '' }}>{{ $author->resources()->fullName() }}
             </option>
             @endforeach
           </select>
@@ -334,7 +335,7 @@ $html = [];
 
 // Get selected authors and put them into an array
 $('#authors option:selected').each(function() {
-  $html.push('<li id="'+$(this).val()+'" class="list-none m-1 p-1 px-2" data-sort="'+$(this).attr('data-sort')+'">'+$(this).text()+'</li>');
+  $html.push('<li id="'+$(this).val()+'" class="list-none m-1 p-1 px-2" data-sort="'+$(this).attr('data-sort')+'">'+$(this).text()+'<small>- '+$(this).attr('data-position')+'</small></li>');
 });
 // Put the array inside a temp hidden div
 $('#temp_list').append($html);
