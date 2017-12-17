@@ -17,6 +17,15 @@ class AppController extends Controller
         return $articles;
     }
 
+    public function home()
+    {
+        $results = [];
+        $results['highlights'] = $this->highlights();
+        $results['popular'] = $this->popular();
+        $results['latest'] = $this->latest();
+        return $results;
+    }
+
     public function highlights()
     {
         $articles = [];
