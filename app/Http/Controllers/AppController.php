@@ -20,9 +20,10 @@ class AppController extends Controller
     public function home()
     {
         $results = [];
+        $results['latest'] = $this->latest();
         $results['highlights'] = $this->highlights();
         $results['popular'] = $this->popular();
-        $results['latest'] = $this->latest();
+        
         return $results;
     }
 
