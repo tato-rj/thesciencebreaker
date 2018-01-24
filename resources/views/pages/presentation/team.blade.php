@@ -29,6 +29,14 @@
                 @include('components/snippets/avatars/manager')
               @endforeach
             </div>
+            @if (count($managing_editors))
+            <div>
+              <h5>Managing {{ str_plural('Editor', count($managing_editors)) }}</h5>
+              @foreach ($managing_editors as $member)
+                @include('components/snippets/avatars/manager')
+              @endforeach
+            </div>
+            @endif
             <div>
               <h5>Scientific Editors</h5>
               @foreach ($editors as $member)

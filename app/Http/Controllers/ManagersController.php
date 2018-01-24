@@ -21,13 +21,14 @@ class ManagersController extends Controller
     public function index()
     {
         $founders = Manager::where('division_id', 1)->get();
+        $managing_editors = Manager::where('division_id', 5)->get();
         $editors = Manager::where('division_id', 2)->get();
         $comm_officers = Manager::where('division_id', 3)->get();
         $advisors = Manager::where('division_id', 4)->get();
         $breakers = Author::orderBy('first_name')->paginate(10);
         $paginated = Input::get('page');
 
-        return view('pages.presentation.team', compact('founders', 'editors', 'comm_officers', 'advisors', 'breakers', 'paginated'));
+        return view('pages.presentation.team', compact('founders', 'editors', 'managing_editors', 'comm_officers', 'advisors', 'breakers', 'paginated'));
     }
 
     // CREATE
