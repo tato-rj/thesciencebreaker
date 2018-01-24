@@ -21,7 +21,7 @@ class CreateManagersTable extends Migration
             $table->string('slug')->slug();
             $table->string('email')->unique();
             $table->unsignedInteger('division_id');
-            $table->string('position');
+            $table->string('position')->nullable();
             $table->text('biography')->nullable();
             $table->string('research_institute');
             $table->boolean('is_editor');

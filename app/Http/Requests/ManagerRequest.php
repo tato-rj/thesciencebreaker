@@ -23,7 +23,6 @@ class ManagerRequest extends Form
             'last_name' => 'required|min:2',
             'email' => 'required|email',
             'division_id' => 'required',
-            'position' => 'required',
             'avatar' => 'mimes:jpg,jpeg,png,svg|max:6000'
         ];
     }

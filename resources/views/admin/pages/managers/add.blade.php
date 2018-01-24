@@ -90,7 +90,7 @@
               {{-- Position --}}
               <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
-                <input required type="text" value="{{ old('position') }}" name="position" class="form-control" id="position" placeholder="Position">
+                <input type="text" value="{{ old('position') }}" name="position" class="form-control" id="position" placeholder="Position">
               </div>
               <div class="d-block">
                 {{-- Errors --}}
