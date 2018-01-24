@@ -20,6 +20,20 @@
             {{csrf_field()}}
             <div class="row">
               <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                {{-- Title --}}
+                <div class="form-group">
+                  <select class="custom-select mb-2 mr-sm-2" style="margin-bottom:0!important" id="title" name="title">
+                    <option selected disabled>Title</option>
+                    <option value="Dr.">Dr.</option>
+                  </select>
+                  {{-- Error --}}
+                  @component('admin/snippets/error')
+                    title
+                    @slot('feedback')
+                    {{ $errors->first('title') }}
+                    @endslot
+                  @endcomponent
+                </div>
                 {{-- First Name --}}
                 <div class="form-group">
                   <input required type="text" value="{{ old('first_name') }}" name="first_name" class="form-control" id="first_name" aria-describedby="first_name" placeholder="First Name">

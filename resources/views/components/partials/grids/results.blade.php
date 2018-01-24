@@ -14,7 +14,7 @@
 				<h5 class="card-title"><strong>{{ $article->resources()->localize('title') }}</strong></h5>
 			</a>
 			{{-- Break preview --}}
-			<p class="mb-2">{!! html_entity_decode($article->resources()->preview()) !!}... <a href="{{ $article->paths()->route() }}">{{__('global.click_to_read')}}</a></p>
+			<p class="mb-2">{!! html_entity_decode($article->resources()->preview()) !!}... <a href="{{ $article->paths()->route() }}">{{__('global.click_to_read_more')}}</a></p>
 		</div>		
 	</div>
 

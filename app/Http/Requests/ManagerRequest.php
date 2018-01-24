@@ -18,6 +18,7 @@ class ManagerRequest extends Form
     public function rules()
     {
         return [
+            'title' => 'max:6',
             'first_name' => 'required|min:2',
             'last_name' => 'required|min:2',
             'email' => 'required|email',
@@ -33,6 +34,7 @@ class ManagerRequest extends Form
         $this->saveFile();
 
         return Manager::create([
+            'title' => $this->title,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'slug' => $this->slug,
@@ -51,6 +53,7 @@ class ManagerRequest extends Form
         $this->saveFile();
         
         $manager->update([
+            'title' => $this->title,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'slug' => $this->slug,

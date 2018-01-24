@@ -9,7 +9,8 @@ class ManagerResources extends Resources
 {
     public function fullName()
     {
-        return $this->model->first_name.' '.$this->model->last_name;
+        $title = ($this->model->title) ? $this->model->title.' ' : null;
+        return $title.$this->model->first_name.' '.$this->model->last_name;
     }
 
     public function editedArticles()
