@@ -102,6 +102,7 @@ Route::get('/app/highlights', 'AppController@highlights');
 Route::get('/app/popular', 'AppController@popular');
 Route::get('/app/latest', 'AppController@latest');
 Route::get('/app/home', 'AppController@home');
+Route::get('/app/break/disqus', 'AppController@disqus');
 
 /*
 * 

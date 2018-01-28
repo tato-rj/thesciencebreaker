@@ -17,6 +17,12 @@ class AppController extends Controller
         return $articles;
     }
 
+    public function disqus(Request $request)
+    {
+        $article = Article::where('id', $request->id)->get();
+        return view('pages/app/disqus', compact(['article']));
+    }
+
     public function home()
     {
         $results = [];
