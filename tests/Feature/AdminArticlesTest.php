@@ -226,10 +226,27 @@ class AdminArticlesTest extends TestCase
         $this->assertArraySubset(ArticleAuthor::where('article_id', $article->id)->pluck('relevance_order'), [0,0]);
 
         $this->post('/admin/breaks/'.$article->slug.'/breakers-order', [
-            'order' => [0,1]
+            'order' => [0,1],
+            'is_original_author' => [1,0]
         ]);
 
         $this->assertArraySubset(ArticleAuthor::where('article_id', $article->id)->pluck('relevance_order'), [1,0]);
+    }
+
+    /** @test */
+    public function a_manager_can_select_if_the_breaks_author_is_also_an_author_of_the_originial_paper()
+    {
+        $this->signIn();
+        $article = $this->article;
+        $new_author = factory('App\Author')->create();
+        $article->authors()->save($new_author);
+        
+        $this->post('/admin/breaks/'.$article->slug.'/breakers-order', [
+            'order' => [1,2],
+            'is_original_author' => [true,false]
+        ]);
+
+        $this->assertArraySubset(ArticleAuthor::where('article_id', $article->id)->pluck('is_original_author'), [1,0]);
     }
 
     /** @test */

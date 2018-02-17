@@ -85,8 +85,14 @@ class ArticlesController extends Controller
 
     public function authorsOrder(Request $request, Article $article)
     {
-        foreach ($request->order as $order => $author) {
-            ArticleAuthor::where('article_id', $article->id)->where('author_id', $author)->update(['relevance_order' => $order]);
+        foreach ($request->order as $index => $author) {
+            ArticleAuthor::where([
+                'article_id' => $article->id,
+                'author_id' => $author
+            ])->update([
+                'relevance_order' => $index,
+                'is_original_author' => $request->is_original_author[$index]
+            ]);
         }
     }
 

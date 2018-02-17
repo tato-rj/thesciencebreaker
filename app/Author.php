@@ -30,4 +30,11 @@ class Author extends TheScienceBreaker
     	return $this->belongsToMany('App\Article')->withTimestamps();
     }
 
+    public function isOriginalAuthorOf($articleId)
+    {
+        return ArticleAuthor::where([
+            'article_id' => $articleId,
+            'author_id' => $this->id,
+        ])->value('is_original_author');
+    }
 }

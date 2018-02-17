@@ -82,7 +82,7 @@
 							<div class="popover-modal p-3 {{ $author->slug }}-popover">
 								<div class="popover-body popover-body-padded">
 									<p class="mb-2"><i class="fa fa-user mr-2" aria-hidden="true"></i><strong>{{ $author->resources()->fullName() }}</strong> is {{ $author->position }} at {{ $author->research_institute }}.</p>
-									@if ($author->resources()->isAuthorOf($article))
+									@if ($author->isOriginalAuthorOf($article->id))
 									<p class="mb-0 text-green">
 										<strong>{{ $author->resources()->fullName() }} is also an author of the <a>original article</a></strong>
 									</p>

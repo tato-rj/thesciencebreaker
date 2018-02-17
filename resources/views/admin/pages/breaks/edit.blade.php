@@ -196,13 +196,13 @@
           {{-- Authors --}}
           <div class="form-group">
             <div class=" mb-1 d-flex align-items-center justify-content-between">
-              <label><strong>Breakers</strong><span class="badge badge-warning ml-1">{{ count($article->authors) }}</span> <small>(you can select have as many as you need)</small></label>
-              <button type="button" id="sort_breakers" class="btn btn-sm btn-theme-orange" data-toggle="modal" data-target="#order_breakers">Order</button>
+              <label><strong>Breakers</strong><span class="badge badge-warning ml-1">{{ count($article->authors) }}</span> <small>(hold down <code>ctrl</code> to select more than one)</small></label>
+              <button type="button" id="sort_breakers" class="btn btn-sm btn-theme-orange" data-toggle="modal" data-target="#order_breakers">More</button>
             </div>
             @include('admin/snippets/order_breakers')
             <select required multiple class="form-control" size="12" id="authors" data-break-slug="{{ $article->slug }}" name="authors[]">
               @foreach ($authors as $author)
-              <option value="{{ $author->id }}" data-position="{{ $author->position }}" data-sort="{{ $author->resources()->orderIn($article) }}" {{ in_array($author->id, $article->resources()->authorsIds()) ? 'selected' : '' }}>{{ $author->resources()->fullName() }}
+              <option value="{{ $author->id }}" data-original_author="{{ $author->isOriginalAuthorOf($article->id) }}" data-position="{{ $author->position }}" data-sort="{{ $author->resources()->orderIn($article) }}" {{ in_array($author->id, $article->resources()->authorsIds()) ? 'selected' : '' }}>{{ $author->resources()->fullName() }}
               </option>
               @endforeach
             </select>
@@ -343,7 +343,11 @@ $html = [];
 
 // Get selected authors and put them into an array
 $('#authors option:selected').each(function() {
-  $html.push('<li id="'+$(this).val()+'" class="list-none m-1 p-1 px-2" data-sort="'+$(this).attr('data-sort')+'">'+$(this).text()+'<small>- '+$(this).attr('data-position')+'</small></li>');
+  $checked = ($(this).attr('data-original_author') == '1') ? 'checked' : null;
+  $html.push('<li id="'+$(this).val()+'" class="d-flex align-items-center justify-content-between list-none m-1 p-1 px-2" data-sort="'
+    +$(this).attr('data-sort')+'"><div style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 73%;">'
+    +$(this).text()+'<small>- '+$(this).attr('data-position')+
+    '</small></div><div class="d-flex align-items-center"><small class="mr-2">original author</small><input type="checkbox" '+$checked+'></div></li>');
 });
 // Put the array inside a temp hidden div
 $('#temp_list').append($html);
@@ -360,14 +364,23 @@ $('#temp_list').html('');
 
   $('#setOrder').on('click', function() {
     var $break_slug = $('#authors').attr('data-break-slug');
-    var array = [];
+    var order_array = [];
+    var is_author_array = [];
+
     $('#breakers_list li').each(function() {
-      array.push($(this).attr('id'));
+      order_array.push($(this).attr('id'));
     });
 
-    $.post('/admin/breaks/'+$break_slug+'/breakers-order', {'order': array})
+    $('#breakers_list li').each(function() {
+      is_author_array.push(+$(this).find('input[type="checkbox"]').prop('checked'));
+    });
+
+    $.post('/admin/breaks/'+$break_slug+'/breakers-order', {
+      'order': order_array, 
+      'is_original_author': is_author_array
+    })
     .done(function(msg){
-      $('.modal #success small span').text('Order updated!');
+      $('.modal #success small span').text('The changes were successful!');
       $('.modal #success').fadeIn().delay(1000).fadeOut('fast');
       $('#breakers_list li').each(function(index) {
         $('#authors option[value='+$(this).attr('id')+']').attr('data-sort', index);

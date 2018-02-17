@@ -24,7 +24,7 @@
             <small class="text-danger"><i class="fa fa-times mr-1" aria-hidden="true"></i><span></span></small>
           </div>
         </div>
-        <button type="button" id="setOrder" data-break-slug="" class="btn btn-theme-green">Set new order</button>
+        <button type="button" id="setOrder" data-break-slug="" class="btn btn-theme-green">Save changes</button>
       </div>
     </div>
   </div>

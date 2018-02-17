@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-
 trait AppAssertions
 {
     protected function seeEmailWasSent()

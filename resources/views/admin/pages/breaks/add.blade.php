@@ -151,7 +151,7 @@
               @endcomponent
             </div>
             <div class="form-group">
-              <label><strong>Breakers</strong> <small>(you can select have as many as you need)</small></label>
+              <label><strong>Breakers</strong> <small>(hold down <code>ctrl</code> to select more than one)</small></label>
               <select required multiple class="form-control" size="12" id="authors" name="authors[]">
                 @foreach ($authors as $author)
                   <option value="{{ $author->id }}">{{ $author->resources()->fullName() }}</option>

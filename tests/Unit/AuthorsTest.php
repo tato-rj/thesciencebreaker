@@ -31,4 +31,20 @@ class AuthorsTest extends TestCase
 
         $this->get($author->paths()->route())->assertSee($author->first_name);
     }
+
+    /** @test */
+    public function authors_know_if_they_are_the_original_authors()
+    {
+        $this->signIn();
+        $article = $this->article;
+        $new_author = factory('App\Author')->create();
+        $article->authors()->save($new_author);
+        
+        $this->post('/admin/breaks/'.$article->slug.'/breakers-order', [
+            'order' => [1,2],
+            'is_original_author' => [0,1]
+        ]);
+        $this->assertEquals(0, $this->author->isOriginalAuthorOf($article->id));
+        $this->assertEquals(1, $new_author->isOriginalAuthorOf($article->id));
+    }
 }
