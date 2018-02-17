@@ -37,247 +37,255 @@
       <div class="form-group">
         @include('components/snippets/search')
       </div>
-      
-
+    
       @if($article)
-      <small class="text-muted pull-right d-none d-sm-block"><em>This break was last updated on {{ $article->updated_at->toDayDateTimeString() }}</em></small>
-      <form method="POST" action="/admin/breaks/{{ $article->slug }}" enctype="multipart/form-data">
-        {{csrf_field()}}
-        {{method_field('PATCH')}}
-        {{-- Title --}}
-        <div class="form-group">
-          <label><strong>Title</strong></label>
-          <div class="d-flex align-items-center">
-            <input required type="text" value="{{ $article->title }}" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Title">
-            <button type="button" class="btn btn-theme-green ml-2" data-toggle="modal" data-target="#tags">Tags</button>               
-          </div>
+      <div class="mt-5">
+        <small class="text-muted pull-right d-none d-sm-block"><em>This break was last updated on {{ $article->updated_at->toDayDateTimeString() }}</em></small>
+        <form method="POST" action="/admin/breaks/{{ $article->slug }}" enctype="multipart/form-data">
+          {{csrf_field()}}
+          {{method_field('PATCH')}}
+          {{-- Title --}}
+          <div class="form-group">
+            <label><strong>Title</strong></label>
+            <div class="d-flex align-items-center">
+              <input required type="text" value="{{ $article->title }}" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Title">
+              <button type="button" class="btn btn-theme-green ml-2" data-toggle="modal" data-target="#tags">Tags</button>               
+            </div>
 
-          {{-- Error --}}
-          @component('admin/snippets/error')
-          title
-          @slot('feedback')
-          {{ $errors->first('title') }}
-          @endslot
-          @endcomponent
-        </div>
-        <div class="row">
-          <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
-            {{-- Description --}}
-            <div class="form-group">
-              <label><strong>Description</strong></label>
-              <textarea class="form-control" name="description" id="description" rows="6" maxlength="500" placeholder="Description (max 500 characters)">{{ $article->description }}</textarea>
-              {{-- Error --}}
-              @component('admin/snippets/error')
-              description
-              @slot('feedback')
-              {{ $errors->first('description') }}
-              @endslot
-              @endcomponent
+            {{-- Error --}}
+            @component('admin/snippets/error')
+            title
+            @slot('feedback')
+            {{ $errors->first('title') }}
+            @endslot
+            @endcomponent
+
+          </div>
+            <div class="form-check">
+              <label class="form-check-label mb-2">
+                <input type="checkbox" value="1" name="update_url" class="form-check-input" id="update_url">
+                I also want to update the <strong>url</strong> for this break
+              </label>
+            </div>
+          <div class="row">
+            <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
+              {{-- Description --}}
+              <div class="form-group">
+                <label><strong>Description</strong></label>
+                <textarea class="form-control" name="description" id="description" rows="6" maxlength="500" placeholder="Description (max 500 characters)">{{ $article->description }}</textarea>
+                {{-- Error --}}
+                @component('admin/snippets/error')
+                description
+                @slot('feedback')
+                {{ $errors->first('description') }}
+                @endslot
+                @endcomponent
+              </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+
+              <div class="form-group">
+                {{-- Category --}}
+                <label><strong>Category</strong></label>
+                <select class="custom-select form-control" id="category_id" name="category_id">
+                  <option  selected disabled>Category</option>
+                  @foreach ($categories as $category)
+                  <option value="{{ $category->id }}" {{ ($article->category_id == $category->id) ? 'selected' : '' }}>{{ $category->name }}</option>
+                  @endforeach
+                </select>
+                @component('admin/snippets/error')
+                category_id
+                @slot('feedback')
+                {{ $errors->first('category_id') }}
+                @endslot
+                @endcomponent
+              </div> 
+              <div class="form-group">
+                {{-- Editor --}}
+                <label><strong>Editor</strong></label>
+                <select class="custom-select form-control mb-2 mr-sm-2" id="editor_id" name="editor_id">
+                  <option  selected disabled>Editor</option>
+                  @foreach ($editors as $editor)
+                  <option value="{{ $editor->id }}" {{ ($article->editor_id == $editor->id) ? 'selected' : '' }}>{{ $editor->resources()->fullName() }}</option>
+                  @endforeach
+                </select>
+                @component('admin/snippets/error')
+                editor_id
+                @slot('feedback')
+                {{ $errors->first('editor_id') }}
+                @endslot
+                @endcomponent
+              </div>   
+
             </div>
           </div>
-          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
 
-            <div class="form-group">
-              {{-- Category --}}
-              <label><strong>Category</strong></label>
-              <select class="custom-select form-control" id="category_id" name="category_id">
-                <option  selected disabled>Category</option>
-                @foreach ($categories as $category)
-                <option value="{{ $category->id }}" {{ ($article->category_id == $category->id) ? 'selected' : '' }}>{{ $category->name }}</option>
-                @endforeach
-              </select>
-              @component('admin/snippets/error')
-              category_id
-              @slot('feedback')
-              {{ $errors->first('category_id') }}
-              @endslot
-              @endcomponent
-            </div> 
-            <div class="form-group">
-              {{-- Editor --}}
-              <label><strong>Editor</strong></label>
-              <select class="custom-select form-control mb-2 mr-sm-2" id="editor_id" name="editor_id">
-                <option  selected disabled>Editor</option>
-                @foreach ($editors as $editor)
-                <option value="{{ $editor->id }}" {{ ($article->editor_id == $editor->id) ? 'selected' : '' }}>{{ $editor->resources()->fullName() }}</option>
-                @endforeach
-              </select>
-              @component('admin/snippets/error')
-              editor_id
-              @slot('feedback')
-              {{ $errors->first('editor_id') }}
-              @endslot
-              @endcomponent
-            </div>   
-
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
-            {{-- Caption --}}
-            <div class="form-group">
-              <label><strong>Image caption</strong></label>
-              <div class="d-flex align-items-center">
-                <textarea name="image_caption" class="form-control" id="caption" maxlength="255" rows="4" aria-describedby="caption" placeholder="Caption (max 255 characters)">{{ $article->image_caption }}</textarea>       
-              </div>
-
-              {{-- Error --}}
-              @component('admin/snippets/error')
-              image_caption
-              @slot('feedback')
-              {{ $errors->first('image_caption') }}
-              @endslot
-              @endcomponent
-            </div> 
-            {{-- Credits --}}
-            <div class="form-group">
-              <label><strong>Image credits</strong></label>
-              <div class="d-flex align-items-center">
-                <input type="text" value="{{ $article->image_credits }}" name="image_credits" class="form-control" id="caption" aria-describedby="credits" placeholder="Credits">         
-              </div>
-
-              {{-- Error --}}
-              @component('admin/snippets/error')
-              image_credits
-              @slot('feedback')
-              {{ $errors->first('image_credits') }}
-              @endslot
-              @endcomponent
-            </div>  
-          </div>
-          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
-
-            <div class="form-group">
-              {{-- Image --}}
-              <label><strong>Cover Image</strong></label>
-              <div id="upload-box" class="card">
-                <input type="file" id="image" name="image" style="display:none;" />
-                <img class="card-img-top" id="cover-img" src="{{ asset($article->paths()->image()) }}" alt="Not an image">
-                <div class="card-body text-center">
-                  <button type="button" id="upload-button" class="btn bg-default text-white my-1"><i class="fa fa-cloud-upload mr-1" aria-hidden="true"></i>Upload</button>
-                  @if ($article->paths()->image() != 'images/no-image.png')
-                  <button type="button" id="remove-image" class="btn btn-danger my-1" data-title="{{ $article->paths()->image() }}" data-slug="{{ $article->slug }}" data-toggle="modal" data-target="#delete_modal">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                  </button>
-                  @endif
+          <div class="row">
+            <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
+              {{-- Caption --}}
+              <div class="form-group">
+                <label><strong>Image caption</strong></label>
+                <div class="d-flex align-items-center">
+                  <textarea name="image_caption" class="form-control" id="caption" maxlength="255" rows="4" aria-describedby="caption" placeholder="Caption (max 255 characters)">{{ $article->image_caption }}</textarea>       
                 </div>
 
-              </div>
-              {{-- Error --}}
-              @component('admin/snippets/error')
-              image
-              @slot('feedback')
-              {{ $errors->first('image') }}
-              @endslot
-              @endcomponent
-            </div>             
+                {{-- Error --}}
+                @component('admin/snippets/error')
+                image_caption
+                @slot('feedback')
+                {{ $errors->first('image_caption') }}
+                @endslot
+                @endcomponent
+              </div> 
+              {{-- Credits --}}
+              <div class="form-group">
+                <label><strong>Image credits</strong></label>
+                <div class="d-flex align-items-center">
+                  <input type="text" value="{{ $article->image_credits }}" name="image_credits" class="form-control" id="caption" aria-describedby="credits" placeholder="Credits">         
+                </div>
+
+                {{-- Error --}}
+                @component('admin/snippets/error')
+                image_credits
+                @slot('feedback')
+                {{ $errors->first('image_credits') }}
+                @endslot
+                @endcomponent
+              </div>  
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+
+              <div class="form-group">
+                {{-- Image --}}
+                <label><strong>Cover Image</strong></label>
+                <div id="upload-box" class="card">
+                  <input type="file" id="image" name="image" style="display:none;" />
+                  <img class="card-img-top" id="cover-img" src="{{ asset($article->paths()->image()) }}" alt="Not an image">
+                  <div class="card-body text-center">
+                    <button type="button" id="upload-button" class="btn bg-default text-white my-1"><i class="fa fa-cloud-upload mr-1" aria-hidden="true"></i>Upload</button>
+                    @if ($article->paths()->image() != 'images/no-image.png')
+                    <button type="button" id="remove-image" class="btn btn-danger my-1" data-title="{{ $article->paths()->image() }}" data-slug="{{ $article->slug }}" data-toggle="modal" data-target="#delete_modal">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                    @endif
+                  </div>
+
+                </div>
+                {{-- Error --}}
+                @component('admin/snippets/error')
+                image
+                @slot('feedback')
+                {{ $errors->first('image') }}
+                @endslot
+                @endcomponent
+              </div>             
+            </div>
           </div>
-        </div>
-        {{-- Content --}}
-        <div class="form-group">
-          <label><strong>Content</strong></label>
-          <textarea required class="form-control" name="content" id="content" rows="22" placeholder="Break">{{ $article->content }}</textarea>
-          {{-- Error --}}
-          @component('admin/snippets/error')
-          content
-          @slot('feedback')
-          {{ $errors->first('content') }}
-          @endslot
-          @endcomponent
-        </div>
-        {{-- Authors --}}
-        <div class="form-group">
-          <div class=" mb-1 d-flex align-items-center justify-content-between">
-            <label><strong>Breakers</strong><span class="badge badge-warning ml-1">{{ count($article->authors) }}</span> <small>(you can select have as many as you need)</small></label>
-            <button type="button" id="sort_breakers" class="btn btn-sm btn-theme-orange" data-toggle="modal" data-target="#order_breakers">Order</button>
+          {{-- Content --}}
+          <div class="form-group">
+            <label><strong>Content</strong></label>
+            <textarea required class="form-control" name="content" id="content" rows="22" placeholder="Break">{{ $article->content }}</textarea>
+            {{-- Error --}}
+            @component('admin/snippets/error')
+            content
+            @slot('feedback')
+            {{ $errors->first('content') }}
+            @endslot
+            @endcomponent
           </div>
-          @include('admin/snippets/order_breakers')
-          <select required multiple class="form-control" size="12" id="authors" data-break-slug="{{ $article->slug }}" name="authors[]">
-            @foreach ($authors as $author)
-            <option value="{{ $author->id }}" data-position="{{ $author->position }}" data-sort="{{ $author->resources()->orderIn($article) }}" {{ in_array($author->id, $article->resources()->authorsIds()) ? 'selected' : '' }}>{{ $author->resources()->fullName() }}
-            </option>
-            @endforeach
-          </select>
-        </div>
-        {{-- Original Article --}}
-        <div class="form-group">
-          <label><strong>Original Article</strong></label>
-          <input required type="text" value="{{ $article->original_article }}" name="original_article" class="form-control" id="original_article" aria-describedby="original_article" placeholder="Original article">
-          {{-- Error --}}
-          @component('admin/snippets/error')
-          original_article
-          @slot('feedback')
-          {{ $errors->first('original_article') }}
-          @endslot
-          @endcomponent
-        </div>
-        <div class="form-group">
-          {{-- Reading time --}}            
-          <label><strong>Reading time</strong></label>
-          <div class="input-group col-3 pl-0">
-            <div class="input-group-addon"><i class="fa fa-hourglass-half" aria-hidden="true"></i></div>
-            <input required type="text" value="{{ $article->reading_time }}" name="reading_time" size="4" class="form-control" id="reading_time" placeholder="Reading time">
+          {{-- Authors --}}
+          <div class="form-group">
+            <div class=" mb-1 d-flex align-items-center justify-content-between">
+              <label><strong>Breakers</strong><span class="badge badge-warning ml-1">{{ count($article->authors) }}</span> <small>(you can select have as many as you need)</small></label>
+              <button type="button" id="sort_breakers" class="btn btn-sm btn-theme-orange" data-toggle="modal" data-target="#order_breakers">Order</button>
+            </div>
+            @include('admin/snippets/order_breakers')
+            <select required multiple class="form-control" size="12" id="authors" data-break-slug="{{ $article->slug }}" name="authors[]">
+              @foreach ($authors as $author)
+              <option value="{{ $author->id }}" data-position="{{ $author->position }}" data-sort="{{ $author->resources()->orderIn($article) }}" {{ in_array($author->id, $article->resources()->authorsIds()) ? 'selected' : '' }}>{{ $author->resources()->fullName() }}
+              </option>
+              @endforeach
+            </select>
           </div>
-          @component('admin/snippets/error')
-          reading_time
-          @slot('feedback')
-          {{ $errors->first('reading_time') }}
-          @endslot
-          @endcomponent
-        </div> 
-        <div class="form-group">
-          {{-- Date created --}}            
-          <label><strong>Date created</strong></label>
-          <div class="input-group col-3 pl-0">
-            <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-            <input required type="text" value="{{ $article->created_at->format('m/d/Y') }}" name="created_at" class="form-control datepicker" data-provide="datepicker" id="created_at" placeholder="Month/Day/Year">
+          {{-- Original Article --}}
+          <div class="form-group">
+            <label><strong>Original Article</strong></label>
+            <input required type="text" value="{{ $article->original_article }}" name="original_article" class="form-control" id="original_article" aria-describedby="original_article" placeholder="Original article">
+            {{-- Error --}}
+            @component('admin/snippets/error')
+            original_article
+            @slot('feedback')
+            {{ $errors->first('original_article') }}
+            @endslot
+            @endcomponent
           </div>
-          @component('admin/snippets/error')
-          created_at
-          @slot('feedback')
-          {{ $errors->first('created_at') }}
-          @endslot
-          @endcomponent
-        </div>  
-        {{-- PDF --}}
-        <div class="form-group">
-          <label><strong>PDF</strong></label>
-          <input type="file" class="form-control-file" id="pdf" name="pdf">
-          <small class="form-text text-muted">
-            @if(File::exists($article->paths()->pdf()))
-            A PDF already exists. <strong><a class="text-success" href="{{ asset($article->paths()->pdf()) }}">Click here</a></strong> to view it.
-            @else
-            This break is <u class="text-danger">missing</u> the PDF
-            @endif
-          </small>
-          {{-- Error --}}
-          @component('admin/snippets/error')
-          pdf
-          @slot('feedback')
-          {{ $errors->first('pdf') }}
-          @endslot
-          @endcomponent
-        </div>
-        {{-- Editor's Pick --}}
-        <div class="form-check">
-          <label class="form-check-label mb-2">
-            <input type="checkbox" value="1" {{ ($article->editor_pick == '1') ? 'checked' : '' }} name="editor_pick" class="form-check-input" id="editor_pick">
-            Editor's Pick
-          </label>
-          {{-- Error --}}
-          @component('admin/snippets/error')
-          editor_pick
-          @slot('feedback')
-          {{ $errors->first('editor_pick') }}
-          @endslot
-          @endcomponent
-        </div>
-        <input type="submit" value="Submit" class="btn btn-theme-orange">
-        @include('admin/snippets/languages/edit_french')
-      </form>
-      @include('admin/snippets/tags')
-      @include('admin/snippets/confirm_delete')
+          <div class="form-group">
+            {{-- Reading time --}}            
+            <label><strong>Reading time</strong></label>
+            <div class="input-group col-3 pl-0">
+              <div class="input-group-addon"><i class="fa fa-hourglass-half" aria-hidden="true"></i></div>
+              <input required type="text" value="{{ $article->reading_time }}" name="reading_time" size="4" class="form-control" id="reading_time" placeholder="Reading time">
+            </div>
+            @component('admin/snippets/error')
+            reading_time
+            @slot('feedback')
+            {{ $errors->first('reading_time') }}
+            @endslot
+            @endcomponent
+          </div> 
+          <div class="form-group">
+            {{-- Date created --}}            
+            <label><strong>Date created</strong></label>
+            <div class="input-group col-3 pl-0">
+              <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+              <input required type="text" value="{{ $article->created_at->format('m/d/Y') }}" name="created_at" class="form-control datepicker" data-provide="datepicker" id="created_at" placeholder="Month/Day/Year">
+            </div>
+            @component('admin/snippets/error')
+            created_at
+            @slot('feedback')
+            {{ $errors->first('created_at') }}
+            @endslot
+            @endcomponent
+          </div>  
+          {{-- PDF --}}
+          <div class="form-group">
+            <label><strong>PDF</strong></label>
+            <input type="file" class="form-control-file" id="pdf" name="pdf">
+            <small class="form-text text-muted">
+              @if(File::exists($article->paths()->pdf()))
+              A PDF already exists. <strong><a class="text-success" href="{{ asset($article->paths()->pdf()) }}">Click here</a></strong> to view it.
+              @else
+              This break is <u class="text-danger">missing</u> the PDF
+              @endif
+            </small>
+            {{-- Error --}}
+            @component('admin/snippets/error')
+            pdf
+            @slot('feedback')
+            {{ $errors->first('pdf') }}
+            @endslot
+            @endcomponent
+          </div>
+          {{-- Editor's Pick --}}
+          <div class="form-check">
+            <label class="form-check-label mb-2">
+              <input type="checkbox" value="1" {{ ($article->editor_pick == '1') ? 'checked' : '' }} name="editor_pick" class="form-check-input" id="editor_pick">
+              Editor's Pick
+            </label>
+            {{-- Error --}}
+            @component('admin/snippets/error')
+            editor_pick
+            @slot('feedback')
+            {{ $errors->first('editor_pick') }}
+            @endslot
+            @endcomponent
+          </div>
+          <input type="submit" value="Submit" class="btn btn-theme-orange">
+          @include('admin/snippets/languages/edit_french')
+        </form>
+        @include('admin/snippets/tags')
+        @include('admin/snippets/confirm_delete')
+      </div>
       @endif
 
     </div>

@@ -72,7 +72,6 @@ class ArticleRequest extends Form
         $article->update([
             'title' => $this->title,
             'title_fr' => $this->title_fr,
-            'slug' => $this->slug,
             'description' => $this->description,
             'description_fr' => $this->description_fr,
             'image_caption' => $this->image_caption,
@@ -86,6 +85,12 @@ class ArticleRequest extends Form
             'editor_pick' => $this->editor_pick,
             'created_at' => $this->created_at
         ]);
+
+        if ($this->update_url) {
+            $article->update([
+                'slug' => $this->slug
+            ]);
+        }
 
         $article->authors()->sync($this->authors);
     }

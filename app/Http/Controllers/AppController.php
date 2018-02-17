@@ -20,6 +20,12 @@ class AppController extends Controller
         return $articles;
     }
 
+    public function incrementViews(Request $request)
+    {
+        $break = Article::findOrFail($request->id)->increment('views');
+        return $break;
+    }
+
     public function disqus(Request $request)
     {
         $article = Article::where('id', $request->id)->get();
@@ -29,9 +35,9 @@ class AppController extends Controller
     public function home()
     {
         $results = [];
-        $results['latest'] = $this->latest();
-        $results['highlights'] = $this->highlights();
-        $results['popular'] = $this->popular();
+        $results['a_latest'] = $this->latest();
+        $results['b_highlights'] = $this->highlights();
+        $results['c_popular'] = $this->popular();
         
         return $results;
     }

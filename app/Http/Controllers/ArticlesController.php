@@ -50,7 +50,6 @@ class ArticlesController extends Controller
     // READ
     public function show(Category $category, Article $article)
     {
-
         $next_read = $article->resources()->nextRead();
         $more_like = $article->resources()->suggestions();
         $more_from = $article->similar()->get();
@@ -71,8 +70,11 @@ class ArticlesController extends Controller
 
     public function update(Request $request, Article $article)
     {
-
         ArticleRequest::get()->update($article);
+
+        if ($request->update_url) {
+            return redirect("/admin/breaks/{$article->slug}/edit")->with('db_feedback', 'The Break has been updated');
+        }
         return redirect()->back()->with('db_feedback', 'The Break has been updated');
     }
 
