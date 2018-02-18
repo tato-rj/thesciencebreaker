@@ -1,6 +1,7 @@
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('js/admin/jquery.min.js') }}"></script>
     <script src="{{ asset('js/admin/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/trix.js') }}"></script>
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('js/admin/jquery.easing.min.js') }}"></script>
     <!-- Page level plugin JavaScript-->

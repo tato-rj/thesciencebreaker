@@ -184,7 +184,9 @@
           {{-- Content --}}
           <div class="form-group">
             <label><strong>Content</strong></label>
-            <textarea required class="form-control" name="content" id="content" rows="22" placeholder="Break">{{ $article->content }}</textarea>
+            {{-- <textarea required class="form-control" name="content" id="content" rows="22" placeholder="Break">{{ $article->content }}</textarea> --}}
+              <input id="content" value="{{ $article->content }}" type="hidden" name="content">
+              <trix-editor placeholder="Break" input="content"></trix-editor>
             {{-- Error --}}
             @component('admin/snippets/error')
             content
