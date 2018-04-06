@@ -15,17 +15,17 @@
 						<a class="dropdown-item" href="/about">{{__('menu.presentation.about')}}</a>
 						<a class="dropdown-item" href="/mission">{{__('menu.presentation.mission')}}</a>
 						<a class="dropdown-item" href="/the-team">{{__('menu.presentation.team')}}</a>
-						<a class="dropdown-item" href="/breakers">BREAKERS</a>
+						<a class="dropdown-item" href="/breakers">{{__('menu.presentation.breakers')}}</a>
 						<a class="dropdown-item" href="/partners">{{__('menu.presentation.partners')}}</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" id="dropdown-breaks" aria-haspopup="true" aria-expanded="false">
-						BREAKS
+						{{__('menu.breaks')}}
 					</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown-breaks">
 						@foreach ($categories as $category)
-						<a class="dropdown-item d-flex align-items-center" href="{{ $category->paths()->route() }}">{{strtoupper(__('categories.'.$category->slug))}}<span class="badge badge-warning ml-2">{{ $category->articles_count }}</span></a>
+						<a class="dropdown-item d-flex align-items-center text-uppercase" href="{{ $category->paths()->route() }}">{{__('categories.'.$category->slug)}}<span class="badge badge-warning ml-2">{{ $category->articles_count }}</span></a>
 						@endforeach
 					</div>
 				</li>
@@ -35,7 +35,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown-breakers">
 						<a class="dropdown-item" href="/information">{{__('menu.for_breakers.information')}}</a>
-						<a class="dropdown-item" href="/faq">{{__('menu.for_breakers.faq')}}</a>
+						<a class="dropdown-item" href="/review-operations">{{__('menu.for_breakers.revops')}}</a>
 						<a class="dropdown-item" href="/available-articles">{{__('menu.for_breakers.available')}}</a>
 					</div>
 				</li>

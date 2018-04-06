@@ -22,10 +22,20 @@ class Localization
      */
     public function handle($request, Closure $next)
     {
-        if (!Session::has('lang')) {
-            Session::put('lang', 'en');
+        $browserLang = substr($request->server('HTTP_ACCEPT_LANGUAGE'), 0, 2);
+
+        if (!in_array($browserLang, $this->languages)) {
+            $browserLang = 'en';
         }
-        app()->setLocale(Session::get('lang'));
+
+        $appLang = $browserLang;
+
+        if (Session::has('lang')) {
+            $appLang = Session::get('lang');
+        }
+
+        app()->setLocale($appLang);
+
         return $next($request);
     }
 }

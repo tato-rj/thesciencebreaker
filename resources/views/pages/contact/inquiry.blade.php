@@ -6,17 +6,17 @@
 	<div class="row">
 		<div class="col-lg-9 col-md-12">
 			@component('components/snippets/title')
-			BREAK INQUIRY
+			{{__('menu.contact.inquiry')}}
 			@endcomponent
 			<div class="row">
 				<div class="col-10 mx-auto">
-					<p class="text-center">If a scientific news attracted your attention and you wish to know more about it, directly from the scientists involved - let us know: we'll Break about it!</p>
+					<p class="text-center">{{__('contact.inquiry.description')}}</p>
 				</div>
 				<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 mx-auto mt-2">
 					<form method="POST" action="/contact/break-inquiry">
 						{{csrf_field()}}
 						<div class="form-group">
-							<input required type="text" value="{{ old('first_name') }}" class="form-control" name="first_name" placeholder="First name">
+							<input required type="text" value="{{ old('first_name') }}" class="form-control" name="first_name" placeholder="{{__('contact.form.first_name')}}">
 							{{-- Error --}}
 							@component('admin/snippets/error')
 							first_name
@@ -26,7 +26,7 @@
 							@endcomponent						
 						</div>
 						<div class="form-group">
-							<input required type="text" value="{{ old('last_name') }}" class="form-control" name="last_name" placeholder="Last name">
+							<input required type="text" value="{{ old('last_name') }}" class="form-control" name="last_name" placeholder="{{__('contact.form.last_name')}}">
 							{{-- Error --}}
 							@component('admin/snippets/error')
 							last_name
@@ -37,7 +37,7 @@
 						</div>
 						<div class="form-group">
 							<input required type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Email">
-							<small class="text-muted"><em>We will notify you when the Break will be published</em></small>
+							<small class="text-muted"><em>{{__('contact.inquiry.notify')}}</em></small>
 							{{-- Error --}}
 							@component('admin/snippets/error')
 							email
@@ -47,23 +47,23 @@
 							@endcomponent		
 						</div>
 						<div class="form-group">
-							<p>Where did you hear about this scientific news?</p>	
+							<p>{{__('contact.form.where_did_you_hear.title')}}</p>	
 							<div class="form-check">
 							  <label class="form-check-label">
 							    <input class="form-check-input" required type="radio" name="news_from" id="internet" value="On the internet">
-							    On the internet
+							    {{__('contact.form.where_did_you_hear.internet')}}
 							  </label>
 							</div>
 							<div class="form-check">
 							  <label class="form-check-label">
 							    <input class="form-check-input" required type="radio" name="news_from" id="newspaper" value="In a newspaper/magazine">
-							    In a newspaper/magazine
+							    {{__('contact.form.where_did_you_hear.journal')}}
 							  </label>
 							</div>
 							<div class="form-check">
 							  <label class="form-check-label">
 							    <input class="form-check-input" required type="radio" name="news_from" id="tv" value="TV / Radio / Other">
-							    TV / Radio / Other
+							    {{__('contact.form.where_did_you_hear.tv')}}
 							  </label>
 							</div>
 						</div>
@@ -71,7 +71,7 @@
 						<div id="options">
 							<div>
 								<div class="form-group">
-									<input class="form-control internet" type="text" name="article_title" placeholder="Article title">
+									<input class="form-control internet" type="text" name="article_title" placeholder="{{__('contact.form.where_did_you_hear.article_title')}}">
 									{{-- Error --}}
 									@component('admin/snippets/error')
 									article_title
@@ -81,7 +81,7 @@
 									@endcomponent	
 								</div>
 								<div class="form-group">
-									<input class="form-control internet" type="text" name="author_name" placeholder="Author name">
+									<input class="form-control internet" type="text" name="author_name" placeholder="{{__('contact.form.where_did_you_hear.author_name')}}">
 									{{-- Error --}}
 									@component('admin/snippets/error')
 									author_name
@@ -91,7 +91,7 @@
 									@endcomponent
 								</div>
 								<div class="form-group">
-									<input class="form-control internet" type="text" name="article_url" placeholder="Article URL">
+									<input class="form-control internet" type="text" name="article_url" placeholder="{{__('contact.form.where_did_you_hear.url')}}">
 									{{-- Error --}}
 									@component('admin/snippets/error')
 									article_url
@@ -103,7 +103,7 @@
 							</div>
 							<div class="newspaper">
 								<div class="form-group">
-									<input class="form-control newspaper" type="text" name="news_title" placeholder="Article title">
+									<input class="form-control newspaper" type="text" name="news_title" placeholder="{{__('contact.form.where_did_you_hear.article_title')}}">
 									{{-- Error --}}
 									@component('admin/snippets/error')
 									article_title
@@ -113,7 +113,7 @@
 									@endcomponent
 								</div>
 								<div class="form-group">
-									<input class="form-control newspaper" type="text" name="writer_name" placeholder="Author name">
+									<input class="form-control newspaper" type="text" name="writer_name" placeholder="{{__('contact.form.where_did_you_hear.author_name')}}">
 									{{-- Error --}}
 									@component('admin/snippets/error')
 									author_name
@@ -123,7 +123,7 @@
 									@endcomponent
 								</div>
 								<div class="form-group">
-									<input class="form-control newspaper" type="text" name="newspaper_title" placeholder="Newspaper/Magazine title">
+									<input class="form-control newspaper" type="text" name="newspaper_title" placeholder="{{__('contact.form.where_did_you_hear.mag_title')}}">
 									{{-- Error --}}
 									@component('admin/snippets/error')
 									newspaper_title
@@ -133,7 +133,7 @@
 									@endcomponent
 								</div>
 								<div class="form-group">
-									<input class="form-control newspaper" type="text" name="newspaper_number" placeholder="Newspaper/Magazine number">
+									<input class="form-control newspaper" type="text" name="newspaper_number" placeholder="{{__('contact.form.where_did_you_hear.mag_number')}}">
 									{{-- Error --}}
 									@component('admin/snippets/error')
 									newspaper_number
@@ -143,7 +143,7 @@
 									@endcomponent
 								</div>
 								<div class="form-group">
-									<input class="form-control newspaper" type="text" name="publication_date" placeholder="Publication date">
+									<input class="form-control newspaper" type="text" name="publication_date" placeholder="{{__('contact.form.where_did_you_hear.date')}}">
 									{{-- Error --}}
 									@component('admin/snippets/error')
 									publication_date
@@ -153,7 +153,7 @@
 									@endcomponent
 								</div>
 								<div class="form-group">
-									<input class="form-control newspaper" type="text" name="on_page" placeholder="The article is on page">
+									<input class="form-control newspaper" type="text" name="on_page" placeholder="{{__('contact.form.where_did_you_hear.page')}}">
 									{{-- Error --}}
 									@component('admin/snippets/error')
 									publication_date
@@ -165,7 +165,7 @@
 							</div>
 							<div class="tv">
 								<div class="form-group">
-									<textarea class="form-control tv" name="description" placeholder="Describe the news/subject" rows="3"></textarea>
+									<textarea class="form-control tv" name="description" placeholder="{{__('contact.form.where_did_you_hear.describe')}}" rows="3"></textarea>
 									{{-- Error --}}
 									@component('admin/snippets/error')
 									description
@@ -177,14 +177,14 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<textarea class="form-control" name="message" placeholder="Message (optional)" rows="4"></textarea>
+							<textarea class="form-control" name="message" placeholder="{{__('contact.form.where_did_you_hear.message')}}" rows="4"></textarea>
 						</div>
 						<label class="custom-control d-block custom-checkbox mb-4">
 							<input type="checkbox" checked="true" name="subscribe_me" class="custom-control-input">
 							<span class="custom-control-indicator"></span>
-							<span class="custom-control-description">Join the newsletter</span>
+							<span class="custom-control-description">{{__('contact.form.newsletter')}}</span>
 						</label>
-						<input type="submit" value="Send" class="btn btn-theme-green">
+						<input type="submit" value="{{__('contact.form.send')}}" class="btn btn-theme-green">
 					</form>				
 				</div>
 			</div>

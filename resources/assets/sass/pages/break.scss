@@ -54,6 +54,12 @@
 		border-bottom: 1px solid;
 	}
 
+	#break-text {
+		> div {
+			margin-bottom: -8px;
+		}
+	}
+
 	#credits {
 		h5 {
 			color: inherit;

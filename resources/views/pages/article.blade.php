@@ -130,7 +130,7 @@
 			</div>
 
 			{{-- Body --}}
-			<div class="mt-4">
+			<div id="break-text" class="mt-4">
 				{!! html_entity_decode($article->resources()->localize('content')) !!}
 			</div>
 

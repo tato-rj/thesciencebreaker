@@ -51,7 +51,7 @@
 							<a href="/information">{{strtolower(__('menu.for_breakers.information'))}}</a>
 						</li>
 						<li>
-							<a href="/faq">{{strtolower(__('menu.for_breakers.faq'))}}</a>
+							<a href="/review-operations">{{strtolower(__('menu.for_breakers.revops'))}}</a>
 						</li>
 						<li>	
 							<a href="/available-articles">{{strtolower(__('menu.for_breakers.available'))}}</a>

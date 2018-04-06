@@ -63,7 +63,7 @@ Route::get('/information', function() {
 });
 
 // FAQ
-Route::get('/faq', function() {
+Route::get('/review-operations', function() {
 	return view('pages.for_breakers.faq');
 });
 

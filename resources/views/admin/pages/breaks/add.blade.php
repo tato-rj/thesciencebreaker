@@ -141,9 +141,9 @@
             </div>
             {{-- Content --}}
             <div class="form-group">
-              {{-- <textarea required class="form-control" name="content" id="content" rows="8" placeholder="Break">{{ old('content') }}</textarea> --}}
-              <input id="content" value="{{ old('content') }}" type="hidden" name="content">
-              <trix-editor placeholder="Break content" input="content"></trix-editor>
+              <textarea required class="form-control" name="content" id="content" rows="8" placeholder="Break">{{ old('content') }}</textarea>
+{{--               <input id="content" value="{{ old('content') }}" type="hidden" name="content">
+              <trix-editor placeholder="Break content" input="content"></trix-editor> --}}
               {{-- Error --}}
               @component('admin/snippets/error')
                 content
@@ -255,7 +255,7 @@ $('input[name="title"], select[name="category_id"]').on('keyup change', function
 
   if ($title != '') {
     if ($category_slug != 'category') {
-      $url.html('<strong>URL</strong> https://www.thesciencebreaker.com/breaks/'+$category_slug+'/'+$title_slug);
+      $url.html('<strong>URL</strong> https://www.thesciencebreaker.org/breaks/'+$category_slug+'/'+$title_slug);
     } else {
       $url.html('<strong>URL</strong> select the category to display a preview');
     }

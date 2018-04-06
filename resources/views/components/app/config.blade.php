@@ -17,7 +17,7 @@
 {{-- Facebook --}}
 <meta property="fb:app_id" content="1737765819883440" />
 <meta property="og:url" content="{{ url()->full() }}" />
-<meta property="og:site_name" content="{{ config('app.name') }} | Science Meets Society">
+<meta property="og:site_name" content="{{ config('app.name') }} | {{__('global.sub_title')}}">
 {{-- Twitter --}}
 <meta name="twitter:site" content="@sciencebreaker" />
 <meta name="twitter:url" content="{{ url()->full() }}" />
@@ -89,4 +89,4 @@
 {{-- CSS --}}
 <link rel="stylesheet" href="{{ asset('css/jquery-popover-0.0.3.css') }}">
 <link href="{{ asset('css/fontawesome-all.min.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/app.css') }}?version=131" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/app.css') }}?version=132" rel="stylesheet" type="text/css">

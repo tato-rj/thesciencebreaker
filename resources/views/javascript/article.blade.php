@@ -37,3 +37,8 @@ function popitup(url, height) {
 		return false;
 }
 </script>
+
+<script type="text/javascript">
+// Add _BLANK to links
+$('#break-text a').attr('target', '_blank');
+</script>

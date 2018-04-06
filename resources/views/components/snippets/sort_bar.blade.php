@@ -3,7 +3,7 @@
 		{{$slot}}
 	</div>
 	<div class="form-inline">
-		<label class="mb-0 mr-2 d-none d-sm-inline">show</label>
+		<label class="mb-0 mr-2 d-none d-sm-inline">{{__('global.sort_bar.show')}}</label>
 		<form>
 			@if(Request::input('for'))
 				<input type="hidden" name="for" value="{{ Request::input('for') }}">
@@ -13,7 +13,7 @@
 			{{$show}}
 			</select>
 		</form>
-		<label class="mb-0 mr-2 d-none d-sm-inline">sort by</label>
+		<label class="mb-0 mr-2 d-none d-sm-inline">{{__('global.sort_bar.sort_by')}}</label>
 		<form>
 			@if(Request::input('for'))
 				<input type="hidden" name="for" value="{{ Request::input('for') }}">

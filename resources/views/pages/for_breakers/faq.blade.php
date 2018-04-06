@@ -6,36 +6,35 @@
 	<div class="row">
 		<div class="col-lg-9 col-12">
 			@component('components/snippets/title')
-			{{__('menu.for_breakers.faq')}}
+			{{__('menu.for_breakers.revops')}}
 			@endcomponent
-			<p><strong class="faq-question">{{__('faq.q1')}}</strong></p>
-			<p>{!!__('faq.p1')!!}</p>
-			<p><strong class="faq-question">{{__('faq.q2')}}</strong></p>
-			<p>{!!__('faq.p2')!!}</p>
-			<p><strong class="faq-question">{{__('faq.q3')}}</strong></p>
-			<p>{!!__('faq.p3')!!}</p>
-			<p><strong class="faq-question">{{__('faq.q4')}}</strong></p>
-			<p>{!!__('faq.p4')!!}</p>
-			<p><strong class="faq-question">{{__('faq.q5')}}</strong></p>
-			<p>{!!__('faq.p5')!!}</p>
+
+			<p class="lead mt-4">{!!__('revops.precheck.title')!!}</p>
+			<p>{!!__('revops.precheck.p1')!!}</p>
+
+			<p class="lead mt-4">{!!__('revops.revop.title')!!}</p>
+			<p>{!!__('revops.revop.p1')!!}</p>
 			<div class="jumbotron">
-				<ol>
-					{!!__('faq.ol1')!!}
-				</ol>
+				<p>{!!__('revops.revop.p2')!!}</p>			
 			</div>
-			<p><strong class="faq-question">{{__('faq.q6')}}</strong></p>
-			<p>{!!__('faq.p6')!!}</p>
+			<p>{!!__('revops.revop.p3')!!}</p>
+
+			<p class="lead mt-4">{!!__('revops.final.title')!!}</p>
+			<p>{!!__('revops.final.p1')!!}</p>
+			<p>{!!__('revops.final.p2')!!}</p>
+			<p>{!!__('revops.final.p3')!!}</p>
+
+			<p class="lead mt-4">{!!__('revops.features.title')!!}</p>
 			<div class="jumbotron">
-				<ol>
-					{!!__('faq.ol2')!!}
-				</ol>
+				<ul>
+					<li>{!!__('revops.features.p1')!!}</li>
+					<li>{!!__('revops.features.p2')!!}</li>
+					<li>{!!__('revops.features.p3')!!}</li>
+					<li>{!!__('revops.features.p4')!!}</li>
+					<li>{!!__('revops.features.p5')!!}</li>
+				</ul>
 			</div>
-			<p><strong class="faq-question">{{__('faq.q7')}}</strong></p>
-			<p>{!!__('faq.p7')!!}</p>
-			<p><strong class="faq-question">{{__('faq.q8')}}</strong></p>
-			<p>{!!__('faq.p8')!!}</p>
-			<p><strong class="faq-question">{{__('faq.q9')}}</strong></p>
-			<p>{!!__('faq.p9')!!}</p>
+
 			<div class="text-center mt-5">
 				@component('components/snippets/buttons/brand')
 					{{__('menu.contact.question')}}

@@ -7,18 +7,20 @@ return [
 		'about' => 'ABOUT',
 		'mission' => 'MISSION',
 		'team' => 'THE TEAM',
+		'breakers' => 'BREAKERS COMMUNITY',
 		'partners' => 'PARTNERS'
 	],
+	'breaks' => 'SUBJECTS',
 	'for_breakers' => [
-		'title' => 'FOR BREAKERS',
+		'title' => 'FOR AUTHORS',
 		'information' => 'INFORMATION FOR AUTHORS',
-		'faq' => 'FAQ',
+		'revops' => 'REVIEW OPERATIONS',
 		'available' => 'AVAILABLE ARTICLES'
 	],
 	'contact' => [
 		'title' => 'CONTACT',
-		'submit' => 'SUBMIT YOUR BREAK',
-		'inquiry' => 'BREAK INQUIRY',
+		'submit' => 'SUBMIT YOUR ARTICLE',
+		'inquiry' => 'PROPOSE A TOPIC',
 		'question' => 'ASK A QUESTION'
 	],
 	'privacy' => 'PRIVACY POLICY',

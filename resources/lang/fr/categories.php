@@ -5,8 +5,8 @@ return [
 	'neurobiology' => 'Neurobiologie',
 	'earth-space' => 'Terre & Espace',
 	'evolution-behaviour' => 'Evolution & Comportement',
-	'plant-biology' => 'Biologie Vegetal',
+	'plant-biology' => 'Biologie Végétale',
 	'microbiology' => 'Microbiologie',
-	'maths-physics-chemistry' => 'Math, Phisique & Chemistrys',
-	'psychology' => 'Psychology'
+	'maths-physics-chemistry' => 'Maths, Physique & Chimie',
+	'psychology' => 'Psychologie'
 ];

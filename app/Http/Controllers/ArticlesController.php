@@ -61,7 +61,8 @@ class ArticlesController extends Controller
     public function edit(Article $article = null)
     {
         $authors = Author::orderBy('first_name')->get();
-        $breaks = Article::orderBy('title')->get();
+        $breaks = Article::orderBy('created_at')->get();
+        // return $breaks;
         $tags = Tag::orderBy('name')->get();
         $editors = Manager::editors()->get();
 

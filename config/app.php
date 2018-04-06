@@ -57,7 +57,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://www.thesciencebreaker.com'),
+    'url' => env('APP_URL', 'https://www.thesciencebreaker.org'),
 
     /*
     |--------------------------------------------------------------------------

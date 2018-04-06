@@ -6,16 +6,16 @@
   <div class="row">
     <div class="col-lg-9 col-md-12">
       @component('components/snippets/title')
-      THE TEAM
+      {{__('menu.presentation.team')}}
       @endcomponent
 
       {{-- Nav tabs --}}
       <ul class="nav nav-tabs mt-4" id="tab-bar" role="tablist">
         <li class="nav-item">
-          <a class="nav-link {{ ($paginated) ? : 'active' }}" data-toggle="tab" href="#core" role="tab">Core Team</a>
+          <a class="nav-link {{ ($paginated) ? : 'active' }}" data-toggle="tab" href="#core" role="tab">{{__('team.categories.core')}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#advisors" role="tab">Advisory Board</a>
+          <a class="nav-link" data-toggle="tab" href="#advisors" role="tab">{{__('team.categories.board')}}</a>
         </li>
       </ul>
 
@@ -24,27 +24,27 @@
         <div class="tab-pane {{ ($paginated) ? : 'active' }}" id="core" role="tabpanel">
           <div class="avatars">
             <div>
-              <h5>Editor in Chief</h5>
+              <h5>{{__('team.roles.chief')}}</h5>
               @foreach ($founders as $member)
                 @include('components/snippets/avatars/manager')
               @endforeach
             </div>
             @if (count($managing_editors))
             <div>
-              <h5>Managing {{ str_plural('Editor', count($managing_editors)) }}</h5>
+              <h5>{{__('team.roles.managing_editor')}}</h5>
               @foreach ($managing_editors as $member)
                 @include('components/snippets/avatars/manager')
               @endforeach
             </div>
             @endif
             <div>
-              <h5>Scientific Editors</h5>
+              <h5>{{__('team.roles.scientific_editors')}}</h5>
               @foreach ($editors as $member)
                 @include('components/snippets/avatars/manager')
               @endforeach
             </div>
             <div>
-              <h5>Comm Officer</h5>
+              <h5>{{__('team.roles.comm_officer')}}</h5>
               @foreach ($comm_officers as $member)
                 @include('components/snippets/avatars/manager')
               @endforeach

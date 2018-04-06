@@ -7,19 +7,20 @@ return [
 		'about' => 'QUI SOMMES-NOUS?',
 		'mission' => 'MISSION',
 		'team' => 'L\'ÉQUIPE',
-		'breakers' => 'BREAKERS',
+		'breakers' => 'LA COMMUNAUTÉ DES BREAKERS',
 		'partners' => 'LES PARTENAIRES'
 	],
+	'breaks' => 'THÉMATIQUE',
 	'for_breakers' => [
 		'title' => 'POUR BREAKERS',
 		'information' => 'INFORMATION POUR LES AUTEURS',
-		'faq' => 'FOIRE AUX QUESTIONS',
+		'revops' => 'REVIEW OPERATIONS',
 		'available' => 'ARTICLES DISPONIBLES'
 	],
 	'contact' => [
 		'title' => 'CONTACT',
 		'submit' => 'SOUMETTRE VOTRE BREAK',
-		'inquiry' => 'DEMANDE D\'BREAK',
+		'inquiry' => 'DEMANDE DE BREAK',
 		'question' => 'POSER UNE QUESTION'
 	],
 	'privacy' => 'POLITIQUE DE CONFIDENTIALITÉ',

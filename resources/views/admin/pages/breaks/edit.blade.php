@@ -28,7 +28,7 @@
           @foreach ($categories as $category)
           <optgroup label="{{ $category->name }}">
             @foreach ($category->articles as $break)
-            <option data-slug="{{ $break->slug }}">{{ $break->title }}</option>
+            <option data-slug="{{ $break->slug }}">{{ $break->title }} | <span class="ml-2">{{ $break->created_at->toFormattedDateString() }}</span></option>
             @endforeach
           </optgroup>
           @endforeach
@@ -184,9 +184,9 @@
           {{-- Content --}}
           <div class="form-group">
             <label><strong>Content</strong></label>
-            {{-- <textarea required class="form-control" name="content" id="content" rows="22" placeholder="Break">{{ $article->content }}</textarea> --}}
-              <input id="content" value="{{ $article->content }}" type="hidden" name="content">
-              <trix-editor placeholder="Break" input="content"></trix-editor>
+            <textarea required class="form-control" name="content" id="content" rows="22" placeholder="Break">{{ $article->content }}</textarea>
+{{--               <input id="content" value="{{ $article->content }}" type="hidden" name="content">
+              <trix-editor placeholder="Break" input="content"></trix-editor> --}}
             {{-- Error --}}
             @component('admin/snippets/error')
             content

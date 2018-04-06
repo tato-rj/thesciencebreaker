@@ -6,19 +6,19 @@
   <div class="row">
     <div class="col-lg-9 col-md-12">
       @component('components/snippets/title')
-      AVAILABLE ARTICLES
+      {{__('menu.for_breakers.available')}}
       @endcomponent
-      <p>Here below, a list of articles that were object of a Break-request. Don’t hesitate to <a href="/contact/submit-your-break">get in touch</a> if you wish to draft a Break-manuscript!</p>
+      <p>{{__('available_articles.description.p1')}} <a href="/contact/submit-your-break">{{__('available_articles.description.get_in_touch')}}</a> {{__('available_articles.description.p2')}}</p>
       <div id="available_articles" class="mt-5" role="tablist" aria-multiselectable="true">
         @foreach ($categories as $category)
         <div class="card mb-1">
           <a class="collapsed" data-toggle="collapse" data-parent="#available_articles" href="#collapse{{$loop->iteration}}" aria-expanded="false" aria-controls="collapse{{$loop->iteration}}">
             <div class="card-header d-flex align-items-center justify-content-between" role="tab" id="heading{{$loop->iteration}}">
               <div class="d-flex align-items-center">
-                <img src="{{ $category->paths()->icon() }}" class="mr-2"><strong>{{$category->name}}</strong>
+                <img src="{{ $category->paths()->icon() }}" class="mr-2"><strong>{{__('categories.'.$category->slug)}}</strong>
               </div>
               <div>
-                <span class="badge btn-theme-green">{{ count($category->available_articles) }} articles</span>
+                <span class="badge btn-theme-green">{{ count($category->available_articles) }} {{__('global.articles')}}</span>
               </div>
             </div>
           </a>
@@ -36,7 +36,7 @@
       </div>
       <div class="text-center mt-5">
         @component('components/snippets/buttons/brand')
-          SUBMIT YOUR BREAK
+          {{__('menu.contact.submit')}}
           @slot('url')
           /contact/submit-your-break
           @endslot

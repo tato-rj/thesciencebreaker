@@ -10412,6 +10412,10 @@ footer #apple-store {
   border-bottom: 1px solid;
 }
 
+#break #break-text > div {
+  margin-bottom: -8px;
+}
+
 #break #credits h5 {
   color: inherit;
 }

@@ -44,12 +44,13 @@
 	<div class="row no-gutters mt-4">
 		<div class="col-lg-12">
 			@component('components/snippets/title')
-			{{__('welcome.highlights')}}
+			{{__('global.latest')}}
 			@endcomponent
 		</div>
-		@include('components/partials/grids/highlights')
 	</div>
-	
+
+	@include('components/partials/grids/highlights')
+
 	{{--
 	/==========================================================================
 	/	APP AND LATEST BREAKS
@@ -66,7 +67,7 @@
 			@endcomponent
 			<div id="app-container" class="row align-items-center justify-space-around text-center mb-4">
 				<div class="col-lg-6 col-md-12 mt-2 hidden-sm-down">
-					<img src="{{ asset('images/ios-app/app.svg') }}">
+					<img src="{{ asset('images/ios-app/mobile_app.png') }}">
 				</div>
 				<div class="p-2 col-lg-6 col-md-12">
 					<p>{!!__('welcome.app')!!}</p>
@@ -79,10 +80,10 @@
 		<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
 			<div id="breaks-list">
 				@component('components/snippets/title')
-				{{__('global.latest')}}
+				{{__('welcome.highlights')}}
 				@endcomponent
 				<div class="mb-2">
-					@foreach ($latest_articles as $suggestion)
+					@foreach ($highlights->pluck('article') as $suggestion)
 						@include('components/partials/grids/rows')
 					@endforeach
 				</div>				

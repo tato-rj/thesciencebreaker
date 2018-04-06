@@ -29,7 +29,7 @@ class GuestRoutesTest extends TestCase
     		'/breakers',
     		'/partners',
     		'/information',
-    		'/faq',
+    		'/review-operations',
     		'/available-articles',
     		'/contact/ask-a-question',
     		'/contact/break-inquiry',

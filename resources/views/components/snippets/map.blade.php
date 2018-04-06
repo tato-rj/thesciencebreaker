@@ -1,12 +1,12 @@
 <div id="headquarters" class="row jumbotron mt-4">
 	<div class="col-lg-4 col-md-6 col-sm-12">
-		<h5>How to find us</h5>
+		<h5>{{__('contact.map.title')}}</h5>
 		<ul class="ml-0 mb-3 p-0 list-none">
-			<li class="mb-2"><strong>TheScienceBreaker @ BiOutils</strong></li>
-			<li>Université de Genève</li>
-			<li class="mb-2">Sciences III</li>
-			<li class="mb-2">Département de Botanique et Biologie Végétale</li>
-			<li class="text-muted">30, Quai Ernest-Ansermet<br>1211 Genève 4</li>
+			<li class="mb-2"><strong>{{__('contact.map.address.p1')}}</strong></li>
+			<li>{{__('contact.map.address.p2')}}</li>
+			<li class="mb-2">{{__('contact.map.address.p3')}}</li>
+			<li class="mb-2">{{__('contact.map.address.p4')}}</li>
+			<li class="text-muted">{!!__('contact.map.address.p5')!!}</li>
 		</ul>
 	</div>
 	<div class="col-lg-8 col-md-6 col-sm-12 text-center">

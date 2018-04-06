@@ -1,12 +1,12 @@
 <?php
 
 return [
-	'follow' => 'SUIVEZ NOUS',
+	'follow' => 'SUIVEZ-NOUS',
 	'subscribe' => [
 		'title' => 'SOUSCRIRE',
-		'text' => 'Abonnez-vous pour être toujours à jour avec les derniers Breaks publiés!',
-		'input' => 'Votre e-mail ici',
-		'note' => 'Nous ne partagerons jamais votre email avec quelqu\'un d\'autre.',
+		'text' => 'Abonnez-vous pour être tenus au courant des dernières Breaks publiées!',
+		'input' => 'Entrez votre adresse e-mail ici',
+		'note' => 'Nous ne diffuserons jamais votre adresse email',
 		'button' => 'Inscrivez-moi'
 	],
 	'copyright' => 'Tous droits réservés',
