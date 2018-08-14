@@ -9,7 +9,7 @@
 					<div class="pl-3 col-lg-6 col-sm-12 col-md-12 col-xs-12">
 						<div class="d-flex flex-column h-100">
 							<div style="flex-grow: 2">
-								<h3 class=" two-line-clamp l-height-1">
+								<h3 class="m-0">
 									<a class="text-default" href="{{ $latest->paths()->route() }}">
 										{{ $latest->resources()->localize('title') }}
 									</a>

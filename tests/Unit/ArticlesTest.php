@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ArticlesTest extends TestCase
 {
-
 	use DatabaseMigrations;
 
     /** @test */
@@ -131,4 +130,15 @@ class ArticlesTest extends TestCase
         $this->assertEquals(1, $this->article->views);
     }
 
+    /** @test */
+    public function articles_have_a_volume_number()
+    {
+        $this->assertEquals('4', $this->article->volume);
+    }
+
+    /** @test */
+    public function articles_have_an_issue_number()
+    {
+        $this->assertEquals('3', $this->article->issue);
+    }
 }

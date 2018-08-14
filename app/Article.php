@@ -47,4 +47,10 @@ class Article extends TheScienceBreaker
     {
         return $this->belongsToMany('App\Tag');
     }
+
+    public static function currentIssuePath()
+    {
+        $lastBreak = Article::latest()->first();
+        return "content/volume/$lastBreak->volume/issue/$lastBreak->issue";
+    }
 }

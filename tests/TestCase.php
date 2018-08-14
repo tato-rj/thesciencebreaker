@@ -38,7 +38,7 @@ abstract class TestCase extends BaseTestCase
 
     protected function signIn($user = null)
     {
-        $user = $user ?: create('App\User');
+        $user = $user ?: create('App\User', ['is_authorized' => 1]);
         $this->actingAs($user);
         return $this;
     }

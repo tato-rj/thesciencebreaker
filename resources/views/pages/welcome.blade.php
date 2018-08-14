@@ -71,8 +71,8 @@
 				</div>
 				<div class="p-2 col-lg-6 col-md-12">
 					<p>{!!__('welcome.app')!!}</p>
-					<a href="https://www.facebook.com/sciencebreaker/?fref=ts" target="_blank">
-						<img id="apple-store" src="{{ asset('images/ios-app/apple-store.svg') }}">
+					<a href="https://itunes.apple.com/app/id1227263216" target="_blank">
+						<img id="apple-store" src="{{ asset('images/ios-app/download.svg') }}">
 					</a>
 				</div>
 			</div>		
@@ -90,27 +90,6 @@
 			</div>
 		</div>
 	</div>
-	
-	{{--
-	/==========================================================================
-	/	GRID COLUMN
-	/==========================================================================
-	/
-	/	Grid containing the most visited breaks.
-	/
-	--}}
-
-	<div class="row mt-4 no-gutters">
-		<div class="col-lg-12">
-			@component('components/snippets/title')
-			{{__('global.popular')}}
-			@endcomponent
-		</div>
-		@foreach ($popular as $article)
-			@include('components/partials/grids/columns')
-		@endforeach	
-	</div>
-	
 	{{--
 	/==========================================================================
 	/	CATEGORIES DISPLAY
@@ -159,24 +138,22 @@
 	
 	{{--
 	/==========================================================================
-	/	DISQUS
+	/	GRID COLUMN
 	/==========================================================================
 	/
-	/	Section encouraging visitors to engage in the DISQUS discussions. 
-	/	(This needs improvement)
+	/	Grid containing the most visited breaks.
 	/
 	--}}
 
-	<div class="row mt-5" id="discussion-container">
-		<div class="col-7">
+	<div class="row mt-4 no-gutters">
+		<div class="col-lg-12">
 			@component('components/snippets/title')
-			{{__('welcome.discussion.title')}}
+			{{__('global.popular')}}
 			@endcomponent
-			<p>{{__('welcome.discussion.text')}}</p>
 		</div>
-		<div class="col-4 offset-1">
-			<i class="fa fa-comments-o" aria-hidden="true"></i>
-		</div>
+		@foreach ($popular as $article)
+			@include('components/partials/grids/columns')
+		@endforeach	
 	</div>
 
 </div>

@@ -6,6 +6,7 @@ use App\Article;
 use App\Author;
 use App\AvailableArticle;
 use App\Subscription;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -21,6 +22,22 @@ class AdminController extends Controller
     	$authors_count = Author::count();
     	$available_count = AvailableArticle::count();
     	$subscription_count = Subscription::count();
+
+        $breaks_views_excel = Excel::create('breaks_views', function($breaks_views_excel) {
+
+            $breaks_views_excel->sheet('Breaks_views', function($sheet) {
+                $sheet->fromModel(Article::setEagerLoads([])->select('title as Title', 'views as Views')->orderBy('views', 'DESC')->get(), null, 'A1', true);
+            });
+
+        })->store('xls', storage_path('app/breaks/excel'));
+
+        $breakers_excel = Excel::create('breakers_emails', function($breakers_excel) {
+
+            $breakers_excel->sheet('Breakers', function($sheet) {
+                $sheet->fromModel(Author::setEagerLoads([])->select('first_name as Name', 'last_name as Surname', 'email')->orderBy('first_name')->get(), null, 'A1', true);
+            });
+
+        })->store('xls', storage_path('app/breakers/excel'));
 
     	return view('admin/pages/dashboard', compact(['breaks_count', 'authors_count', 'available_count', 'subscription_count', 'total_views']));
     }

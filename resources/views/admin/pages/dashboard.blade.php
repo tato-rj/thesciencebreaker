@@ -21,6 +21,7 @@
               <div class="mr-3"><strong>{{ $total_views }}</strong> Breaks views</div>
             </div>
           </div>
+          @only('managers')
           <div id="card-breaks" class="card no-border text-white o-hidden h-100 mt-3">
             <div class="card-body">
               <div class="card-body-icon">
@@ -50,10 +51,20 @@
               <div class="card-body-icon">
                 <i class="fa fa-database mr-1" aria-hidden="true"></i>
               </div>
-              <div class="mr-5"><strong>{{ $subscription_count }}</strong> Subuscriptions</div>
+              <div class="mr-5"><strong>{{ $subscription_count }}</strong> Subscriptions</div>
             </div>
           </div>
+          @endonly
         </div>
       </div>
+      @only('managers')
+      <div class="row mt-4">
+        <div class="col-lg-5 col-md-6 col-sm-8 col-xs-10 mx-auto pt-3" style="border-top: 1px solid lightgrey">
+          <p class="mb-1">Other resources</p>
+          <a href="{{ asset('storage/app/breaks/excel/breaks_views.xls') }}" class="d-block" title="Export as XLS">Number of breaks views (excel)</a>
+          <a href="{{ asset('storage/app/breakers/excel/breakers_emails.xls') }}" class="d-block" title="Export as XLS">Breakers emails (excel)</a>
+        </div>
+      </div>
+      @endonly
     </div>
 @endsection

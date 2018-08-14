@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'TheScienceBreaker'),
+    'issn' => env('APP_ISSN', '2571-9262'),
     'owner' => env('APP_OWNER', 'Massimo Caine'),
     'email' => env('APP_EMAIL', 'max.caine@thesciencebreaker.com'),
     'twitter' => env('APP_TWITTER', 'https://twitter.com/sciencebreaker'),
@@ -232,6 +233,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Staff' => App\Manager\Staff::class,
 
     ],
 

@@ -3,6 +3,7 @@
 
 // Set up sticky menu
 $('nav').addClass('original').clone().removeClass('mt-3 original').appendTo('header').addClass('pl-4 pr-4 clone');
+$('.clone').find('.logo').show();
 var sideBar = $('#side-bar');
 var navHeight = $('nav').outerHeight();
 var headerHeight = $('header').outerHeight();
@@ -17,7 +18,7 @@ $(window).scroll(function () {
         $('.clone').fadeOut(100);
         // Scroll top button
         $('.scroll-to-top').fadeOut();       
-        } else if (scroll > dist) {
+    } else if (scroll > dist) {
         //Sticky menu
         $('.original').css('visibility', 'hidden');
         $('.clone').fadeIn(200);

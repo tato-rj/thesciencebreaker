@@ -75,4 +75,34 @@ class AdminManagersTest extends TestCase
             'first_name' => $manager->first_name
         ]);
     }
+
+    /** @test */
+    public function a_manager_can_authorize_a_new_admin()
+    {
+        $this->signIn();
+        $manager = $this->manager;
+
+        $admin = create('App\User');
+
+        $this->assertFalse($admin->is_authorized);
+
+        $this->patch('/admin/managers/permissions/'.$admin->id)->assertSessionHas('db_feedback');   
+
+        $this->assertTrue($admin->fresh()->is_authorized);
+    }
+
+    /** @test */
+    public function a_manager_can_unauthorize_a_new_admin()
+    {
+        $this->signIn();
+        $manager = $this->manager;
+
+        $admin = create('App\User', ['is_authorized' => 1]);
+
+        $this->assertTrue($admin->is_authorized);
+
+        $this->patch('/admin/managers/permissions/'.$admin->id)->assertSessionHas('db_feedback');   
+
+        $this->assertFalse($admin->fresh()->is_authorized);
+    }
 }

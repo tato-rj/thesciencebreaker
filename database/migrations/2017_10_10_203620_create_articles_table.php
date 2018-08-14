@@ -28,6 +28,8 @@ class CreateArticlesTable extends Migration
             $table->string('original_article');
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('editor_id');
+            $table->string('volume')->nullable();
+            $table->string('issue')->nullable();
             $table->string('doi');
             $table->boolean('editor_pick');
             $table->boolean('highlight')->default(0);

@@ -23,6 +23,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'last_name' => $last_name,
         'slug' => str_slug($first_name.' '.$last_name),
         'email' => $faker->unique()->safeEmail,
+        'is_authorized' => 0,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
@@ -42,6 +43,8 @@ $factory->define(App\Article::class, function (Faker $faker) {
         'category_id' => 1,
         'editor_id' => 1,
         'doi' => 'https://doi.org/10.25250/thescbr.brk001',
+        'volume' => (new App\Article)->resources()->generateVolume(),
+        'issue' => (new App\Article)->resources()->generateIssue(),
         'editor_pick' => $faker->boolean($chanceOfGettingTrue = 50),
         'views' => 0
     ];

@@ -41,7 +41,6 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
-          <p class="text-muted"><i class="fa fa-exclamation-circle mr-2" aria-hidden="true"></i>You currently have <strong>{{ $articles->total() }}</strong> available articles</p>
               {{-- Error --}}
               @component('admin/snippets/error')
                 article

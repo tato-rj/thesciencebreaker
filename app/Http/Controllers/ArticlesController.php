@@ -42,7 +42,7 @@ class ArticlesController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {  
         ArticleRequest::get()->save();
         return redirect()->back()->with('db_feedback', 'The Break has been successfully added!');
     }
@@ -120,5 +120,43 @@ class ArticlesController extends Controller
     {
         $deleted = File::deleteDirectory("storage/app/breaks/images/$article->slug");
         return redirect()->back()->with('db_feedback', 'The image has been deleted');
+    }
+
+    public function generateIssues()
+    {
+        $articles = Article::all();
+        $articles->each(function($article) {
+            $article->issue = $article->resources()->generateIssue($article->created_at);
+            $article->save();
+        });
+
+        return Article::all();
+    }
+
+    public function generateVolumes()
+    {
+        $articles = Article::all();
+        $articles->each(function($article) {
+            $article->volume = $article->resources()->generateVolume($article->created_at);
+            $article->save();
+        });
+
+        return Article::all();
+    }
+
+    public function issues()
+    {
+        $results = Article::selectRaw('year(created_at) AS year, SUBSTRING(issue, 5) AS issue, volume, count(*) as count')
+            ->groupBy('year', 'issue', 'volume')
+            ->orderBy('year', 'DESC')
+            ->orderBy('issue', 'DESC')
+            ->get();
+       
+        // $issues = $results->groupBy('volume');
+
+
+        return $results;
+
+        return view('issues', compact('issues'));
     }
 }

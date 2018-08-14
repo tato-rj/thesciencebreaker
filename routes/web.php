@@ -2,10 +2,18 @@
 
 Auth::routes();
 
+// Route::get('/generate-issues', 'ArticlesController@generateIssues');
+// Route::get('/generate-volumes', 'ArticlesController@generateVolumes');
+Route::get('/issues', 'ArticlesController@issues');
+
 // Welcome page
 Route::get('/', 'ArticlesController@index')->name('home');
 // Breaks
 Route::get('/breaks/{category}/{article}', 'ArticlesController@show');
+// Issues
+Route::get('/content/volume/{volume}/issue/{issue}', 'IssuesController@show');
+// Archives
+Route::get('/archives', 'IssuesController@index');
 // Breakers
 Route::get('/breakers/{author}', 'AuthorsController@show');
 // Managers
@@ -138,6 +146,8 @@ Route::patch('/admin/breakers/{author}', 'AuthorsController@update');
 Route::delete('/admin/breakers/{author}', 'AuthorsController@destroy');
 
 // Managers routes
+Route::get('/admin/managers/permissions', 'ManagersController@admins');
+Route::patch('/admin/managers/permissions/{user}', 'ManagersController@permissions');
 Route::get('/admin/managers/add', 'ManagersController@create');
 Route::get('/admin/managers/edit', 'ManagersController@selectEdit');
 Route::get('/admin/managers/{manager}/edit', 'ManagersController@edit');

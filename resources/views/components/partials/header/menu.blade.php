@@ -4,6 +4,9 @@
 	<nav class="navbar navbar-expand-lg navbar-toggleable-md p-0">
 		<div class="collapse navbar-collapse" id="hamburger_menu">
 			<ul class="navbar-nav mr-auto">
+				<div>
+					<a href="{{ config('app.url') }}"><img src="/images/logo-small.svg" style="width: 25px; display: none;" class="ml-2 mr-3 logo"></a>
+				</div>
 				<li class="nav-item active">
 					<a class="nav-link" href="/">{{__('menu.home')}}</a>
 				</li>
@@ -29,6 +32,17 @@
 						@endforeach
 					</div>
 				</li>
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="dropdown-breaks" aria-haspopup="true" aria-expanded="false">
+						ISSUES
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item d-flex align-items-center text-uppercase" href="/{{$currentIssuePath}}">Current Issue</a>
+						<a class="dropdown-item d-flex align-items-center text-uppercase" href="/archives">Archives</a>
+					</div>
+				</li>
+
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" id="dropdown-breakers" aria-haspopup="true" aria-expanded="false">
 						{{__('menu.for_breakers.title')}}

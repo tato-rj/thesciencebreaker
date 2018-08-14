@@ -23,7 +23,10 @@
             {{csrf_field()}}
             {{-- Title --}}
             <div class="form-group">
-              <input required type="text" value="{{ old('title') }}" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Title">
+              <div class="d-flex align-items-center">
+                <input required type="text" value="{{ old('title') }}" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Title">
+                <button type="button" class="btn btn-theme-green ml-2" data-toggle="modal" data-target="#tags">Tags</button>  
+            </div>
               {{-- Error --}}
               @component('admin/snippets/error')
                 title
@@ -214,6 +217,7 @@
             </div>
             <input type="submit" value="Submit" class="btn btn-theme-orange">
             @include('admin/snippets/languages/add_french')
+            @include('admin/snippets/tags')
           </form>
         </div>
       </div>
@@ -221,6 +225,32 @@
 @endsection
 
 @section('scripts')
+<script type="text/javascript">
+$(document).on('click', '.tags span a', function() {
+  $container = $(this).parent();
+  $checkbox = $container.find('input[type="checkbox"]');
+
+  $container.toggleClass('selected');
+  $checkbox.prop("checked", !$checkbox.prop("checked"));
+});
+
+  $('#addTag').on('click', function() {
+    $tag = $('input[name="tag"]').val();
+
+    $.post('/admin/tags', {'tag': $tag})
+    .done(function(id){
+      $('.modal #success small span').text('The tags was created!');
+      $('.modal #success').fadeIn().delay(1000).fadeOut('fast');
+      $new_tag = $('.tags span').first().clone().removeClass('selected').attr('data-id', id).children('a').text($tag).parent();
+      $new_tag.find('input').val(id);
+      $new_tag.appendTo('.tags');
+    })
+    .fail(function(xhr, status, error) {
+      $('.modal #fail small span').text('Something went wrong...');
+      $('.modal #fail').fadeIn().delay(1000).fadeOut('fast');
+    });
+  });
+</script>
 <script type="text/javascript">
 $('#upload-button').on('click', function() {
   $('input#image').click();

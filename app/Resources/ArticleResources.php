@@ -94,6 +94,32 @@ class ArticleResources extends Resources
         return $request;   
     }
 
+    public function generateVolume($created_at = null)
+    {
+        $date = $created_at ?? \Carbon\Carbon::now();
+
+        return $date->year - 2014;
+    }
+
+    public function generateIssue($created_at = null)
+    {
+        $date = $created_at ?? \Carbon\Carbon::now();
+
+        $issue = 0;
+
+        if ($date->month >= 1 && $date->month <= 3) {
+            $issue += 1;
+        } else if ($date->month >= 4 && $date->month <= 6) {
+            $issue += 2;
+        } else if ($date->month >= 7 && $date->month <= 9) {
+            $issue += 3;
+        } else if ($date->month >= 10 && $date->month <= 12) {
+            $issue += 4;
+        }
+
+        return $issue;
+    }
+
     // public static function highlights()
     // {
     //     return self::where('highlight', 1)->orderBy('title')->get();

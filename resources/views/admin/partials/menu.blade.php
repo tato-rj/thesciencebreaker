@@ -26,9 +26,11 @@
       <li>
         <a href="/admin/breaks/edit">Edit a Break</a>
       </li>
+      @only('managers')
       <li>
         <a href="/admin/breaks/delete">Delete a Break</a>
       </li>
+      @endonly
     </ul>
   </li>
 
@@ -44,18 +46,24 @@
       <li>
         <a href="/admin/breakers/edit">Edit a Breaker</a>
       </li>
+      @only('managers')
       <li>
         <a href="/admin/breakers/delete">Remove a Breaker</a>
       </li>
+      @endonly
     </ul>
   </li>
 
+  @only('managers')
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Team">
     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#team" data-parent="#exampleAccordion">
       <i class="fa fa-briefcase mr-1" aria-hidden="true"></i>
       <span class="nav-link-text">Team</span>
     </a>
     <ul class="sidenav-second-level collapse" id="team">
+      <li>
+        <a href="/admin/managers/permissions">Permissions</a>
+      </li>
       <li>
         <a href="/admin/managers/add">Add new member</a>
       </li>
@@ -67,6 +75,7 @@
       </li>
     </ul>
   </li>
+  @endonly
 
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Editor's Picks">
     <a class="nav-link" href="/admin/available-articles">
@@ -96,11 +105,12 @@
     </a>
   </li>
 
+  @if(\Staff::check(auth()->user()->email)->role('managers'))
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Subscriptions">
     <a class="nav-link" href="/admin/subscriptions">
       <i class="fa fa-database mr-1" aria-hidden="true"></i>
       <span class="nav-link-text">Subscriptions</span>
     </a>
   </li>
-
+  @endif
 </ul>

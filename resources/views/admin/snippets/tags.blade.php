@@ -18,12 +18,16 @@
         </div>
         <div class="tags">
         @foreach ($tags as $tag)
-          <span class="badge badge-pill m-1 {{ (in_array($tag->id, $article->resources()->tagsIds())) ? 'selected' : '' }}" data-id="{{ $tag->id }}">
+          <span class="badge badge-pill m-1 {{ (! empty($article) && in_array($tag->id, $article->resources()->tagsIds())) ? 'selected' : '' }}" data-id="{{ $tag->id }}">
+            @if(empty($article))
+            <input type="checkbox" style="visibility: hidden; position: absolute;" name="tags[]" value="{{$tag->id}}">
+            @endif
             <a>{{ $tag->name }} ({{ $tag->articles->count() }})</a>
           </span>
         @endforeach
       </div>
       </div>
+      @if(! empty($article))
       <div class="modal-footer d-flex justify-content-between">
         <div>
           <div id="success" class="hidden">
@@ -33,8 +37,9 @@
             <small class="text-danger"><i class="fa fa-times mr-1" aria-hidden="true"></i><span></span></small>
           </div>
         </div>
-        <button type="button" id="setTags" data-break-slug={{ $article->slug }} class="btn btn-theme-green">Save changes</button>
+        <button type="button" id="setTags" data-break-slug="{{ $article->slug }}" class="btn btn-theme-green">Save changes</button>
       </div>
+      @endif
     </div>
   </div>
 </div>

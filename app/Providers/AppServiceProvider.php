@@ -6,6 +6,7 @@ use App\Category;
 use App\Article;
 use App\Highlight;
 use App\Tag;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\ServiceProvider;
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('categories', Category::orderBy('name')->get());
             $view->with('popular', Article::popular(6)->get());
             $view->with('tagsList', Tag::list());
+            $view->with('currentIssuePath', Article::currentIssuePath());
         });
         
         \View::composer('components/partials/side_bars/suggestions', function($view) {
@@ -41,6 +43,9 @@ class AppServiceProvider extends ServiceProvider
             $view->with('latest_articles', Article::recent(6)->get());
         });
 
+        Blade::if('only', function ($group) {
+            return \Staff::check(auth()->user()->email)->role($group);
+        });
     }
 
     /**
@@ -50,6 +55,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-    
+
     }
 }

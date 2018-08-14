@@ -57,12 +57,7 @@
             @endslot
           @endcomponent
         </div>
-        <div class="col-12 text-center">   
-          <p class="text-muted mb-2">
-            <i class="fa fa-exclamation-circle mr-2" aria-hidden="true"></i>
-            You currently have <strong>{{ count($tags) }}</strong> tags
-          </p>
-        </div>
+
         <div class="col-lg-10 col-md-12 mx-auto d-flex align-items-center justify-content-center flex-wrap">
           @foreach ($tags as $tag)
           <div class="d-flex align-items-center justify-content-center  flex-column p-1 px-2 m-2 tag-item round-corners">
@@ -70,7 +65,9 @@
             <p class="m-0">
               <strong>{{$tag->name}}</strong>
             </p>
+            @only('managers')
               <i data-toggle="modal" data-target="#delete_modal" data-id="{{ $tag->id }}" data-name="{{ $tag->name }}" class="ml-2 fa fa-trash align-middle cursor-link" aria-hidden="true"></i>
+            @endonly
               <i data-toggle="modal" data-target="#edit_modal" data-id="{{ $tag->id }}" data-name="{{ $tag->name }}" data-count="{{ $tag->articles_count }}" class="ml-2 fa fa-pencil-square-o align-middle cursor-link" aria-hidden="true" style="margin-top: 3px"></i>
             </div>
             <div>

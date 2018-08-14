@@ -20,9 +20,17 @@
 
     @if (session('status'))
     <div class="alert-container">
-            <div class="alert alert-success">
-        {{ session('status') }}
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
     </div>
+    @endif
+
+    @if (session('error'))
+    <div class="alert-container">
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
     </div>
     @endif
     

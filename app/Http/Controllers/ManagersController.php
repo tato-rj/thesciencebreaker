@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Manager;
-use App\Author;
-use App\Division;
+use App\{Manager, Author, Division, User};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
@@ -29,6 +27,21 @@ class ManagersController extends Controller
         $paginated = Input::get('page');
 
         return view('pages.presentation.team', compact('founders', 'editors', 'managing_editors', 'comm_officers', 'advisors', 'breakers', 'paginated'));
+    }
+
+    public function admins()
+    {
+        $admins = User::whereNotIn('last_name', ['Caine', 'Villar'])->get();
+        return view('admin/pages/managers/permissions', compact('admins'));
+    }
+
+    public function permissions(User $user)
+    {
+        $user->is_authorized = ! $user->is_authorized;
+        
+        $user->save();
+
+        return redirect()->back()->with('db_feedback', $user->full_name.' has been successfully authorized!');
     }
 
     // CREATE

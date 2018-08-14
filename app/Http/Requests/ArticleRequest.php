@@ -54,12 +54,16 @@ class ArticleRequest extends Form
             'category_id' => $this->category_id,
             'editor_id' => $this->editor_id,
             'doi' => (new Article)->resources()->createDoi(),
+            'issue' => (new Article)->resources()->generateIssue(),
+            'volume' => (new Article)->resources()->generateVolume(),
             'editor_pick' => $this->editor_pick
         ]);
 
         foreach ($this->authors as $author) {
             $article->authors()->attach($author);
         }
+
+        $article->tags()->attach($this->tags);
 
         return $article;
     }

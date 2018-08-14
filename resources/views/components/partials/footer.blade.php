@@ -81,6 +81,8 @@
 					<form method="POST" action="/admin/subscriptions">
 						{{ csrf_field() }}
 						<div class="form-group">
+							<input type="hidden" name="my_name">
+							<input type="hidden" name="time" value="{{\Carbon\Carbon::now()}}">
 							<input required type="email" class="form-control" name="subscription" placeholder="{{__('footer.subscribe.input')}}">
 							<small id="emailHelp" class="form-text text-muted">{{__('footer.subscribe.note')}}</small>
 						</div>
@@ -90,6 +92,7 @@
 			</div>
 		</div>
 		<div class="mt-4 text-center">
+			<p style="color: grey"><small>TheScienceBreaker - ISSN {{config('app.issn')}}</small></p>
 			<ul class="credits pt-4">
 				<li>30, Quai Ernest-Ansermet 1211 Genève 4<i class="fa fa-circle" aria-hidden="true"></i></li>
 				<li>© TheScienceBreaker 2015 - 2017. {{__('footer.copyright')}}<i class="fa fa-circle" aria-hidden="true"></i></li>

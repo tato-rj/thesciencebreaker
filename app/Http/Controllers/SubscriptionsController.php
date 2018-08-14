@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Subscription;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -16,8 +17,17 @@ class SubscriptionsController extends Controller
     // CREATE
     public function store(Request $request)
     {
-        $request->validate(['subscription' => 'required|email|unique:subscriptions,email']);
+        if (app()->environment() != 'testing') {
+            if (Carbon::parse($request->time)->addSeconds(5)->gt(Carbon::now()) || ! empty($request->my_name))
+                return response('Humans only please.', 403);
+        }
+        
+        $request->validate([
+            'subscription' => 'required|email|unique:subscriptions,email'
+        ]);
+
         Subscription::create(['email' => $request->subscription]);
+        
         return redirect()->back()->with('db_feedback', 'The email has been subscribed')->with('subscription', 'Thank you for subscribing!');
     }
 
@@ -31,9 +41,9 @@ class SubscriptionsController extends Controller
         $subscriptions = Subscription::orderBy($sort, $order)->paginate($show);
         $subscriptions_count = Subscription::count();
 
-        $excel = Excel::create('subscriptions', function($excel) use ($subscriptions) {
+        $excel = Excel::create('subscriptions', function($excel) {
 
-            $excel->sheet('Subscriptions', function($sheet) use ($subscriptions) {
+            $excel->sheet('Subscriptions', function($sheet) {
                 $sheet->fromModel(Subscription::select('email as Email', 'created_at as Date')->orderBy('created_at')->get(), null, 'A1', true);
             });
 

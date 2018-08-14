@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Mail\MailFactory;
 use App\Subscription;
 use App\Http\Controllers\Validators\ValidateBreakInquiry;
@@ -13,6 +14,11 @@ class ContactsController extends Controller
 {
     public function question(Request $request)
     {
+        if (app()->environment() != 'testing') {
+            if (Carbon::parse($request->time)->addSeconds(5)->gt(Carbon::now()) || ! empty($request->my_name))
+                return response('Humans only please.', 403);
+        }
+
         ValidateQuestion::createCheck($request);
         MailFactory::question($request);
         if ($request->subscribe_me) Subscription::createOrIgnore($request->email);
@@ -22,6 +28,11 @@ class ContactsController extends Controller
 
     public function inquiry(Request $request)
     {
+        if (app()->environment() != 'testing') {
+            if (Carbon::parse($request->time)->addSeconds(5)->gt(Carbon::now()) || ! empty($request->my_name))
+                return response('Humans only please.', 403);
+        }
+
     	ValidateBreakInquiry::createCheck($request);
     	MailFactory::breakInquiry($request);
         if ($request->subscribe_me) Subscription::createOrIgnore($request->email);
@@ -31,6 +42,10 @@ class ContactsController extends Controller
 
     public function submit(Request $request)
     {
+        if (app()->environment() != 'testing') {
+            if (Carbon::parse($request->time)->addSeconds(5)->gt(Carbon::now()) || ! empty($request->my_name))
+                return response('Humans only please.', 403);
+        }
 
         ValidateBreakSubmission::createCheck($request);
         MailFactory::submit($request);
