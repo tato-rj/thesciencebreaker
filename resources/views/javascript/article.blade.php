@@ -1,5 +1,5 @@
 <script type="text/javascript" src="{{ asset('js/disqus.js') }}"></script>
-
+<script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
 <script type="text/javascript">
 function onMobile () {
 	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);

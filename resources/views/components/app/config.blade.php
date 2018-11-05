@@ -22,6 +22,9 @@
 <meta name="twitter:site" content="@sciencebreaker" />
 <meta name="twitter:url" content="{{ url()->full() }}" />
 <meta name="twitter:card" content="summary_large_image">
+
+<meta name="citation_issn" content="2571-9262" />
+<meta name="citation_journal_title" content="TheScienceBreaker" />
 {{-- Check if current page is an article. If so, show specific meta tags for that page --}}
 @if(isset($article) && $article->paths()->route() == '/'.\Request::path())
     {{-- Facebook --}}
@@ -47,6 +50,7 @@
     <meta name="news_keywords" content="{{ $article->resources()->tagsList() }}" />
     <link rel="image_src" href="{{ asset($article->paths()->image()) }}" />
     <link rel="shortlink" href="{{ $article->doi }}" />
+    <meta name="DC.Identifier" content="{{$article->doi}}" />
     {{-- Disqus --}}
     <meta name="disqus:title" content="{{ $article->title }}">
     <meta name="disqus:slug" content="{{ $article->slug }}">

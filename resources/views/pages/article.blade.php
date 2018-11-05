@@ -65,6 +65,7 @@
 					<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
 						<img src="/images/util-icons/cc.svg" class="ml-2">
 					</a>
+					<div data-badge-type="1" data-doi="{{$article->doi}}" data-hide-no-mentions="true" data-hide-less-than="1" class="altmetric-embed ml-2"></div>
 				</div>
 				<div>
 					<a id="doi" href="{{ $article->doi }}"><small>{{ $article->doi }}</small></a>
@@ -132,6 +133,10 @@
 			{{-- Body --}}
 			<div id="break-text" class="mt-4">
 				{!! html_entity_decode($article->resources()->localize('content')) !!}
+				<div class="mt-4">
+					<h5 class="mt-3 text-dark">Original Article:</h5>
+					{!! html_entity_decode($article->original_article) !!}
+				</div>
 			</div>
 
 			{{-- Suggestion (based on tag) --}}
@@ -156,8 +161,6 @@
 							</strong>, {{ $article->editor->position }}
 						</p>
 					</div>
-					<h5 class="mt-3">Original Article:</h5>
-					<p><small>{!! html_entity_decode($article->original_article) !!}</small></p>
 				</div>
 
 				{{-- DISQUS --}}
