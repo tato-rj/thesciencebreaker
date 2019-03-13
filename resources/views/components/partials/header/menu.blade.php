@@ -19,7 +19,7 @@
 						<a class="dropdown-item" href="/mission">{{__('menu.presentation.mission')}}</a>
 						<a class="dropdown-item" href="/the-team">{{__('menu.presentation.team')}}</a>
 						<a class="dropdown-item" href="/breakers">{{__('menu.presentation.breakers')}}</a>
-						<a class="dropdown-item" href="/partners">{{__('menu.presentation.partners')}}</a>
+						{{-- <a class="dropdown-item" href="/partners">{{__('menu.presentation.partners')}}</a> --}}
 					</div>
 				</li>
 				<li class="nav-item dropdown">

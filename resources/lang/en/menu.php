@@ -8,7 +8,7 @@ return [
 		'mission' => 'MISSION',
 		'team' => 'THE TEAM',
 		'breakers' => 'BREAKERS COMMUNITY',
-		'partners' => 'PARTNERS'
+		'partners' => 'OUR PARTNERS'
 	],
 	'breaks' => 'SUBJECTS',
 	'for_breakers' => [

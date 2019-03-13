@@ -90,6 +90,40 @@
 			</div>
 		</div>
 	</div>
+	
+	{{--
+	/==========================================================================
+	/	PARTNERS DISPLAY
+	/==========================================================================
+	--}}
+
+	<div class="row mt-4">
+		<div class="col-12" id="partners">
+			@component('components/snippets/title')
+			{{__('welcome.partners')}}
+			@endcomponent
+			<div class="d-flex flex-row justify-content-center align-items-center flex-wrap mt-4">
+				<a href="https://toplink.weforum.org/knowledge/explore" target="_blank">
+					<img class="bw" style="width: 120px" src="{{ asset('images/partners/forum.svg') }}">
+				</a>
+				<a href="https://altmetric.com/" target="_blank">
+					<img class="bw" style="width: 120px" src="{{ asset('images/partners/altmetric.svg') }}">
+				</a>
+				<a href="http://antibiotic-action.com/" target="_blank">
+					<img class="bw" style="width: 120px" src="{{ asset('images/partners/antibiotic.svg') }}">
+				</a>
+				<a href="https://www.bioutils.ch/" target="_blank">
+					<img class="bw" style="width: 120px" src="{{ asset('images/partners/bioutils.svg') }}">
+				</a>
+				<a href="https://www.leftlaneapps.com" target="_blank">
+					<img class="bw" style="width: 120px" src="{{ asset('images/partners/leftlane.svg') }}">
+				</a>
+				<a href="http://www.unige.ch/" target="_blank">
+					<img class="bw" style="width: 120px" src="{{ asset('images/partners/university.svg') }}">
+				</a>
+			</div>
+		</div>
+	</div>
 	{{--
 	/==========================================================================
 	/	CATEGORIES DISPLAY
@@ -155,6 +189,5 @@
 			@include('components/partials/grids/columns')
 		@endforeach	
 	</div>
-
 </div>
 @endsection

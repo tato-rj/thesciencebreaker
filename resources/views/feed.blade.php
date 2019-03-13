@@ -25,14 +25,20 @@
     <link href="{{ config('app.url').$article->paths()->route()}}"><![CDATA[ {{ config('app.url').$article->paths()->route()}} ]]></link>
     <guid>{{$article->doi}}</guid>
     <description>{{$article->description}}</description>
+    <summary>{{$article->description}}</summary>
     <category term="{{$article->resources()->tagsList()}}">{{$article->category->name}}</category>
     <published>{{$article->created_at}}</published>
+    <content>
+      <![CDATA[
+        {{html_entity_decode($article->resources()->localize('content'))}}
+      ]]>
+    </content>
 
+    <author>
     @foreach ($article->authors as $author)
-      <author>
         <name>{{$author->resources()->fullName()}}</name>
-      </author>
     @endforeach
+    </author>
   
   </entry>
 @endforeach
