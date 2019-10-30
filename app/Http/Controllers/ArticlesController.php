@@ -24,6 +24,7 @@ class ArticlesController extends Controller
 
     public function index()
     {
+        // dd(Article::first()->paths()->image());
         return view('pages.welcome');
     }
 

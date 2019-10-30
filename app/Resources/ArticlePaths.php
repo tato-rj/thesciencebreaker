@@ -8,11 +8,10 @@ class ArticlePaths extends Resources
 {
     public function image()
     {
-        if (File::exists("storage/app/public/breaks/images/".$this->model->slug)) {
-            if (count(File::allFiles("storage/app/public/breaks/images/".$this->model->slug))) {
-                return File::allFiles("storage/app/public/breaks/images/".$this->model->slug)[0];
-            }
-        }
+        $file = 'app/public/breaks/images/'.$this->model->slug.'/'.$this->model->slug.'.jpeg';
+
+        // if (\Storage::exists($file))
+            return asset(\Storage::url($file));
 
         return "images/no-image.png";
     }
