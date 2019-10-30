@@ -49,6 +49,9 @@
                 @endslot
               @endcomponent
 
+      <div class="text-center">
+        <button type="button" style="display: none;" id="delete_multiple" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete_multiple_modal">Delete selections</button>
+      </div>
       {{-- Sort --}}
       <small class="d-flex justify-content-between align-items-end mt-4">
         <div>
@@ -78,7 +81,10 @@
       <hr style="margin-top: .5rem">
 
           @foreach ($articles as $article)
-          <div class="d-flex align-items-center mt-4 mb-2 pb-2">
+          <div class="d-flex mt-4 mb-2 pb-2">
+            <div class="mr-2">
+              <input type="checkbox" name="delete_multiple" data-id="{{ $article->id }}">
+            </div>
             <div class="flex-grow mr-2">
               <p class="mb-1 lh-1"><small><i class="fa fa-newspaper-o mr-2" aria-hidden="true"></i>{!! html_entity_decode($article->article) !!}</small></p>
               <p class="m-0"><span class="badge badge-info btn-theme-green">in {{ $article->category->name }}</span></p>
@@ -97,6 +103,7 @@
       </div>
 
       @include('admin/snippets/confirm_delete')
+      @include('admin/snippets/confirm_delete_multiple')
 
         <!-- Edit Modal -->
         <div class="modal fade" id="edit_available" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -135,6 +142,32 @@
 @endsection
 
 @section('scripts')
+<script type="text/javascript">
+$('input[name="delete_multiple"]').on('click', function() {
+  let ids = [];
+  let msg;
+
+  $('input[name="delete_multiple"]:checked').each(function() {
+    ids.push($(this).attr('data-id'));
+  });
+
+  if (ids.length) {
+    $('button#delete_multiple').show();
+    $('#delete_multiple_modal input[name="articles"]').val(JSON.stringify(ids));
+    if (ids.length > 1) {
+      msg = 'all ' + ids.length + ' articles';
+    } else {
+      msg = '1 article';
+    }
+  } else {
+    $('button#delete_multiple').hide();    
+    msg = '';
+  }
+
+  $('#delete_multiple_modal span.count').text(msg);
+  console.log(ids.length);
+});
+</script>
 <script type="text/javascript">
 $('button.edit').on('click', function() {
   $modal = $('#edit_available');

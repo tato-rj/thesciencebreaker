@@ -23,7 +23,7 @@ class IssuesController extends Controller
 	public function show($volume, $issue, Request $request)
 	{
         $sort = ($request->sort) ? $request->sort : 'created_at';
-        $order = ($sort == 'title') ? 'ASC' : 'ASC';
+        $order = ($sort == 'title') ? 'ASC' : 'DESC';
         $show = ($request->show) ? $request->show : 5;
 
 		$articles = Article::where('volume', $volume)->where('issue', $issue)->orderBy($sort, $order)->paginate($show);

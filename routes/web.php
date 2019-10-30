@@ -162,6 +162,7 @@ Route::get('/admin/available-articles', 'AvailableArticlesController@create');
 
 Route::post('admin/available-articles', 'AvailableArticlesController@store');
 Route::patch('/admin/available-articles/{availableArticle}', 'AvailableArticlesController@update');
+Route::delete('/admin/available-articles/destroy-multiple', 'AvailableArticlesController@destroyMultiple');
 Route::delete('/admin/available-articles/{availableArticle}', 'AvailableArticlesController@destroy');
 
 // Editor Picks routes

@@ -50,6 +50,18 @@ class AvailableArticlesController extends Controller
     }
 
     // DELETE
+    public function destroyMultiple(Request $request)
+    {
+        $articles = json_decode($request->articles);
+
+        foreach ($articles as $article) {
+            AvailableArticle::find($article)->delete();
+        }
+
+        return redirect()->back()->with('db_feedback', 'The articles has been removed from the database');
+    }
+
+    // DELETE
     public function destroy(AvailableArticle $availableArticle)
     {
         $availableArticle->delete();

@@ -11,7 +11,7 @@ class Localization
      *
      * @array $languages
      */
-    protected $languages = ['en','fr'];
+    protected $languages = ['en'];
 
     /**
      * Handle an incoming request.
