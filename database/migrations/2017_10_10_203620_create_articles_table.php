@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->text('description_fr')->nullable();
+            $table->text('image_path')->nullable();
             $table->string('image_caption', 255)->nullable();
             $table->string('image_credits', 144)->nullable();
             $table->text('content');
