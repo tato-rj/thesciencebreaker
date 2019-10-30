@@ -8,7 +8,7 @@ class ArticlePaths extends Resources
 {
     public function image()
     {
-        $file = 'app/public/breaks/images/'.$this->model->slug.'/'.$this->model->slug.'.jpeg';
+        $file = 'breaks/images/'.$this->model->slug.'/'.$this->model->slug.'.jpeg';
 
         // if (\Storage::exists($file))
             return asset(\Storage::url($file));
