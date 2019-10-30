@@ -49,12 +49,12 @@
 			<p class="text-muted">{{ $article->resources()->localize('description') }}</p>
 
 			{{-- Image --}}
-			@if ($article->paths()->image() != 'images/no-image.png')
+			{{-- @if ($article->paths()->image() != 'images/no-image.png') --}}
 			<figure class="figure cover-image mb-0">
-				<img src="{{ asset($article->paths()->image()) }}" class="figure-img img-fluid rounded" alt="{{ $article->image_caption }}">
+				<img src="{{ $article->paths()->image() }}" class="figure-img img-fluid rounded" alt="{{ $article->image_caption }}">
 				<figcaption class="figure-caption"><small>{{ $article->image_caption }} <strong>Credits: {{ $article->image_credits }}</strong></small></figcaption>
 			</figure>
-			@endif
+			{{-- @endif --}}
 
 			{{-- Open access, cc and doi link --}}
 			<div class="d-flex justify-content-between mt-3">
