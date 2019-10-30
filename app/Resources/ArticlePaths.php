@@ -8,9 +8,9 @@ class ArticlePaths extends Resources
 {
     public function image()
     {
-        if (File::exists("storage/app/breaks/images/".$this->model->slug)) {
-            if (count(File::allFiles("storage/app/breaks/images/".$this->model->slug))) {
-                return File::allFiles("storage/app/breaks/images/".$this->model->slug)[0];
+        if (File::exists("storage/app/public/breaks/images/".$this->model->slug)) {
+            if (count(File::allFiles("storage/app/public/breaks/images/".$this->model->slug))) {
+                return File::allFiles("storage/app/public/breaks/images/".$this->model->slug)[0];
             }
         }
 
@@ -24,6 +24,6 @@ class ArticlePaths extends Resources
 
     public function pdf()
     {
-        return "storage/app/breaks/".$this->model->slug.".pdf";
+        return "storage/app/public/breaks/".$this->model->slug.".pdf";
     }
 }
