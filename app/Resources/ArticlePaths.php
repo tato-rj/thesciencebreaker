@@ -11,9 +11,11 @@ class ArticlePaths extends Resources
         // $file = 'breaks/images/'.$this->model->slug.'/'.$this->model->slug.'.jpeg';
 
         // if (\Storage::exists($file))
-            return asset($this->model->image_path);
+            // return asset(\Storage::url($file));
+        
+        return asset($this->model->image_path);
 
-        return "images/no-image.png";
+        // return "images/no-image.png";
     }
 
     public function route()

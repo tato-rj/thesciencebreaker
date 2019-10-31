@@ -12,4 +12,14 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+	.sass('resources/assets/sass/app.scss', 'public/css')
+	.styles([
+		'resources/assets/vendor/jquery-popover-0.0.3.css',
+		'resources/assets/vendor/fontawesome-all.min.css',
+		'public/css/app.css',
+		], 'public/css/app.css')
+    .scripts([
+		'resources/assets/vendor/pace.min.js',
+     	'public/js/app.js',
+     	], 'public/js/app.js')
+	.version();

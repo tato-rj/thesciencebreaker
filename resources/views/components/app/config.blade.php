@@ -89,8 +89,8 @@
 <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon-32x32.png') }}" sizes="32x32" />
 <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon-16x16.png') }}" sizes="16x16" />
 {{-- Loading bar --}}
-<script src="{{ asset('js/pace.min.js') }}"></script>
+{{-- <script src="{{ asset('js/pace.min.js') }}"></script> --}}
 {{-- CSS --}}
-<link rel="stylesheet" href="{{ asset('css/jquery-popover-0.0.3.css') }}">
-<link href="{{ asset('css/fontawesome-all.min.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/app.css') }}?version=132" rel="stylesheet" type="text/css">
+{{-- <link rel="stylesheet" href="{{ asset('css/jquery-popover-0.0.3.css') }}"> --}}
+{{-- <link href="{{ asset('css/fontawesome-all.min.css') }}" rel="stylesheet" type="text/css"> --}}
+<link href="{{ mix('css/app.css') }}?version=132" rel="stylesheet" type="text/css">

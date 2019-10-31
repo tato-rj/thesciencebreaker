@@ -14,8 +14,8 @@
 			<form method="POST" action="/language">
 				{{csrf_field()}}
 				<div class="text-white">
-					<button class="btn-link no-border text-white" name="language" value="en">EN</button> 
-					/ <button class="btn-link no-border text-white" name="language" value="fr">FR</button>
+					<button class="btn btn-link no-border text-white" name="language" value="en">EN</button> 
+					/ <button class="btn btn-link no-border text-white" name="language" value="fr">FR</button>
 				</div>
 			</form>
 			<div>
