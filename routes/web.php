@@ -2,6 +2,17 @@
 
 Auth::routes();
 
+Route::get('fix-images', function() {
+	$articles = \App\Article::all();
+
+	foreach ($articles as $article) {
+		if (! \Storage::disk('public')->exists('breaks/images/'.$article->slug.'/'.$article->slug.'.jpeg'))
+			$article->update(['image_path' => str_replace('.jpeg', '.png', $article->image_path)]);
+	}
+
+	dd('done');
+});
+
 // Route::get('/generate-issues', 'ArticlesController@generateIssues');
 // Route::get('/generate-volumes', 'ArticlesController@generateVolumes');
 Route::get('/issues', 'ArticlesController@issues');
