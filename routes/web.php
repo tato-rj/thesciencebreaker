@@ -6,6 +6,8 @@ Route::get('fix-images', function() {
 	$articles = \App\Article::all();
 
 	foreach ($articles as $article) {
+		$article->update(['image_path' => str_replace('http://104.248.40.140', 'https://thesciencebreaker.org', $article->image_path)]);
+		
 		if (! \Storage::disk('public')->exists('breaks/images/'.$article->slug.'/'.$article->slug.'.jpeg'))
 			$article->update(['image_path' => str_replace('.jpeg', '.png', $article->image_path)]);
 	}
