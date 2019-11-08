@@ -89,7 +89,7 @@ class ArticleRequest extends Form
             'created_at' => $this->created_at
         ]);
 
-        $this->saveFile() = $path;
+        $path = $this->saveFile();
 
         if ($path)
             $article->update(['image_path' => $path]);
