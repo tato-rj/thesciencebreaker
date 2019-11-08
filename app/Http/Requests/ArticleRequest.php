@@ -37,7 +37,6 @@ class ArticleRequest extends Form
     public function create()
     {
         $this->slug($this->title);
-        $this->saveFile();
 
         $article = Article::create([
             'title' => $this->title,
@@ -45,6 +44,7 @@ class ArticleRequest extends Form
             'slug' => $this->slug,
             'description' => $this->description,
             'description_fr' => $this->description_fr,
+            'image_path' => $this->saveFile(),
             'image_caption' => $this->image_caption,
             'image_credits' => $this->image_credits,
             'content' => $this->content,
@@ -71,13 +71,13 @@ class ArticleRequest extends Form
     public function edit(Article $article)
     {
         $this->slug($this->title);
-        $this->saveFile();
 
         $article->update([
             'title' => $this->title,
             'title_fr' => $this->title_fr,
             'description' => $this->description,
             'description_fr' => $this->description_fr,
+            'image_path' => $this->saveFile(),
             'image_caption' => $this->image_caption,
             'image_credits' => $this->image_credits,
             'content' => $this->content,

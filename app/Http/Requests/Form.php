@@ -61,16 +61,18 @@ abstract class Form
     public function saveFile()
     {
         if ($this->request->file('pdf')) {
-            (new FileUpload($this->request->file('pdf')))->name($this->slug)->path("/breaks/")->save();            
+            $file = (new FileUpload($this->request->file('pdf')))->name($this->slug)->path("/breaks/")->save();            
         }
 
         if ($this->request->file('image')) {
-            (new FileUpload($this->request->file('image')))->name($this->slug)->path("/breaks/images/$this->slug/")->save();            
+            $file = (new FileUpload($this->request->file('image')))->name($this->slug)->path("/breaks/images/$this->slug/")->save();            
         }
 
         if ($this->request->file('avatar')) {
-            (new FileUpload($this->request->file('avatar')))->name($this->slug)->path("/managers/avatars/$this->slug/")->save();            
+            $file = (new FileUpload($this->request->file('avatar')))->name($this->slug)->path("/managers/avatars/$this->slug/")->save();            
         }
+
+        return $file;
     }
 
 	public function __get($property)

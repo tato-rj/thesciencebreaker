@@ -33,7 +33,9 @@ class FileUpload {
     public function save()
     {
         $filepath = $this->path.$this->filename;
-        Storage::put($filepath, File::get($this->file));
+        Storage::put('public' . $filepath, File::get($this->file));
+
+        return "storage" . $filepath;
     }
 
     public function replace()
