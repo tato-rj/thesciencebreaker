@@ -77,7 +77,6 @@ class ArticleRequest extends Form
             'title_fr' => $this->title_fr,
             'description' => $this->description,
             'description_fr' => $this->description_fr,
-            'image_path' => $this->saveFile(),
             'image_caption' => $this->image_caption,
             'image_credits' => $this->image_credits,
             'content' => $this->content,
@@ -90,11 +89,13 @@ class ArticleRequest extends Form
             'created_at' => $this->created_at
         ]);
 
-        if ($this->update_url) {
-            $article->update([
-                'slug' => $this->slug
-            ]);
-        }
+        $this->saveFile() = $path;
+
+        if ($path)
+            $article->update(['image_path' => $path]);
+
+        if ($this->update_url)
+            $article->update(['slug' => $this->slug]);
 
         $article->authors()->sync($this->authors);
     }
