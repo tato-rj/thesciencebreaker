@@ -60,6 +60,8 @@ abstract class Form
 
     public function saveFile()
     {
+    	$file = null;
+    	
         if ($this->request->file('pdf')) {
             $file = (new FileUpload($this->request->file('pdf')))->name($this->slug)->path("/breaks/")->save();            
         }
