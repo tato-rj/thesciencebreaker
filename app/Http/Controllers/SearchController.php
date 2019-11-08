@@ -16,7 +16,7 @@ class SearchController extends Controller
         $show = ($request->show) ? $request->show : 5;
     	$articles = Article::search($input)->orderBy($sort, $order)->paginate($show);
 
-    	return view("pages/search", compact('articles', 'input'));
+    	return view("pages/search", ['articles' => $articles, 'input' => $input]);
     }
 
     public function authors(Request $request)
