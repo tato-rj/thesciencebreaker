@@ -15,9 +15,8 @@ class SearchController extends Controller
         $sort = ($request->sort) ? $request->sort : 'created_at';
         $order = ($sort == 'title') ? 'ASC' : 'DESC';
         $show = ($request->show) ? $request->show : 5;
-       
     	$articles = Article::search($input)->orderBy($sort, $order)->paginate($show);
- dd($request->all());
+
     	return view("pages/search", ['articles' => $articles, 'input' => $input]);
     }
 

@@ -31,7 +31,7 @@ trait ArticleScopeQueries
 
     public function scopeSearch($query, $word)
     {
-        return $query
+        $result = $query
             ->where('title', 'LIKE', "%$word%")
             ->orWhere('content', 'LIKE', "%$word%")
             ->orWhereHas('authors', function($query) use ($word) {
@@ -43,6 +43,8 @@ trait ArticleScopeQueries
             })->orWhereHas('tags', function($query) use ($word) {
                 $query->where('name', 'LIKE', "%$word%");
             });
+
+            dd($result);
     }
 
     // public function scopeRecords($query, $length)
