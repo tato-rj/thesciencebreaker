@@ -15,7 +15,7 @@ class SearchController extends Controller
         $order = ($sort == 'title') ? 'ASC' : 'DESC';
         $show = ($request->show) ? $request->show : 5;
     	$articles = Article::search($input)->orderBy($sort, $order)->paginate($show);
-
+dd($articles);
     	return view("pages/search", ['articles' => $articles, 'input' => $input]);
     }
 
