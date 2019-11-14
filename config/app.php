@@ -16,7 +16,7 @@ return [
     'name' => env('APP_NAME', 'TheScienceBreaker'),
     'issn' => env('APP_ISSN', '2571-9262'),
     'owner' => env('APP_OWNER', 'Massimo Caine'),
-    'email' => env('APP_EMAIL', 'max.caine@thesciencebreaker.com'),
+    'email' => env('APP_EMAIL', 'max.caine@thesciencebreaker.org'),
     'twitter' => env('APP_TWITTER', 'https://twitter.com/sciencebreaker'),
     'facebook' => env('APP_FACEBOOK', 'https://www.facebook.com/sciencebreaker/?fref=ts'),
     'googleplus' => env('APP_GOOGLEPLUS', '#'),
