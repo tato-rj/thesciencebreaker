@@ -66,7 +66,7 @@ class AppController extends Controller
     {
         $articles = Article::recent(7)->get();
 
-        $this->addImage($articles);
+        // $this->addImage($articles);
         return $articles;
     }
 
