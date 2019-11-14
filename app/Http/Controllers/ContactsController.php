@@ -19,10 +19,10 @@ class ContactsController extends Controller
 
     public function question(Request $request)
     {
-        if (app()->environment() != 'testing') {
-            if (Carbon::parse($request->time)->addSeconds(10)->gt(Carbon::now()) || ! empty($request->my_name))
-                return response('Humans only please.', 403);
-        }
+        // if (app()->environment() != 'testing') {
+        //     if (Carbon::parse($request->time)->addSeconds(10)->gt(Carbon::now()) || ! empty($request->my_name))
+        //         return response('Humans only please.', 403);
+        // }
 
         ValidateQuestion::createCheck($request);
         MailFactory::question($request);
