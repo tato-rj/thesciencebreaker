@@ -11,6 +11,7 @@ class Article extends TheScienceBreaker
 {
     use ArticleScopeQueries;
     
+    protected $appends = ['image_path'];
     protected $with = ['authors', 'editor', 'category', 'tags'];
 
     public function getRouteKeyName()
@@ -46,6 +47,11 @@ class Article extends TheScienceBreaker
     public function tags()
     {
         return $this->belongsToMany('App\Tag');
+    }
+
+    public function getImagePathAttribute()
+    {
+        return $this->paths()->image();
     }
 
     public static function currentIssuePath()
