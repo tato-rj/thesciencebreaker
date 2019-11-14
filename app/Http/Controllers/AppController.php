@@ -66,7 +66,7 @@ class AppController extends Controller
     {
         $articles = Article::recent(7)->get();
 
-        // $this->addImage($articles);
+        $this->addImage($articles);
         return $articles;
     }
 
@@ -94,11 +94,7 @@ class AppController extends Controller
     public function addImage($collection)
     {
         foreach ($collection as $break) {
-            if (File::exists("storage/app/breaks/images/$break->slug")) {
-                $file = File::allFiles("storage/app/breaks/images/$break->slug");
-                $path = (count($file)) ? asset($file[0]): 'no-image';
-                $break->image_path = $path;
-            }
+            $break->image_path = $break->paths()->image();
         }      
     }
 }
