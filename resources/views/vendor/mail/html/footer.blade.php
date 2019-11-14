@@ -2,11 +2,6 @@
     <td>
         <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0">
         	<tr>
-        		<td class="content-cell pt-3" align="center">
-        			<h3>Our mobile app is coming soon, stay tuned!</h3>
-        		</td>
-        	</tr>
-        	<tr>
         		<td class="content-cell text-center" align="center">
         			<div class="social">
                         <a href="{{ config('app.facebook') }}">
