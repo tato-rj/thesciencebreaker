@@ -14,7 +14,7 @@ class ContactsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('throttle:2');
+        // $this->middleware('throttle:2');
     }
 
     public function question(Request $request)
@@ -51,7 +51,7 @@ class ContactsController extends Controller
             if (Carbon::parse($request->time)->addSeconds(10)->gt(Carbon::now()) || ! empty($request->my_name))
                 return response('Humans only please.', 403);
         }
-
+// return $request->file('file');
         ValidateBreakSubmission::createCheck($request);
         MailFactory::submit($request);
         if ($request->subscribe_me) Subscription::createOrIgnore($request->institution_email);

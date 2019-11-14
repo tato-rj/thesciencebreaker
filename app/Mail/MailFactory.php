@@ -47,7 +47,7 @@ class MailFactory
             'body' => 'Thank you for your contact! We have received your message and will get back to you shortly.'
         ];
     
-        Mail::to(config('app.email'))->send(new Question($request->except(['_token', 'subscribe_me'])));
+        Mail::to(config('app.email'))->send(new Question($request->only(['first_name', 'last_name', 'email', 'message'])));
         Mail::to($request->email)->send(new ContactFeedback($request, $message));
     }
 
@@ -58,7 +58,7 @@ class MailFactory
             'body' => 'We have received your Break inquiry. We will get back to you shortly!'
         ];
 
-        Mail::to(config('app.email'))->send(new BreakInquiry($request->except(['_token', 'subscribe_me'])));
+        Mail::to(config('app.email'))->send(new BreakInquiry($request->except(['_token', 'time', 'subscribe_me'])));
         Mail::to($request->email)->send(new ContactFeedback($request, $message));
     }
 
@@ -70,7 +70,7 @@ class MailFactory
         ];
 
         $file = self::saveFile($request);
-        Mail::to(config('app.email'))->send(new Submit($request->except(['_token', 'subscribe_me', 'file']), $file));
+        Mail::to(config('app.email'))->send(new Submit($request->except(['_token', 'time', 'subscribe_me', 'file']), $file));
         Mail::to($request->institution_email)->send(new ContactFeedback($request, $message));
     }
 
@@ -80,7 +80,9 @@ class MailFactory
         $ext = $file->extension();
         $name = $request->last_name.'_'.$request->first_name.'_break_v1';
         $filename = "/uploaded-breaks/$name.$ext";
-        Storage::put($filename, File::get($file));
-        return "storage/app".$filename;
+
+        Storage::put('public' . $filename, File::get($file));
+
+        return "storage" . $filename;
     }
 }
