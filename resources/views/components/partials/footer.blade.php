@@ -96,7 +96,7 @@
 			<ul class="credits pt-4">
 				<li>30, Quai Ernest-Ansermet 1211 Genève 4<i class="fa fa-circle" aria-hidden="true"></i></li>
 				<li>© TheScienceBreaker 2015 - 2017. {{__('footer.copyright')}}<i class="fa fa-circle" aria-hidden="true"></i></li>
-				<li>powered by <a href="https://www.leftlaneapps.com" target="_blank">LeftLane</a><i class="fa fa-circle" aria-hidden="true"></i></li>
+				<li>powered by <a href="https://www.leftlaneapps.com" target="_blank">LeftLaneApps</a><i class="fa fa-circle" aria-hidden="true"></i></li>
 				<li><a href="/admin/dashboard" target="_blank">Admin Login</a></li>
 			</ul>
 		</div>
