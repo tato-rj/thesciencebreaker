@@ -25,6 +25,6 @@ class ArticlePaths extends Resources
 
     public function pdf()
     {
-        return "storage/app/public/breaks/".$this->model->slug.".pdf";
+        return "storage/breaks/".$this->model->slug.".pdf";
     }
 }

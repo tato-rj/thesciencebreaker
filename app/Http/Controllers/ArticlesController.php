@@ -55,6 +55,7 @@ class ArticlesController extends Controller
         $more_like = $article->resources()->suggestions();
         $more_from = $article->similar()->get();
         $article->increment('views');
+
         return view('pages.article', compact(['article', 'more_from', 'more_like', 'next_read']));
     }
 
