@@ -13,12 +13,13 @@ class ManagerPaths extends Resources
 
     public function avatar()
     {
-        if (File::exists("storage/app/managers/avatars/".$this->model->slug)) {
-        	if (count(File::allFiles("storage/app/managers/avatars/".$this->model->slug))) {
-	            return File::allFiles("storage/app/managers/avatars/".$this->model->slug)[0];
-	        }
-        }
+        return asset($this->model->image_path);
+        // if (File::exists("storage/app/managers/avatars/".$this->model->slug)) {
+        // 	if (count(File::allFiles("storage/app/managers/avatars/".$this->model->slug))) {
+	       //      return File::allFiles("storage/app/managers/avatars/".$this->model->slug)[0];
+	       //  }
+        // }
 
-        return "images/missing-avatar.svg";        
+        // return "images/missing-avatar.svg";        
     }
 }
