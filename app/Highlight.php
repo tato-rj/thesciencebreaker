@@ -6,10 +6,8 @@ use App\TheScienceBreaker;
 
 class Highlight extends TheScienceBreaker
 {
-    protected $with = ['article'];
-
     public function article()
     {
-    	return $this->belongsTo('App\Article');
+    	return $this->belongsTo('App\Article')->with(['category', 'authors']);
     }
 }

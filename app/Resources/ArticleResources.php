@@ -3,7 +3,7 @@
 namespace App\Resources;
 
 use Illuminate\Support\Collection;
-use App\Article;
+use App\{Article, Tag};
 use App;
 
 class ArticleResources extends Resources
@@ -46,34 +46,23 @@ class ArticleResources extends Resources
 
     public function nextRead()
     {
-        if (count($this->model->tags)) {
-            $collection = $this->model->tags()->inRandomOrder()->first();
-        } else {
-            $collection = $this->model->category;
-        }
+        $collection = $this->model->tags()->inRandomOrder()->first() ?? $this->model->category;
+    
+        $results = $collection->articles()->with(['category', 'authors'])->where('slug', '!=', $this->model->slug);
 
-        $results = $collection->articles->where('slug', '!=', $this->model->slug);
-        
-        if (count($results)) {
+        if ($results->exists())
             return $results->first();
-        }
 
-        return $this->model->category->articles->where('slug', '!=', $this->model->slug)->first();
+        return $this->model->category->articles()->with(['category', 'authors'])->where('slug', '!=', $this->model->slug)->first();
     }
 
     public function suggestions()
     {
-        $collection = [];
-        foreach ($this->model->tags as $tag) {
-            foreach ($tag->articles as $article) {
-                ($article->id != $this->model->id) ? array_push($collection, $article) : null;
-            }
-        }
-        array_unique($collection);
-        if (count($collection) > 4) {
-            $collection = array_slice($collection, 0, 4);
-        }
-        return (count($collection)) ? $collection : Article::inRandomOrder()->take(4)->get();
+        $collection = Tag::with('articles')->whereIn('id', $this->model->tags->pluck('id'))->get()->pluck('articles')->flatten()->unique('id')->where('id', '!=', $this->model->id)->take(5);
+        
+        return $collection->isEmpty() ? 
+            Article::with(['category', 'authors'])->except($this->model)->inRandomOrder()->take(5)->get() : 
+            $collection;
     }
 
     public function createDoi()

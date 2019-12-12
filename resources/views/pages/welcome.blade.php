@@ -156,17 +156,17 @@
 			@component('components/snippets/title')
 			{{__('global.topics')}}
 			@endcomponent
-							<div class="d-flex flex-wrap">
-					@foreach ($topics as $topic)
-					
-						<div class="d-flex tags m-1">
-							<a href="{{ $topic->path() }}">
-								<span class="badge badge-pill">{{ $topic->name }}</span>
-							</a>
-						</div>
-					
-					@endforeach
-				</div>
+			<div class="d-flex flex-wrap">
+				@foreach ($topics as $topic)
+				
+					<div class="d-flex tags m-1">
+						<a href="{{ $topic->path() }}">
+							<span class="badge badge-pill">{{ $topic->name }}</span>
+						</a>
+					</div>
+				
+				@endforeach
+			</div>
 		</div>
 	</div>
 	

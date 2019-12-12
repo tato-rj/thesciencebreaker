@@ -4,29 +4,34 @@ namespace App\Manager\Traits;
 
 trait ArticleScopeQueries
 {
+    public function scopeExcept($query, $model)
+    {
+        return $query->where('id', '!=', $model->id);
+    }
+
     public function scopeRecent($query, $number)
     {
-        return $query->orderBy('created_at', 'desc')->take($number);
+        return $query->with(['category', 'authors'])->orderBy('created_at', 'desc')->take($number);
     }
 
     public function scopeSimilar($query)
     {
-        return $query->where('category_id', $this->category_id)->orderBy('id', 'desc')->take(5);
+        return $this->category->articles()->except($this)->with(['category', 'authors'])->orderBy('id', 'desc')->take(5);
     }
 
     public function scopePopular($query, $number)
     {
-        return $query->orderBy('views', 'desc')->take($number);
+        return $query->with(['category', 'authors'])->orderBy('views', 'desc')->take($number);
     }
 
     public function scopeEditorPicks($query)
     {
-        return $query->where('editor_pick', 1);
+        return $query->with(['category', 'authors'])->where('editor_pick', 1);
     }
 
     public function scopePicks($query)
     {
-        return $query->where('editor_pick', 1)->orderBy('title')->get();
+        // return $query->where('editor_pick', 1)->orderBy('title')->get();
     }
 
     public function scopeSearch($query, $word)

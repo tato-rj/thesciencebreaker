@@ -7,7 +7,6 @@ use App\Resources\CategoryPaths;
 
 class Category extends TheScienceBreaker
 {
-
 	protected $withCount = ['articles'];
 
 	public function getRouteKeyName()

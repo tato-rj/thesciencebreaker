@@ -24,23 +24,17 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         \View::composer('*', function($view) {
-            $view->with('categories', Category::orderBy('name')->get());
-            $view->with('popular', Article::popular(6)->get());
-            $view->with('tagsList', Tag::list());
-            $view->with('currentIssuePath', Article::currentIssuePath());
+            $categories = cache()->rememberForever('categories', function() {
+                return Category::orderBy('name')->get();
+            });
+
+            $view->with('categories', $categories);
         });
-        
+
         \View::composer('components/partials/side_bars/suggestions', function($view) {
-            $view->with('editor_picks', Article::editorPicks()->get()); 
-        });
-
-        \View::composer(['pages/welcome', 'pages/article', 'pages/category'], function($view) {
+            $view->with('picks', Article::editorPicks()->get());
+            $view->with('popular', Article::popular(6)->get()); 
             $view->with('topics', Tag::orderBy('articles_count', 'DESC')->take(25)->get()); 
-        });
-
-        \View::composer('pages/welcome', function($view) {
-            $view->with('highlights', Highlight::orderBy('relevance_order')->take(4)->get());
-            $view->with('latest_articles', Article::recent(6)->get());
         });
 
         Blade::if('only', function ($group) {

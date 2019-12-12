@@ -2,7 +2,7 @@
 	<div id="side-bar">
 		<div>
 			<strong><p class="mb-3">{{__('global.picks')}}</p></strong>
-			@foreach ($editor_picks as $pick)
+			@foreach ($picks as $pick)
 				<div class="d-flex align-items-center mb-3">
 					<img src="{{ $pick->category->paths()->icon() }}" class="mr-3">
 					<div>

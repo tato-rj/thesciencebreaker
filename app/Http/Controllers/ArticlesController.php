@@ -2,12 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
-use App\Author;
-use App\ArticleAuthor;
-use App\Category;
-use App\Manager;
-use App\Tag;
+use App\{Article, Highlight, Author, ArticleAuthor, Category, Manager, Tag};
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -24,8 +19,12 @@ class ArticlesController extends Controller
 
     public function index()
     {
-        // dd(Article::first()->paths()->image());
-        return view('pages.welcome');
+        $popular = Article::popular(6)->get();
+        $topics = Tag::orderBy('articles_count', 'DESC')->take(25)->get();
+        $highlights = Highlight::with('article')->orderBy('relevance_order')->take(4)->get();
+        $latest_articles = Article::recent(6)->get();
+
+        return view('pages.welcome', compact(['highlights', 'latest_articles', 'topics', 'popular']));
     }
 
     public function previewDOI()
@@ -51,8 +50,9 @@ class ArticlesController extends Controller
     // READ
     public function show(Category $category, Article $article)
     {
-        $next_read = $article->resources()->nextRead();
+
         $more_like = $article->resources()->suggestions();
+        $next_read = $more_like->pop();
         $more_from = $article->similar()->get();
         $article->increment('views');
 

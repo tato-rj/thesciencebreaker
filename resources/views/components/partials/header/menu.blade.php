@@ -38,7 +38,7 @@
 						ISSUES
 					</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item d-flex align-items-center text-uppercase" href="/{{$currentIssuePath}}">Current Issue</a>
+						<a class="dropdown-item d-flex align-items-center text-uppercase" href="/{{\App\Article::currentIssuePath()}}">Current Issue</a>
 						<a class="dropdown-item d-flex align-items-center text-uppercase" href="/archives">Archives</a>
 					</div>
 				</li>

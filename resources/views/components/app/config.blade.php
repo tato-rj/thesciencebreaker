@@ -69,8 +69,9 @@
     <meta itemprop="description" content="For the democratization of scientific literature" />
     <meta itemprop="image" content="{{ asset('images/tsb-default.png') }}" />
     <meta name="description" content="For the democratization of scientific literature" />
-    <meta name="keywords" content="{{ $tagsList }}" />
-    <meta name="news_keywords" content="{{ $tagsList }}" />
+    @php($tagsList = \App\Tag::list())
+    <meta name="keywords" content="{{$tagsList }}" />
+    <meta name="news_keywords" content="{{$tagsList }}" />
     <link rel="image_src" href="{{ asset('images/tsb-default.png') }}" />
 @endif
 

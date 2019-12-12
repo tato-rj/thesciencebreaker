@@ -11,7 +11,7 @@ class Article extends TheScienceBreaker
 {
     use ArticleScopeQueries;
     
-    protected $with = ['authors', 'editor', 'category', 'tags'];
+    // protected $with = ['authors', 'editor', 'category', 'tags'];
 
     public function getRouteKeyName()
     {
@@ -51,6 +51,7 @@ class Article extends TheScienceBreaker
     public static function currentIssuePath()
     {
         $lastBreak = Article::latest()->first();
+        
         return "content/volume/$lastBreak->volume/issue/$lastBreak->issue";
     }
 }
