@@ -12,7 +12,7 @@ class ValidateBreakSubmission implements Validator
             'research_institute' => 'required|min:2',
             'original_article' => 'required',
             'position' => 'required',
-            'file' => 'required|mimes:doc,docx,odt,txt,pdf|max:3000',
+            'file' => 'required|mimes:doc,docx,odt,txt,pdf|max:5000',
             'description' => 'required|max:500'
         ]);
     }
