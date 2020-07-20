@@ -120,6 +120,7 @@ Route::post('/app/breaks/views', 'AppController@incrementViews');
 */
 
 Route::get('/admin/dashboard', 'AdminController@index');
+Route::get('/admin/download', 'AdminController@download')->name('admin.download');
 Route::get('/admin/graphs', 'AdminController@graphs');
 
 // Breaks routes

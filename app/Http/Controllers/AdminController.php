@@ -7,6 +7,7 @@ use App\Author;
 use App\AvailableArticle;
 use App\Subscription;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -29,7 +30,7 @@ class AdminController extends Controller
                 $sheet->fromModel(Article::setEagerLoads([])->select('title as Title', 'views as Views')->orderBy('views', 'DESC')->get(), null, 'A1', true);
             });
 
-        })->store('xls', storage_path('app/breaks/excel'));
+        })->store('xls', storage_path('app/public/breaks/excel'));
 
         $breakers_excel = Excel::create('breakers_emails', function($breakers_excel) {
 
@@ -37,8 +38,13 @@ class AdminController extends Controller
                 $sheet->fromModel(Author::setEagerLoads([])->select('first_name as Name', 'last_name as Surname', 'email')->orderBy('first_name')->get(), null, 'A1', true);
             });
 
-        })->store('xls', storage_path('app/breakers/excel'));
+        })->store('xls', storage_path('app/public/breakers/excel'));
 
     	return view('admin/pages/dashboard', compact(['breaks_count', 'authors_count', 'available_count', 'subscription_count', 'total_views']));
+    }
+
+    public function download(Request $request)
+    {
+        return \Storage::disk('public')->download($request->path);
     }
 }

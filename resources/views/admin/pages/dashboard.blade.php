@@ -60,9 +60,9 @@
       <div class="row mt-4">
         <div class="col-lg-5 col-md-6 col-sm-8 col-xs-10 mx-auto pt-3" style="border-top: 1px solid lightgrey">
           <p class="mb-1">Other resources</p>
-          <a href="{{ asset('storage/app/breaks/excel/breaks_views.xls') }}" class="d-block" title="Export as XLS">Number of breaks views (excel)</a>
+          <a href="{{ route('admin.download', ['path' => 'breaks/excel/breaks_views.xls']) }}" class="d-block" title="Export as XLS">Number of breaks views (excel)</a>
           @only('managers')
-          <a href="{{ asset('storage/app/breakers/excel/breakers_emails.xls') }}" class="d-block" title="Export as XLS">Breakers emails (excel)</a>
+          <a href="{{ route('admin.download', ['path' => 'breakers/excel/breakers_emails.xls']) }}" class="d-block" title="Export as XLS">Breakers emails (excel)</a>
           @endonly
         </div>
       </div>

@@ -11,10 +11,10 @@
 			<ul>
 				<li><small>You typed in the wrong web address (please double-check your spelling)</small></li>
 				<li><small>Another website misspelled a link to our site</small></li>
-				<li><small>You clicked somewhere on TheScienceBreaker.com, and that brought you here</small></li>
+				<li><small>You clicked somewhere on TheScienceBreaker.org, and that brought you here</small></li>
 				<li><small>A monkey got loose in our server room</small></li>
 			</ul>
-			<p>If this problem persits, please contact <a class="text-muted" href="mailto:webmaster@thesciencebreaker.com">webmaster@thesciencebreaker.com</a> with as many details as you can.</p>
+			<p>If this problem persits, please contact <a class="text-muted" href="mailto:webmaster@thesciencebreaker.org">webmaster@thesciencebreaker.org</a> with as many details as you can.</p>
 			<p><a class="text-muted" href="{{ route('home') }}">Click here</a> to return to the main page.</p>
 		</div>
 	</div>

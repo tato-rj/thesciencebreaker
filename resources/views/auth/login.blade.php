@@ -29,8 +29,8 @@
                             <div class="checkbox">
                                 <label class="custom-control custom-checkbox">
                                     <input type="checkbox" name="remember" class="custom-control-input" {{ old('remember') ? 'checked' : '' }}>
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description">Keep me signed in</span>
+                                    <span class="custom-control-input"></span>
+                                    <span class="custom-control-label">Keep me signed in</span>
                                 </label>
                             </div>
                         </div>

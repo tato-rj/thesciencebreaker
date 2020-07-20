@@ -114,8 +114,8 @@
 						</div>
 						<label class="custom-control d-block custom-checkbox mb-4">
 							<input type="checkbox" checked="true" name="subscribe_me" class="custom-control-input">
-							<span class="custom-control-indicator"></span>
-							<span class="custom-control-description">{{__('contact.form.newsletter')}}</span>
+							<span class="custom-control-input"></span>
+							<span class="custom-control-label">{{__('contact.form.newsletter')}}</span>
 						</label>
 						<input type="submit" value="{{__('contact.form.send')}}" class="btn btn-theme-green">
 					</form>				

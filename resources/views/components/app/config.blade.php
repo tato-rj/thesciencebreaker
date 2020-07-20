@@ -94,4 +94,4 @@
 {{-- CSS --}}
 {{-- <link rel="stylesheet" href="{{ asset('css/jquery-popover-0.0.3.css') }}"> --}}
 {{-- <link href="{{ asset('css/fontawesome-all.min.css') }}" rel="stylesheet" type="text/css"> --}}
-<link href="{{ mix('css/app.css') }}?version=132" rel="stylesheet" type="text/css">
+<link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
