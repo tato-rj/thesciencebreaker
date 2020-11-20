@@ -33,6 +33,9 @@ class AuthorsController extends Controller
 
     public function store(Request $request)
     {
+        if (Author::where('slug', str_slug($request->first_name . ' ' . $request->last_name))->exists())
+            return back()->withErrors(['This author already exists']);
+
         $breaker = AuthorRequest::get()->save();
         MailFactory::sendWelcomeEmail($breaker);
         

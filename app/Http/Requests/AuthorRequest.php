@@ -28,7 +28,7 @@ class AuthorRequest extends Form
 
     public function create()
     {
-        $this->slug("$this->first_name $this->last_name");        
+        $this->slug("$this->first_name $this->last_name");
 
         return Author::create([
             'first_name' => $this->first_name,
