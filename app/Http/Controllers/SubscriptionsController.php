@@ -12,7 +12,7 @@ class SubscriptionsController extends Controller
     public function __construct()
     {
         $this->middleware('throttle:2')->only('store');
-        $this->middleware('auth', ['except' => ['store', 'unsubscribe']]);
+        $this->middleware('auth', ['except' => ['store', 'unsubscribe', 'form']]);
     }
 
     // CREATE
@@ -30,6 +30,11 @@ class SubscriptionsController extends Controller
         Subscription::create(['email' => $request->subscription]);
         
         return redirect()->back()->with('db_feedback', 'The email has been subscribed')->with('subscription', 'Thank you for subscribing!');
+    }
+
+    public function form()
+    {
+        return view('components.forms.subscription')->render();
     }
 
     // READ

@@ -17,4 +17,26 @@
     ga('send', 'pageview');
 </script>
 
+<script type="text/javascript">
+$('[data-action="subscription"]').click(function() {
+	let $btn = $(this);
+	let $modal = $($btn.data('target'));
+	let url = $btn.data('url');
+
+	$btn.prop('disabled', true);
+
+	axios.get(url)
+		 .then(function(response) {
+		 	$modal.find('.modal-body').html(response.data);
+		 	$modal.modal('show');
+		 })
+		 .catch(function(error) {
+		 	console.log(error);
+		 })
+		 .then(function() {
+			$btn.prop('disabled', false);
+		 });
+});
+</script>
+
 @yield('scripts')

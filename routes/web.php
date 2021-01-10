@@ -26,6 +26,8 @@ Route::get('/tags/{tag}', 'TagsController@show');
 Route::get('/search', 'SearchController@index');
 Route::post('/search/breakers', 'SearchController@authors');
 Route::post('/search/breaks', 'SearchController@articles');
+
+Route::get('subscription/form', 'SubscriptionsController@form')->name('subscription.form');
 // Unsubscribe
 Route::get('/unsubscribe', function() {
 	return view('pages.unsubscribe');

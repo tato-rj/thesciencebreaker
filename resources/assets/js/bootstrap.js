@@ -1,5 +1,6 @@
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
+window.axios = require('axios').default;
 // window.jQueryUI = require('jquery-ui-bundle');
 
 /**
