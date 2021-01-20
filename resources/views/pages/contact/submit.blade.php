@@ -11,6 +11,7 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 mx-auto mt-3">
 					<form id="recaptcha-form" method="POST" action="/contact/submit-a-break" enctype="multipart/form-data">
+						@include('auth.components.recaptcha')
 						@csrf
 						<input type="hidden" name="my_name">
 						<input type="hidden" name="time" value="{{\Carbon\Carbon::now()}}">
