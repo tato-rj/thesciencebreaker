@@ -186,10 +186,10 @@
 							<span class="custom-control-input"></span>
 							<span class="custom-control-label">{{__('contact.form.newsletter')}}</span>
 						</label>
-						<input type="submit" value="{{__('contact.form.send')}}" class="btn btn-theme-green">
 
 						@include('auth.components.recaptcha')
 						
+						<input type="submit" value="{{__('contact.form.send')}}" class="btn btn-theme-green">						
 					</form>				
 				</div>
 			</div>
