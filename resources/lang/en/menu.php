@@ -15,7 +15,8 @@ return [
 		'title' => 'FOR AUTHORS',
 		'information' => 'INFORMATION FOR AUTHORS',
 		'revops' => 'REVIEW OPERATIONS',
-		'available' => 'AVAILABLE ARTICLES'
+		'available' => 'AVAILABLE ARTICLES',
+		'guidelines' => 'WRITING GUIDELINES'
 	],
 	'contact' => [
 		'title' => 'CONTACT',

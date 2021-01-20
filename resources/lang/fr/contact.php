@@ -40,13 +40,13 @@ return [
 			'describe' => 'Décrivez les nouvelles / sujet'
 		],
 		'upload' => [
-			'title' => 'Téléchargement du manuscrit de la Break',
+			'title' => 'Téléchargement du manuscrit',
 			'note' => [
 				'p1' => 'Veuillez vous assurer que vous avez lu et respecté les consignes à',
 				'link' => 'l\'attention des auteurs',
-				'p2' => ', ou votre Break ne pourra pas être publiée'
+				'p2' => ', ou votre manuscrit ne pourra pas être publiée'
 			],
-			'file_types' => 'Ne téléchargez que des fichiers <strong>.doc</strong>, <strong>.docx</strong>, <strong>.odt</strong>, <strong>.txt</strong> ou <strong>.pdf</strong>. Les fichiers dépassant 3MB ne pourront pas être téléchargés'
+			'file_types' => 'Ne téléchargez que des fichiers <strong>.doc</strong>, <strong>.docx</strong> ou <strong>.odt</strong>. Les fichiers dépassant 3MB ne pourront pas être téléchargés'
 		],
 		'your_message' => 'Votre message',
 		'description' => 'Courte description (400 caractères maximum)',

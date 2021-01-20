@@ -48,7 +48,9 @@
 						{{__('menu.for_breakers.title')}}
 					</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown-breakers">
+						<a class="dropdown-item" href="/contact/submit-your-break">{{__('menu.contact.submit')}}</a>
 						<a class="dropdown-item" href="/information">{{__('menu.for_breakers.information')}}</a>
+						<a class="dropdown-item" href="/writing-guidelines">{{__('menu.for_breakers.guidelines')}}</a>
 						<a class="dropdown-item" href="/review-operations">{{__('menu.for_breakers.revops')}}</a>
 						<a class="dropdown-item" href="/available-articles">{{__('menu.for_breakers.available')}}</a>
 					</div>
@@ -58,7 +60,6 @@
 						{{__('menu.contact.title')}}
 					</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown-contact">
-						<a class="dropdown-item" href="/contact/submit-your-break">{{__('menu.contact.submit')}}</a>
 						<a class="dropdown-item" href="/contact/break-inquiry">{{__('menu.contact.inquiry')}}</a>
 						<a class="dropdown-item" href="/contact/ask-a-question">{{__('menu.contact.question')}}</a>
 					</div>

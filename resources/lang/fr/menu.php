@@ -15,7 +15,8 @@ return [
 		'title' => 'POUR BREAKERS',
 		'information' => 'INFORMATION POUR LES AUTEURS',
 		'revops' => 'REVIEW OPERATIONS',
-		'available' => 'ARTICLES DISPONIBLES'
+		'available' => 'ARTICLES DISPONIBLES',
+		'guidelines' => 'WRITING GUIDELINES'
 	],
 	'contact' => [
 		'title' => 'CONTACT',

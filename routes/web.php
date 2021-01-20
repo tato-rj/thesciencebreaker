@@ -68,6 +68,10 @@ Route::get('/information', function() {
 	return view('pages.for_breakers.information');
 });
 
+Route::get('/writing-guidelines', function() {
+	return view('pages.for_breakers.guidelines');
+});
+
 // FAQ
 Route::get('/review-operations', function() {
 	return view('pages.for_breakers.faq');

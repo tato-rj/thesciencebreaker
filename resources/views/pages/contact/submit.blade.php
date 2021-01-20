@@ -81,7 +81,7 @@
 						</div>					
 						<div class="form-group d-flex flex-column align-items-center" id="upload_container">
 							<p class="p-2"><strong>{{__('contact.form.upload.title')}}</strong></p>
-							<p>{{__('contact.form.upload.note.p1')}} <a href="#">{{__('contact.form.upload.note.link')}}</a>{{__('contact.form.upload.note.p2')}}</p>
+							<p>{{__('contact.form.upload.note.p1')}} <a href="/information">{{__('contact.form.upload.note.link')}}</a>{{__('contact.form.upload.note.p2')}}</p>
 							<p><small>{!!__('contact.form.upload.file_types')!!}</small></p>
 							<input type="file" class="form-control-file" id="file" name="file">
 							{{-- Error --}}

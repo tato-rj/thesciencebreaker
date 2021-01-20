@@ -40,13 +40,13 @@ return [
 			'describe' => 'Describe the news/subject'
 		],
 		'upload' => [
-			'title' => 'Break manuscript upload',
+			'title' => 'Manuscript upload',
 			'note' => [
 				'p1' => 'Please make sure that you read and respected the',
 				'link' => 'guidelines for authors',
-				'p2' => '! If not, your Break will not be eligible for publication.'
+				'p2' => '! If not, your manuscript will not be eligible for publication.'
 			],
-			'file_types' => 'Upload only <strong>.doc, .docx, .odt, .txt or .pdf</strong> files. Files exceeding 3 MB will not be uploaded.'
+			'file_types' => 'Upload only <strong>.doc, .docx or .odt</strong> files. Files exceeding 3 MB will not be uploaded.'
 		],
 		'your_message' => 'Your message',
 		'description' => 'Short description (max 400 characters)',
