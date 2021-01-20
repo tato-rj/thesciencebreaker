@@ -35,7 +35,7 @@
 							@endcomponent						
 						</div>
 						<div class="form-group">
-							<input required type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Email">
+							<input required type="email" class="form-control" value="{{ old('email') }}" id="email" name="email" aria-describedby="emailHelp" placeholder="Email">
 							{{-- Error --}}
 							@component('admin/snippets/error')
 							email
@@ -45,7 +45,9 @@
 							@endcomponent		
 						</div>
 						<div class="form-group">
-							<textarea required class="form-control" id="message" name="message" rows="5" placeholder="{{__('contact.form.your_message')}}"></textarea>
+							<textarea required class="form-control" id="message" name="message" rows="5" placeholder="{{__('contact.form.your_message')}}">
+								{{ old('message') }}
+							</textarea>
 							{{-- Error --}}
 							@component('admin/snippets/error')
 							message
@@ -62,7 +64,7 @@
 						<input type="submit" value="{{__('contact.form.send')}}" class="btn btn-theme-green">
 
 						@include('auth.components.recaptcha')
-						
+
 					</form>				
 				</div>
 			</div>
