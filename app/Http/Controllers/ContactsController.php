@@ -24,11 +24,12 @@ class ContactsController extends Controller
         //         return response('Humans only please.', 403);
         // }
 
-        ValidateQuestion::createCheck($request);
-        MailFactory::question($request);
-        if ($request->subscribe_me) Subscription::createOrIgnore($request->email);
+        // ValidateQuestion::createCheck($request);
+        // MailFactory::question($request);
+        // if ($request->subscribe_me) Subscription::createOrIgnore($request->email);
 
-        return redirect()->back()->with('contact', 'Your message has been sent, thank you for your contact!');
+        // return redirect()->back()->with('contact', 'Your message has been sent, thank you for your contact!');
+        return redirect()->back()->with('contact', 'Thank you for your contact!');
     }
 
     public function inquiry(Request $request)
