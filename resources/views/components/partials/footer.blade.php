@@ -30,10 +30,7 @@
 						</li>
 						<li>
 							<a href="/breakers">breakers</a>
-						</li>
-						<li>
-							<a href="/partners">{{strtolower(__('menu.presentation.partners'))}}</a>
-						</li>					
+						</li>		
 					</ul>
 					<ul class=" d-none d-lg-block">
 						<p>BREAKS</p>
@@ -47,6 +44,9 @@
 					</ul>
 					<ul class=" d-none d-lg-block">
 						<p>{{__('menu.for_breakers.title')}}</p>
+						<li>
+							<a href="/submit-your-break">{{strtolower(__('menu.contact.submit'))}}</a>
+						</li>
 						<li>					
 							<a href="/information">{{strtolower(__('menu.for_breakers.information'))}}</a>
 						</li>
@@ -59,9 +59,6 @@
 					</ul>
 					<ul class=" d-none d-lg-block">
 						<p>{{__('menu.contact.title')}}</p>
-						<li>
-							<a href="/contact/submit-your-break">{{strtolower(__('menu.contact.submit'))}}</a>
-						</li>
 						<li>
 							<a href="/contact/break-inquiry">{{strtolower(__('menu.contact.inquiry'))}}</a>
 						</li>
