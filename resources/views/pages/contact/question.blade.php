@@ -45,9 +45,7 @@
 							@endcomponent		
 						</div>
 						<div class="form-group">
-							<textarea required class="form-control" id="message" name="message" rows="5" placeholder="{{__('contact.form.your_message')}}">
-								{{ old('message') }}
-							</textarea>
+							<textarea required class="form-control" id="message" name="message" rows="5" placeholder="{{__('contact.form.your_message')}}">{{ old('message') }}</textarea>
 							{{-- Error --}}
 							@component('admin/snippets/error')
 							message
