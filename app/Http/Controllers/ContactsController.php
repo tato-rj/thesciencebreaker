@@ -14,22 +14,21 @@ class ContactsController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('throttle:2');
+        // $this->middleware('throttle:4');
     }
 
     public function question(Request $request)
     {
-        // if (app()->environment() != 'testing') {
-        //     if (Carbon::parse($request->time)->addSeconds(10)->gt(Carbon::now()) || ! empty($request->my_name))
-        //         return response('Humans only please.', 403);
-        // }
+        if (app()->environment() != 'testing') {
+            if (Carbon::parse($request->time)->addSeconds(10)->gt(Carbon::now()) || ! empty($request->my_name))
+                return response('Humans only please.', 403);
+        }
 
         ValidateQuestion::createCheck($request);
-        // MailFactory::question($request);
-        // if ($request->subscribe_me) Subscription::createOrIgnore($request->email);
+        MailFactory::question($request);
+        if ($request->subscribe_me) Subscription::createOrIgnore($request->email);
 
-        // return redirect()->back()->with('contact', 'Your message has been sent, thank you for your contact!');
-        return redirect()->back()->with('contact', 'Thank you for your contact!');
+        return redirect()->back()->with('contact', 'Your message has been sent, thank you for your contact!');
     }
 
     public function inquiry(Request $request)

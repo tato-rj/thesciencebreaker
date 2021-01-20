@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Validators;
 
+use App\Rules\Recaptcha;
+
 class ValidateBreakSubmission implements Validator
 {
 	public static function createCheck($request) {
@@ -13,7 +15,8 @@ class ValidateBreakSubmission implements Validator
             'original_article' => 'required',
             'position' => 'required',
             'file' => 'required|mimes:doc,docx,odt,txt,pdf|max:5000',
-            'description' => 'required|max:500'
+            'description' => 'required|max:500',
+            'g-recaptcha-response' => ['sometimes', new Recaptcha]
         ]);
     }
 
