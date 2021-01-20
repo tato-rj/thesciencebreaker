@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Validators;
 
+use App\Rules\Recaptcha;
+
 class ValidateQuestion implements Validator
 {
 	public static function createCheck($request) {
@@ -9,7 +11,8 @@ class ValidateQuestion implements Validator
             'first_name' => 'required|min:2',
             'last_name' => 'required|min:2',
             'email' => 'required|email',
-            'message' => 'required'
+            'message' => 'required',
+            'g-recaptcha-response' => ['sometimes', new Recaptcha]
         ]);
     }
 

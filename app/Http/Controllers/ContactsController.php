@@ -24,7 +24,7 @@ class ContactsController extends Controller
         //         return response('Humans only please.', 403);
         // }
 
-        // ValidateQuestion::createCheck($request);
+        ValidateQuestion::createCheck($request);
         // MailFactory::question($request);
         // if ($request->subscribe_me) Subscription::createOrIgnore($request->email);
 

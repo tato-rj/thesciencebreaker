@@ -3,11 +3,11 @@
     <head>
         @include('components/app/config')
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        <script>
+{{--         <script>
             function onSubmit(token) {
                 document.getElementById("recaptcha-form").submit();
             }
-        </script>
+        </script> --}}
     </head>
     
     <body id="page-top">
