@@ -14,7 +14,6 @@
 				</div>
 				<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 mx-auto mt-2">
 					<form id="recaptcha-form" method="POST" action="/contact/break-inquiry">
-						@include('auth.components.recaptcha')
 						{{csrf_field()}}
 						<input type="hidden" name="my_name">
 						<input type="hidden" name="time" value="{{\Carbon\Carbon::now()}}">
@@ -188,6 +187,9 @@
 							<span class="custom-control-label">{{__('contact.form.newsletter')}}</span>
 						</label>
 						<input type="submit" value="{{__('contact.form.send')}}" class="btn btn-theme-green">
+
+						@include('auth.components.recaptcha')
+						
 					</form>				
 				</div>
 			</div>
