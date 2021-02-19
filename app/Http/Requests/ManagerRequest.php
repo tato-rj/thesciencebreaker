@@ -43,7 +43,8 @@ class ManagerRequest extends Form
             'biography' => $this->biography,
             'research_institute' => $this->research_institute,
             'is_editor' => $this->is_editor,
-            'image_path' => $avatar
+            'image_path' => $avatar,
+            'is_active' => $this->is_active
         ]);
     }
 
@@ -63,7 +64,8 @@ class ManagerRequest extends Form
             'biography' => $this->biography,
             'research_institute' => $this->research_institute,
             'is_editor' => $this->is_editor,
-            'image_path' => $avatar
+            'image_path' => $avatar,
+            'is_active' => $this->is_active
         ]);
     }
 }

@@ -176,6 +176,22 @@
                 @endslot
               @endcomponent
             </div>
+
+            {{-- Is Active --}}
+            <div class="form-check">
+              <label class="form-check-label mb-2">
+                <input type="checkbox" value="1" {{ ($manager->is_active == '1') ? 'checked' : '' }} name="is_active" class="form-check-input" id="is_active">
+                Is this member an alumni?
+              </label>
+              {{-- Error --}}
+              @component('admin/snippets/error')
+                is_active
+                @slot('feedback')
+                {{ $errors->first('is_active') }}
+                @endslot
+              @endcomponent
+            </div>
+
             <input type="submit" value="Submit" class="btn btn-theme-orange">
           </form>
         </div>
