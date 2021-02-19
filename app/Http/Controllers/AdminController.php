@@ -27,7 +27,7 @@ class AdminController extends Controller
         $breaks_views_excel = Excel::create('breaks_views', function($breaks_views_excel) {
 
             $breaks_views_excel->sheet('Breaks_views', function($sheet) {
-                $sheet->fromModel(Article::setEagerLoads([])->select('title as Title', 'views as Views')->orderBy('views', 'DESC')->get(), null, 'A1', true);
+                $sheet->fromModel(Article::setEagerLoads([])->selectRaw('DATE_FORMAT(created_at,"%d/%m/%Y") as Date, title as Title, views as Views')->orderBy('views', 'DESC')->get(), null, 'A1', true);
             });
 
         })->store('xls', storage_path('app/public/breaks/excel'));
@@ -35,7 +35,7 @@ class AdminController extends Controller
         $breakers_excel = Excel::create('breakers_emails', function($breakers_excel) {
 
             $breakers_excel->sheet('Breakers', function($sheet) {
-                $sheet->fromModel(Author::setEagerLoads([])->select('first_name as Name', 'last_name as Surname', 'email')->orderBy('first_name')->get(), null, 'A1', true);
+                $sheet->fromModel(Author::setEagerLoads([])->select('first_name as Name', 'last_name as Surname', 'position as Position', 'email')->orderBy('first_name')->get(), null, 'A1', true);
             });
 
         })->store('xls', storage_path('app/public/breakers/excel'));
