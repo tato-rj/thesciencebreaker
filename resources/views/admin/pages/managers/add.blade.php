@@ -158,17 +158,17 @@
               @endcomponent
             </div>
 
-            {{-- Is Active --}}
+            {{-- Is Alumni --}}
             <div class="form-check">
               <label class="form-check-label mb-2">
-                <input type="checkbox" value="1" {{ (old('is_active') == '1') ? 'checked' : '' }} name="is_active" class="form-check-input" id="is_active">
+                <input type="checkbox" value="1" {{ (old('is_alumni') == '1') ? 'checked' : '' }} name="is_alumni" class="form-check-input" id="is_alumni">
                 Is this member an alumni?
               </label>
               {{-- Error --}}
               @component('admin/snippets/error')
-                is_active
+                is_alumni
                 @slot('feedback')
-                {{ $errors->first('is_active') }}
+                {{ $errors->first('is_alumni') }}
                 @endslot
               @endcomponent
             </div>
