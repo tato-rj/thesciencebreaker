@@ -30,7 +30,7 @@ class ManagerRequest extends Form
     public function create()
     {
         $this->slug("$this->first_name $this->last_name");        
-        $this->saveFile();
+        $avatar = $this->saveFile();
 
         return Manager::create([
             'title' => $this->title,
@@ -42,14 +42,15 @@ class ManagerRequest extends Form
             'position' => $this->position,
             'biography' => $this->biography,
             'research_institute' => $this->research_institute,
-            'is_editor' => $this->is_editor
+            'is_editor' => $this->is_editor,
+            'image_path' => $avatar
         ]);
     }
 
     public function edit(Manager $manager)
     {
         $this->slug("$this->first_name $this->last_name");
-        $this->saveFile();
+        $avatar = $this->saveFile();
         
         $manager->update([
             'title' => $this->title,
@@ -61,7 +62,8 @@ class ManagerRequest extends Form
             'position' => $this->position,
             'biography' => $this->biography,
             'research_institute' => $this->research_institute,
-            'is_editor' => $this->is_editor
+            'is_editor' => $this->is_editor,
+            'image_path' => $avatar
         ]);
     }
 }
