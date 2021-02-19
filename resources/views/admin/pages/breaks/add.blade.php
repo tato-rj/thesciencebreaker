@@ -277,11 +277,8 @@ $('input[name="title"], select[name="category_id"]').on('keyup change', function
   $url = $('#url-preview');
   $doi = $('#doi-preview');
   
-  $input = removeSpecialCharacters($title);
-  $category = removeSpecialCharacters($category);
-
-  $category_slug = createSlug($category);
-  $title_slug = createSlug($input);
+  $category_slug = slugify($category);
+  $title_slug = slugify($title);
 
   if ($title != '') {
     if ($category_slug != 'category') {
@@ -303,6 +300,17 @@ function removeSpecialCharacters ($string) {
 }
 function createSlug ($string) {
   return $string.replace(/\s+/g, '-').toLowerCase()
+}
+
+function slugify(text)
+{
+  return text.toString().toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Remove all accents
+    .replace(/\s+/g, '-')           // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    .replace(/^-+/, '')             // Trim - from start of text
+    .replace(/-+$/, '');            // Trim - from end of text
 }
 </script>
 @endsection
