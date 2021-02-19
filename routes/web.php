@@ -12,6 +12,7 @@ Route::get('/', 'ArticlesController@index')->name('home');
 Route::get('/breaks/{category}/{article}', 'ArticlesController@show');
 // Issues
 Route::get('/content/volume/{volume}/issue/{issue}', 'IssuesController@show');
+Route::get('/special-issues', 'IssuesController@special');
 // Archives
 Route::get('/archives', 'IssuesController@index');
 // Breakers

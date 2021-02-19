@@ -19,7 +19,6 @@ return [
     'email' => env('APP_EMAIL', 'max.caine@thesciencebreaker.org'),
     'twitter' => env('APP_TWITTER', 'https://twitter.com/sciencebreaker'),
     'facebook' => env('APP_FACEBOOK', 'https://www.facebook.com/sciencebreaker/?fref=ts'),
-    'googleplus' => env('APP_GOOGLEPLUS', '#'),
     
     /*
     |--------------------------------------------------------------------------

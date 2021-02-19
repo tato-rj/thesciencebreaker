@@ -11,9 +11,6 @@
 						<a href="{{ config('app.twitter') }}" target="_blank">
 							<i class="fab fa-twitter"></i>
 						</a>
-						<a href="{{ config('app.googleplus') }}" target="_blank">
-							<i class="fab fa-google-plus-g"></i>
-						</a>
 					</div>	
 				</div>
 				<div class="d-flex align-items-top">
@@ -83,7 +80,7 @@
 			<p style="color: grey"><small>TheScienceBreaker - ISSN {{config('app.issn')}}</small></p>
 			<ul class="credits pt-4">
 				<li>30, Quai Ernest-Ansermet 1211 Genève 4<i class="fa fa-circle" aria-hidden="true"></i></li>
-				<li>© TheScienceBreaker 2015 - 2017. {{__('footer.copyright')}}<i class="fa fa-circle" aria-hidden="true"></i></li>
+				<li>© TheScienceBreaker 2015-{{now()->year}}. {{__('footer.copyright')}}<i class="fa fa-circle" aria-hidden="true"></i></li>
 				<li>powered by <a href="https://www.leftlaneapps.com" target="_blank">LeftLaneApps</a><i class="fa fa-circle" aria-hidden="true"></i></li>
 				<li><a href="/admin/dashboard" target="_blank">Admin Login</a></li>
 			</ul>

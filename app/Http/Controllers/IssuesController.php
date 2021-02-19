@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
+use App\{Article, Tag};
 use Illuminate\Http\Request;
 
 class IssuesController extends Controller
@@ -18,6 +18,13 @@ class IssuesController extends Controller
         $archives = $archives->groupBy('year');
 
 		return view('pages/archives/index', compact(['archives']));
+	}
+
+	public function special()
+	{
+		$special = Tag::orderBy('articles_count', 'DESC')->take(10)->get();//->where('articles_count', '>=', 15)->all();
+
+		return view('pages/archives/special', compact(['special']));
 	}
 
 	public function show($volume, $issue, Request $request)
