@@ -194,7 +194,7 @@
             <label><strong>Date of publication</strong></label>
             <div class="input-group col-3 pl-0">
               <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-              <input required type="text" autocomplete="off" value="{{ old('published_at') }}" name="published_at" class="form-control datepicker" data-provide="datepicker" id="published_at" placeholder="Select a date">
+              <input type="text" autocomplete="off" value="{{ old('published_at') }}" name="published_at" class="form-control datepicker" data-provide="datepicker" id="published_at" placeholder="Select a date">
             </div>
             @component('admin/snippets/error')
             published_at
