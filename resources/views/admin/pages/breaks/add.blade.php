@@ -194,7 +194,7 @@
             <label><strong>Date of publication</strong></label>
             <div class="input-group col-3 pl-0">
               <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-              <input required type="text" value="{{ old('published_at') }}" name="published_at" class="form-control datepicker" data-provide="datepicker" id="published_at" placeholder="Month/Day/Year">
+              <input required type="text" autocomplete="off" value="{{ old('published_at') }}" name="published_at" class="form-control datepicker" data-provide="datepicker" id="published_at" placeholder="Select a date">
             </div>
             @component('admin/snippets/error')
             published_at
@@ -241,6 +241,10 @@
 @endsection
 
 @section('scripts')
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+$('.datepicker').datepicker();  
+</script>
 <script type="text/javascript">
 $(document).on('click', '.tags span a', function() {
   $container = $(this).parent();
