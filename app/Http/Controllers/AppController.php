@@ -12,7 +12,7 @@ class AppController extends Controller
 {
     public function breaks()
     {
-        $articles = Article::orderBy('created_at', 'DESC')->get();
+        $articles = Article::orderBy('created_at', 'DESC')->published()->get();
         foreach ($articles as $article) {
             $article->doi = "https://thesciencebreaker.org/breaks/".$article->category->slug."/$article->slug";
         }
@@ -47,7 +47,8 @@ class AppController extends Controller
         $articles = [];
         $highlights = Highlight::orderBy('relevance_order')->get();
         foreach ($highlights as $highlight) {
-            array_push($articles, $highlight->article);
+            if ($article->published_at)
+                array_push($articles, $highlight->article);
         }
 
         $this->addImage($articles);
@@ -56,7 +57,7 @@ class AppController extends Controller
 
     public function popular()
     {
-        $articles = Article::popular(7)->get();
+        $articles = Article::popular(7)->published()->get();
 
         $this->addImage($articles);
         return $articles;
@@ -64,7 +65,7 @@ class AppController extends Controller
 
     public function latest()
     {
-        $articles = Article::recent(7)->get();
+        $articles = Article::recent(7)->published()->get();
 
         $this->addImage($articles);
         return $articles;
@@ -72,7 +73,7 @@ class AppController extends Controller
 
     public function picks()
     {
-    	$articles = Article::editorPicks()->get();
+    	$articles = Article::editorPicks()->published()->get();
         $this->addImage($articles);
     	return $articles;
     }

@@ -14,7 +14,7 @@ class SearchController extends Controller
         $sort = ($request->sort) ? $request->sort : 'created_at';
         $order = ($sort == 'title') ? 'ASC' : 'DESC';
         $show = ($request->show) ? $request->show : 5;
-    	$articles = Article::search($input)->orderBy($sort, $order)->paginate($show);
+    	$articles = Article::search($input)->orderBy($sort, $order)->published()->paginate($show);
     	return view("pages/search", compact(['articles', 'input']));
     }
 
@@ -39,6 +39,7 @@ class SearchController extends Controller
     {
         if ($request->input != '') {
             $results = Article::where('title', 'LIKE', '%'.$request->input.'%')
+                        ->published()
             			->take(10)
             			->get();
 
