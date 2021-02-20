@@ -12,7 +12,7 @@ class AppController extends Controller
 {
     public function breaks()
     {
-        $articles = Article::orderBy('created_at', 'DESC')->published()->get();
+        $articles = Article::published()->orderBy('created_at', 'DESC')->get();
         foreach ($articles as $article) {
             $article->doi = "https://thesciencebreaker.org/breaks/".$article->category->slug."/$article->slug";
         }
