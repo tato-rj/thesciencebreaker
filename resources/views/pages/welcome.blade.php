@@ -84,7 +84,9 @@
 				@endcomponent
 				<div class="mb-2">
 					@foreach ($highlights->pluck('article') as $suggestion)
-						@include('components/partials/grids/rows')
+						@if($suggestion)
+							@include('components/partials/grids/rows')
+						@endif
 					@endforeach
 				</div>				
 			</div>
@@ -145,7 +147,7 @@
 						<img src="{{ $category->paths()->icon() }}">
 						<div class="d-flex align-items-center justify-content-center flex-column text-center">
 							<h5><strong>{{__('categories.'.$category->slug)}}</strong></h5>
-							<h5><strong>{{ $category->articles_count }} Breaks</strong></h5>
+							<h5><strong>{{ $category->articles()->published()->count() }} Breaks</strong></h5>
 						</div>
 					</div>
 				</a>
@@ -185,7 +187,7 @@
 			{{__('global.popular')}}
 			@endcomponent
 		</div>
-		@foreach ($popular as $article)
+		@foreach($popular as $article)
 			@include('components/partials/grids/columns')
 		@endforeach	
 	</div>

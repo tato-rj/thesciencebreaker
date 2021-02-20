@@ -188,6 +188,22 @@
                   @endslot
                   @endcomponent
                 </div>   
+
+          <div class="form-group">
+            {{-- Date of publication --}}            
+            <label><strong>Date of publication</strong></label>
+            <div class="input-group col-3 pl-0">
+              <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+              <input required type="text" value="{{ old('published_at') }}" name="published_at" class="form-control datepicker" data-provide="datepicker" id="published_at" placeholder="Month/Day/Year">
+            </div>
+            @component('admin/snippets/error')
+            published_at
+            @slot('feedback')
+            {{ $errors->first('published_at') }}
+            @endslot
+            @endcomponent
+          </div>  
+
             {{-- PDF --}}
 
             <div class="form-group">

@@ -10,6 +10,7 @@ class IssuesController extends Controller
 	public function index()
 	{
 		$archives = Article::selectRaw('year(created_at) AS year, issue, volume, count(*) as count')
+			->published()
             ->groupBy('year', 'issue', 'volume')
             ->orderBy('year', 'DESC')
             ->orderBy('issue', 'DESC')
@@ -33,7 +34,7 @@ class IssuesController extends Controller
         $order = ($sort == 'title') ? 'ASC' : 'DESC';
         $show = ($request->show) ? $request->show : 5;
 
-		$articles = Article::where('volume', $volume)->where('issue', $issue)->orderBy($sort, $order)->paginate($show);
+		$articles = Article::where('volume', $volume)->published()->where('issue', $issue)->orderBy($sort, $order)->paginate($show);
 
 		return view('pages/archives/issue', compact(['articles', 'volume', 'issue']));
 	}

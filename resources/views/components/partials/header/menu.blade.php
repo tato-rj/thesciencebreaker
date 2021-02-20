@@ -28,7 +28,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown-breaks">
 						@foreach ($categories as $category)
-						<a class="dropdown-item d-flex align-items-center text-uppercase" href="{{ $category->paths()->route() }}">{{__('categories.'.$category->slug)}}<span class="badge badge-warning ml-2">{{ $category->articles_count }}</span></a>
+						<a class="dropdown-item d-flex align-items-center text-uppercase" href="{{ $category->paths()->route() }}">{{__('categories.'.$category->slug)}}<span class="badge badge-warning ml-2">{{ $category->articles()->published()->count() }}</span></a>
 						@endforeach
 					</div>
 				</li>

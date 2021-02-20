@@ -15,7 +15,7 @@ class Tag extends TheScienceBreaker
 
     public function articles()
     {
-        return $this->belongsToMany('App\Article');
+        return $this->belongsToMany(Article::class)->published();
     }
 
     public function path()

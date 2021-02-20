@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Article;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +57,8 @@ class ArticleRequest extends Form
             'doi' => (new Article)->resources()->createDoi(),
             'issue' => (new Article)->resources()->generateIssue(),
             'volume' => (new Article)->resources()->generateVolume(),
-            'editor_pick' => $this->editor_pick
+            'editor_pick' => $this->editor_pick,
+            'published_at' => Carbon::parse($this->published_at)
         ]);
 
         foreach ($this->authors as $author) {
@@ -86,7 +88,8 @@ class ArticleRequest extends Form
             'category_id' => $this->category_id,
             'editor_id' => $this->editor_id,
             'editor_pick' => $this->editor_pick,
-            'created_at' => $this->created_at
+            'created_at' => $this->created_at,
+            'published_at' => Carbon::parse($this->published_at)
         ]);
 
         $path = $this->saveFile();

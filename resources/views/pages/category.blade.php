@@ -19,13 +19,13 @@
 	
 			{{-- Sort results bar --}}
 			@component('components/snippets/sort_bar')
-				{{__('global.sort_bar.showing')}} <strong>{{ $articles->firstItem() }}-{{ $articles->lastItem() }}</strong> {{__('global.sort_bar.of')}} {{ $category->articles_count }}<span class="d-none d-sm-inline"> breaks</span>
+				{{__('global.sort_bar.showing')}} <strong>{{ $articles->firstItem() }}-{{ $articles->lastItem() }}</strong> {{__('global.sort_bar.of')}} {{ $category->articles()->published()->count() }}<span class="d-none d-sm-inline"> breaks</span>
 
 				@slot('show')
 				<option value="5" {{ (Request::input('show') == '5') ? 'selected' : '' }}>5</option>
 				<option value="10" {{ (Request::input('show') == '10') ? 'selected' : '' }}>10</option>
 				<option value="15" {{ (Request::input('show') == '15') ? 'selected' : '' }}>15</option>
-				<option value="{{ $category->articles_count }}" {{ (Request::input('show') == $category->articles_count) ? 'selected' : '' }}>{{__('global.sort_bar.all')}}</option>
+				<option value="{{ $category->articles()->published()->count() }}" {{ (Request::input('show') == $category->articles()->published()->count()) ? 'selected' : '' }}>{{__('global.sort_bar.all')}}</option>
 				@endslot
 			
 				@slot('sort')

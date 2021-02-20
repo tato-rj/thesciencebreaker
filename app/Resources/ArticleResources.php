@@ -58,10 +58,16 @@ class ArticleResources extends Resources
 
     public function suggestions()
     {
-        $collection = Tag::with('articles')->whereIn('id', $this->model->tags->pluck('id'))->get()->pluck('articles')->flatten()->unique('id')->where('id', '!=', $this->model->id)->take(5);
+        $collection = Tag::with('articles')->whereIn('id', $this->model->tags->pluck('id'))
+                                               ->get()
+                                               ->pluck('articles')
+                                               ->flatten()
+                                               ->unique('id')
+                                               ->where('id', '!=', $this->model->id)
+                                               ->take(5);
         
         return $collection->isEmpty() ? 
-            Article::with(['category', 'authors'])->except($this->model)->inRandomOrder()->take(5)->get() : 
+            Article::with(['category', 'authors'])->published()->except($this->model)->inRandomOrder()->take(5)->get() : 
             $collection;
     }
 

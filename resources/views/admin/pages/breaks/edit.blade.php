@@ -242,10 +242,19 @@
               <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
               <input required type="text" value="{{ $article->created_at->format('m/d/Y') }}" name="created_at" class="form-control datepicker" data-provide="datepicker" id="created_at" placeholder="Month/Day/Year">
             </div>
+          </div>
+          
+          <div class="form-group">
+            {{-- Date of publication --}}            
+            <label><strong>Date of publication</strong></label>
+            <div class="input-group col-3 pl-0">
+              <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+              <input required type="text" value="{{ $article->published_at ? $article->published_at->format('m/d/Y') : null }}" name="published_at" class="form-control datepicker" data-provide="datepicker" id="published_at" placeholder="Month/Day/Year">
+            </div>
             @component('admin/snippets/error')
-            created_at
+            published_at
             @slot('feedback')
-            {{ $errors->first('created_at') }}
+            {{ $errors->first('published_at') }}
             @endslot
             @endcomponent
           </div>  

@@ -19,10 +19,10 @@ class ArticlesController extends Controller
 
     public function index()
     {
-        $popular = Article::popular(6)->get();
+        $popular = Article::published()->popular(6)->get();
         $topics = Tag::orderBy('articles_count', 'DESC')->take(25)->get();
         $highlights = Highlight::with('article')->orderBy('relevance_order')->take(4)->get();
-        $latest_articles = Article::recent(6)->get();
+        $latest_articles = Article::published()->recent(6)->get();
 
         return view('pages.welcome', compact(['highlights', 'latest_articles', 'topics', 'popular']));
     }
@@ -53,7 +53,7 @@ class ArticlesController extends Controller
 
         $more_like = $article->resources()->suggestions();
         $next_read = $more_like->pop();
-        $more_from = $article->similar()->get();
+        $more_from = $article->similar()->published()->get();
         $article->increment('views');
 
         return view('pages.article', compact(['article', 'more_from', 'more_like', 'next_read']));

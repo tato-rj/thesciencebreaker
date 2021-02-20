@@ -11,6 +11,7 @@ class Article extends TheScienceBreaker
 {
     use ArticleScopeQueries;
     
+    protected $dates = ['published_at'];
     // protected $with = ['authors', 'editor', 'category', 'tags'];
 
     public function getRouteKeyName()
@@ -48,10 +49,17 @@ class Article extends TheScienceBreaker
         return $this->belongsToMany('App\Tag');
     }
 
+    public function scopePublished($query)
+    {
+        return $query->whereDate('published_at', '<=', now());
+    }
+
     public static function currentIssuePath()
     {
-        $lastBreak = Article::latest()->first();
+        $lastBreak = Article::latest()->published()->first();
         
-        return "content/volume/$lastBreak->volume/issue/$lastBreak->issue";
+        return $lastBreak ? 
+            "content/volume/$lastBreak->volume/issue/$lastBreak->issue"
+            : null;
     }
 }

@@ -15,12 +15,12 @@ class ManagerResources extends Resources
 
     public function editedArticles()
     {
-        return Article::where('editor_id', $this->model->id)->orderBy('created_at', 'DESC')->paginate(6);
+        return Article::where('editor_id', $this->model->id)->published()->orderBy('created_at', 'DESC')->paginate(6);
     }
 
     public function editedArticlesCount()
     {
-        return Article::where('editor_id', $this->model->id)->count();
+        return Article::where('editor_id', $this->model->id)->published()->count();
     }
 
     // public static function generateSlugs()

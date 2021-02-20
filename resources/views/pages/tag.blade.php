@@ -13,7 +13,7 @@
 				</h3>
 				<div class="ml-3">
 					<h4 class="m-0"><strong>{{ $tag->name }}</strong></h4>
-					<p class="m-0 text-muted">{{__('global.sort_bar.breaks_num')}}: {{ $tag->articles_count }}</p>
+					<p class="m-0 text-muted">{{__('global.sort_bar.breaks_num')}}: {{ $tag->articles()->count() }}</p>
 				</div>
 			</div>
 			{{-- Sort --}}

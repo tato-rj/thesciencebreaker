@@ -32,8 +32,8 @@ class AppServiceProvider extends ServiceProvider
         });
 
         \View::composer('components/partials/side_bars/suggestions', function($view) {
-            $view->with('picks', Article::editorPicks()->get());
-            $view->with('popular', Article::popular(6)->get()); 
+            $view->with('picks', Article::published()->editorPicks()->get());
+            $view->with('popular', Article::published()->popular(6)->get()); 
             $view->with('topics', Tag::orderBy('articles_count', 'DESC')->take(25)->get()); 
         });
 

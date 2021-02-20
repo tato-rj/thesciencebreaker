@@ -31,7 +31,7 @@ class CategoryController extends Controller
         $sort = ($request->sort) ? $request->sort : 'created_at';
         $order = ($sort == 'title') ? 'ASC' : 'DESC';
         $show = ($request->show) ? $request->show : 5;
-        $articles = Article::where('category_id', $category->id)->orderBy($sort, $order)->paginate($show);
+        $articles = Article::where('category_id', $category->id)->published()->orderBy($sort, $order)->paginate($show);
 
         return view('pages.category', compact(['articles', 'category']));
     }

@@ -21,11 +21,11 @@ class Category extends TheScienceBreaker
 	
 	public function articles()
 	{
-		return $this->hasMany('App\Article')->orderBy('created_at', 'DESC');
+		return $this->hasMany(Article::class)->orderBy('created_at', 'DESC');
 	}
 
 	public function available_articles()
 	{
-		return $this->hasMany('App\AvailableArticle');
+		return $this->hasMany(AvailableArticle::class);
 	}
 }
