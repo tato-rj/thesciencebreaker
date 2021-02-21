@@ -64,7 +64,7 @@ class ManagerRequest extends Form
             'biography' => $this->biography,
             'research_institute' => $this->research_institute,
             'is_editor' => $this->is_editor,
-            'image_path' => $avatar,
+            'image_path' => $avatar ?? $manager->image_path,
             'is_alumni' => $this->is_alumni
         ]);
     }
