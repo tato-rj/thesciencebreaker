@@ -37,6 +37,16 @@
               @endforeach
             </div>
             @endif
+
+            @if (count($scientific_editors))
+            <div>
+              <h5>{{__('team.roles.managing_editor')}}</h5>
+              @foreach ($scientific_editors as $member)
+                @include('components/snippets/avatars/manager')
+              @endforeach
+            </div>
+            @endif
+
             <div>
               <h5>{{__('team.roles.scientific_editors')}}</h5>
               @foreach ($editors as $member)
