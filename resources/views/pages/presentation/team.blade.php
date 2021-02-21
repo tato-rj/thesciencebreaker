@@ -59,6 +59,15 @@
                 @include('components/snippets/avatars/manager')
               @endforeach
             </div>
+
+            @if (count($alumni))
+            <div>
+              <h5>{{__('team.roles.alumni')}}</h5>
+              @foreach ($alumni as $member)
+                @include('components/snippets/avatars/manager')
+              @endforeach
+            </div>
+            @endif
           </div>
         </div>
         <div class="tab-pane" id="advisors" role="tabpanel">
@@ -72,6 +81,8 @@
             </div>
           @endforeach
         </div>
+
+
       </div>
     </div>
 

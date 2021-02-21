@@ -11,6 +11,8 @@ class Manager extends TheScienceBreaker
 {
     use ManagerScopeQueries;
 
+    protected $casts = ['is_alumni' => 'bool'];
+
     public function getRouteKeyName()
     {
         return 'slug';

@@ -18,16 +18,17 @@ class ManagersController extends Controller
 
     public function index()
     {
-        $founders = Manager::where('division_id', 1)->get();
-        $managing_editors = Manager::where('division_id', 5)->get();
-        $scientific_editors = Manager::where('division_id', 6)->get();
-        $editors = Manager::where('division_id', 2)->get();
-        $comm_officers = Manager::where('division_id', 3)->get();
-        $advisors = Manager::where('division_id', 4)->get();
+        $founders = Manager::where(['division_id' => 1, 'is_alumni' => false])->get();
+        $managing_editors = Manager::where(['division_id' => 5, 'is_alumni' => false])->get();
+        $scientific_editors = Manager::where(['division_id' => 6, 'is_alumni' => false])->get();
+        $editors = Manager::where(['division_id' => 2, 'is_alumni' => false])->get();
+        $comm_officers = Manager::where(['division_id' => 3, 'is_alumni' => false])->get();
+        $advisors = Manager::where(['division_id' => 4, 'is_alumni' => false])->get();
+        $alumni = Manager::where(['is_alumni' => true])->get();
         $breakers = Author::orderBy('first_name')->paginate(10);
         $paginated = Input::get('page');
 
-        return view('pages.presentation.team', compact('founders', 'editors', 'managing_editors', 'scientific_editors', 'comm_officers', 'advisors', 'breakers', 'paginated'));
+        return view('pages.presentation.team', compact('founders', 'editors', 'managing_editors', 'scientific_editors', 'comm_officers', 'advisors', 'breakers', 'paginated', 'alumni'));
     }
 
     public function admins()

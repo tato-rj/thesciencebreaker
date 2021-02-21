@@ -13,5 +13,6 @@ return [
 		'review_ops' => 'Review operations',
 		'community_management' => 'Community management',
 		'comm_officer' => 'Comm officer',
+		'alumni' => 'Alumni',
 	],
 ];

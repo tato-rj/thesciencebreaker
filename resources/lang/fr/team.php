@@ -13,5 +13,6 @@ return [
 		'review_ops' => 'Activités de relecture',
 		'community_management' => 'Gestion de la communité',
 		'comm_officer' => 'Chargée de communication',
+		'alumni' => 'Alumni',
 	],
 ];
