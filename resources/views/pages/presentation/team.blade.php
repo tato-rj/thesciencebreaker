@@ -53,7 +53,7 @@
                 @include('components/snippets/avatars/manager')
               @endforeach
             </div>
-            @if (count($alumni))
+            @if (count($comm_officers))
             <div>
               <h5>{{__('team.roles.comm_officer')}}</h5>
               @foreach ($comm_officers as $member)
