@@ -85,7 +85,11 @@
 --}}
 <link rel="alternate" type="application/atom+xml" title="News" href="{{ config('app.url') }}/services/feed">
 {{-- App Title --}}
+@if(empty($pagetitle))
 <title>{{ config('app.name') }} | Science meets Society</title>
+@else
+<title>{{$pagetitle}} - {{ config('app.name') }}</title>
+@endif
 {{-- Browser tab icon --}}
 <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon-32x32.png') }}" sizes="32x32" />
 <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon-16x16.png') }}" sizes="16x16" />

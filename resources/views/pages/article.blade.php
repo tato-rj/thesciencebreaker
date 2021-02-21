@@ -1,4 +1,4 @@
-@extends('app')
+@extends('app', ['pagetitle' => $article->title])
 
 @section('earlyJS')
 <script>
