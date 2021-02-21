@@ -38,10 +38,10 @@
             </div>
             @endif
 
-            @if (count($scientific_editors))
+            @if (count($inhouse_editors))
             <div>
               <h5>{{__('team.roles.inhouse_editor')}}</h5>
-              @foreach ($scientific_editors as $member)
+              @foreach ($inhouse_editors as $member)
                 @include('components/snippets/avatars/manager')
               @endforeach
             </div>
@@ -53,12 +53,14 @@
                 @include('components/snippets/avatars/manager')
               @endforeach
             </div>
+            @if (count($alumni))
             <div>
               <h5>{{__('team.roles.comm_officer')}}</h5>
               @foreach ($comm_officers as $member)
                 @include('components/snippets/avatars/manager')
               @endforeach
             </div>
+            @endif
 
             @if (count($alumni))
             <div>

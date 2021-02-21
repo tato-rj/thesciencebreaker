@@ -20,7 +20,7 @@ class ManagersController extends Controller
     {
         $founders = Manager::where(['division_id' => 1, 'is_alumni' => false])->get();
         $managing_editors = Manager::where(['division_id' => 5, 'is_alumni' => false])->get();
-        $scientific_editors = Manager::where(['division_id' => 6, 'is_alumni' => false])->get();
+        $inhouse_editors = Manager::where(['division_id' => 6, 'is_alumni' => false])->get();
         $editors = Manager::where(['division_id' => 2, 'is_alumni' => false])->get();
         $comm_officers = Manager::where(['division_id' => 3, 'is_alumni' => false])->get();
         $advisors = Manager::where(['division_id' => 4, 'is_alumni' => false])->get();
@@ -28,7 +28,7 @@ class ManagersController extends Controller
         $breakers = Author::orderBy('first_name')->paginate(10);
         $paginated = Input::get('page');
 
-        return view('pages.presentation.team', compact('founders', 'editors', 'managing_editors', 'scientific_editors', 'comm_officers', 'advisors', 'breakers', 'paginated', 'alumni'));
+        return view('pages.presentation.team', compact('founders', 'editors', 'managing_editors', 'inhouse_editors', 'comm_officers', 'advisors', 'breakers', 'paginated', 'alumni'));
     }
 
     public function admins()
