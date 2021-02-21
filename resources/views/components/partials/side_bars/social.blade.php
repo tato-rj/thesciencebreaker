@@ -3,7 +3,7 @@
 		@include('components/partials/side_bars/social/mail')
 		@include('components/partials/side_bars/social/facebook')
 		@include('components/partials/side_bars/social/twitter')
-		@include('components/partials/side_bars/social/googleplus')
+		{{-- @include('components/partials/side_bars/social/googleplus') --}}
 		@include('components/partials/side_bars/social/pdf')
 	</div>
 </div>
