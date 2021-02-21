@@ -27,7 +27,7 @@ class ManagersController extends Controller
         $alumni = Manager::where(['is_alumni' => true])->get();
         $breakers = Author::orderBy('first_name')->paginate(10);
         $paginated = Input::get('page');
-return $inhouse_editors;
+
         return view('pages.presentation.team', compact('founders', 'editors', 'managing_editors', 'inhouse_editors', 'comm_officers', 'advisors', 'breakers', 'paginated', 'alumni'));
     }
 
