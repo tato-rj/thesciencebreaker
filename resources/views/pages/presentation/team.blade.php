@@ -10,14 +10,14 @@
       @endcomponent
 
       {{-- Nav tabs --}}
-      <ul class="nav nav-tabs mt-4" id="tab-bar" role="tablist">
+{{--       <ul class="nav nav-tabs mt-4" id="tab-bar" role="tablist">
         <li class="nav-item">
           <a class="nav-link {{ ($paginated) ? : 'active' }}" data-toggle="tab" href="#core" role="tab">{{__('team.categories.core')}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#advisors" role="tab">{{__('team.categories.board')}}</a>
         </li>
-      </ul>
+      </ul> --}}
 
       {{-- Content panels --}}
       <div class="tab-content">
