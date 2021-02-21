@@ -44,7 +44,7 @@ class ManagerRequest extends Form
             'research_institute' => $this->research_institute,
             'is_editor' => $this->is_editor,
             'image_path' => $avatar,
-            'is_alumni' => $this->is_alumni
+            'is_alumni' => $this->is_alumni ? 1 : 0
         ]);
     }
 
@@ -65,7 +65,7 @@ class ManagerRequest extends Form
             'research_institute' => $this->research_institute,
             'is_editor' => $this->is_editor,
             'image_path' => $avatar ?? $manager->image_path,
-            'is_alumni' => $this->is_alumni
+            'is_alumni' => $this->is_alumni ? 1 : 0
         ]);
     }
 }
