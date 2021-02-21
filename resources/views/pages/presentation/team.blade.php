@@ -40,7 +40,7 @@
 
             @if (count($scientific_editors))
             <div>
-              <h5>{{__('team.roles.managing_editor')}}</h5>
+              <h5>{{__('team.roles.inhouse_editor')}}</h5>
               @foreach ($scientific_editors as $member)
                 @include('components/snippets/avatars/manager')
               @endforeach
