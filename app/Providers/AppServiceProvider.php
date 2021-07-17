@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         \View::composer('*', function($view) {
-            $categories = cache()->rememberForever('categories', function() {
+            $categories = cache()->rememberForever('tsb_categories', function() {
                 return Category::orderBy('name')->get();
             });
 

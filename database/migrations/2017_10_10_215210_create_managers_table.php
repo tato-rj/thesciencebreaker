@@ -24,7 +24,9 @@ class CreateManagersTable extends Migration
             $table->string('position')->nullable();
             $table->text('biography')->nullable();
             $table->string('research_institute');
+            $table->string('image_path')->nullable();
             $table->boolean('is_editor');
+            $table->boolean('is_alumni')->default(false);
             $table->index(['first_name', 'last_name']);
             $table->timestamps();
         });

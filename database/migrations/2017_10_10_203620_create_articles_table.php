@@ -26,15 +26,16 @@ class CreateArticlesTable extends Migration
             $table->text('content');
             $table->text('content_fr')->nullable();
             $table->float('reading_time');
-            $table->string('original_article');
+            $table->text('original_article');
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('editor_id');
             $table->string('volume')->nullable();
             $table->string('issue')->nullable();
             $table->string('doi');
-            $table->boolean('editor_pick');
+            $table->boolean('editor_pick')->default(0);
             $table->boolean('highlight')->default(0);
             $table->integer('views')->default(0);
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

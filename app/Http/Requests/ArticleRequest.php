@@ -57,7 +57,7 @@ class ArticleRequest extends Form
             'doi' => (new Article)->resources()->createDoi(),
             'issue' => (new Article)->resources()->generateIssue(),
             'volume' => (new Article)->resources()->generateVolume(),
-            'editor_pick' => $this->editor_pick,
+            'editor_pick' => $this->editor_pick ?? false,
             'published_at' => $this->published_at ? Carbon::parse($this->published_at) : null
         ]);
 
@@ -87,7 +87,7 @@ class ArticleRequest extends Form
             'original_article' => $this->original_article,
             'category_id' => $this->category_id,
             'editor_id' => $this->editor_id,
-            'editor_pick' => $this->editor_pick,
+            'editor_pick' => $this->editor_pick ?? false,
             'created_at' => $this->created_at,
             'published_at' => $this->published_at ? Carbon::parse($this->published_at) : null
         ]);
