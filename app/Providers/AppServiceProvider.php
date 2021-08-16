@@ -40,6 +40,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('only', function ($group) {
             return \Staff::check(auth()->user()->email)->role($group);
         });
+
+
+        \Blade::include('components.snippets.datepicker');
     }
 
     /**

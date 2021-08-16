@@ -2,8 +2,8 @@
 	<div class="row">
 		<div class="col-lg-10 col-md-10 col-sm-10">
 			<div class="d-flex align-items-center">
-				<a href="{{ config('app.url') }}"><img src="/images/{{__('global.logo_name')}}.svg" id="title"></a>
-				<a href="{{ config('app.url') }}"><img src="/images/logo-small.svg" class="d-none" id="title_mobile"></a>
+				<a href="/"><img src="/images/{{__('global.logo_name')}}.svg" id="title"></a>
+				<a href="/"><img src="/images/logo-small.svg" class="d-none" id="title_mobile"></a>
 				<div id="buttons-container" class="ml-5 d-none d-lg-block">
 					<a href="/contact/submit-your-break" class="btn btn-block"><i class="fas fa-upload mr-2" aria-hidden="true"></i><span>{{__('menu.contact.submit')}}</span></a>
 					<a href="/contact/break-inquiry" class="btn btn-block"><i class="fas fa-newspaper mr-2" aria-hidden="true"></i><span>{{__('menu.contact.inquiry')}}</span></a>

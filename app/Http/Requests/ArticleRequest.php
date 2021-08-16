@@ -58,7 +58,7 @@ class ArticleRequest extends Form
             'issue' => (new Article)->resources()->generateIssue(),
             'volume' => (new Article)->resources()->generateVolume(),
             'editor_pick' => $this->editor_pick ?? false,
-            'published_at' => $this->published_at ? Carbon::parse($this->published_at) : null
+            'published_at' => $this->published_at ? Carbon::parse($this->published_at . $this->published_at_time) : null
         ]);
 
         foreach ($this->authors as $author) {
@@ -89,7 +89,7 @@ class ArticleRequest extends Form
             'editor_id' => $this->editor_id,
             'editor_pick' => $this->editor_pick ?? false,
             'created_at' => $this->created_at,
-            'published_at' => $this->published_at ? Carbon::parse($this->published_at) : null
+            'published_at' => $this->published_at ? Carbon::parse($this->published_at . $this->published_at_time) : null
         ]);
 
         $path = $this->saveFile();

@@ -5,7 +5,7 @@
 		<div class="collapse navbar-collapse" id="hamburger_menu">
 			<ul class="navbar-nav mr-auto">
 				<div>
-					<a href="{{ config('app.url') }}"><img src="/images/logo-small.svg" style="width: 25px; display: none;" class="ml-2 mr-3 logo"></a>
+					<a href="/"><img src="/images/logo-small.svg" style="width: 25px; display: none;" class="ml-2 mr-3 logo"></a>
 				</div>
 				<li class="nav-item active">
 					<a class="nav-link" href="/">{{__('menu.home')}}</a>

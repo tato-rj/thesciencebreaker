@@ -51,7 +51,7 @@ class Article extends TheScienceBreaker
 
     public function scopePublished($query)
     {
-        return $query->whereDate('published_at', '<=', now());
+        return $query->where('published_at', '<=', now());
     }
 
     public static function currentIssuePath()
@@ -61,5 +61,15 @@ class Article extends TheScienceBreaker
         return $lastBreak ? 
             "content/volume/$lastBreak->volume/issue/$lastBreak->issue"
             : null;
+    }
+
+    public static function hours()
+    {
+      $formatter = function ($time) {
+        return date('G:i', $time);
+      };
+      
+      $halfHourSteps = range(0, 47*1800, 1800);
+      return array_map($formatter, $halfHourSteps);
     }
 }
