@@ -66,6 +66,6 @@
           @endonly
         </div>
       </div>
-      
+      <div>{{date_default_timezone_get()}}</div>
     </div>
 @endsection
