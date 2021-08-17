@@ -61,6 +61,7 @@ class ArticlesController extends Controller
     // UPDATE
     public function edit(Article $article = null)
     {
+        dd($article->published_at);
         $authors = Author::orderBy('first_name')->get();
         $breaks = Article::orderBy('created_at')->get();
         // return $breaks;
