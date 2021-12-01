@@ -14,7 +14,12 @@ class ArticlesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'fix']]);
+    }
+
+    public function fix()
+    {
+        return now()->timestamp;
     }
 
     public function index()

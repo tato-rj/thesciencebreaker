@@ -2,6 +2,8 @@
 
 Auth::routes();
 
+Route::get('/fix', 'ArticlesController@fix');
+
 // Route::get('/generate-issues', 'ArticlesController@generateIssues');
 // Route::get('/generate-volumes', 'ArticlesController@generateVolumes');
 Route::get('/issues', 'ArticlesController@issues');
