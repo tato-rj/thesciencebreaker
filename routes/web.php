@@ -96,7 +96,8 @@ Route::get('/contact/break-inquiry', function() {
 	return view('pages.contact.inquiry');
 });
 Route::get('/contact/submit-your-break', function() {
-	return view('pages.contact.submit');
+	return redirect()->away('https://oap.unige.ch/journals/tsb/submissions');
+	// return view('pages.contact.submit');
 });
 Route::post('/contact/ask-a-question', 'ContactsController@question');
 Route::post('/contact/break-inquiry', 'ContactsController@inquiry');
