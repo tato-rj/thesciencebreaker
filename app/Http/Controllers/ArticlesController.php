@@ -24,7 +24,7 @@ class ArticlesController extends Controller
 
     public function showXml()
     {
-        return 'test';//view('admin/pages/breaks/xml');
+        return view('admin/pages/breaks/xml');
     }
 
     public function uploadXml(Request $request)
