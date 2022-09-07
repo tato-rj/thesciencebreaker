@@ -342,10 +342,9 @@ for (var i=0; i<keywords.length; i++) {
 
 let authors = $('#break-form').data('authors');
 
+console.log(fromXml);
 if (fromXml) {
-  $('#authors > option').each(function() {
-    $(this).prop('selected', true);
-  });
+  $('#authors > option').prop('selected', true);
 }
 </script>
 @endsection
