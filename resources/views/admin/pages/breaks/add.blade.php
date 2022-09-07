@@ -45,7 +45,7 @@
               <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
                 {{-- Description --}}
                 <div class="form-group">
-                  <textarea class="form-control" name="description" id="description" rows="6" maxlength="400" placeholder="Description (max 500 characters)">{{ $publication['subtitle'] ?? old('description') }}</textarea>
+                  <textarea class="form-control" name="description" id="description" rows="6" maxlength="400" placeholder="Description (max 500 characters)">{{ $publication['abstract'] ?? old('description') }}</textarea>
                   {{-- Error --}}
                   @component('admin/snippets/error')
                     description
