@@ -39,13 +39,14 @@ class ArticlesController extends Controller
 
         \Storage::delete($path);
 
-        $publication = $xmlData['publication'];
+        // $publication = $xmlData['publication'];
 
-        $editors = Manager::editors()->get();
-        $tags = Tag::orderBy('name')->get();
-        $authors = collect([]);//Author::orderBy('first_name')->get();
+        return $this->create($xmlData['publication']);
+        // $editors = Manager::editors()->get();
+        // $tags = Tag::orderBy('name')->get();
+        // $authors = collect([]);//Author::orderBy('first_name')->get();
 
-        return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags', 'publication']));
+        // return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags', 'publication']));
     }
 
     public function index()
@@ -64,13 +65,13 @@ class ArticlesController extends Controller
     }
 
     // CREATE
-    public function create()
+    public function create($publication = [])
     {
         $editors = Manager::editors()->get();
         $tags = Tag::orderBy('name')->get();
         $authors = Author::orderBy('first_name')->get();
 
-        return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags']));
+        return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags', 'publication']));
     }
 
     public function store(Request $request)
