@@ -332,7 +332,7 @@ function slugify(text)
 </script>
 
 <script type="text/javascript">
-let fromXml = $('#break-form').data('fromXml').length > 0;
+let fromXml = $('#break-form').data('fromxml').length > 0;
 let keywords = $('#break-form').data('keywords');
 
 for (var i=0; i<keywords.length; i++) {
