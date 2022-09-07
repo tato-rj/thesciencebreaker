@@ -337,8 +337,7 @@ function slugify(text)
 
 <script type="text/javascript">
 $('input#xml').change(function() {
-  let file = new FormData(this);
-  console.log(file);
+  console.log('here');
 });
 </script>
 @endsection
