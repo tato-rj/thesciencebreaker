@@ -19,7 +19,7 @@
             </h2>
             <button class="btn-sm btn btn-theme-orange" data-toggle="modal" data-target="#french">French</button>
           </div>
-          <form id="break-form" method="POST" action="/admin/breaks" enctype="multipart/form-data" data-keywords="{{$keywords ?? []}}">
+          <form id="break-form" method="POST" action="/admin/breaks" enctype="multipart/form-data" data-keywords="{{json_encode($keywords ?? [])}}">
             {{csrf_field()}}
             {{-- Title --}}
             <div class="form-group">
