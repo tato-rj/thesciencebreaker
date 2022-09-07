@@ -1,4 +1,4 @@
-@extends('posdmin/app')
+@extends('admin/app')
 
 @section('content')
   
@@ -235,10 +235,6 @@
         </div>
       </div>
     </div>
-
-    <div>
-      <input type="file" class="form-control-file" id="xml" name="xml">
-    </div>
 @endsection
 
 @section('scripts')
@@ -333,11 +329,5 @@ function slugify(text)
     .replace(/^-+/, '')             // Trim - from start of text
     .replace(/-+$/, '');            // Trim - from end of text
 }
-</script>
-
-<script type="text/javascript">
-$('input#xml').change(function() {
-  console.log('here');
-});
 </script>
 @endsection

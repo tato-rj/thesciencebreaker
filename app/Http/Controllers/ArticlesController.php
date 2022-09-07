@@ -22,11 +22,6 @@ class ArticlesController extends Controller
         return now()->timestamp;
     }
 
-    public function xml(Request $request)
-    {
-        return 'foo';
-    }
-
     public function index()
     {
         $popular = Article::published()->popular(6)->get();
