@@ -40,15 +40,26 @@ class ArticlesController extends Controller
         \Storage::delete($path);
 
         $publication = $xmlData['publication'];
+
         $keywords = $publication['keywords']['keyword'];
-        
         foreach ($keywords as $keyword) {
             Tag::firstOrCreate(['name' => $keyword]);
         }
 
+        $authors = collect([]);
+        foreach ($publication['authors']['author'] as $author) {
+            $authors->push(Author::firstOrCreate([
+                'first_name' => $author['givenname'],
+                'last_name' => $author['familyname'],
+                'slug' => str_slug($author['givenname'].' '.$author['familyname']),
+                'email' => $author['email'],
+                'position' => $author['affiliation'],
+                'research_institute' => $author['affiliation'],
+            ]));
+        }
+
         $editors = Manager::editors()->get();
         $tags = Tag::orderBy('name')->get();
-        $authors = collect([]);
 
         return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags', 'publication', 'keywords']));
     }
