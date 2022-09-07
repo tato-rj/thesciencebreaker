@@ -235,6 +235,11 @@
         </div>
       </div>
     </div>
+
+<form id="xml-form" action="{{route('xml')}}" method="post" enctype="multipart/form-data">
+  @csrf
+  <input type="file" id="xml" name="xml">
+</form>
 @endsection
 
 @section('scripts')
@@ -329,5 +334,11 @@ function slugify(text)
     .replace(/^-+/, '')             // Trim - from start of text
     .replace(/-+$/, '');            // Trim - from end of text
 }
+</script>
+
+<script type="text/javascript">
+$('input#xml').change(function() {
+  $(this).closest('form').submit();
+});
 </script>
 @endsection

@@ -22,6 +22,21 @@ class ArticlesController extends Controller
         return now()->timestamp;
     }
 
+    public function xml(Request $request)
+    {
+        $file = $request->xml;
+        
+        $path = \Storage::putFileAs('xml', $file, 'file.xml');
+
+        $xmlObject = simplexml_load_string(\Storage::get($path));
+        $json = json_encode($xmlObject);
+        $phpDataArray = json_decode($json, true); 
+
+        \Storage::delete($path);
+
+        dd($phpDataArray);
+    }
+
     public function index()
     {
         $popular = Article::published()->popular(6)->get();
