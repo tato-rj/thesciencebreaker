@@ -340,5 +340,24 @@ function slugify(text)
 $('input#xml').change(function() {
   $(this).closest('form').submit();
 });
+
+$('#xml-form').on('submit', function(e) {
+  e.preventDefault();
+  let file = new FormData(this);
+  let url = $(this).attr('action');
+
+  $.ajax({
+        url: url,
+    type: "POST",
+    data:  new FormData(this),
+    contentType: false,
+      cache: false,
+    processData:false,
+    beforeSend : function() {},
+    success: function(data) {
+      console.log(data);
+    }
+  });
+});
 </script>
 @endsection

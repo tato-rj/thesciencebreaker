@@ -34,7 +34,7 @@ class ArticlesController extends Controller
 
         \Storage::delete($path);
 
-        dd($phpDataArray);
+        return $phpDataArray;
     }
 
     public function index()
