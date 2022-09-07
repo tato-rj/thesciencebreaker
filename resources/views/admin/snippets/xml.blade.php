@@ -4,7 +4,7 @@
       <form id="xml-form" action="{{route('xml')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-          <input type="file" id="xml" name="xml" class="form-control-file">
+          <input type="file" id="xml-input" name="xml" class="form-control-file">
         </div>
 
         <button type="submit" class="btn btn-dark">Upload XML</button>

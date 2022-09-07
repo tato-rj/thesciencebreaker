@@ -102,24 +102,26 @@ $('#xml-form').on('submit', function(e) {
   let file = new FormData(this);
   let url = $(this).attr('action');
 
-  $btn.prop('disabled', true);
+  if ($('#xml-input')[0].files.length > 0) {
+    $btn.prop('disabled', true);
 
-  $.ajax({
-        url: url,
-    type: "POST",
-    data:  new FormData(this),
-    contentType: false,
-      cache: false,
-    processData:false,
-    beforeSend : function() {
-      $btn.text('Loading file...');
-    },
-    success: function(data) {
-      $btn.text(originalText);
-      $btn.prop('disabled', false);
-      console.log(data);
-    }
-  });
+    $.ajax({
+          url: url,
+      type: "POST",
+      data:  new FormData(this),
+      contentType: false,
+        cache: false,
+      processData:false,
+      beforeSend : function() {
+        $btn.text('Loading file...');
+      },
+      success: function(data) {
+        $btn.text(originalText);
+        $btn.prop('disabled', false);
+        console.log(data);
+      }
+    });
+  }
 });
 </script>
 @endsection

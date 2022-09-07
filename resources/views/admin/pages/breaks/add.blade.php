@@ -341,21 +341,26 @@ $('#xml-form').on('submit', function(e) {
   let file = new FormData(this);
   let url = $form.attr('action');
 
-  $.ajax({
-        url: url,
-    type: "POST",
-    data:  new FormData(this),
-    contentType: false,
-      cache: false,
-    processData:false,
-    beforeSend : function() {
-      $form.find('button').text('Loading file...');
-    },
-    success: function(data) {
-      $form.find('button').text(btnText);
-      console.log(data);
-    }
-  });
+  if ($('#xml-input')[0].files.length > 0) {
+    $btn.prop('disabled', true);
+
+    $.ajax({
+          url: url,
+      type: "POST",
+      data:  new FormData(this),
+      contentType: false,
+        cache: false,
+      processData:false,
+      beforeSend : function() {
+        $btn.text('Loading file...');
+      },
+      success: function(data) {
+        $btn.text(originalText);
+        $btn.prop('disabled', false);
+        console.log(data);
+      }
+    });
+  }
 });
 </script>
 @endsection
