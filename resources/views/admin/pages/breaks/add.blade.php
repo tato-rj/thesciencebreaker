@@ -24,7 +24,7 @@
             {{-- Title --}}
             <div class="form-group">
               <div class="d-flex align-items-center">
-                <input required type="text" value="{{ old('title') }}" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Title">
+                <input required type="text" value="{{ $publication['title'] ?? old('title') }}" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Title">
                 <button type="button" class="btn btn-theme-green ml-2" data-toggle="modal" data-target="#tags">Tags</button>  
             </div>
               {{-- Error --}}

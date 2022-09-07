@@ -20,8 +20,7 @@
             {{csrf_field()}}
             {{-- First Name --}}
             <div class="form-group">
-              <h1>{{$publication['title'] ?? 'null'}}</h1>
-              <input required type="text" value="{{ $publication['title'] ?? old('first_name') }}" name="first_name" class="form-control" id="first_name" aria-describedby="first_name" placeholder="First Name">
+              <input required type="text" value="{{ old('first_name') }}" name="first_name" class="form-control" id="first_name" aria-describedby="first_name" placeholder="First Name">
               {{-- Error --}}
               @component('admin/snippets/error')
                 first_name
