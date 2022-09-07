@@ -97,10 +97,12 @@
 <script type="text/javascript">
 $('#xml-form').on('submit', function(e) {
   e.preventDefault();
-  let $form = $(this);
-  let btnText = $form.find('button').text();
+  let $btn = $(this).find('button');
+  let originalText = $btn.text();
   let file = new FormData(this);
-  let url = $form.attr('action');
+  let url = $(this).attr('action');
+
+  $btn.prop('disabled', true);
 
   $.ajax({
         url: url,
@@ -110,10 +112,11 @@ $('#xml-form').on('submit', function(e) {
       cache: false,
     processData:false,
     beforeSend : function() {
-      $form.find('button').text('Loading file...');
+      $btn.text('Loading file...');
     },
     success: function(data) {
-      $form.find('button').text(btnText);
+      $btn.text(originalText);
+      $btn.prop('disabled', false);
       console.log(data);
     }
   });
