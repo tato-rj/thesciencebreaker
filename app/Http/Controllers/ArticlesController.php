@@ -35,11 +35,17 @@ class ArticlesController extends Controller
 
         $xmlObject = simplexml_load_string(\Storage::get($path));
         $json = json_encode($xmlObject);
-        $phpDataArray = json_decode($json, true); 
+        $xmlData = json_decode($json, true); 
 
         \Storage::delete($path);
 
-        dd($phpDataArray);
+        $publication = $xmlData['publication'];
+
+        $editors = Manager::editors()->get();
+        $tags = Tag::orderBy('name')->get();
+        $authors = collect([]);//Author::orderBy('first_name')->get();
+
+        return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags', 'publication']));
     }
 
     public function index()
