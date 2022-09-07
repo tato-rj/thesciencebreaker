@@ -24,6 +24,9 @@
         <a href="/admin/breaks/add">Add new Break</a>
       </li>
       <li>
+        <a href="/admin/breaks/xml">Upload XML</a>
+      </li>
+      <li>
         <a href="/admin/breaks/edit">Edit a Break</a>
       </li>
       @only('managers')

@@ -22,7 +22,12 @@ class ArticlesController extends Controller
         return now()->timestamp;
     }
 
-    public function xml(Request $request)
+    public function showXml()
+    {
+        return view('admin/pages/breaks/xml');
+    }
+
+    public function uploadXml(Request $request)
     {
         $file = $request->xml;
         
@@ -34,7 +39,7 @@ class ArticlesController extends Controller
 
         \Storage::delete($path);
 
-        return $phpDataArray;
+        dd($phpDataArray);
     }
 
     public function index()

@@ -235,8 +235,6 @@
         </div>
       </div>
     </div>
-
-    @include('admin/snippets/xml')
 @endsection
 
 @section('scripts')
@@ -332,34 +330,4 @@ function slugify(text)
     .replace(/-+$/, '');            // Trim - from end of text
 }
 </script>
-
-<script type="text/javascript">
-$('#xml-form').on('submit', function(e) {
-  e.preventDefault();
-  let $btn = $(this).find('button');
-  let originalText = $btn.text();
-  let file = new FormData(this);
-  let url = $(this).attr('action');
-
-  if ($('#xml-input')[0].files.length > 0) {
-    $btn.prop('disabled', true);
-
-    $.ajax({
-          url: url,
-      type: "POST",
-      data:  new FormData(this),
-      contentType: false,
-        cache: false,
-      processData:false,
-      beforeSend : function() {
-        $btn.text('Loading file...');
-      },
-      success: function(data) {
-        $btn.text(originalText);
-        $btn.prop('disabled', false);
-        console.log(data);
-      }
-    });
-  }
-});</script>
 @endsection
