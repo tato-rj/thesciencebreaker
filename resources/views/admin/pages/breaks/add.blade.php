@@ -333,8 +333,9 @@ function slugify(text)
 
 <script type="text/javascript">
 let keywords = $('#break-form').data('keywords');
-for (var i=0; i<=keywords.length; i++) {
-  console.log(keywords[i]);
+for (var i=0; i<keywords.length; i++) {
+  $('div.tags').find('span[data-name="'+keywords[i]+'"]').addClass('selected');
+  $('div.tags').find('input[data-name="'+keywords[i]+'"]').prop('checked', true);
 }
 </script>
 @endsection

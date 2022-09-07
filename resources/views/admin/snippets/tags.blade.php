@@ -18,9 +18,9 @@
         </div>
         <div class="tags">
         @foreach ($tags as $tag)
-          <span class="badge badge-pill m-1 {{ (! empty($article) && in_array($tag->id, $article->resources()->tagsIds())) ? 'selected' : '' }}" data-id="{{ $tag->id }}">
+          <span data-name="{{ $tag->name }}" class="badge badge-pill m-1 {{ (! empty($article) && in_array($tag->id, $article->resources()->tagsIds())) ? 'selected' : '' }}" data-id="{{ $tag->id }}">
             @if(empty($article))
-            <input type="checkbox" style="visibility: hidden; position: absolute;" name="tags[]" value="{{$tag->id}}">
+            <input type="checkbox" data-name="{{ $tag->name }}" style="visibility: hidden; position: absolute;" name="tags[]" value="{{$tag->id}}">
             @endif
             <a>{{ $tag->name }} ({{ $tag->articles->count() }})</a>
           </span>
