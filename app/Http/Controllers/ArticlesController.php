@@ -40,9 +40,9 @@ class ArticlesController extends Controller
         \Storage::delete($path);
 
         $publication = $xmlData['publication'];
-        $tags = $publication['keywords']['keyword'];
+        $keywords = $publication['keywords']['keyword'];
         
-        foreach ($tags as $keyword) {
+        foreach ($keywords as $keyword) {
             Tag::firstOrCreate(['name' => $keyword]);
         }
 
@@ -50,7 +50,7 @@ class ArticlesController extends Controller
         $tags = Tag::orderBy('name')->get();
         $authors = collect([]);
 
-        return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags', 'publication', 'tags']));
+        return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags', 'publication', 'keywords']));
     }
 
     public function index()

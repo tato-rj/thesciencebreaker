@@ -19,7 +19,7 @@
             </h2>
             <button class="btn-sm btn btn-theme-orange" data-toggle="modal" data-target="#french">French</button>
           </div>
-          <form method="POST" action="/admin/breaks" enctype="multipart/form-data" data-tags="{{$tags ?? []}}">
+          <form id="break-form" method="POST" action="/admin/breaks" enctype="multipart/form-data" data-keywords="{{$keywords ?? []}}">
             {{csrf_field()}}
             {{-- Title --}}
             <div class="form-group">
@@ -332,6 +332,7 @@ function slugify(text)
 </script>
 
 <script type="text/javascript">
-  
+let keywords = $('#break-form').data('keywords');
+console.log(keywords);
 </script>
 @endsection
