@@ -23,12 +23,8 @@ class ArticlesController extends Controller
     }
 
     public function showXml()
-    {
-        $editors = Manager::editors()->get();
-        $tags = Tag::orderBy('name')->get();
-        $authors = Author::orderBy('first_name')->get();
-        
-        return view('admin/pages/breaks/xml', compact(['editors', 'authors', 'tags']));
+    {        
+        return view('admin/pages/breaks/xml');
     }
 
     public function uploadXml(Request $request)
