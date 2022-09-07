@@ -142,8 +142,8 @@ Route::patch('/admin/breaks/{article}', 'ArticlesController@update');
 Route::delete('/admin/breaks/{article}', 'ArticlesController@destroy');
 Route::delete('/admin/breaks/images/{article}', 'ArticlesController@destroyImage');
 
-Route::get('/admin/breaks/xml', 'ArticlesController@showXml')->name('xml-show');
-Route::post('/admin/breaks/xml', 'ArticlesController@uploadXml')->name('xml-upload');
+Route::get('/admin/breaks/xml', 'ArticlesController@showXml');
+Route::post('/admin/breaks/xml', 'ArticlesController@uploadXml')->name('xml');
 
 // Breakers routes
 Route::get('/admin/breakers/add', 'AuthorsController@create');
