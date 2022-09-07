@@ -130,7 +130,7 @@ Route::get('/admin/download', 'AdminController@download')->name('admin.download'
 Route::get('/admin/graphs', 'AdminController@graphs');
 
 // Breaks routes
-Route::get('/admin/breaks/add', 'ArticlesController@create')->name('break.add');
+Route::get('/admin/breaks/add', 'ArticlesController@create');
 Route::get('/admin/breaks/edit', 'ArticlesController@edit');
 Route::get('/admin/breaks/{article}/edit', 'ArticlesController@edit');
 Route::get('/admin/breaks/delete', 'ArticlesController@selectDelete');
