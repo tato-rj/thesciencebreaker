@@ -2,14 +2,14 @@
 
 @section('content')
   
-{{--     <div class="container-fluid mb-4">
+    <div class="container-fluid mb-4">
       
-      @component('admin/snippets/page_title')
+{{--       @component('admin/snippets/page_title')
           Breaks
         @slot('comment')
           Use the form below to add a break by <u>uploading</u> an xml file
         @endslot
-      @endcomponent
+      @endcomponent --}}
 
       <div class="row mt-4">
         <div class="col-lg-8 col-md-10 col-sm-12 mx-auto border p-3">
@@ -23,5 +23,5 @@
           </form>
         </div>
       </div>
-    </div> --}}
+    </div>
 @endsection
