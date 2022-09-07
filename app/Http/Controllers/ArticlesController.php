@@ -39,7 +39,7 @@ class ArticlesController extends Controller
 
         \Storage::delete($path);
 
-        return redirect('/admin/breaks/add');
+        return redirect('/admin/breaks/add', ['publication' => $xmlData['publication']]);
         return $this->create($xmlData['publication']);
     }
 
