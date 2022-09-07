@@ -39,8 +39,13 @@ class ArticlesController extends Controller
 
         \Storage::delete($path);
 
-        return redirect('/admin/breaks/add', ['publication' => $xmlData['publication']]);
-        return $this->create($xmlData['publication']);
+        $publication = $xmlData['publication'];
+
+        $editors = Manager::editors()->get();
+        $tags = Tag::orderBy('name')->get();
+        $authors = collect([]);
+
+        return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags', 'publication']));
     }
 
     public function index()
@@ -59,13 +64,13 @@ class ArticlesController extends Controller
     }
 
     // CREATE
-    public function create($publication = [])
+    public function create()
     {
         $editors = Manager::editors()->get();
         $tags = Tag::orderBy('name')->get();
         $authors = Author::orderBy('first_name')->get();
 
-        return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags', 'publication']));
+        return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags']));
     }
 
     public function store(Request $request)
