@@ -19,7 +19,7 @@
             </h2>
             <button class="btn-sm btn btn-theme-orange" data-toggle="modal" data-target="#french">French</button>
           </div>
-          <form method="POST" action="/admin/breaks" enctype="multipart/form-data">
+          <form method="POST" action="/admin/breaks" enctype="multipart/form-data" data-tags="{{$tags ?? []}}">
             {{csrf_field()}}
             {{-- Title --}}
             <div class="form-group">
@@ -45,7 +45,7 @@
               <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
                 {{-- Description --}}
                 <div class="form-group">
-                  <textarea class="form-control" name="description" id="description" rows="6" maxlength="400" placeholder="Description (max 500 characters)">{{ $publication['abstract'] ?? old('description') }}</textarea>
+                  <textarea class="form-control" name="description" id="description" rows="6" maxlength="400" placeholder="Description (max 500 characters)">{{ $publication['description'] ?? old('description') }}</textarea>
                   {{-- Error --}}
                   @component('admin/snippets/error')
                     description
@@ -329,5 +329,9 @@ function slugify(text)
     .replace(/^-+/, '')             // Trim - from start of text
     .replace(/-+$/, '');            // Trim - from end of text
 }
+</script>
+
+<script type="text/javascript">
+  
 </script>
 @endsection
