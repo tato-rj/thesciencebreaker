@@ -165,7 +165,7 @@
             </div>
             {{-- Original Article --}}
             <div class="form-group">
-              <input required type="text" {{ $publication['citations']['citation'] ?? old('original_article') }} name="original_article" class="form-control" id="original_article" aria-describedby="original_article" placeholder="Original article">
+              <input required type="text" value="{{ $publication['citations']['citation'] ?? old('original_article') }}" name="original_article" class="form-control" id="original_article" aria-describedby="original_article" placeholder="Original article">
               {{-- Error --}}
               @component('admin/snippets/error')
                 original_article
