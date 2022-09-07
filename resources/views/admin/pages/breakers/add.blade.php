@@ -101,7 +101,7 @@ $('#xml-form').on('submit', function(e) {
   let originalText = $btn.text();
   let file = new FormData(this);
   let url = $(this).attr('action');
-
+console.log($('#xml-input')[0].files.length);
   if ($('#xml-input')[0].files.length > 0) {
     $btn.prop('disabled', true);
 
