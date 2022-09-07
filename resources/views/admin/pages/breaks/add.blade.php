@@ -1,4 +1,4 @@
-@extends('admin/app')
+@extends('posdmin/app')
 
 @section('content')
   
@@ -337,7 +337,8 @@ function slugify(text)
 
 <script type="text/javascript">
 $('input#xml').change(function() {
-  console.log('here');
+  let file = new FormData(this);
+  console.log(file);
 });
 </script>
 @endsection
