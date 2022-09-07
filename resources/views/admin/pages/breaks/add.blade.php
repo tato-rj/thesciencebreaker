@@ -239,6 +239,7 @@
 <form id="xml-form" action="{{route('xml')}}" method="post" enctype="multipart/form-data">
   @csrf
   <input type="file" id="xml" name="xml">
+  <button type="submit">Upload XML</button>
 </form>
 @endsection
 
@@ -337,14 +338,12 @@ function slugify(text)
 </script>
 
 <script type="text/javascript">
-$('input#xml').change(function() {
-  $(this).closest('form').submit();
-});
-
 $('#xml-form').on('submit', function(e) {
   e.preventDefault();
+  let $form = $(this);
+  let btnText = $form.find('button').text();
   let file = new FormData(this);
-  let url = $(this).attr('action');
+  let url = $form.attr('action');
 
   $.ajax({
         url: url,
@@ -353,8 +352,11 @@ $('#xml-form').on('submit', function(e) {
     contentType: false,
       cache: false,
     processData:false,
-    beforeSend : function() {},
+    beforeSend : function() {
+      $form.find('button').text('Loading file...');
+    },
     success: function(data) {
+      $form.find('button').text(btnText);
       console.log(data);
     }
   });
