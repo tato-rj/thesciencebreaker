@@ -39,14 +39,8 @@ class ArticlesController extends Controller
 
         \Storage::delete($path);
 
-        // $publication = $xmlData['publication'];
-
-        return $this->create($xmlData['publication']);
-        // $editors = Manager::editors()->get();
-        // $tags = Tag::orderBy('name')->get();
-        // $authors = collect([]);//Author::orderBy('first_name')->get();
-
-        // return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags', 'publication']));
+        return redirect()->route('break.add', [$xmlData['publication']]);
+        // return $this->create($xmlData['publication']);
     }
 
     public function index()
