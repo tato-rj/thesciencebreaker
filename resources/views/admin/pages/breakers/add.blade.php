@@ -89,4 +89,34 @@
         </div>
       </div>
     </div>
+
+    @include('admin/snippets/xml')
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+$('#xml-form').on('submit', function(e) {
+  e.preventDefault();
+  let $form = $(this);
+  let btnText = $form.find('button').text();
+  let file = new FormData(this);
+  let url = $form.attr('action');
+
+  $.ajax({
+        url: url,
+    type: "POST",
+    data:  new FormData(this),
+    contentType: false,
+      cache: false,
+    processData:false,
+    beforeSend : function() {
+      $form.find('button').text('Loading file...');
+    },
+    success: function(data) {
+      $form.find('button').text(btnText);
+      console.log(data);
+    }
+  });
+});
+</script>
 @endsection
