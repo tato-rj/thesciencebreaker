@@ -48,14 +48,18 @@ class ArticlesController extends Controller
 
         $authors = collect([]);
         foreach ($publication['authors']['author'] as $author) {
-            $authors->push(Author::firstOrCreate([
-                'first_name' => $author['givenname'],
-                'last_name' => $author['familyname'],
-                'slug' => str_slug($author['givenname'].' '.$author['familyname']),
-                'email' => $author['email'],
-                'position' => $author['affiliation'],
-                'research_institute' => $author['affiliation'],
-            ]));
+            if ($current = Author::where(['first_name' => $author['givenname'], 'last_name' => $author['familyname']])->first()) {
+                $authors->push($current);
+            } else {
+                $authors->push(Author::create([
+                    'first_name' => $author['givenname'],
+                    'last_name' => $author['familyname'],
+                    'slug' => str_slug($author['givenname'].' '.$author['familyname']),
+                    'email' => $author['email'],
+                    'position' => $author['affiliation'],
+                    'research_institute' => $author['affiliation'],
+                ]));
+            }
         }
 
         $editors = Manager::editors()->get();
