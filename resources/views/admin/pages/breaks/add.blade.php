@@ -336,10 +336,10 @@ function slugify(text)
 <script type="text/javascript">
 $('#xml-form').on('submit', function(e) {
   e.preventDefault();
-  let $form = $(this);
-  let btnText = $form.find('button').text();
+  let $btn = $(this).find('button');
+  let originalText = $btn.text();
   let file = new FormData(this);
-  let url = $form.attr('action');
+  let url = $(this).attr('action');
 
   if ($('#xml-input')[0].files.length > 0) {
     $btn.prop('disabled', true);
@@ -361,6 +361,5 @@ $('#xml-form').on('submit', function(e) {
       }
     });
   }
-});
-</script>
+});</script>
 @endsection
