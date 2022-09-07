@@ -28,7 +28,7 @@ class ArticlesController extends Controller
         $tags = Tag::orderBy('name')->get();
         $authors = Author::orderBy('first_name')->get();
         
-        return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags']));
+        return view('admin/pages/breaks/xml', compact(['editors', 'authors', 'tags']));
     }
 
     public function uploadXml(Request $request)
@@ -67,7 +67,7 @@ class ArticlesController extends Controller
         $editors = Manager::editors()->get();
         $tags = Tag::orderBy('name')->get();
         $authors = Author::orderBy('first_name')->get();
-        
+
         return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags']));
     }
 
