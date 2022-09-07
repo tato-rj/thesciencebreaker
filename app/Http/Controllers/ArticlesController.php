@@ -40,7 +40,7 @@ class ArticlesController extends Controller
         \Storage::delete($path);
 
         $publication = $xmlData['publication'];
-
+dd($publication['citations']['citation']);
         $keywords = $publication['keywords']['keyword'];
         foreach ($keywords as $keyword) {
             Tag::firstOrCreate(['name' => $keyword]);
