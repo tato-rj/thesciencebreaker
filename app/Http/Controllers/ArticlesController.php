@@ -56,7 +56,7 @@ class ArticlesController extends Controller
                     'last_name' => $author['familyname'],
                     'slug' => str_slug($author['givenname'].' '.$author['familyname']),
                     'email' => $author['email'],
-                    'position' => $author['affiliation'],
+                    'position' => strip_tags($author['biography']),
                     'research_institute' => $author['affiliation'],
                 ]));
             }
