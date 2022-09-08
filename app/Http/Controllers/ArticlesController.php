@@ -29,6 +29,10 @@ class ArticlesController extends Controller
 
     public function uploadXml(Request $request)
     {
+        $request->validate([
+            'xml' => 'required|file|mimes:xml'
+        ]);
+
         $file = $request->xml;
         
         $path = \Storage::putFileAs('xml', $file, 'file.xml');
