@@ -45,7 +45,7 @@ class ArticlesController extends Controller
 
         $publication = $xmlData;
 
-return $publication;
+dd($publication);
         $keywords = $publication['keywords']['keyword'];
         // foreach ($keywords as $keyword) {
         //     Tag::firstOrCreate(['name' => $keyword]);
