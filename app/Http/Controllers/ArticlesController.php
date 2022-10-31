@@ -44,6 +44,7 @@ class ArticlesController extends Controller
         \Storage::delete($path);
 
         $publication = $xmlData;
+        
 return $publication;
         $keywords = $publication['keywords']['keyword'];
         // foreach ($keywords as $keyword) {
@@ -66,10 +67,10 @@ return $publication;
         //     }
         // }
 
-        $editors = Manager::editors()->get();
-        $tags = Tag::orderBy('name')->get();
+        // $editors = Manager::editors()->get();
+        // $tags = Tag::orderBy('name')->get();
 
-        return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags', 'publication', 'keywords']));
+        // return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags', 'publication', 'keywords']));
     }
 
     public function index()
