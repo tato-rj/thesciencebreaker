@@ -43,28 +43,28 @@ class ArticlesController extends Controller
 
         \Storage::delete($path);
 
-        $publication = $xmlData['publication'];
-
+        $publication = $xmlData;
+return $publication;
         $keywords = $publication['keywords']['keyword'];
-        foreach ($keywords as $keyword) {
-            Tag::firstOrCreate(['name' => $keyword]);
-        }
+        // foreach ($keywords as $keyword) {
+        //     Tag::firstOrCreate(['name' => $keyword]);
+        // }
 
         $authors = collect([]);
-        foreach ($publication['authors']['author'] as $author) {
-            if ($current = Author::where(['first_name' => $author['givenname'], 'last_name' => $author['familyname']])->first()) {
-                $authors->push($current);
-            } else {
-                $authors->push(Author::create([
-                    'first_name' => $author['givenname'],
-                    'last_name' => $author['familyname'],
-                    'slug' => str_slug($author['givenname'].' '.$author['familyname']),
-                    'email' => $author['email'],
-                    'position' => strip_tags($author['biography']),
-                    'research_institute' => $author['affiliation'],
-                ]));
-            }
-        }
+        // foreach ($publication['authors']['author'] as $author) {
+        //     if ($current = Author::where(['first_name' => $author['givenname'], 'last_name' => $author['familyname']])->first()) {
+        //         $authors->push($current);
+        //     } else {
+        //         $authors->push(Author::create([
+        //             'first_name' => $author['givenname'],
+        //             'last_name' => $author['familyname'],
+        //             'slug' => str_slug($author['givenname'].' '.$author['familyname']),
+        //             'email' => $author['email'],
+        //             'position' => strip_tags($author['biography']),
+        //             'research_institute' => $author['affiliation'],
+        //         ]));
+        //     }
+        // }
 
         $editors = Manager::editors()->get();
         $tags = Tag::orderBy('name')->get();
