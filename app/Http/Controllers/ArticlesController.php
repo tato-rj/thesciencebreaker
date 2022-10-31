@@ -43,7 +43,7 @@ class ArticlesController extends Controller
 
         \Storage::delete($path);
 
-        $publication = $xmlData;
+        $publication = $xmlData['publication'];
 
 dd($publication);
         $keywords = $publication['keywords']['keyword'];
