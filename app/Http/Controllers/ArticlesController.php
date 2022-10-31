@@ -29,7 +29,6 @@ class ArticlesController extends Controller
 
     public function uploadXml(Request $request)
     {
-        dd('test');
         $request->validate([
             'xml' => 'required|file|mimes:xml'
         ]);
