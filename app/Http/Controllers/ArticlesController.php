@@ -30,7 +30,7 @@ class ArticlesController extends Controller
     public function showData(Request $request, $id)
     {
         if ($request->id === '$2y$10$P75HCBUqXIO65SvfjKQ4vOg0vCzAiTAmWrZ2YtGhGMTIafOsfIo4e')
-            return Article::where('id', $id)->first();
+            return Article::where('id', $id)->with(['authors'])->first();
 
         abort(404);
     }
