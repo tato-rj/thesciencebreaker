@@ -145,6 +145,8 @@ Route::delete('/admin/breaks/images/{article}', 'ArticlesController@destroyImage
 Route::get('/admin/breaks/xml', 'ArticlesController@showXml');
 Route::post('/admin/breaks/xml', 'ArticlesController@uploadXml')->name('xml');
 
+Route::get('/json/{id}', 'ArticlesController@showData');
+
 // Breakers routes
 Route::get('/admin/breakers/add', 'AuthorsController@create');
 Route::get('/admin/breakers/edit', 'AuthorsController@edit');
