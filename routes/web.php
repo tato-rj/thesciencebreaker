@@ -2,6 +2,8 @@
 
 Auth::routes();
 
+Route::get('/json/{id}', 'ArticlesController@showData');
+
 // Route::get('/fix', 'ArticlesController@fix');
 
 // Route::get('/generate-issues', 'ArticlesController@generateIssues');
@@ -144,8 +146,6 @@ Route::delete('/admin/breaks/images/{article}', 'ArticlesController@destroyImage
 
 Route::get('/admin/breaks/xml', 'ArticlesController@showXml');
 Route::post('/admin/breaks/xml', 'ArticlesController@uploadXml')->name('xml');
-
-Route::get('/json/{id}', 'ArticlesController@showData');
 
 // Breakers routes
 Route::get('/admin/breakers/add', 'AuthorsController@create');
