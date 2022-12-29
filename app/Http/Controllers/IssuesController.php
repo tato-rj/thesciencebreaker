@@ -9,7 +9,7 @@ class IssuesController extends Controller
 {
 	public function index()
 	{
-		$archives = Article::selectRaw('year(created_at) AS year, issue, volume, count(*) as count')
+		$archives = Article::selectRaw('year(published_at) AS year, issue, volume, count(*) as count')
 			->published()
             ->groupBy('year', 'issue', 'volume')
             ->orderBy('year', 'DESC')
