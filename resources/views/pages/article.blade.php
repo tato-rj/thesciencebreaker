@@ -126,7 +126,7 @@
 					<small><span>{{__('global.reading_time')}} </span>{{ $article->reading_time }} min</small>
 				</div>
 				<div>
-					<small>{{__('global.published')}} {{ $article->created_at->toFormattedDateString() }}</small>
+					<small>{{__('global.published')}} {{ $article->published_at ? $article->published_at->toFormattedDateString() : null }}</small>
 				</div>
 			</div>
 

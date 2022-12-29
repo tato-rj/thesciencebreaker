@@ -50,6 +50,8 @@ class CreateArticlesTable extends Migration
             // STAY AS IS
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
+
+            // AUTOMATIC DOWNLOAD AND SAVE PDF FROM RICK'S API
         });
     }
 
