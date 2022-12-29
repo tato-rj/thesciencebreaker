@@ -116,7 +116,7 @@ class ArticlesController extends Controller
     public function show(Category $category, Article $article)
     {
         if (! $article->published_at)
-            abort(413);
+            abort(404);
 
         $more_like = $article->resources()->suggestions();
         $next_read = $more_like->pop();
