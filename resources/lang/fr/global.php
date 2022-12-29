@@ -5,7 +5,7 @@ return [
 	'sub_title' => 'La Science rencontre la Société',
 	'latest' => 'Dernières Breaks publiées',
 	'picks' => 'Sélection du rédacteur en chef',
-	'popular' => 'Sujets les plus populaires',
+	'popular' => 'Tendance actuelle',
 	'topics' => 'Sujets populaires',
 	'in' => 'dans',
 	'by' => 'par',

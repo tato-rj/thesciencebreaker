@@ -5,7 +5,7 @@ return [
 	'sub_title' => 'Science meets Society',
 	'latest' => 'Latest',
 	'picks' => 'Editor\'s picks',
-	'popular' => 'Most popular',
+	'popular' => 'Trending now',
 	'topics' => 'Popular topics',
 	'in' => 'in',
 	'by' => 'by',

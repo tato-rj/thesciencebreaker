@@ -83,7 +83,7 @@ class ArticlesController extends Controller
 
     public function index()
     {
-        $popular = Article::published()->popular(6)->get();
+        $popular = Article::published()->where('published_at', '>=', now()->subMonths(3))->popular(6)->get();
         $topics = Tag::orderBy('articles_count', 'DESC')->take(25)->get();
         $highlights = Highlight::with('article')->orderBy('relevance_order')->take(4)->get();
         $latest_articles = Article::published()->recent(6)->get();
