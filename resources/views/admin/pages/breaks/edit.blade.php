@@ -223,6 +223,21 @@
           </div>
           <div class="form-group">
             {{-- Reading time --}}            
+            <label><strong>DOI</strong></label>
+            <div class="input-group col-3 pl-0">
+              <div class="input-group-addon"><i class="fa fa-hourglass-half" aria-hidden="true"></i></div>
+              <input required type="text" value="{{ $article->doi }}" name="doi" size="4" class="form-control" id="doi" placeholder="DOI">
+            </div>
+            @component('admin/snippets/error')
+            doi
+            @slot('feedback')
+            {{ $errors->first('doi') }}
+            @endslot
+            @endcomponent
+          </div> 
+
+          <div class="form-group">
+            {{-- Reading time --}}            
             <label><strong>Reading time</strong></label>
             <div class="input-group col-3 pl-0">
               <div class="input-group-addon"><i class="fa fa-hourglass-half" aria-hidden="true"></i></div>

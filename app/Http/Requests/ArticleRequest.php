@@ -85,6 +85,7 @@ class ArticleRequest extends Form
             'content_fr' => $this->content_fr,
             'reading_time' => $this->reading_time,
             'original_article' => $this->original_article,
+            'doi' => $this->doi,
             'category_id' => $this->category_id,
             'editor_id' => $this->editor_id,
             'editor_pick' => $this->editor_pick ?? false,
