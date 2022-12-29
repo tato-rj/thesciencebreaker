@@ -15,15 +15,19 @@ class CreateAuthorsTable extends Migration
     {
         Schema::create('authors', function (Blueprint $table) {
             $table->increments('id');
+            // GIVENNAME
             $table->string('first_name');
+            // FAMILYNAME
             $table->string('last_name');
             $table->string('slug')->slug();
             $table->string('email')->unique();
-            // ACADEMIC POSITION ?
+            // BIOGRAPHY
             $table->string('position')->nullable();
             // AFFILIATION
             $table->string('research_institute')->nullable();
+            // IGNORE
             $table->string('field_research')->nullable();
+            // IGNORE
             $table->string('general_comments')->nullable();
             $table->index(['first_name', 'last_name']);
             $table->timestamps();

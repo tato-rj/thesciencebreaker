@@ -37,7 +37,7 @@ class AuthorsController extends Controller
             return back()->withErrors(['This author already exists']);
 
         $breaker = AuthorRequest::get()->save();
-        MailFactory::sendWelcomeEmail($breaker);
+        // MailFactory::sendWelcomeEmail($breaker);
         
         return redirect()->back()->with('db_feedback', 'The Breaker '.$request->first_name.' '.$request->last_name.' has been successfully added!');
     }
