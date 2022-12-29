@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<a href="/eepurl.com/dEaFHD" target="_blank" class="btn btn-theme-green btn-block">
+<a href="http:/eepurl.com/dEaFHD" target="_blank" class="btn btn-theme-green btn-block">
   Subscribe now
 </a>
 
