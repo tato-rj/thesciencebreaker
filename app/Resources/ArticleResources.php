@@ -89,16 +89,16 @@ class ArticleResources extends Resources
         return $request;   
     }
 
-    public function generateVolume($created_at = null)
+    public function generateVolume($published_at = null)
     {
-        $date = $created_at ?? \Carbon\Carbon::now();
+        $date = $published_at ?? \Carbon\Carbon::now();
 
         return $date->year - 2014;
     }
 
-    public function generateIssue($created_at = null)
+    public function generateIssue($published_at = null)
     {
-        $date = $created_at ?? \Carbon\Carbon::now();
+        $date = $published_at ?? \Carbon\Carbon::now();
 
         $issue = 0;
 
