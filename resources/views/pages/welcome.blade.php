@@ -111,12 +111,12 @@
 				<a href="https://altmetric.com/" target="_blank">
 					<img class="bw" style="width: 120px" src="{{ asset('images/partners/altmetric.svg') }}">
 				</a>
-				<a href="http://antibiotic-action.com/" target="_blank">
+{{-- 				<a href="http://antibiotic-action.com/" target="_blank">
 					<img class="bw" style="width: 120px" src="{{ asset('images/partners/antibiotic.svg') }}">
-				</a>
-				<a href="https://www.bioutils.ch/" target="_blank">
+				</a> --}}
+{{-- 				<a href="https://www.bioutils.ch/" target="_blank">
 					<img class="bw" style="width: 120px" src="{{ asset('images/partners/bioutils.svg') }}">
-				</a>
+				</a> --}}
 				<a href="https://www.leftlaneapps.com" target="_blank">
 					<img class="bw" style="width: 120px" src="{{ asset('images/partners/leftlane.svg') }}">
 				</a>
