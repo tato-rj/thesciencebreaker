@@ -30,7 +30,7 @@ class IssuesController extends Controller
 
 	public function show($volume, $issue, Request $request)
 	{
-        $sort = ($request->sort) ? $request->sort : 'created_at';
+        $sort = ($request->sort) ? $request->sort : 'published_at';
         $order = ($sort == 'title') ? 'ASC' : 'DESC';
         $show = ($request->show) ? $request->show : 5;
 
