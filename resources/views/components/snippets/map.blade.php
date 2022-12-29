@@ -5,8 +5,7 @@
 			<li class="mb-2"><strong>{{__('contact.map.address.p1')}}</strong></li>
 			<li>{{__('contact.map.address.p2')}}</li>
 			<li class="mb-2">{{__('contact.map.address.p3')}}</li>
-			<li class="mb-2">{{__('contact.map.address.p4')}}</li>
-			<li class="text-muted">{!!__('contact.map.address.p5')!!}</li>
+			<li class="text-muted">{!!__('contact.map.address.p4')!!}</li>
 		</ul>
 	</div>
 	<div class="col-lg-8 col-md-6 col-sm-12 text-center">

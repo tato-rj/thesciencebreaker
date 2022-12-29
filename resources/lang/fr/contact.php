@@ -57,11 +57,10 @@ return [
 	'map' => [
 		'title' => 'Ou nous trouver',
 		'address' => [
-			'p1' => 'TheScienceBreaker @ BiOutils',
+			'p1' => 'TheScienceBreaker',
 			'p2' => 'Université de Genève',
-			'p3' => 'Sciences III',
-			'p4' => 'Département de Botanique et Biologie Végétale',
-			'p5' => '30, Quai Ernest-Ansermet<br>1211 Genève 4'
+			'p3' => 'Faculté des sciences',
+			'p4' => '30, Quai Ernest-Ansermet<br>1211 Genève 4'
 		]
 	]
 ];
