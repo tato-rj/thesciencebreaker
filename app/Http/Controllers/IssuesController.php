@@ -17,7 +17,7 @@ class IssuesController extends Controller
             ->get();
 
         $archives = $archives->groupBy('year');
-return $archives;
+
 		return view('pages/archives/index', compact(['archives']));
 	}
 
