@@ -225,7 +225,7 @@
             {{-- Reading time --}}            
             <label><strong>DOI</strong></label>
             <div class="input-group col-3 pl-0">
-              <div class="input-group-addon"><i class="fa fa-hourglass-half" aria-hidden="true"></i></div>
+              <div class="input-group-addon"><i class="fa fa-bookmark" aria-hidden="true"></i></div>
               <input required type="text" value="{{ $article->doi }}" name="doi" size="4" class="form-control" id="doi" placeholder="DOI">
             </div>
             @component('admin/snippets/error')
