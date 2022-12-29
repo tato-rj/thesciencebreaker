@@ -19,7 +19,9 @@ class CreateAuthorsTable extends Migration
             $table->string('last_name');
             $table->string('slug')->slug();
             $table->string('email')->unique();
+            // ACADEMIC POSITION ?
             $table->string('position')->nullable();
+            // AFFILIATION
             $table->string('research_institute')->nullable();
             $table->string('field_research')->nullable();
             $table->string('general_comments')->nullable();
