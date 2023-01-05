@@ -16,6 +16,7 @@
           <form id="xml-form" action="{{route('xml')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="form-group border p-3 mb-4">
+              <label><strong>XML File</strong></label>
               <input type="file" id="xml-input" name="xml" class="form-control-file" required>
             </div>
             
@@ -94,6 +95,18 @@
                   @endcomponent
                 </div>
             </div>
+
+          {{-- Date of publication --}}   
+          <div class="form-group">         
+            <label><strong>Date of publication</strong></label>
+            @datepicker(['name' => 'published_at', 'time' => true])
+            @component('admin/snippets/error')
+            published_at
+            @slot('feedback')
+            {{ $errors->first('published_at') }}
+            @endslot
+            @endcomponent
+          </div>  
 
             <button type="submit" class="btn btn-dark">Upload XML</button>
           </form>
