@@ -19,8 +19,7 @@
               <input type="file" id="xml-input" name="xml" class="form-control-file" required>
             </div>
 
-            <div class="row">
-              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
+            <div>
                 {{-- Caption --}}
                 <div class="form-group">
 
@@ -49,9 +48,7 @@
                     {{ $errors->first('image_credits') }}
                     @endslot
                   @endcomponent
-                </div>   
-
-              </div>
+                </div>
             </div>
             <button type="submit" class="btn btn-dark">Upload XML</button>
           </form>
