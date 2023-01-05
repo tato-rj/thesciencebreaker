@@ -68,7 +68,8 @@ class ArticlesController extends Controller
         foreach ($authors as $author) {
             $firstName = $author['givenname'];
             $lastName = $author['familyname'];
-            dd($lastName);
+            $email = $author['email'];
+            dd($email);
         }
 
         return $publication;
