@@ -42,8 +42,6 @@ class ArticlesController extends Controller
         ]);
 
         $file = $request->xml;
-
-        return $file;
         
         $path = \Storage::putFileAs('xml', $file, 'file.xml');
 
@@ -55,6 +53,7 @@ class ArticlesController extends Controller
 
         $publication = $xmlData['publication'];
 
+        return $xmlData;
 
         $keywords = $publication['keywords']['keyword'];
         foreach ($keywords as $keyword) {
