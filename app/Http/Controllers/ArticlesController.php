@@ -57,7 +57,7 @@ class ArticlesController extends Controller
         $description = $publication['abstract'];
         $coverImage = 'https://oap.unige.ch/journals/public/journals/8/';
 
-        return $xmlData['covers'];
+        return $xmlData;
 
         $keywords = $publication['keywords']['keyword'];
         foreach ($keywords as $keyword) {
