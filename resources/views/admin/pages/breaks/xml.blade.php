@@ -33,6 +33,22 @@
               @endcomponent
             </div>
 
+            {{-- Editor --}}
+            <div class="form-group">         
+              <select class="custom-select form-control mb-2 mr-sm-2" id="editor_id" name="editor_id">
+                <option  selected disabled>Editor</option>
+                @foreach ($editors as $editor)
+                  <option value="{{ $editor->id }}" {{ (old('editor_id') == $editor->id) ? 'selected' : '' }}>{{ $editor->resources()->fullName() }}</option>
+                @endforeach
+              </select>
+              @component('admin/snippets/error')
+              editor_id
+              @slot('feedback')
+              {{ $errors->first('editor_id') }}
+              @endslot
+              @endcomponent
+            </div>   
+
             {{-- Reading time --}}
             <div class="form-group">
               <div class="input-group">
