@@ -54,8 +54,9 @@ class ArticlesController extends Controller
         $publication = $xmlData['publication'];
 
         $title = $publication['title'];
+        $description = $publication['abstract'];
 
-        return Article::byTitle($title)->first();
+        return $description;
 
         $keywords = $publication['keywords']['keyword'];
         foreach ($keywords as $keyword) {
