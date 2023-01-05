@@ -58,9 +58,9 @@ class ArticlesController extends Controller
         // MISSING
         $coverImage = 'https://oap.unige.ch/journals/public/journals/8/';
         $originalArticle = $publication['citations']['citation'];
-        $categoryId = $publication['section_ref'];
+        // $categoryId = $publication['section_ref'];
 
-        return $categoryId;
+        return $publication;
 
         $keywords = $publication['keywords']['keyword'];
         foreach ($keywords as $keyword) {
