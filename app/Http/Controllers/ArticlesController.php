@@ -55,7 +55,7 @@ class ArticlesController extends Controller
 
         $title = $publication['title'];
 
-        return $title;
+        return Article::byTitle($title)->first();
 
         $keywords = $publication['keywords']['keyword'];
         foreach ($keywords as $keyword) {

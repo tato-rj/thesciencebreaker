@@ -29,6 +29,11 @@ trait ArticleScopeQueries
         return $query->with(['category', 'authors'])->where('editor_pick', 1);
     }
 
+    public function scopeByTitle($query, $title)
+    {
+        return $query->whereRaw('LOWER(`'.$title.'`)', strtolower($title));
+    }
+
     public function scopePicks($query)
     {
         // return $query->where('editor_pick', 1)->orderBy('title')->get();
