@@ -63,7 +63,7 @@ class ArticlesController extends Controller
         $doi = 'https://doi.org/' . $publication['id'][1];
 
         // AUTHORS INFO
-        $authors = $publication['authors'];
+        $authors = $publication['authors']['author'];
 
         foreach ($authors as $author) {
             $firstName = $author['givenname'];
