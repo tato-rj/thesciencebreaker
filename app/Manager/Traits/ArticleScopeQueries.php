@@ -31,7 +31,7 @@ trait ArticleScopeQueries
 
     public function scopeByTitle($query, $title)
     {
-        return $query->whereRaw('LOWER(`'.$title.'`)', strtolower($title));
+        return $query->where('title', $title);
     }
 
     public function scopePicks($query)
