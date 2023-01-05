@@ -18,9 +18,23 @@
             <div class="form-group">
               <input type="file" id="xml-input" name="xml" class="form-control-file" required>
             </div>
+            
+            {{-- Content --}}
+            <div class="form-group">
+              <textarea required class="form-control" name="content" id="content" rows="8" placeholder="Break">{{ old('content') }}</textarea>
+{{--               <input id="content" value="{{ old('content') }}" type="hidden" name="content">
+              <trix-editor placeholder="Break content" input="content"></trix-editor> --}}
+              {{-- Error --}}
+              @component('admin/snippets/error')
+                content
+                @slot('feedback')
+                {{ $errors->first('content') }}
+                @endslot
+              @endcomponent
+            </div>
 
+            {{-- Caption --}}
             <div>
-                {{-- Caption --}}
                 <div class="form-group">
 
                   <div class="d-flex align-items-center">
@@ -50,6 +64,7 @@
                   @endcomponent
                 </div>
             </div>
+
             <button type="submit" class="btn btn-dark">Upload XML</button>
           </form>
         </div>
