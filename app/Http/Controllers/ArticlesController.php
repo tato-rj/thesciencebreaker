@@ -71,7 +71,15 @@ class ArticlesController extends Controller
             $email = $author['email'];
             $position = $author['biography'];
             $researchInstitute = $author['affiliation'];
-            dd($researchInstitute);
+            
+            //CREATE AUTHOR
+        }
+
+        // KEYWORDS INFO
+        $keywords = $publication['keywords']['keyword'];
+        
+        foreach ($keywords as $keyword) {
+            dd($keyword);
         }
 
         return $publication;
