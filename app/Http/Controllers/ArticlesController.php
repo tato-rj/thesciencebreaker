@@ -58,7 +58,7 @@ class ArticlesController extends Controller
         // MISSING
         $coverImage = 'https://oap.unige.ch/journals/public/journals/8/';
         $originalArticle = $publication['citations']['citation'];
-        $category = Category::byTitle($publication['@attributes']['section_ref'])->first();
+        $category = Category::byName($publication['@attributes']['section_ref'])->first();
 
         return $category;
 
