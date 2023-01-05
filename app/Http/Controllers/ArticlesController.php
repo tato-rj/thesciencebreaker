@@ -60,8 +60,9 @@ class ArticlesController extends Controller
         $originalArticle = $publication['citations']['citation'];
         $category = Category::byName($publication['@attributes']['section_ref'])->first();
         $issue = $publication['issue_identification'];
+        $doi = 'https://doi.org/' . $publication['id'][1];
 
-        return $publication;
+        return $doi;
 
         $keywords = $publication['keywords']['keyword'];
         foreach ($keywords as $keyword) {
