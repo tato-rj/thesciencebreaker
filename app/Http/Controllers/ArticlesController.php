@@ -53,16 +53,19 @@ class ArticlesController extends Controller
 
         $publication = $xmlData['publication'];
 
+        // BREAK INFO
         $title = $publication['title'];
         $description = $publication['abstract'];
-        // MISSING
-        $coverImage = 'https://oap.unige.ch/journals/public/journals/8/';
+        $coverImage = 'https://oap.unige.ch/journals/public/journals/8/' . 'MISSING!';
         $originalArticle = $publication['citations']['citation'];
         $category = Category::byName($publication['@attributes']['section_ref'])->first();
         $issue = $publication['issue_identification'];
         $doi = 'https://doi.org/' . $publication['id'][1];
 
-        return $doi;
+        // AUTHORS INFO
+        $authors = $publication['authors'];
+
+        return $authors;
 
         $keywords = $publication['keywords']['keyword'];
         foreach ($keywords as $keyword) {
