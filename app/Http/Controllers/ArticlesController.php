@@ -61,7 +61,7 @@ class ArticlesController extends Controller
         $category = Category::byName($publication['@attributes']['section_ref'])->first();
         $issue = $publication['issue_identification'];
 
-        return $issue['number'];
+        return $publication;
 
         $keywords = $publication['keywords']['keyword'];
         foreach ($keywords as $keyword) {
