@@ -40,9 +40,15 @@ class ArticlesController extends Controller
     public function uploadXml(Request $request)
     {
         $request->validate([
-            'xml' => 'required|file|mimes:xml'
+            'xml' => 'required|file|mimes:xml',
+            'content' => 'required',
+            'reading_time' => 'required',
+            'editor_id' => 'required',
+            'image_caption' => 'max:255',
+            'image_credits' => 'max:144'
         ]);
 
+        return $request->all();
         $file = $request->xml;
         
         $path = \Storage::putFileAs('xml', $file, 'file.xml');
