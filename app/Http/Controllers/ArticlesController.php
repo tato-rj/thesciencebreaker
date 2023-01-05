@@ -70,7 +70,8 @@ class ArticlesController extends Controller
             $lastName = $author['familyname'];
             $email = $author['email'];
             $position = $author['biography'];
-            dd($position);
+            $researchInstitute = $author['affiliation'];
+            dd($researchInstitute);
         }
 
         return $publication;
