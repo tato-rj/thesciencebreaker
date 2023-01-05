@@ -11,8 +11,7 @@
         @endslot
       @endcomponent
 
-      <div class="row mt-4">
-        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto border p-3">
+      <div class="mt-4">
           <form id="xml-form" action="{{route('xml')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="form-group">
@@ -67,7 +66,6 @@
 
             <button type="submit" class="btn btn-dark">Upload XML</button>
           </form>
-        </div>
       </div>
     </div>
 @endsection
