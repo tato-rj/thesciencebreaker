@@ -59,8 +59,9 @@ class ArticlesController extends Controller
         $coverImage = 'https://oap.unige.ch/journals/public/journals/8/';
         $originalArticle = $publication['citations']['citation'];
         $category = Category::byName($publication['@attributes']['section_ref'])->first();
+        $issue = $publication['issue_identification'];
 
-        return $publication;
+        return $issue['volume'];
 
         $keywords = $publication['keywords']['keyword'];
         foreach ($keywords as $keyword) {
