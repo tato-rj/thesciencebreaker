@@ -31,7 +31,7 @@ trait ArticleScopeQueries
 
     public function scopeByTitle($query, $title)
     {
-        return $query->where('title', $title);
+        return $query->whereRaw('lower(language) like (?)', strtolower($title));
     }
 
     public function scopePicks($query)
