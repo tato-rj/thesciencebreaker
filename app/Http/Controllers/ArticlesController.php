@@ -69,7 +69,8 @@ class ArticlesController extends Controller
             $firstName = $author['givenname'];
             $lastName = $author['familyname'];
             $email = $author['email'];
-            dd($email);
+            $position = $author['biography'];
+            dd($position);
         }
 
         return $publication;
