@@ -53,7 +53,7 @@ class ArticlesController extends Controller
 
         $publication = $xmlData['publication'];
 
-        return $xmlData;
+        return $publication;
 
         $keywords = $publication['keywords']['keyword'];
         foreach ($keywords as $keyword) {
