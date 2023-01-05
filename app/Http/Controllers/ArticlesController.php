@@ -82,7 +82,7 @@ class ArticlesController extends Controller
             //CREATE KEYWORD
         }
 
-        return $publication;
+        return $publication['covers'];
 
         // $keywords = $publication['keywords']['keyword'];
         // foreach ($keywords as $keyword) {
