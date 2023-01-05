@@ -28,4 +28,9 @@ class Category extends TheScienceBreaker
 	{
 		return $this->hasMany(AvailableArticle::class);
 	}
+
+    public function scopeByTitle($query, $title)
+    {
+        return $query->whereRaw('lower(title) like (?)', strtolower($title));
+    }
 }
