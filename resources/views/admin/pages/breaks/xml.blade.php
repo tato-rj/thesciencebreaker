@@ -23,7 +23,7 @@
             <div class="form-group">
               {{-- <textarea required class="form-control" name="content" id="content" rows="8" placeholder="Break">{{ old('content') }}</textarea> --}}
               <input id="content" value="{{ old('content') }}" type="hidden" name="content">
-              <trix-editor placeholder="Break content" input="content" style="min-height: 15em;"></trix-editor>
+              <trix-editor placeholder="Break content" input="content" style="min-height: 25em;"></trix-editor>
               {{-- Error --}}
               @component('admin/snippets/error')
                 content
