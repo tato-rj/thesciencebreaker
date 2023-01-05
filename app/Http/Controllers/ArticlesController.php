@@ -48,7 +48,6 @@ class ArticlesController extends Controller
             'image_credits' => 'max:144'
         ]);
 
-        return $request->all();
         $file = $request->xml;
         
         $path = \Storage::putFileAs('xml', $file, 'file.xml');
