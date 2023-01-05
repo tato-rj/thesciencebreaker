@@ -42,6 +42,8 @@ class ArticlesController extends Controller
         ]);
 
         $file = $request->xml;
+
+        return $file;
         
         $path = \Storage::putFileAs('xml', $file, 'file.xml');
 
