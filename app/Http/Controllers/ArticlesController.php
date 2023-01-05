@@ -56,7 +56,7 @@ class ArticlesController extends Controller
         $title = $publication['title'];
         $description = $publication['abstract'];
 
-        return $description;
+        return $publication;
 
         $keywords = $publication['keywords']['keyword'];
         foreach ($keywords as $keyword) {
