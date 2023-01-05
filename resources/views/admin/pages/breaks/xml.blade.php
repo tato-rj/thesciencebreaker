@@ -15,7 +15,7 @@
         <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
           <form id="xml-form" action="{{route('xml')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
-            <div class="form-group">
+            <div class="form-group border p-3 mb-4">
               <input type="file" id="xml-input" name="xml" class="form-control-file" required>
             </div>
             
