@@ -19,6 +19,40 @@
               <input type="file" id="xml-input" name="xml" class="form-control-file" required>
             </div>
 
+            <div class="row">
+              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
+                {{-- Caption --}}
+                <div class="form-group">
+
+                  <div class="d-flex align-items-center">
+                    <textarea name="image_caption" class="form-control" id="caption" maxlength="255" rows="4" aria-describedby="caption" placeholder="Image caption (max 255 characters)">{{ old('image_caption') }}</textarea>
+                  </div>
+
+                  {{-- Error --}}
+                  @component('admin/snippets/error')
+                    image_caption
+                    @slot('feedback')
+                    {{ $errors->first('image_caption') }}
+                    @endslot
+                  @endcomponent
+                </div>   
+                {{-- Credits --}}
+                <div class="form-group">
+                  <div class="d-flex align-items-center">
+                    <input type="text" value="{{ old('image_credits') }}" name="image_credits" class="form-control" id="caption" aria-describedby="credits" placeholder="Image credits">         
+                  </div>
+
+                  {{-- Error --}}
+                  @component('admin/snippets/error')
+                    image_credits
+                    @slot('feedback')
+                    {{ $errors->first('image_credits') }}
+                    @endslot
+                  @endcomponent
+                </div>   
+
+              </div>
+            </div>
             <button type="submit" class="btn btn-dark">Upload XML</button>
           </form>
         </div>
