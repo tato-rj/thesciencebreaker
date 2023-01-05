@@ -65,7 +65,12 @@ class ArticlesController extends Controller
         // AUTHORS INFO
         $authors = $publication['authors'];
 
-        return $authors;
+        foreach ($authors as $author) {
+            $firstName = $author['givenname'];
+            dd($firstName);
+        }
+
+        return $publication;
 
         $keywords = $publication['keywords']['keyword'];
         foreach ($keywords as $keyword) {
