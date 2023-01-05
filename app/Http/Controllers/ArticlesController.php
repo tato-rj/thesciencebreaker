@@ -24,7 +24,9 @@ class ArticlesController extends Controller
 
     public function showXml()
     {        
-        return view('admin/pages/breaks/xml');
+        $editors = Manager::editors()->get();
+
+        return view('admin/pages/breaks/xml', compact('editors'));
     }
 
     public function showData(Request $request, $id)
