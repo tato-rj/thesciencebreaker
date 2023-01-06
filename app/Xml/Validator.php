@@ -55,6 +55,11 @@ class Validator
 		return $data;
 	}
 
+	public function keywords()
+	{
+        return $this->request['keywords']['keyword'] ?? [];
+	}
+
 	public function sanitize($data, $except = [])
 	{
 		foreach ($data as $field => $value) {

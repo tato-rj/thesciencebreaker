@@ -23,6 +23,7 @@ class Generator
 
         $this->validatedBreak = $validator->break();
         $this->validatedBreakers = $validator->breakers();
+        $this->validatedKeywords = $validator->keywords();
 	}
 
 	public function createBreak($attributes)
@@ -51,10 +52,6 @@ class Generator
 
 	public function createKeywords()
 	{
-        $keywords = $this->validatedBreak['keywords']['keyword'] ?? [];
-        // dd($keywords);
-        foreach ($keywords as $keyword) {
-            //CREATE KEYWORD
-        }
+		return $this->validatedKeywords;
 	}
 }

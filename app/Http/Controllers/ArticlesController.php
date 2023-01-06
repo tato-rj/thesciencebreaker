@@ -63,10 +63,10 @@ class ArticlesController extends Controller
         ]);
 
         $breakers = $generator->createBreakers();
-return $break;
-        // $keywords = $generator->createKeywords();
 
-        return $publication;
+        $keywords = $generator->createKeywords();
+
+        return $keywords;
 
         // $keywords = $publication['keywords']['keyword'];
         // foreach ($keywords as $keyword) {
