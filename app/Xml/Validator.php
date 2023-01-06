@@ -12,10 +12,13 @@ class Validator
 		$this->request = $request;
 	}
 
-	public function validate()
+	public function breaker()
 	{
-		$missing = [];
+		
+	}
 
+	public function break()
+	{
 		$data = [
 			'title' => $this->request['title'] ?? null,
 			'description' => $this->request['abstract'] ?? null,

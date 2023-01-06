@@ -18,21 +18,21 @@ class Generator
         $xmlData = json_decode($json, true); 
 
         \Storage::delete($path);
-dd($xmlData['publication']);
-        $this->publication = (new Validator($xmlData['publication']))->validate();
+
+        $this->validatedBreak = (new Validator($xmlData['publication']))->break();
 	}
 
 	public function createBreak($attributes)
 	{
 		$data = [
-            'title' => $this->publication['title'],
-            'slug' => str_slug($this->publication['title']),
-            'description' => $this->publication['description'],
-            'image_path' => 'https://oap.unige.ch/journals/public/journals/8/' . $this->publication['cover_image'],
-            'reading_time' => $this->publication['reading_time'],
-            'original_article' => $this->publication['original_article'],
-            'category_id' => $this->publication['category_id'],
-            'doi' => 'https://doi.org/' . $this->publication['doi'],
+            'title' => $this->validatedBreak['title'],
+            'slug' => str_slug($this->validatedBreak['title']),
+            'description' => $this->validatedBreak['description'],
+            'image_path' => 'https://oap.unige.ch/journals/public/journals/8/' . $this->validatedBreak['cover_image'],
+            'reading_time' => $this->validatedBreak['reading_time'],
+            'original_article' => $this->validatedBreak['original_article'],
+            'category_id' => $this->validatedBreak['category_id'],
+            'doi' => 'https://doi.org/' . $this->validatedBreak['doi'],
             'issue' => (new Article)->resources()->generateIssue(),
             'volume' => (new Article)->resources()->generateVolume(),
         ];
