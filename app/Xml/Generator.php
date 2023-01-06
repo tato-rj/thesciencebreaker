@@ -21,6 +21,6 @@ class Generator
 
 	public function createBreak()
 	{
-		return 'foo';
+		return $this->publication;
 	}
 }
