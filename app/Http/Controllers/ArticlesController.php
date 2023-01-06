@@ -53,28 +53,14 @@ class ArticlesController extends Controller
         
         $generator = (new Generator($request->xml));
 
-        return $generator->createBreak();        
-        // $path = \Storage::putFileAs('xml', $file, 'file.xml');
+        return $generator->createBreak([
+            'image_caption' => $request->image_caption,
+            'image_credits' => $request->image_credits,
+            'content' => $request->content,
+            'published_at' => $request->published_at ? Carbon::parse($request->published_at . $request->published_at_time) : null
+        ]);
 
-        // $xmlObject = simplexml_load_string(\Storage::get($path));
-        // $json = json_encode($xmlObject);
-        // $xmlData = json_decode($json, true); 
-
-        // \Storage::delete($path);
-
-        // $publication = $xmlData['publication'];
-
-        // BREAK INFO
-        $title = $publication['title'];
-        $description = $publication['abstract'];
-        $coverImage = 'https://oap.unige.ch/journals/public/journals/8/' . $publication['covers']['cover']['cover_image'];
-        $originalArticle = $publication['citations']['citation'];
-        $category = Category::byName($publication['@attributes']['section_ref'])->first();
-        $issue = $publication['issue_identification'];
-        $doi = 'https://doi.org/' . $publication['id'][1];
-
-        // CREATE BREAK
-
+        
         // AUTHORS INFO
         $authors = $publication['authors']['author'];
 

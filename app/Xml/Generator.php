@@ -2,6 +2,8 @@
 
 namespace App\Xml;
 
+use App\Models\Article;
+
 class Generator
 {
 	protected $publication;
@@ -19,8 +21,25 @@ class Generator
         $this->publication = $xmlData['publication'];
 	}
 
-	public function createBreak()
+	public function createBreak($attributes)
 	{
-		return $this->publication;
+		$data = [
+            'title' => $this->publication['title'],
+            'slug' => str_slug($this->publication['title']),
+            'description' => $this->publication['abstract'],
+            'image_path' => 'https://oap.unige.ch/journals/public/journals/8/' . $this->publication['covers']['cover']['cover_image'],
+            'reading_time' => $this->publication['Subjects']['subject'],
+            'original_article' => $this->publication['citations']['citation'],
+            'category_id' => Category::byName($this->publication['@attributes']['section_ref'])->first()->id,
+            'editor_id' => $this->editor_id,
+            'doi' => 'https://doi.org/' . $this->publication['id'][1],
+            // 'issue' => (new Article)->resources()->generateIssue(),
+            // 'volume' => (new Article)->resources()->generateVolume(),
+        ];
+
+        return array_merge($data, $attribute);
+        // Article::create(array_merge($data, $attribute));
+
+        return $this;
 	}
 }
