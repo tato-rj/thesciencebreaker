@@ -28,7 +28,7 @@ class Generator
             'slug' => str_slug($this->publication['title']),
             'description' => $this->publication['abstract'],
             'image_path' => 'https://oap.unige.ch/journals/public/journals/8/' . $this->publication['covers']['cover']['cover_image'],
-            'reading_time' => $this->publication['Subjects']['subject'],
+            'reading_time' => $this->publication['subjects']['subject'],
             'original_article' => $this->publication['citations']['citation'],
             'category_id' => Category::byName($this->publication['@attributes']['section_ref'])->first()->id,
             'editor_id' => $this->editor_id,
