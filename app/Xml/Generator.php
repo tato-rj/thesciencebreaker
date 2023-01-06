@@ -32,8 +32,8 @@ class Generator
             'original_article' => $this->publication['citations']['citation'],
             'category_id' => Category::byName($this->publication['@attributes']['section_ref'])->first()->id,
             'doi' => 'https://doi.org/' . $this->publication['id'][1],
-            // 'issue' => (new Article)->resources()->generateIssue(),
-            // 'volume' => (new Article)->resources()->generateVolume(),
+            'issue' => (new Article)->resources()->generateIssue(),
+            'volume' => (new Article)->resources()->generateVolume(),
         ];
 
         return array_merge($data, $attributes);
