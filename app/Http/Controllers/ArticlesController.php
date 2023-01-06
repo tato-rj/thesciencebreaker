@@ -63,12 +63,12 @@ class ArticlesController extends Controller
         // BREAK INFO
         $title = $publication['title'];
         $description = $publication['abstract'];
-        $coverImage = 'https://oap.unige.ch/journals/public/journals/8/' . 'MISSING!';
+        $coverImage = 'https://oap.unige.ch/journals/public/journals/8/' . $publication['covers']['cover']['cover_image'];
         $originalArticle = $publication['citations']['citation'];
         $category = Category::byName($publication['@attributes']['section_ref'])->first();
         $issue = $publication['issue_identification'];
         $doi = 'https://doi.org/' . $publication['id'][1];
-
+return $coverImage;
         // AUTHORS INFO
         $authors = $publication['authors']['author'];
 
