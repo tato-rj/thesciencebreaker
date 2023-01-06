@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Support\Facades\Lang;
 use App\Xml\Generator;
+use Carbon\Carbon;
 
 class ArticlesController extends Controller
 {
