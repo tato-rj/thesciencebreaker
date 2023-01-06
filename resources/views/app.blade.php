@@ -8,6 +8,15 @@
                 document.getElementById("recaptcha-form").submit();
             }
         </script> --}}
+        <style type="text/css">
+            .feedback.alert-danger ul {
+                list-style: none;
+            }
+
+            .feedback.alert-danger small {
+                color: red;
+            }
+        </style>
     </head>
     
     <body id="page-top">
