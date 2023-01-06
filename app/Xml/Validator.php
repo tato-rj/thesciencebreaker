@@ -22,11 +22,20 @@ class Validator
 		$data = [];
 
 		foreach ($breakers as $breaker) {
-			dd($breaker);
 			$info = [
-				'first_name' => $breaker['givenname']
+				'first_name' => $breaker['givenname'] ?? null,
+				'last_name' => $breaker['familyname'] ?? null,
+				'email' => $breaker['email'] ?? null,
+				'position' => $breaker['biography'] ? strip_tags($breaker['biography']) : null,
+				'research_institute' => $breaker['affiliation'] ?? null,
 			];
+
+			$this->sanitize($data, ['position', 'research_institute']);
+
+			array_push($data, $fields);
 		}
+
+		return $data;
 	}
 
 	public function break()
@@ -41,11 +50,16 @@ class Validator
 			'doi' => $this->request['id'][1] ?? null,
 		];
 
-		foreach ($data as $field => $value) {
+		$this->sanitize($data);
+
+		return $data;
+	}
+
+	public function sanitize($data, $except = [])
+	{
+		foreach (array_diff($data, $except) as $field => $value) {
 			if (! $value)
 				throw ValidationException::withMessages([$field => 'The '. $field .' is missing']);
 		}
-
-		return $data;
 	}
 }

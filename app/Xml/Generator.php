@@ -42,7 +42,10 @@ class Generator
 
         return array_merge($data, $attributes);
         // Article::create(array_merge($data, $attribute));
+	}
 
-        return $this;
+	public function createBreakers()
+	{
+		return $this->validatedBreakers;
 	}
 }

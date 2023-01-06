@@ -62,7 +62,9 @@ class ArticlesController extends Controller
             'published_at' => $request->published_at ? Carbon::parse($request->published_at . $request->published_at_time) : null
         ]);
 
-        return $break;
+        $breakers = $generator->createBreakers();
+
+        return $breakers;
         
         // AUTHORS INFO
         $authors = $publication['authors']['author'];
