@@ -17,7 +17,7 @@ class Validator
 		if (! $this->request['abstract'])
 			dd('The description is missing');
 
-		if (! $this->request['covers']['cover']['cover_image'])
+		if (! $this->request['coverjs']['cover']['cover_image'])
 			dd('The image is missing');
 
 		if (! $this->request['subjects']['subject'])
