@@ -31,7 +31,6 @@ class Generator
             'reading_time' => $this->publication['subjects']['subject'],
             'original_article' => $this->publication['citations']['citation'],
             'category_id' => Category::byName($this->publication['@attributes']['section_ref'])->first()->id,
-            'editor_id' => $this->editor_id,
             'doi' => 'https://doi.org/' . $this->publication['id'][1],
             // 'issue' => (new Article)->resources()->generateIssue(),
             // 'volume' => (new Article)->resources()->generateVolume(),

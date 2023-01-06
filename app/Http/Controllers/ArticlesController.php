@@ -55,6 +55,7 @@ class ArticlesController extends Controller
         $generator = (new Generator($request->xml));
 
         return $generator->createBreak([
+            'editor_id' => $request->editor_id,
             'image_caption' => $request->image_caption,
             'image_credits' => $request->image_credits,
             'content' => $request->content,
