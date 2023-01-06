@@ -2,6 +2,7 @@
 
 namespace App\Xml;
 
+use App\Xml\Validator;
 use App\{Article, Category};
 
 class Generator
@@ -18,12 +19,7 @@ class Generator
 
         \Storage::delete($path);
 
-        $this->publication = $this->validate($xmlData['publication']);
-	}
-
-	public function validate(array $request)
-	{
-		return $request;
+        $this->publication = (new Validator($xmlData['publication']))->validate();
 	}
 
 	public function createBreak($attributes)
