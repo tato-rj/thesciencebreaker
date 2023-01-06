@@ -57,7 +57,7 @@ dd($data);
 
 	public function sanitize($data, $except = [])
 	{
-		dd(array_diff($data, $except));
+		dd('here');
 		foreach (array_diff($data, $except) as $field => $value) {
 			if (! $value)
 				throw ValidationException::withMessages([$field => 'The '. $field .' is missing']);
