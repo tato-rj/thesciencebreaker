@@ -30,7 +30,7 @@ class Validator
 				'research_institute' => $breaker['affilghjiation'] ?? null,
 			];
 
-			$this->sanitize($info, ['position', 'research_institute']);
+			$this->sanitize($info);
 
 			array_push($data, $info);
 		}
