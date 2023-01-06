@@ -7,7 +7,7 @@
 		@if($errors->any())
 		<ul class="m-0 p-1 pl-3">
 			@foreach ($errors->all() as $error)
-				<li><small>{{ $error }}</small></li>
+				<li><small class="text-danger">{{ $error }}</small></li>
 			@endforeach
 		</ul>
 		@endif
