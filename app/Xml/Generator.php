@@ -24,16 +24,15 @@ class Generator
 
 	public function createBreak($attributes)
 	{
-		dd($this->publication);
 		$data = [
             'title' => $this->publication['title'],
             'slug' => str_slug($this->publication['title']),
-            'description' => $this->publication['abstract'],
-            'image_path' => 'https://oap.unige.ch/journals/public/journals/8/' . $this->publication['covers']['cover']['cover_image'],
-            'reading_time' => $this->publication['subjects']['subject'],
-            'original_article' => $this->publication['citations']['citation'],
-            'category_id' => Category::byName($this->publication['@attributes']['section_ref'])->first()->id,
-            'doi' => 'https://doi.org/' . $this->publication['id'][1],
+            'description' => $this->publication['description'],
+            'image_path' => 'https://oap.unige.ch/journals/public/journals/8/' . $this->publication['cover_image'],
+            'reading_time' => $this->publication['reading_time'],
+            'original_article' => $this->publication['original_article'],
+            'category_id' => Category::byName($this->publication['category'])->first()->id,
+            'doi' => 'https://doi.org/' . $this->publication['doi'],
             'issue' => (new Article)->resources()->generateIssue(),
             'volume' => (new Article)->resources()->generateVolume(),
         ];
