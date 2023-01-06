@@ -36,7 +36,7 @@ class Generator
             // 'volume' => (new Article)->resources()->generateVolume(),
         ];
 
-        return array_merge($data, $attribute);
+        return array_merge($data, $attributes);
         // Article::create(array_merge($data, $attribute));
 
         return $this;
