@@ -44,7 +44,6 @@ class ArticlesController extends Controller
         $request->validate([
             'xml' => 'required|file|mimes:xml',
             'content' => 'required',
-            'reading_time' => 'required',
             'editor_id' => 'required',
             'image_caption' => 'max:255',
             'image_credits' => 'max:144'
