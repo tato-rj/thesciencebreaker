@@ -4,16 +4,6 @@ namespace App\Xml;
 
 class Validator
 {
-	protected $fields = [
-		'title' => 'title',
-		'abstract' => 'description',
-		'covers|cover|cover_image' => 'image',
-		'subjects|subject' => 'reading time',
-		'citations|citation' => 'original_article',
-		'@attributes|section_ref' => 'category',
-		'id' => 'doi'
-	];
-
 	function __construct(array $request)
 	{
 		$this->request = $request;
@@ -21,12 +11,26 @@ class Validator
 
 	public function validate()
 	{
-		foreach ($this->fields as $key => $name) {
-			$field = explode('|', $key);
+		if (! $this->request['title'])
+			dd('The title is missing');
 
-			if (! array_key_exists($field, $this->request))
-				dd('The ' . $name . ' is missing!');
-		}
+		if (! $this->request['abstract'])
+			dd('The description is missing');
+
+		if (! $this->request['covers']['cover']['cover_image'])
+			dd('The image is missing');
+
+		if (! $this->request['subjects']['subject'])
+			dd('The reading time is missing');
+
+		if (! $this->request['citations']['citation'])
+			dd('The original article is missing');
+
+		if (! $this->request['@attributes']['section_ref'])
+			dd('The category is missing');
+
+		if (! $this->request['id'])
+			dd('The doi is missing');
 
 		return $this->request;
 	}
