@@ -50,7 +50,7 @@ class Generator
         $breakers = collect();
 
         foreach ($this->validatedBreakers as $breaker) {
-        	$authors->push(Author::firstOrCreate([
+        	$breakers->push(Author::firstOrCreate([
         		'first_name' => $breaker['first_name'], 
         		'last_name' => $breaker['last_name']
         	], [
