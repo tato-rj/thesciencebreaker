@@ -26,9 +26,9 @@ class Generator
 	{
 		$data = [
             'title' => $this->publication['title'],
-            'slug' => str_slug($this->publication['title']),
+            'slug' => $this->publication['slug'],
             'description' => $this->publication['description'],
-            'image_path' => 'https://oap.unige.ch/journals/public/journals/8/' . $this->publication['cover_image'],
+            'image_path' => $this->publication['cover_image'],
             'reading_time' => $this->publication['reading_time'],
             'original_article' => $this->publication['original_article'],
             'category_id' => $this->publication['category_id'],
