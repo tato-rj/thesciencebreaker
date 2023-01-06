@@ -48,4 +48,13 @@ class Generator
 	{
 		return $this->validatedBreakers;
 	}
+
+	public function createKeywords()
+	{
+        $keywords = $this->validatedBreak['keywords']['keyword'] ?? [];
+        // dd($keywords);
+        foreach ($keywords as $keyword) {
+            //CREATE KEYWORD
+        }
+	}
 }

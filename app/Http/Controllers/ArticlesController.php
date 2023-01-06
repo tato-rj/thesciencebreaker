@@ -63,28 +63,8 @@ class ArticlesController extends Controller
         ]);
 
         $breakers = $generator->createBreakers();
-
-        return $breakers;
-        
-        // AUTHORS INFO
-        $authors = $publication['authors']['author'];
-
-        foreach ($authors as $author) {
-            $firstName = $author['givenname'];
-            $lastName = $author['familyname'];
-            $email = $author['email'];
-            $position = $author['biography'];
-            $researchInstitute = $author['affiliation'];
-            
-            //CREATE AUTHOR
-        }
-
-        // KEYWORDS INFO
-        $keywords = $publication['keywords']['keyword'];
-
-        foreach ($keywords as $keyword) {
-            //CREATE KEYWORD
-        }
+return $break;
+        // $keywords = $generator->createKeywords();
 
         return $publication;
 
