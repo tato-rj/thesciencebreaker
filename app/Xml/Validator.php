@@ -27,7 +27,7 @@ class Validator
 				'last_name' => $breaker['familyname'] ?? null,
 				'email' => $breaker['email'] ?? null,
 				'position' => $breaker['biography'] ? preg_replace('/\s/', ' ', strip_tags($breaker['biography'])) : null,
-				'research_institute' => $breaker['affiliation'] ?? null,
+				'research_institute' => $breaker['affilghjiation'] ?? null,
 			];
 
 			$this->sanitize($info, ['position', 'research_institute']);
