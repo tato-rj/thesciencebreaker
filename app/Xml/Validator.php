@@ -27,8 +27,7 @@ class Validator
 
 		foreach ($data as $field => $value) {
 			if (! $value)
-				throw ValidationException::withMessages(['field_name' => 'This value is incorrect']);
-				// return 'The ' . $field . ' is missing';
+				throw ValidationException::withMessages([$field => 'This is missing']);
 		}
 
 		return $data;

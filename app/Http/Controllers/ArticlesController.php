@@ -54,7 +54,7 @@ class ArticlesController extends Controller
         
         $generator = (new Generator($request->xml));
 
-        return $generator->createBreak([
+        $break = $generator->createBreak([
             'editor_id' => $request->editor_id,
             'image_caption' => $request->image_caption,
             'image_credits' => $request->image_credits,
@@ -62,6 +62,7 @@ class ArticlesController extends Controller
             'published_at' => $request->published_at ? Carbon::parse($request->published_at . $request->published_at_time) : null
         ]);
 
+        return $break;
         
         // AUTHORS INFO
         $authors = $publication['authors']['author'];
