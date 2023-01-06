@@ -51,7 +51,7 @@ class Validator
 		];
 
 		$this->sanitize($data);
-dd(Article::where('title', 'LIKE', '%'.$data['title'].'%')->exists());
+dd(Article::where('title', 'LIKE', '%'.'foo bar tar'.'%')->exists());
 		if (Article::where('slug', str_slug($data['title']))->exists())
 			throw ValidationException::withMessages(['break' => 'This break already exists']);
 		
