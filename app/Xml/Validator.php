@@ -34,7 +34,7 @@ class Validator
 
 			array_push($data, $info);
 		}
-
+dd($data);
 		return $data;
 	}
 
