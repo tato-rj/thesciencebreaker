@@ -27,14 +27,14 @@ class Validator
 				'last_name' => $breaker['familyname'] ?? null,
 				'email' => $breaker['email'] ?? null,
 				'position' => $breaker['biography'] ? preg_replace('/\s/', ' ', strip_tags($breaker['biography'])) : null,
-				'research_institute' => $breaker['affilghjiation'] ?? null,
+				'research_institute' => $breaker['affiliation'] ?? null,
 			];
 
-			$this->sanitize($info);
+			$this->sanitize($info, $except = ['position', 'research_institute']);
 
 			array_push($data, $info);
 		}
-dd($data);
+
 		return $data;
 	}
 

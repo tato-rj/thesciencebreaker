@@ -54,13 +54,13 @@ class ArticlesController extends Controller
         
         $generator = (new Generator($request->xml));
 
-        // $break = $generator->createBreak([
-        //     'editor_id' => $request->editor_id,
-        //     'image_caption' => $request->image_caption,
-        //     'image_credits' => $request->image_credits,
-        //     'content' => $request->content,
-        //     'published_at' => $request->published_at ? Carbon::parse($request->published_at . $request->published_at_time) : null
-        // ]);
+        $break = $generator->createBreak([
+            'editor_id' => $request->editor_id,
+            'image_caption' => $request->image_caption,
+            'image_credits' => $request->image_credits,
+            'content' => $request->content,
+            'published_at' => $request->published_at ? Carbon::parse($request->published_at . $request->published_at_time) : null
+        ]);
 
         $breakers = $generator->createBreakers();
 
