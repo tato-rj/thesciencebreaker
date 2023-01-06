@@ -24,6 +24,7 @@ class Generator
 
 	public function createBreak($attributes)
 	{
+		dd($this->publication);
 		$data = [
             'title' => $this->publication['title'],
             'slug' => str_slug($this->publication['title']),

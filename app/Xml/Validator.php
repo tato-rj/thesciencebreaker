@@ -18,7 +18,7 @@ class Validator
 			'reading_time' => $this->request['subjects']['subject'] ?? null,
 			'original_article' => $this->request['citations']['citation'] ?? null,
 			'category' => $this->request['@attributes']['section_ref'] ?? null,
-			'doi' => $this->request['id'] ?? null,
+			'doi' => $this->request['id'][1] ?? null,
 		];
 
 		foreach ($data as $field => $value) {
@@ -26,6 +26,6 @@ class Validator
 				dd('The ' . $field . ' is missing');
 		}
 
-		return $this->request;
+		return $data;
 	}
 }
