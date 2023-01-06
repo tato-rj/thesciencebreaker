@@ -3,7 +3,7 @@
 namespace App\Xml;
 
 use App\Xml\Validator;
-use App\Article;
+use App\{Article, Tag};
 
 class Generator
 {
@@ -52,6 +52,12 @@ class Generator
 
 	public function createKeywords()
 	{
-		return $this->validatedKeywords;
+		$tags = collect();
+
+        foreach ($this->validatedKeywords as $keyword) {
+            $tags->push(Tag::firstOrCreate(['name' => $keyword]));
+        }
+
+        return $tags;
 	}
 }
