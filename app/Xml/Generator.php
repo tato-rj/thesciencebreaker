@@ -2,7 +2,7 @@
 
 namespace App\Xml;
 
-use App\Models\{Article, Category};
+use App\{Article, Category};
 
 class Generator
 {
