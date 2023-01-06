@@ -62,16 +62,13 @@ class ArticlesController extends Controller
             'published_at' => $request->published_at ? Carbon::parse($request->published_at . $request->published_at_time) : null
         ]);
 
-        $breakers = $generator->createBreakers();
+        foreach ($generator->createBreakers() as $breaker) {
+            $break->authors()->attach($breaker);
+        }
 
-        $keywords = $generator->createKeywords();
+        $break->tags()->attach($generator->createKeywords());
 
-        return $breakers;
-
-        // $editors = Manager::editors()->get();
-        // $tags = Tag::orderBy('name')->get();
-
-        // return view('admin/pages/breaks/add', compact(['editors', 'authors', 'tags', 'publication', 'keywords']));
+        return redirect()->back()->with('db_feedback', 'The Break has been created');
     }
 
     public function index()

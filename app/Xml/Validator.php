@@ -40,6 +40,7 @@ class Validator
 
 	public function break()
 	{
+		dd('here');
 		$data = [
 			'title' => $this->request['title'] ?? null,
 			'description' => $this->request['abstract'] ?? null,
