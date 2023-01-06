@@ -47,24 +47,21 @@ class Generator
 
 	public function createBreakers()
 	{
-		dd($this->validatedBreakers);
-        // $authors = collect([]);
-        // foreach ($publication['authors']['author'] as $author) {
-        //     if ($current = Author::where(['first_name' => $author['givenname'], 'last_name' => $author['familyname']])->first()) {
-        //         $authors->push($current);
-        //     } else {
-        //         $authors->push(Author::create([
-        //             'first_name' => $author['givenname'],
-        //             'last_name' => $author['familyname'],
-        //             'slug' => str_slug($author['givenname'].' '.$author['familyname']),
-        //             'email' => $author['email'],
-        //             'position' => strip_tags($author['biography']),
-        //             'research_institute' => $author['affiliation'],
-        //         ]));
-        //     }
-        // }
+        $breakers = collect();
 
-		return $this->validatedBreakers;
+        foreach ($this->validatedBreakers as $breaker) {
+        	$authors->push(Author::firstOrCreate([
+        		'first_name' => $breaker['first_name'], 
+        		'last_name' => $breaker['last_name']
+        	], [
+                'slug' => str_slug($breaker['first_name'].' '.$breaker['last_name']),
+                'email' => $breaker['email'],
+                'position' => $breaker['position'],
+                'research_institute' => $breaker['research_institute'],
+        	]));
+        }
+
+		return $breakers;
 	}
 
 	public function createKeywords()

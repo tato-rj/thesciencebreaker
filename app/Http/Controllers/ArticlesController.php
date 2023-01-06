@@ -66,7 +66,7 @@ class ArticlesController extends Controller
 
         $keywords = $generator->createKeywords();
 
-        return $keywords;
+        return $breakers;
 
         // $editors = Manager::editors()->get();
         // $tags = Tag::orderBy('name')->get();
