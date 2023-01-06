@@ -32,7 +32,7 @@ class Generator
             'reading_time' => $this->publication['reading_time'],
             'original_article' => $this->publication['original_article'],
             'category_id' => $this->publication['category_id'],
-            'doi' => 'https://doi.org/' . $this->publication['doi'],
+            'doi' => $this->publication['doi'],
             'issue' => (new Article)->resources()->generateIssue(),
             'volume' => (new Article)->resources()->generateVolume(),
         ];
