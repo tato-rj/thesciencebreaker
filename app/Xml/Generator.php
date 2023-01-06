@@ -18,7 +18,7 @@ class Generator
         $xmlData = json_decode($json, true); 
 
         \Storage::delete($path);
-
+dd($xmlData['publication']);
         $this->publication = (new Validator($xmlData['publication']))->validate();
 	}
 
@@ -37,7 +37,6 @@ class Generator
             'volume' => (new Article)->resources()->generateVolume(),
         ];
 
-        return $this->publication;
         return array_merge($data, $attributes);
         // Article::create(array_merge($data, $attribute));
 
