@@ -18,7 +18,12 @@ class Generator
 
         \Storage::delete($path);
 
-        $this->publication = $xmlData['publication'];
+        $this->publication = $this->validate($xmlData['publication']);
+	}
+
+	public function validate(array $request)
+	{
+		return $request;
 	}
 
 	public function createBreak($attributes)
@@ -28,7 +33,7 @@ class Generator
             'slug' => str_slug($this->publication['title']),
             'description' => $this->publication['abstract'],
             'image_path' => 'https://oap.unige.ch/journals/public/journals/8/' . $this->publication['covers']['cover']['cover_image'],
-            'reading_time' => $this->publication['subjdects']['subject'] ?? 'foo',
+            'reading_time' => $this->publication['subjects']['subject'],
             'original_article' => $this->publication['citations']['citation'],
             'category_id' => Category::byName($this->publication['@attributes']['section_ref'])->first()->id,
             'doi' => 'https://doi.org/' . $this->publication['id'][1],
