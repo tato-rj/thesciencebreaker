@@ -3,7 +3,7 @@
 namespace App\Xml;
 
 use App\Xml\Validator;
-use App\{Article, Tag};
+use App\{Article, Tag, Author};
 
 class Generator
 {
@@ -47,6 +47,23 @@ class Generator
 
 	public function createBreakers()
 	{
+		dd($this->validatedBreakers);
+        // $authors = collect([]);
+        // foreach ($publication['authors']['author'] as $author) {
+        //     if ($current = Author::where(['first_name' => $author['givenname'], 'last_name' => $author['familyname']])->first()) {
+        //         $authors->push($current);
+        //     } else {
+        //         $authors->push(Author::create([
+        //             'first_name' => $author['givenname'],
+        //             'last_name' => $author['familyname'],
+        //             'slug' => str_slug($author['givenname'].' '.$author['familyname']),
+        //             'email' => $author['email'],
+        //             'position' => strip_tags($author['biography']),
+        //             'research_institute' => $author['affiliation'],
+        //         ]));
+        //     }
+        // }
+
 		return $this->validatedBreakers;
 	}
 
