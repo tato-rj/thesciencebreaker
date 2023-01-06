@@ -32,7 +32,7 @@ class Validator
 
 			$this->sanitize($data, ['position', 'research_institute']);
 
-			array_push($data, $fields);
+			array_push($data, $info);
 		}
 
 		return $data;
