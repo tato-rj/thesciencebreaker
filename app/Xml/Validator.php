@@ -3,7 +3,7 @@
 namespace App\Xml;
 
 use Illuminate\Validation\ValidationException;
-use App\Category;
+use App\{Category, Article};
 
 class Validator
 {
@@ -40,7 +40,6 @@ class Validator
 
 	public function break()
 	{
-		dd('here');
 		$data = [
 			'title' => $this->request['title'] ?? null,
 			'description' => $this->request['abstract'] ?? null,
@@ -53,6 +52,9 @@ class Validator
 
 		$this->sanitize($data);
 
+		if (Article::where('slug', str_slug($data['title']))->exists())
+			throw ValidationException::withMessages(['break' => 'This break already exists']);
+		
 		return $data;
 	}
 
