@@ -18,7 +18,7 @@ class Validator
 
 		$data = [
 			'title' => $this->request['title'] ?? null,
-			'slug' => str_slug($this->publication['title'] ?? null) ?? null,
+			'slug' => str_slug($this->request['title'] ?? null) ?? null,
 			'description' => $this->request['abstract'] ?? null,
 			'cover_image' => 'https://oap.unige.ch/journals/public/journals/8/' . $this->request['covers']['cover']['cover_image'] ?? null,
 			'reading_time' => $this->request['subjects']['subject'] ?? null,
