@@ -19,7 +19,7 @@ class Validator
 		$data = [
 			'title' => $this->request['title'] ?? null,
 			'description' => $this->request['abstract'] ?? null,
-			'cover_image' => $this->request['covers']['cover']['cover_image'] ?? null,
+			'cover_image' => $this->request['coversss']['cover']['cover_image'] ?? null,
 			'reading_time' => $this->request['subjects']['subject'] ?? null,
 			'original_article' => $this->request['citations']['citation'] ?? null,
 			'category_id' => Category::byName($this->request['@attributes']['section_ref'] ?? null)->first()->id ?? null,
