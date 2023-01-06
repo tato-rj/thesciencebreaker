@@ -27,7 +27,7 @@ class Validator
 				'last_name' => $breaker['familyname'] ?? null,
 				'email' => $breaker['email'] ?? null,
 				'position' => $breaker['biography'] ? preg_replace('/\s/', ' ', strip_tags($breaker['biography'])) : null,
-				'research_institute' => $breaker['affihliation'] ?? null,
+				'research_institute' => $breaker['affiliation'] ?? null,
 			];
 
 			$this->sanitize($info, ['position', 'research_institute']);
@@ -57,6 +57,7 @@ dd($data);
 
 	public function sanitize($data, $except = [])
 	{
+		dd(array_diff($data, $except));
 		foreach (array_diff($data, $except) as $field => $value) {
 			if (! $value)
 				throw ValidationException::withMessages([$field => 'The '. $field .' is missing']);
