@@ -12,9 +12,21 @@ class Validator
 		$this->request = $request;
 	}
 
-	public function breaker()
+	public function breakers()
 	{
-		
+		$breakers = $this->request['authors']['author'] ?? null;
+
+		if (! $breakers)
+			throw ValidationException::withMessages(['authors' => 'The author is missing']);
+
+		$data = [];
+
+		foreach ($breakers as $breaker) {
+			dd($breaker);
+			$info = [
+				'first_name' => $breaker['givenname']
+			];
+		}
 	}
 
 	public function break()

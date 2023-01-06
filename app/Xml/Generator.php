@@ -19,7 +19,10 @@ class Generator
 
         \Storage::delete($path);
 
-        $this->validatedBreak = (new Validator($xmlData['publication']))->break();
+        $validator = (new Validator($xmlData['publication']));
+
+        $this->validatedBreak = $validator->break();
+        $this->validatedBreakers = $validator->breakers();
 	}
 
 	public function createBreak($attributes)
