@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Support\Facades\Lang;
+use App\Xml\Generator;
 
 class ArticlesController extends Controller
 {
@@ -50,15 +51,18 @@ class ArticlesController extends Controller
 
         $file = $request->xml;
         
-        $path = \Storage::putFileAs('xml', $file, 'file.xml');
+        $generator = (new Generator($request->xml));
 
-        $xmlObject = simplexml_load_string(\Storage::get($path));
-        $json = json_encode($xmlObject);
-        $xmlData = json_decode($json, true); 
+        return $generator->createBreak();        
+        // $path = \Storage::putFileAs('xml', $file, 'file.xml');
 
-        \Storage::delete($path);
+        // $xmlObject = simplexml_load_string(\Storage::get($path));
+        // $json = json_encode($xmlObject);
+        // $xmlData = json_decode($json, true); 
 
-        $publication = $xmlData['publication'];
+        // \Storage::delete($path);
+
+        // $publication = $xmlData['publication'];
 
         // BREAK INFO
         $title = $publication['title'];
@@ -68,7 +72,9 @@ class ArticlesController extends Controller
         $category = Category::byName($publication['@attributes']['section_ref'])->first();
         $issue = $publication['issue_identification'];
         $doi = 'https://doi.org/' . $publication['id'][1];
-return $coverImage;
+
+        // CREATE BREAK
+
         // AUTHORS INFO
         $authors = $publication['authors']['author'];
 
