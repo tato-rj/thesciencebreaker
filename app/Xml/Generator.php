@@ -37,6 +37,7 @@ class Generator
             'volume' => (new Article)->resources()->generateVolume(),
         ];
 
+        return $this->publication;
         return array_merge($data, $attributes);
         // Article::create(array_merge($data, $attribute));
 
