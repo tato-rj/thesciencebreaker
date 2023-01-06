@@ -3,7 +3,7 @@
 namespace App\Xml;
 
 use App\Xml\Validator;
-use App\{Article, Category};
+use App\Article;
 
 class Generator
 {
@@ -31,7 +31,7 @@ class Generator
             'image_path' => 'https://oap.unige.ch/journals/public/journals/8/' . $this->publication['cover_image'],
             'reading_time' => $this->publication['reading_time'],
             'original_article' => $this->publication['original_article'],
-            'category_id' => Category::byName($this->publication['category'])->first()->id,
+            'category_id' => $this->publication['category_id'],
             'doi' => 'https://doi.org/' . $this->publication['doi'],
             'issue' => (new Article)->resources()->generateIssue(),
             'volume' => (new Article)->resources()->generateVolume(),
