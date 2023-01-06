@@ -11,12 +11,12 @@
         @endslot
       @endcomponent
 
-      <div class="bg-light mb-4 p-3">
+{{--       <div class="bg-light mb-4 p-3">
         <form action="http://tsb.rikvoorhaar.com/" method="POST" enctype="multipart/form-data">
           <input type="file" name="json">
           <button type="submit">Submit</button>
         </form>
-      </div>
+      </div> --}}
 
       <div class="row mt-4">
         <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
