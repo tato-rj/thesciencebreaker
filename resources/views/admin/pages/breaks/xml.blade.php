@@ -91,7 +91,7 @@
                         <div class="form-group">
                   {{-- Reading time --}}
                
-                  <div class="input-group col-3 pl-0">
+                  <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-hourglass-half" aria-hidden="true"></i></div>
                     <input required type="text" value="{{ old('reading_time') }}" name="reading_time" size="4" class="form-control" id="reading_time" placeholder="Reading time">
                   </div>
