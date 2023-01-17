@@ -12,6 +12,10 @@
 #break-text > div {
     margin-bottom: 0 !important;
 }
+
+#break-text p {
+    margin-borrom: 1.4rem !important;
+}
         </style>
     </head>
     
