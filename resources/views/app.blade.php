@@ -8,6 +8,11 @@
                 document.getElementById("recaptcha-form").submit();
             }
         </script> --}}
+        <style type="text/css">
+#break-text > div {
+    margin-bottom: 1rem;
+}
+        </style>
     </head>
     
     <body id="page-top">
