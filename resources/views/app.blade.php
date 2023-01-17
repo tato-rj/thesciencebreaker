@@ -10,7 +10,7 @@
         </script> --}}
         <style type="text/css">
 #break-text > div {
-    margin-bottom: 1rem;
+    margin-bottom: 0 !important;
 }
         </style>
     </head>
