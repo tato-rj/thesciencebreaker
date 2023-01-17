@@ -31,7 +31,7 @@ class Generator
 		$data = [
             'title' => $this->validatedBreak['title'],
             'slug' => str_slug($this->validatedBreak['title']),
-            'description' => $this->validatedBreak['description'],
+            'description' => strip_tags($this->validatedBreak['description']),
             'image_path' => 'https://oap.unige.ch/journals/public/journals/8/' . $this->validatedBreak['cover_image'],
             'reading_time' => $this->validatedBreak['reading_time'],
             'original_article' => $this->validatedBreak['original_article'],
