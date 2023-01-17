@@ -68,7 +68,7 @@ class Generator
 		$tags = collect();
 
         foreach ($this->validatedKeywords as $keyword) {
-            $tags->push(Tag::firstOrCreate(['name' => $keyword]));
+            $tags->push(Tag::firstOrCreate(['name' => $keyword])->id);
         }
 
         return $tags;
