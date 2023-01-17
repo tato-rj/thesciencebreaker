@@ -14,7 +14,7 @@
 }
 
 #break-text p {
-    margin-borrom: 1.4rem !important;
+    margin-bottom: 1.4rem !important;
 }
         </style>
     </head>
