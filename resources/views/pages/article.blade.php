@@ -1,6 +1,11 @@
 @extends('app', ['pagetitle' => $article->title])
 
 @section('earlyJS')
+<style type="text/css">
+#break-text > div {
+	margin-bottom: 1rem;
+}
+</style>
 <script>
 	window.fbAsyncInit = function() {
 		FB.init({
