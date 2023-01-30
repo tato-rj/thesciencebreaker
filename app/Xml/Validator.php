@@ -22,6 +22,7 @@ class Validator
 		$data = [];
 
 		foreach ($breakers as $breaker) {
+			dd($breaker['givenname']);
 			$info = [
 				'first_name' => $breaker['givenname'] ?? null,
 				'last_name' => $breaker['familyname'] ?? null,
