@@ -21,10 +21,9 @@ class Generator
 
         $validator = (new Validator($xmlData['publication']));
 
-        // $this->validatedBreak = $validator->break();
+        $this->validatedBreak = $validator->break();
         $this->validatedBreakers = $validator->breakers();
         $this->validatedKeywords = $validator->keywords();
-        dd('Validation worked!');
 	}
 
 	public function createBreak($attributes)
