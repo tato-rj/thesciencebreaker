@@ -20,7 +20,7 @@ class Validator
 			throw ValidationException::withMessages(['authors' => 'The author is missing']);
 
 		$data = [];
-dd($breakers);
+dd($this->request['authors']['author']);
 		foreach ($breakers as $breaker) {
 			$info = [
 				'first_name' => $breaker['givenname'] ?? null,
