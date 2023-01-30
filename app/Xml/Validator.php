@@ -39,14 +39,13 @@ class Validator
 				array_push($data, $info);
 			}
 		} else {
-			dd($breaker);
 			$info = [
-				'first_name' => $breaker['givenname'] ?? null,
-				'last_name' => $breaker['familyname'] ?? null,
-				'email' => $breaker['email'] ?? null,
-				'position' => $breaker['biography'] ?? null,
+				'first_name' => $breakers['givenname'] ?? null,
+				'last_name' => $breakers['familyname'] ?? null,
+				'email' => $breakers['email'] ?? null,
+				'position' => $breakers['biography'] ?? null,
 				// 'position' => $breaker['biography'] ? preg_replace('/\s/', ' ', strip_tags($breaker['biography'])) : null,
-				'research_institute' => $breaker['affiliation'] ?? null,
+				'research_institute' => $breakers['affiliation'] ?? null,
 			];
 
 			$this->sanitize($info, $except = ['research_institute']);
