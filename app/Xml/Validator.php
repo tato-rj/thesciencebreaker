@@ -20,9 +20,8 @@ class Validator
 			throw ValidationException::withMessages(['authors' => 'The author is missing']);
 
 		$data = [];
-
+dd($breakers);
 		foreach ($breakers as $breaker) {
-			dd($breaker);
 			$info = [
 				'first_name' => $breaker['givenname'] ?? null,
 				'last_name' => $breaker['familyname'] ?? null,
