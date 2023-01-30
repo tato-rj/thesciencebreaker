@@ -39,6 +39,7 @@ class Validator
 				array_push($data, $info);
 			}
 		} else {
+			dd($breaker);
 			$info = [
 				'first_name' => $breaker['givenname'] ?? null,
 				'last_name' => $breaker['familyname'] ?? null,
