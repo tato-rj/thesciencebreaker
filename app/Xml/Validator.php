@@ -24,12 +24,21 @@ class Validator
 		$keys = array_keys($breakers);
 
 		if ($keys[0] === 0) {
-			dd('Many authors');
-		} else {
-			dd('Single author');
-		}
+			foreach ($breakers as $breaker) {
+				$info = [
+					'first_name' => $breaker['givenname'] ?? null,
+					'last_name' => $breaker['familyname'] ?? null,
+					'email' => $breaker['email'] ?? null,
+					'position' => $breaker['biography'] ?? null,
+					// 'position' => $breaker['biography'] ? preg_replace('/\s/', ' ', strip_tags($breaker['biography'])) : null,
+					'research_institute' => $breaker['affiliation'] ?? null,
+				];
 
-		foreach ($breakers as $breaker) {
+				$this->sanitize($info, $except = ['research_institute']);
+
+				array_push($data, $info);
+			}
+		} else {
 			$info = [
 				'first_name' => $breaker['givenname'] ?? null,
 				'last_name' => $breaker['familyname'] ?? null,
