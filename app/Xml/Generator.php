@@ -20,7 +20,7 @@ class Generator
         \Storage::delete($path);
 
         $validator = (new Validator($xmlData['publication']));
-
+dd($xmlData['publication']);
         $this->validatedBreak = $validator->break();
         $this->validatedBreakers = $validator->breakers();
         $this->validatedKeywords = $validator->keywords();
