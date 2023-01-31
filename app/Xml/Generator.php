@@ -55,7 +55,7 @@ class Generator
         	], [
                 'slug' => str_slug($breaker['first_name'].' '.$breaker['last_name']),
                 'email' => $breaker['email'],
-                'position' => $breaker['position'],
+                'position' => strip_tags($breaker['position']),
                 'research_institute' => strip_tags($breaker['research_institute']),
         	]));
         }
