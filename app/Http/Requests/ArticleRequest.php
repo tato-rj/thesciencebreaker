@@ -93,10 +93,10 @@ class ArticleRequest extends Form
             'published_at' => $this->published_at ? Carbon::parse($this->published_at . $this->published_at_time) : null
         ]);
 
-        $path = $this->saveFile();
+        // $path = $this->saveFile();
 
-        if ($path)
-            $article->update(['image_path' => $path]);
+        // if ($path)
+            // $article->update(['image_path' => $path]);
 
         if ($this->update_url)
             $article->update(['slug' => $this->slug]);
