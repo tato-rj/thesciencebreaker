@@ -28,7 +28,7 @@
           @foreach ($categories as $category)
           <optgroup label="{{ $category->name }}">
             @foreach ($category->articles as $break)
-            <option data-slug="{{ $break->slug }}">{{ $break->title }} | <span class="ml-2">{{ $break->created_at->toFormattedDateString() }}</span></option>
+            <option data-slug="{{ $break->slug }}">{{ $break->title }} | <span class="ml-2">{{ $break->published_at ? $break->published_at->toFormattedDateString() : 'Not yet published' }}</span></option>
             @endforeach
           </optgroup>
           @endforeach
