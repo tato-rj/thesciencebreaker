@@ -33,7 +33,7 @@ class Generator
             'slug' => str_slug($this->validatedBreak['title']),
             'description' => strip_tags($this->validatedBreak['description']),
             'image_path' => 'https://oap.unige.ch/journals/public/journals/8/' . $this->validatedBreak['cover_image'],
-            'reading_time' => $this->validatedBreak['reading_time'],
+            'reading_time' => floatval($this->validatedBreak['reading_time']),
             'original_article' => $this->validatedBreak['original_article'],
             'category_id' => $this->validatedBreak['category_id'],
             'doi' => 'https://doi.org/' . $this->validatedBreak['doi'],
