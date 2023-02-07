@@ -20,7 +20,7 @@
 					<option value="{{ $articles->total() }}" {{ (Request::input('show') == $articles->total()) ? 'selected' : '' }}>{{__('global.sort_bar.all')}}</option>
 				@endslot
 				@slot('sort')
-					<option value="created_at" {{ (Request::input('sort') == 'created_at') ? 'selected' : '' }}>{{__('global.sort_bar.date')}}</option>
+					<option value="created_at" {{ (Request::input('sort') == 'published_at') ? 'selected' : '' }}>{{__('global.sort_bar.date')}}</option>
 					<option value="views" {{ (Request::input('sort') == 'views') ? 'selected' : '' }}>{{__('global.sort_bar.popular')}}</option>
 					<option value="title" {{ (Request::input('sort') == 'title') ? 'selected' : '' }}>{{__('global.sort_bar.title')}}</option>
 					<option value="reading_time" {{ (Request::input('sort') == 'reading_time') ? 'selected' : '' }}>{{__('global.sort_bar.reading_time')}}</option>
