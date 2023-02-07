@@ -15,7 +15,7 @@
 									</a>
 								</h3>
 								<div>
-									<small class="d-block">{{ $latest->created_at->toFormattedDateString() }} {{__('global.in')}} <a class="breaker" href="{{ $latest->paths()->route() }}"><strong>{{__('categories.'.$latest->category->slug)}}</strong></a> | {{ $latest->reading_time }} min {{__('global.read')}}</small>
+									<small class="d-block">{{ $latest->published_at->toFormattedDateString() }} {{__('global.in')}} <a class="breaker" href="{{ $latest->paths()->route() }}"><strong>{{__('categories.'.$latest->category->slug)}}</strong></a> | {{ $latest->reading_time }} min {{__('global.read')}}</small>
 									<small class="d-block l-height-1">{{__('global.by')}} 
 										@foreach ($latest->authors as $author)
 										{{ $loop->first ? '' : ',' }}
