@@ -11,7 +11,7 @@ trait ArticleScopeQueries
 
     public function scopeRecent($query, $number)
     {
-        return $query->with(['category', 'authors'])->orderBy('created_at', 'desc')->take($number);
+        return $query->with(['category', 'authors'])->orderBy('published_at', 'desc')->take($number);
     }
 
     public function scopeSimilar($query)

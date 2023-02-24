@@ -51,7 +51,7 @@ class Article extends TheScienceBreaker
 
     public function scopePublished($query)
     {
-        return $query->where('published_at', '<=', now())->orderBy('published_at', 'DESC');
+        return $query->where('published_at', '<=', now());
     }
 
     public static function currentIssuePath()
