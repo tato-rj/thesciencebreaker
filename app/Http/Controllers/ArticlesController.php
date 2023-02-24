@@ -184,7 +184,7 @@ class ArticlesController extends Controller
     {
         $articles = Article::all();
         $articles->each(function($article) {
-            $article->issue = $article->resources()->generateIssue($article->created_at);
+            $article->issue = $article->resources()->generateIssue($article->published_at);
             $article->save();
         });
 
@@ -195,7 +195,7 @@ class ArticlesController extends Controller
     {
         $articles = Article::all();
         $articles->each(function($article) {
-            $article->volume = $article->resources()->generateVolume($article->created_at);
+            $article->volume = $article->resources()->generateVolume($article->published_at);
             $article->save();
         });
 
@@ -204,7 +204,7 @@ class ArticlesController extends Controller
 
     public function issues()
     {
-        $results = Article::selectRaw('year(created_at) AS year, SUBSTRING(issue, 5) AS issue, volume, count(*) as count')
+        $results = Article::selectRaw('year(published_at) AS year, SUBSTRING(issue, 5) AS issue, volume, count(*) as count')
             ->groupBy('year', 'issue', 'volume')
             ->orderBy('year', 'DESC')
             ->orderBy('issue', 'DESC')

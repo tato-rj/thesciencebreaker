@@ -56,7 +56,7 @@ class Article extends TheScienceBreaker
 
     public static function currentIssuePath()
     {
-        $lastBreak = Article::latest()->published()->first();
+        $lastBreak = Article::published()->orderBy('published_at', 'DESC')->first();
         
         return $lastBreak ? 
             "content/volume/$lastBreak->volume/issue/$lastBreak->issue"
