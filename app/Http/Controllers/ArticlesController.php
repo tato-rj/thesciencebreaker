@@ -50,7 +50,7 @@ class ArticlesController extends Controller
         ]);
 
         $file = $request->xml;
-dd($request->xml);        
+// dd($request->xml);        
         $generator = (new Generator($request->xml));
 
         $break = $generator->createBreak([
