@@ -40,7 +40,7 @@ class Generator
             'issue' => (new Article)->resources()->generateIssue(),
             'volume' => (new Article)->resources()->generateVolume(),
         ];
-
+dd(array_merge($data, $attributes));
         return Article::create(array_merge($data, $attributes));
 	}
 
