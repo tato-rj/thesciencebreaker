@@ -52,7 +52,7 @@ class ArticlesController extends Controller
         $file = $request->xml;
    
         $generator = (new Generator($request->xml));
-dd($generator);
+
         $break = $generator->createBreak([
             'editor_id' => $request->editor_id,
             'image_caption' => $request->image_caption,
